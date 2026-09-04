@@ -100,17 +100,17 @@ export const TeleconsultationRoom: React.FC = () => {
   return (
     <div className="space-y-6 max-w-6xl mx-auto">
       {/* Top Bar Header */}
-      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 p-4 shadow-card flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-4 shadow-card flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center font-bold">
             <Stethoscope className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h2 className="text-base font-bold text-slate-900 dark:text-white">
+              <h2 className="text-base font-bold text-slate-900">
                 Live Tele-Triage Room • Dr. Gurpreet Singh, MD
               </h2>
-              <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+              <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
                 Connected Live
               </span>
@@ -122,7 +122,7 @@ export const TeleconsultationRoom: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg text-xs font-mono font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+          <div className="px-3 py-1 bg-slate-100 rounded-lg text-xs font-mono font-bold text-slate-700 flex items-center gap-1.5">
             <Clock className="w-3.5 h-3.5 text-teal-600" />
             <span>{formatTime(callDuration)}</span>
           </div>
@@ -136,19 +136,19 @@ export const TeleconsultationRoom: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column (7 Cols): Video Streams */}
         <div className="lg:col-span-7 space-y-4">
-          <div className="relative aspect-video bg-slate-950 rounded-3xl overflow-hidden shadow-2xl border border-slate-800 flex items-center justify-center">
+          <div className="relative aspect-video bg-slate-100 rounded-3xl overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-200/90 flex items-center justify-center">
             {/* Main Remote Doctor Stream */}
             {isVideoOn ? (
-              <div className="w-full h-full bg-gradient-to-tr from-slate-900 via-navy-950 to-slate-900 flex flex-col items-center justify-center text-white relative">
-                <div className="w-24 h-24 rounded-full bg-teal-800/60 border-2 border-teal-400 flex items-center justify-center mb-3 shadow-lg">
-                  <Stethoscope className="w-10 h-10 text-teal-300 stroke-[1.8]" />
+              <div className="w-full h-full bg-gradient-to-tr from-teal-50/60 via-slate-50 to-blue-50/60 flex flex-col items-center justify-center text-slate-800 relative">
+                <div className="w-24 h-24 rounded-full bg-teal-100 border-2 border-teal-500 flex items-center justify-center mb-3 shadow-md">
+                  <Stethoscope className="w-10 h-10 text-teal-700 stroke-[1.8]" />
                 </div>
-                <h3 className="text-lg font-bold text-white">Dr. Gurpreet Singh, MD</h3>
-                <p className="text-xs text-teal-300">Civil Hospital Phagwara • In Consultation</p>
+                <h3 className="text-lg font-bold text-slate-900">Dr. Gurpreet Singh, MD</h3>
+                <p className="text-xs text-teal-700 font-medium">Civil Hospital Phagwara • In Consultation</p>
 
                 {/* Live Subtitle Transcript Banner */}
-                <div className="absolute bottom-4 left-4 right-4 bg-slate-900/90 backdrop-blur-md p-3 rounded-xl border border-slate-700 text-xs text-center text-teal-200">
-                  <span className="font-semibold text-white">
+                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-3 rounded-xl border border-slate-200/90 text-xs text-center text-slate-700 shadow-lg">
+                  <span className="font-bold text-teal-800">
                     {chatMessages[chatMessages.length - 1]?.sender}:
                   </span>{' '}
                   "{currentLanguage.code === 'hi'
@@ -157,8 +157,8 @@ export const TeleconsultationRoom: React.FC = () => {
                 </div>
               </div>
             ) : (
-              <div className="text-slate-400 text-xs flex flex-col items-center gap-2">
-                <VideoOff className="w-8 h-8" />
+              <div className="text-slate-500 text-xs flex flex-col items-center gap-2">
+                <VideoOff className="w-8 h-8 text-slate-400" />
                 <span>Video is turned off</span>
               </div>
             )}
@@ -213,27 +213,27 @@ export const TeleconsultationRoom: React.FC = () => {
           </div>
 
           {/* Friction Mitigation Impact Card */}
-          <div className="p-4 bg-emerald-50 dark:bg-emerald-950/40 rounded-2xl border border-emerald-200 dark:border-emerald-800 text-xs space-y-2">
-            <div className="flex items-center justify-between text-emerald-900 dark:text-emerald-200 font-bold">
+          <div className="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 text-xs space-y-2">
+            <div className="flex items-center justify-between text-emerald-900 font-bold">
               <span className="flex items-center gap-1.5">
                 <Sparkles className="w-4 h-4 text-emerald-600" />
                 Non-Clinical Friction Mitigated by Teleconsultation:
               </span>
-              <span className="text-[10px] bg-emerald-200 dark:bg-emerald-900 px-2 py-0.5 rounded-full">
+              <span className="text-[10px] bg-emerald-200 px-2 py-0.5 rounded-full">
                 Saved 100% Transit
               </span>
             </div>
-            <div className="grid grid-cols-3 gap-2 pt-1 text-[11px] text-emerald-800 dark:text-emerald-300">
-              <div className="p-2 bg-white/80 dark:bg-slate-900 rounded-lg flex items-center gap-1.5">
-                <Car className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+            <div className="grid grid-cols-3 gap-2 pt-1 text-[11px] text-emerald-800">
+              <div className="p-2 bg-white/80 rounded-lg flex items-center gap-1.5">
+                <Car className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                 <span><strong>Travel Saved:</strong> 65 km round trip</span>
               </div>
-              <div className="p-2 bg-white/80 dark:bg-slate-900 rounded-lg flex items-center gap-1.5">
-                <Coins className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+              <div className="p-2 bg-white/80 rounded-lg flex items-center gap-1.5">
+                <Coins className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                 <span><strong>Cost Saved:</strong> ~₹450 bus/auto fares</span>
               </div>
-              <div className="p-2 bg-white/80 dark:bg-slate-900 rounded-lg flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+              <div className="p-2 bg-white/80 rounded-lg flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                 <span><strong>Daily Wage:</strong> Zero work-day loss</span>
               </div>
             </div>
@@ -243,9 +243,9 @@ export const TeleconsultationRoom: React.FC = () => {
         {/* Right Column (5 Cols): Live Conversation & Digital Prescription */}
         <div className="lg:col-span-5 space-y-4 flex flex-col justify-between">
           {/* Live Translation Dialogue Ledger */}
-          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-4 shadow-card flex flex-col h-[360px]">
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2 mb-3">
-              <div className="flex items-center gap-1.5 text-xs font-bold text-slate-900 dark:text-white">
+          <div className="bg-white rounded-3xl border border-slate-200/80 p-4 shadow-card flex flex-col h-[360px]">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-3">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-slate-900">
                 <MessageSquare className="w-4 h-4 text-teal-600" />
                 <span>Live Multilingual Consultation Transcript</span>
               </div>
@@ -258,28 +258,28 @@ export const TeleconsultationRoom: React.FC = () => {
                   key={i}
                   className={`p-2.5 rounded-xl border ${
                     msg.sender.includes('Doctor')
-                      ? 'bg-teal-50/70 border-teal-200 dark:bg-teal-950/30 dark:border-teal-800'
-                      : 'bg-slate-50 border-slate-200 dark:bg-slate-800/40 dark:border-slate-700'
+                      ? 'bg-teal-50/70 border-teal-200'
+                      : 'bg-slate-50 border-slate-200'
                   }`}
                 >
                   <div className="flex items-center justify-between text-[10px] text-slate-400 mb-0.5">
-                    <span className="font-bold text-slate-800 dark:text-slate-200">{msg.sender}</span>
+                    <span className="font-bold text-slate-800">{msg.sender}</span>
                     <span>{msg.time}</span>
                   </div>
-                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+                  <p className="text-slate-700 leading-relaxed font-medium">
                     {msg.text}
                   </p>
                 </div>
               ))}
             </div>
 
-            <form onSubmit={handleSendMessage} className="pt-2 border-t border-slate-100 dark:border-slate-800 flex gap-2">
+            <form onSubmit={handleSendMessage} className="pt-2 border-t border-slate-100 flex gap-2">
               <input
                 type="text"
                 placeholder="Type or speak a message..."
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
-                className="flex-1 text-xs p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800"
+                className="flex-1 text-xs p-2 rounded-xl border border-slate-200 bg-slate-50"
               />
               <Button type="submit" variant="primary" size="sm">
                 Send
@@ -288,25 +288,25 @@ export const TeleconsultationRoom: React.FC = () => {
           </div>
 
           {/* Instant Digital Prescription & Follow-up Note */}
-          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-4 shadow-card space-y-2 text-xs">
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
-              <span className="font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+          <div className="bg-white rounded-3xl border border-slate-200/80 p-4 shadow-card space-y-2 text-xs">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+              <span className="font-bold text-slate-900 flex items-center gap-1.5">
                 <FileText className="w-4 h-4 text-teal-600" />
                 Live Digital Prescription & Care Note
               </span>
-              <span className="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded font-mono">
+              <span className="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono">
                 Rx #TC-9042
               </span>
             </div>
 
-            <div className="space-y-1.5 text-[11px] text-slate-600 dark:text-slate-400">
+            <div className="space-y-1.5 text-[11px] text-slate-600">
               <p><strong>Diagnosis:</strong> Essential Hypertension (Stage 1) — Managed Non-Clinically</p>
               <p><strong>Prescription:</strong> Tab. Amlodipine 5mg (Once daily morning) • 60-day pack</p>
               <p><strong>Fulfillment:</strong> Dispatched via Local Village Health Postal Courier</p>
               <p><strong>Next Follow-up:</strong> 30 Days via Assisted Video Triage (No Hospital Visit Needed)</p>
             </div>
 
-            <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex gap-2">
+            <div className="pt-2 border-t border-slate-100 flex gap-2">
               <Button
                 variant="outline"
                 size="sm"

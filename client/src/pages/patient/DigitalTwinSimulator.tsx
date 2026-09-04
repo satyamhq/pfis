@@ -229,17 +229,17 @@ export const DigitalTwinSimulator: React.FC = () => {
   return (
     <div className="space-y-8 max-w-6xl mx-auto">
       {/* Header Banner */}
-      <div className="bg-gradient-to-tr from-slate-900 via-navy-900 to-slate-800 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-800 space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50 border border-slate-200/90 space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-950 text-teal-300 text-xs font-bold border border-teal-800 mb-2">
-              <Sparkles className="w-3.5 h-3.5 text-teal-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold border border-teal-200 mb-2">
+              <Sparkles className="w-3.5 h-3.5 text-teal-600" />
               <span>PFIS Core Engine: Friction Digital Twin</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
               Patient Friction Digital Twin Simulator
             </h1>
-            <p className="text-xs text-slate-300">
+            <p className="text-xs text-slate-500">
               Simulate a real-world virtual patient journey through healthcare barriers, testing practical interventions in real time
             </p>
           </div>
@@ -251,7 +251,7 @@ export const DigitalTwinSimulator: React.FC = () => {
             <Button
               variant="outline"
               size="sm"
-              className="text-slate-900 bg-white hover:bg-slate-100"
+              className="border-slate-300 text-slate-700 hover:bg-slate-50 cursor-pointer"
               onClick={handleResetSimulation}
               icon={<RotateCcw className="w-3.5 h-3.5" />}
             >
@@ -275,18 +275,18 @@ export const DigitalTwinSimulator: React.FC = () => {
         {/* Left Column (5 Cols): Patient Parameters & Interventions */}
         <div className="lg:col-span-5 space-y-6">
           {/* Virtual Patient Profile Card */}
-          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-5 shadow-card space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+          <div className="bg-white rounded-3xl border border-slate-200/80 p-5 shadow-card space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2">
-                <div className="w-9 h-9 rounded-xl bg-teal-100 dark:bg-teal-950 flex items-center justify-center text-teal-700 dark:text-teal-300 font-bold text-sm">
-                  <User className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                <div className="w-9 h-9 rounded-xl bg-teal-100 flex items-center justify-center text-teal-700 font-bold text-sm">
+                  <User className="w-4 h-4 text-teal-600" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">{patientName}</h3>
+                  <h3 className="text-sm font-bold text-slate-900">{patientName}</h3>
                   <p className="text-[11px] text-slate-500">Virtual Patient Parameters</p>
                 </div>
               </div>
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">
                 60 Yrs • Rural
               </span>
             </div>
@@ -294,9 +294,9 @@ export const DigitalTwinSimulator: React.FC = () => {
             {/* Config Sliders & Selectors */}
             <div className="space-y-3 text-xs">
               <div>
-                <div className="flex justify-between font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <div className="flex justify-between font-semibold text-slate-700 mb-1">
                   <span>Distance to Hospital:</span>
-                  <span className="text-teal-700 dark:text-teal-400 font-bold">{distanceKm} km</span>
+                  <span className="text-teal-700 font-bold">{distanceKm} km</span>
                 </div>
                 <input
                   type="range"
@@ -310,11 +310,11 @@ export const DigitalTwinSimulator: React.FC = () => {
 
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">Transport:</label>
+                  <label className="font-semibold text-slate-700 block mb-1">Transport:</label>
                   <select
                     value={transportAccess}
                     onChange={(e: any) => setTransportAccess(e.target.value)}
-                    className="w-full p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
+                    className="w-full p-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-900"
                   >
                     <option value="none">None / Walk</option>
                     <option value="low">Low (Infrequent Bus)</option>
@@ -324,11 +324,11 @@ export const DigitalTwinSimulator: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">Digital Literacy:</label>
+                  <label className="font-semibold text-slate-700 block mb-1">Digital Literacy:</label>
                   <select
                     value={digitalLiteracy}
                     onChange={(e: any) => setDigitalLiteracy(e.target.value)}
-                    className="w-full p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
+                    className="w-full p-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-900"
                   >
                     <option value="none">None (Feature Phone)</option>
                     <option value="basic">Basic Smartphone</option>
@@ -340,11 +340,11 @@ export const DigitalTwinSimulator: React.FC = () => {
 
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">Family Support:</label>
+                  <label className="font-semibold text-slate-700 block mb-1">Family Support:</label>
                   <select
                     value={familySupport}
                     onChange={(e: any) => setFamilySupport(e.target.value)}
-                    className="w-full p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
+                    className="w-full p-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-900"
                   >
                     <option value="none">Lives Alone</option>
                     <option value="low">Caregiver Constrained</option>
@@ -354,11 +354,11 @@ export const DigitalTwinSimulator: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">Wage Timing:</label>
+                  <label className="font-semibold text-slate-700 block mb-1">Wage Timing:</label>
                   <select
                     value={wageCommitment}
                     onChange={(e: any) => setWageCommitment(e.target.value)}
-                    className="w-full p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white"
+                    className="w-full p-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-900"
                   >
                     <option value="inflexible_daily_wage">Daily Wage Loss</option>
                     <option value="rigid_hours">Rigid Shift</option>
@@ -370,9 +370,9 @@ export const DigitalTwinSimulator: React.FC = () => {
           </div>
 
           {/* Practical Interventions Toggles */}
-          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-5 shadow-card space-y-3">
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
-              <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-1.5">
+          <div className="bg-white rounded-3xl border border-slate-200/80 p-5 shadow-card space-y-3">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+              <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-teal-600" />
                 Deploy Practical Interventions
               </h3>
@@ -381,12 +381,12 @@ export const DigitalTwinSimulator: React.FC = () => {
 
             <div className="space-y-2 text-xs">
               <label className={`flex items-center justify-between p-2.5 rounded-xl border cursor-pointer select-none transition-all ${
-                hasTransportShuttle ? 'bg-teal-50/80 border-teal-300 dark:bg-teal-950/40 dark:border-teal-800' : 'bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700'
+                hasTransportShuttle ? 'bg-teal-50/80 border-teal-300' : 'bg-slate-50 border-slate-200'
               }`}>
                 <div className="flex items-center gap-2">
                   <Bus className="w-4 h-4 text-teal-600" />
                   <div>
-                    <span className="font-bold text-slate-900 dark:text-white block">Community Health Shuttle</span>
+                    <span className="font-bold text-slate-900 block">Community Health Shuttle</span>
                     <span className="text-[10px] text-slate-500">Fixed-schedule rural mini-bus</span>
                   </div>
                 </div>
@@ -399,12 +399,12 @@ export const DigitalTwinSimulator: React.FC = () => {
               </label>
 
               <label className={`flex items-center justify-between p-2.5 rounded-xl border cursor-pointer select-none transition-all ${
-                hasSatelliteDiagnostics ? 'bg-teal-50/80 border-teal-300 dark:bg-teal-950/40 dark:border-teal-800' : 'bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700'
+                hasSatelliteDiagnostics ? 'bg-teal-50/80 border-teal-300' : 'bg-slate-50 border-slate-200'
               }`}>
                 <div className="flex items-center gap-2">
                   <Activity className="w-4 h-4 text-teal-600" />
                   <div>
-                    <span className="font-bold text-slate-900 dark:text-white block">Point-of-Care Diagnostic Camp</span>
+                    <span className="font-bold text-slate-900 block">Point-of-Care Diagnostic Camp</span>
                     <span className="text-[10px] text-slate-500">Satellite mobile blood tests & X-ray</span>
                   </div>
                 </div>
@@ -417,12 +417,12 @@ export const DigitalTwinSimulator: React.FC = () => {
               </label>
 
               <label className={`flex items-center justify-between p-2.5 rounded-xl border cursor-pointer select-none transition-all ${
-                hasAshaEscort ? 'bg-teal-50/80 border-teal-300 dark:bg-teal-950/40 dark:border-teal-800' : 'bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700'
+                hasAshaEscort ? 'bg-teal-50/80 border-teal-300' : 'bg-slate-50 border-slate-200'
               }`}>
                 <div className="flex items-center gap-2">
                   <Users2 className="w-4 h-4 text-teal-600" />
                   <div>
-                    <span className="font-bold text-slate-900 dark:text-white block">Dedicated ASHA Worker Escort</span>
+                    <span className="font-bold text-slate-900 block">Dedicated ASHA Worker Escort</span>
                     <span className="text-[10px] text-slate-500">Queue navigation & scheme guidance</span>
                   </div>
                 </div>
@@ -435,12 +435,12 @@ export const DigitalTwinSimulator: React.FC = () => {
               </label>
 
               <label className={`flex items-center justify-between p-2.5 rounded-xl border cursor-pointer select-none transition-all ${
-                hasTeleconsultation ? 'bg-teal-50/80 border-teal-300 dark:bg-teal-950/40 dark:border-teal-800' : 'bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700'
+                hasTeleconsultation ? 'bg-teal-50/80 border-teal-300' : 'bg-slate-50 border-slate-200'
               }`}>
                 <div className="flex items-center gap-2">
                   <Laptop className="w-4 h-4 text-teal-600" />
                   <div>
-                    <span className="font-bold text-slate-900 dark:text-white block">Village Teleconsultation Kiosk</span>
+                    <span className="font-bold text-slate-900 block">Village Teleconsultation Kiosk</span>
                     <span className="text-[10px] text-slate-500">Video triage to avoid physical travel</span>
                   </div>
                 </div>
@@ -453,12 +453,12 @@ export const DigitalTwinSimulator: React.FC = () => {
               </label>
 
               <label className={`flex items-center justify-between p-2.5 rounded-xl border cursor-pointer select-none transition-all ${
-                hasMedicineDelivery ? 'bg-teal-50/80 border-teal-300 dark:bg-teal-950/40 dark:border-teal-800' : 'bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700'
+                hasMedicineDelivery ? 'bg-teal-50/80 border-teal-300' : 'bg-slate-50 border-slate-200'
               }`}>
                 <div className="flex items-center gap-2">
                   <Pill className="w-4 h-4 text-teal-600" />
                   <div>
-                    <span className="font-bold text-slate-900 dark:text-white block">Home Essential Drug Delivery</span>
+                    <span className="font-bold text-slate-900 block">Home Essential Drug Delivery</span>
                     <span className="text-[10px] text-slate-500">Postal 60-day prescription delivery</span>
                   </div>
                 </div>
@@ -476,7 +476,7 @@ export const DigitalTwinSimulator: React.FC = () => {
         {/* Right Column (7 Cols): Live Gauge, Journey Timeline & Live Log */}
         <div className="lg:col-span-7 space-y-6">
           {/* Live Digital Twin Gauge & Simulation Controls */}
-          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 shadow-card space-y-4">
+          <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-card space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
               <div className="sm:col-span-1 flex justify-center">
                 <CompletionGauge
@@ -492,10 +492,10 @@ export const DigitalTwinSimulator: React.FC = () => {
                   <span className="text-slate-500 font-bold">Simulation Status:</span>
                   <span className={`px-3 py-1 rounded-full font-bold flex items-center gap-1.5 ${
                     simulationOutcome === 'COMPLETED'
-                      ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
+                      ? 'bg-emerald-100 text-emerald-800'
                       : simulationOutcome === 'LEAKED_DROPOUT'
-                      ? 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300'
-                      : 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300'
+                      ? 'bg-rose-100 text-rose-800'
+                      : 'bg-amber-100 text-amber-800'
                   }`}>
                     {simulationOutcome === 'COMPLETED' ? (
                       <>
@@ -518,11 +518,11 @@ export const DigitalTwinSimulator: React.FC = () => {
                   </span>
                 </div>
 
-                <div className="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 space-y-1">
-                  <p className="font-bold text-slate-800 dark:text-slate-200">
+                <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                  <p className="font-bold text-slate-800">
                     Forecast: {completionProb >= 70 ? 'High Completion Likelihood' : completionProb >= 45 ? 'Moderate Risk of Drop-out' : 'High Operational Leakage Risk'}
                   </p>
-                  <p className="text-slate-500 dark:text-slate-400">
+                  <p className="text-slate-500">
                     {hasTransportShuttle && hasSatelliteDiagnostics
                       ? 'Active transport shuttle and satellite diagnostics remove 84% of transit friction, enabling successful journey completion.'
                       : 'Without transport and diagnostic mitigation, patient has high probability of dropping out before prescription fulfillment.'}
@@ -546,9 +546,9 @@ export const DigitalTwinSimulator: React.FC = () => {
           </div>
 
           {/* Virtual Patient Journey Timeline Stepper */}
-          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 shadow-card space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+          <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-card space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
                 <Activity className="w-4 h-4 text-teal-600" />
                 Virtual Healthcare Journey Pathway (7 Milestones)
               </h3>
@@ -567,12 +567,12 @@ export const DigitalTwinSimulator: React.FC = () => {
                     key={step.id}
                     className={`p-3.5 rounded-2xl border transition-all flex items-start gap-3 text-xs ${
                       isCurrent
-                        ? 'bg-teal-50 dark:bg-teal-950/50 border-teal-400 ring-2 ring-teal-500/20 shadow-sm'
+                        ? 'bg-teal-50 border-teal-400 ring-2 ring-teal-500/20 shadow-sm'
                         : isPassed
-                        ? 'bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-900'
+                        ? 'bg-emerald-50/60 border-emerald-200'
                         : isFailed
-                        ? 'bg-rose-50 dark:bg-rose-950/40 border-rose-300'
-                        : 'bg-slate-50 dark:bg-slate-800/30 border-slate-200 dark:border-slate-800 opacity-70'
+                        ? 'bg-rose-50 border-rose-300'
+                        : 'bg-slate-50 border-slate-200 opacity-70'
                     }`}
                   >
                     <div
@@ -583,7 +583,7 @@ export const DigitalTwinSimulator: React.FC = () => {
                           ? 'bg-rose-600 text-white border-rose-700'
                           : isCurrent
                           ? 'bg-teal-600 text-white border-teal-700 animate-pulse'
-                          : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-300'
+                          : 'bg-slate-200 text-slate-600 border-slate-300'
                       }`}
                     >
                       <Icon className="w-4 h-4" />
@@ -591,28 +591,28 @@ export const DigitalTwinSimulator: React.FC = () => {
 
                     <div className="flex-1 space-y-0.5">
                       <div className="flex items-center justify-between">
-                        <h4 className="font-bold text-slate-900 dark:text-white">{step.title}</h4>
+                        <h4 className="font-bold text-slate-900">{step.title}</h4>
                         <span className={`text-[10px] font-bold px-2 py-0.2 rounded-full ${
                           isPassed
-                            ? 'text-emerald-700 bg-emerald-100 dark:bg-emerald-950'
+                            ? 'text-emerald-700 bg-emerald-100'
                             : isFailed
-                            ? 'text-rose-700 bg-rose-100 dark:bg-rose-950'
+                            ? 'text-rose-700 bg-rose-100'
                             : isCurrent
-                            ? 'text-teal-700 bg-teal-100 dark:bg-teal-950'
+                            ? 'text-teal-700 bg-teal-100'
                             : 'text-slate-400'
                         }`}>
                           {isPassed ? 'PASSED' : isFailed ? 'DROPOUT' : isCurrent ? 'NAVIGATING...' : 'PENDING'}
                         </span>
                       </div>
 
-                      <p className="text-slate-600 dark:text-slate-400 text-[11px]">{step.description}</p>
+                      <p className="text-slate-600 text-[11px]">{step.description}</p>
 
                       <div className="pt-1 flex items-center gap-3 text-[10px]">
                         <span className="text-slate-500">
                           <strong>Active Friction:</strong> {step.baseFriction}
                         </span>
                         {step.mitigatedBy !== 'None' && (
-                          <span className="text-teal-700 dark:text-teal-300 font-bold flex items-center gap-1">
+                          <span className="text-teal-700 font-bold flex items-center gap-1">
                             <Sparkles className="w-3 h-3 text-teal-600 shrink-0" />
                             <span>Mitigated by: {step.mitigatedBy}</span>
                           </span>
@@ -626,8 +626,8 @@ export const DigitalTwinSimulator: React.FC = () => {
 
             {/* Live Journey Event Log */}
             {simulationLog.length > 0 && (
-              <div className="p-3 bg-slate-900 text-slate-200 rounded-xl font-mono text-[11px] space-y-1 max-h-32 overflow-y-auto">
-                <div className="text-[10px] text-teal-400 uppercase font-bold tracking-wider">
+              <div className="p-3 bg-slate-50 border border-slate-200 text-slate-800 rounded-xl font-mono text-[11px] space-y-1 max-h-32 overflow-y-auto">
+                <div className="text-[10px] text-teal-700 uppercase font-bold tracking-wider">
                   Digital Twin Real-Time Telemetry Log:
                 </div>
                 {simulationLog.map((log, i) => (

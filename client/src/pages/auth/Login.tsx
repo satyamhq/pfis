@@ -122,8 +122,8 @@ export const Login: React.FC = () => {
       title: t('auth.adminPortalTitle', 'Health Ministry & Administration'),
       subtitle: t('auth.adminPortalSubtitle', 'Statewide population health intelligence, policy simulation & audit'),
       badge: t('auth.adminBadge', 'Security Level 1'),
-      badgeColor: 'bg-purple-100 text-purple-800 border-purple-300 dark:bg-purple-950 dark:text-purple-300',
-      icon: <Shield className="w-5 h-5 text-purple-600 dark:text-purple-400" />,
+      badgeColor: 'bg-purple-100 text-purple-800 border-purple-300',
+      icon: <Shield className="w-5 h-5 text-purple-600" />,
       defaultEmail: 'admin@pfis.org',
       defaultPass: 'Admin@123',
       accentBorder: 'border-purple-500 ring-purple-500/20',
@@ -138,8 +138,8 @@ export const Login: React.FC = () => {
       title: t('auth.hospitalPortalTitle', 'Hospital & Clinical Facility'),
       subtitle: t('auth.hospitalPortalSubtitle', 'Triage desk, patient intake review, & OPD capacity management'),
       badge: t('auth.hospitalBadge', 'Clinical Desk'),
-      badgeColor: 'bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-950 dark:text-blue-300',
-      icon: <Building2 className="w-5 h-5 text-blue-600 dark:text-blue-400" />,
+      badgeColor: 'bg-blue-100 text-blue-800 border-blue-300',
+      icon: <Building2 className="w-5 h-5 text-blue-600" />,
       defaultEmail: 'hospital@apollo.org',
       defaultPass: 'Hospital@123',
       accentBorder: 'border-blue-500 ring-blue-500/20',
@@ -154,8 +154,8 @@ export const Login: React.FC = () => {
       title: t('auth.patientPortalTitle', 'Patient & Citizen Portal'),
       subtitle: t('auth.patientPortalSubtitle', 'Non-clinical barrier check, nearby hospitals, & OPD token request'),
       badge: t('auth.patientBadge', 'Citizen Access'),
-      badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-950 dark:text-emerald-300',
-      icon: <User className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />,
+      badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300',
+      icon: <User className="w-5 h-5 text-emerald-600" />,
       defaultEmail: 'patient@pfis.org',
       defaultPass: 'Patient@123',
       accentBorder: 'border-emerald-500 ring-emerald-500/20',
@@ -238,18 +238,18 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-2xl p-6 sm:p-10 space-y-8 transition-all relative">
+    <div className="bg-white rounded-3xl border border-slate-200/90 shadow-2xl p-6 sm:p-10 space-y-8 transition-all relative">
       {/* Redirecting Overlay */}
       {redirectingMessage && (
-        <div className="absolute inset-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs rounded-3xl flex flex-col items-center justify-center p-6 text-center space-y-4">
-          <div className="w-16 h-16 rounded-full bg-teal-50 dark:bg-teal-950/60 flex items-center justify-center">
-            <Loader2 className="w-8 h-8 text-teal-600 dark:text-teal-400 animate-spin" />
+        <div className="absolute inset-0 z-40 bg-white/95 backdrop-blur-xs rounded-3xl flex flex-col items-center justify-center p-6 text-center space-y-4">
+          <div className="w-16 h-16 rounded-full bg-teal-50 flex items-center justify-center">
+            <Loader2 className="w-8 h-8 text-teal-600 animate-spin" />
           </div>
           <div>
-            <h3 className="text-lg font-black text-slate-900 dark:text-white">
+            <h3 className="text-lg font-black text-slate-900">
               {redirectingMessage}
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            <p className="text-xs text-slate-500 mt-1">
               Synchronizing session with PFIS Intelligence Engine...
             </p>
           </div>
@@ -257,10 +257,10 @@ export const Login: React.FC = () => {
       )}
 
       {/* Top Header & Localization */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 border-b border-slate-100 pb-4">
         <div className="flex items-center gap-2">
           <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+          <span className="text-xs font-bold uppercase tracking-wider text-slate-600">
             PFIS Universal Authentication Engine
           </span>
         </div>
@@ -272,14 +272,14 @@ export const Login: React.FC = () => {
 
       {/* Main Title & Subtitle */}
       <div className="text-center space-y-2">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-800 text-purple-700 dark:text-purple-300 text-xs font-bold mb-1">
-          <ShieldCheck className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-xs font-bold mb-1">
+          <ShieldCheck className="w-3.5 h-3.5 text-purple-600" />
           <span>PFIS Health Ministry & Administration Command Portal</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+        <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
           Admin Portal Sign In
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-lg mx-auto">
+        <p className="text-xs sm:text-sm text-slate-500 max-w-lg mx-auto">
           Health Ministry & Administrative Intelligence Engine. Sign in as Admin or switch to Clinical / Citizen access.
         </p>
       </div>
@@ -294,13 +294,13 @@ export const Login: React.FC = () => {
               onClick={() => handlePortalSwitch(portal.id)}
               className={`text-left p-4 rounded-2xl border transition-all relative flex flex-col justify-between cursor-pointer ${
                 isSelected
-                  ? `bg-slate-50/95 dark:bg-slate-800/95 border-2 shadow-lg ${portal.accentBorder}`
-                  : 'bg-white dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
+                  ? `bg-slate-50/95 border-2 shadow-lg ${portal.accentBorder}`
+                  : 'bg-white border-slate-200 hover:border-slate-300'
               }`}
             >
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <div className="p-2 rounded-xl bg-white dark:bg-slate-900 shadow-xs border border-slate-100 dark:border-slate-800">
+                  <div className="p-2 rounded-xl bg-white shadow-xs border border-slate-100">
                     {portal.icon}
                   </div>
                   <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${portal.badgeColor}`}>
@@ -308,16 +308,16 @@ export const Login: React.FC = () => {
                   </span>
                 </div>
                 <div>
-                  <h3 className="text-sm font-black text-slate-900 dark:text-white">
+                  <h3 className="text-sm font-black text-slate-900">
                     {portal.title}
                   </h3>
-                  <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2 mt-0.5 leading-relaxed">
+                  <p className="text-[11px] text-slate-500 line-clamp-2 mt-0.5 leading-relaxed">
                     {portal.subtitle}
                   </p>
                 </div>
               </div>
 
-              <div className="mt-3 pt-2.5 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between">
+              <div className="mt-3 pt-2.5 border-t border-slate-200 flex items-center justify-between">
                 <span className="text-[10px] font-mono text-slate-400 truncate max-w-[130px]">
                   {portal.defaultEmail}
                 </span>
@@ -346,13 +346,13 @@ export const Login: React.FC = () => {
 
       {/* Admin Specific Notice */}
       {activePortal === 'admin' && (
-        <div className="p-3.5 bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800 rounded-2xl flex items-center gap-3 text-xs">
-          <ShieldCheck className="w-5 h-5 text-purple-600 dark:text-purple-400 flex-shrink-0" />
+        <div className="p-3.5 bg-purple-50 border border-purple-200 rounded-2xl flex items-center gap-3 text-xs">
+          <ShieldCheck className="w-5 h-5 text-purple-600 flex-shrink-0" />
           <div className="flex-1">
-            <span className="font-bold text-purple-900 dark:text-purple-200 block">
+            <span className="font-bold text-purple-900 block">
               Authorized Executive Admin Email: dhirajkumar464748@gmail.com & admin@pfis.org
             </span>
-            <span className="text-[11px] text-purple-700 dark:text-purple-300">
+            <span className="text-[11px] text-purple-700">
               Only authorized administrative emails get access to the Admin Intelligence Suite. All other accounts are automatically routed to Patient or Clinical portals.
             </span>
           </div>
@@ -360,15 +360,15 @@ export const Login: React.FC = () => {
       )}
 
       {/* Feature Highlights of the Active Portal */}
-      <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800">
-        <div className="flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">
+      <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+        <div className="flex items-center justify-between text-xs font-semibold text-slate-700 mb-2">
           <span className="flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5 text-amber-500" />
             <span>Portal Capabilities for {currentPortalConfig.title}:</span>
           </span>
           <span className="text-[10px] text-slate-400">Live Dynamic System</span>
         </div>
-        <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] text-slate-600 dark:text-slate-400">
+        <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] text-slate-600">
           {currentPortalConfig.features.map((feat, i) => (
             <li key={i} className="flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-teal-500" />
@@ -379,8 +379,8 @@ export const Login: React.FC = () => {
       </div>
 
       {/* 1-Click Verified Demo Accounts Bar */}
-      <div className="p-4 bg-slate-100/70 dark:bg-slate-800/60 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-2.5">
-        <div className="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
+      <div className="p-4 bg-slate-100/70 rounded-2xl border border-slate-200 space-y-2.5">
+        <div className="flex items-center justify-between text-xs font-bold text-slate-700">
           <span className="flex items-center gap-1.5">
             <KeyRound className="w-4 h-4 text-brand-600" />
             <span>1-Click Verified Database Credentials (Click to Sign In):</span>
@@ -394,7 +394,7 @@ export const Login: React.FC = () => {
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shadow-xs flex items-center gap-1.5 ${
               email === 'satyam31sk@gmail.com'
                 ? 'bg-purple-600 text-white border-purple-600'
-                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-purple-400'
+                : 'bg-white text-slate-700 border-slate-200 hover:border-purple-400'
             }`}
           >
             <Shield className="w-3.5 h-3.5 text-purple-400 shrink-0" />
@@ -406,7 +406,7 @@ export const Login: React.FC = () => {
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shadow-xs flex items-center gap-1.5 ${
               email === 'prince.patel2025@lpu.in'
                 ? 'bg-purple-600 text-white border-purple-600'
-                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-purple-400'
+                : 'bg-white text-slate-700 border-slate-200 hover:border-purple-400'
             }`}
           >
             <Shield className="w-3.5 h-3.5 text-purple-400 shrink-0" />
@@ -418,7 +418,7 @@ export const Login: React.FC = () => {
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shadow-xs flex items-center gap-1.5 ${
               email === 'dhirajkumar464748@gmail.com'
                 ? 'bg-purple-600 text-white border-purple-600'
-                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-purple-400'
+                : 'bg-white text-slate-700 border-slate-200 hover:border-purple-400'
             }`}
           >
             <Shield className="w-3.5 h-3.5 text-purple-400 shrink-0" />
@@ -430,7 +430,7 @@ export const Login: React.FC = () => {
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shadow-xs flex items-center gap-1.5 ${
               email === 'xel5760@gmail.com'
                 ? 'bg-purple-600 text-white border-purple-600'
-                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-purple-400'
+                : 'bg-white text-slate-700 border-slate-200 hover:border-purple-400'
             }`}
           >
             <Shield className="w-3.5 h-3.5 text-purple-400 shrink-0" />
@@ -442,7 +442,7 @@ export const Login: React.FC = () => {
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shadow-xs flex items-center gap-1.5 ${
               email === 'tanishka2789@gmail.com'
                 ? 'bg-purple-600 text-white border-purple-600'
-                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-purple-400'
+                : 'bg-white text-slate-700 border-slate-200 hover:border-purple-400'
             }`}
           >
             <Shield className="w-3.5 h-3.5 text-purple-400 shrink-0" />
@@ -454,7 +454,7 @@ export const Login: React.FC = () => {
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shadow-xs flex items-center gap-1.5 ${
               email === 'ddishika45@gmail.com'
                 ? 'bg-purple-600 text-white border-purple-600'
-                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-purple-400'
+                : 'bg-white text-slate-700 border-slate-200 hover:border-purple-400'
             }`}
           >
             <Shield className="w-3.5 h-3.5 text-purple-400 shrink-0" />
@@ -466,7 +466,7 @@ export const Login: React.FC = () => {
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shadow-xs flex items-center gap-1.5 ${
               activePortal === 'hospital'
                 ? 'bg-blue-600 text-white border-blue-600'
-                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-blue-400'
+                : 'bg-white text-slate-700 border-slate-200 hover:border-blue-400'
             }`}
           >
             <Building2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
@@ -478,7 +478,7 @@ export const Login: React.FC = () => {
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shadow-xs flex items-center gap-1.5 ${
               activePortal === 'patient'
                 ? 'bg-emerald-600 text-white border-emerald-600'
-                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-emerald-400'
+                : 'bg-white text-slate-700 border-slate-200 hover:border-emerald-400'
             }`}
           >
             <User className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
@@ -490,7 +490,7 @@ export const Login: React.FC = () => {
       {error && <ErrorAlert message={error} onDismiss={() => setError(null)} />}
 
       {successMessage && (
-        <div className="p-3 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 rounded-xl text-xs flex items-center justify-between">
+        <div className="p-3 bg-emerald-50 border border-emerald-300 text-emerald-800 rounded-xl text-xs flex items-center justify-between">
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
             <span>{successMessage}</span>
@@ -511,7 +511,7 @@ export const Login: React.FC = () => {
           type="button"
           onClick={handleDirectRealGoogleSignIn}
           disabled={isGoogleLoading || isLoading}
-          className="w-full py-3.5 px-4 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 text-slate-800 dark:text-white font-bold text-sm rounded-xl border border-slate-300 dark:border-slate-700 shadow-sm flex items-center justify-center gap-3 transition-all hover:shadow-md disabled:opacity-50 group cursor-pointer"
+          className="w-full py-3.5 px-4 bg-white hover:bg-slate-50 text-slate-800 font-bold text-sm rounded-xl border border-slate-300 shadow-sm flex items-center justify-center gap-3 transition-all hover:shadow-md disabled:opacity-50 group cursor-pointer"
         >
           {/* Official Google G SVG Icon */}
           <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24">
@@ -540,7 +540,7 @@ export const Login: React.FC = () => {
         </button>
 
         <div className="flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-1 px-1">
-          <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-semibold">
+          <div className="flex items-center gap-1.5 text-emerald-600 font-semibold">
             <ShieldCheck className="w-4 h-4" />
             <span>Google Cloud OAuth 2.0 Active & Verified</span>
           </div>
@@ -552,8 +552,8 @@ export const Login: React.FC = () => {
 
       {/* Divider */}
       <div className="relative flex items-center justify-center">
-        <div className="border-t border-slate-200 dark:border-slate-700 w-full" />
-        <span className="bg-white dark:bg-slate-900 px-3 text-xs font-bold text-slate-400 uppercase tracking-wider absolute">
+        <div className="border-t border-slate-200 w-full" />
+        <span className="bg-white px-3 text-xs font-bold text-slate-400 uppercase tracking-wider absolute">
           Or sign in with email credentials
         </span>
       </div>
@@ -593,18 +593,18 @@ export const Login: React.FC = () => {
       </form>
 
       {/* Bottom Footer & Account Registration */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-500">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-4 border-t border-slate-100 text-xs text-slate-500">
         <div>
           {t('auth.noAccount', "Don't have an account?")}{' '}
           <Link
             to={`/register?role=${activePortal}`}
-            className="font-bold text-brand-600 hover:text-brand-700 dark:text-brand-400"
+            className="font-bold text-brand-600 hover:text-brand-700"
           >
             {t('auth.createAccount', 'Register for PFIS')}
           </Link>
         </div>
         <div className="text-[11px] text-slate-400">
-          Role: <strong className="text-slate-700 dark:text-slate-300 capitalize">{activePortal}</strong> • Non-Clinical Healthcare Platform
+          Role: <strong className="text-slate-700 capitalize">{activePortal}</strong> • Non-Clinical Healthcare Platform
         </div>
       </div>
     </div>

@@ -131,14 +131,14 @@ export const PatientDashboard: React.FC = () => {
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
       {/* 1. Header Profile Greeting Banner */}
-      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-card flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+      <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-card flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
         <div className="space-y-2">
           <div className="flex flex-wrap items-center gap-3">
-            <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
               {t('patient.welcome', 'Welcome')}, {user?.name}
             </h1>
             {patient?.patientCode && (
-              <span className="text-xs px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono font-bold border border-slate-200 dark:border-slate-700">
+              <span className="text-xs px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-mono font-bold border border-slate-200">
                 {patient.patientCode}
               </span>
             )}
@@ -146,12 +146,12 @@ export const PatientDashboard: React.FC = () => {
             <TTSButton text={`${t('patient.welcome')} ${user?.name}. ${dashboardExplanation}`} />
           </div>
 
-          <p className="text-xs text-slate-500 dark:text-slate-400 flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1 font-semibold text-slate-700 dark:text-slate-300">
+          <p className="text-xs text-slate-500 flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-1 font-semibold text-slate-700">
               <MapPin className="w-3.5 h-3.5 text-teal-600" />
               {patient?.location?.address || 'Civil Lines'}, {patient?.location?.city || 'Phagwara'}
             </span>
-            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <span className="text-slate-300">•</span>
             <span>{t('common.language', 'Language')}: <strong>{currentLanguage.nativeName}</strong></span>
           </p>
         </div>
@@ -168,7 +168,7 @@ export const PatientDashboard: React.FC = () => {
 
       {/* 2. Primary 1-Click Patient Healthcare Action Hub */}
       <div className="space-y-3">
-        <h2 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+        <h2 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
           <Activity className="w-4 h-4 text-teal-600" /> Quick Patient Actions
         </h2>
 
@@ -236,18 +236,18 @@ export const PatientDashboard: React.FC = () => {
           {/* Card 4: Document Vault */}
           <Link
             to="/patient/documents"
-            className="p-5 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 text-white shadow-lg shadow-slate-900/10 hover:shadow-xl hover:scale-[1.02] transition-all flex flex-col justify-between space-y-4 group border border-slate-700"
+            className="p-5 rounded-2xl bg-gradient-to-br from-indigo-600 to-indigo-700 text-white shadow-lg shadow-indigo-600/15 hover:shadow-xl hover:scale-[1.02] transition-all flex flex-col justify-between space-y-4 group border border-indigo-500/20 cursor-pointer"
           >
             <div className="space-y-2">
-              <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white backdrop-blur-xs">
+              <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-white backdrop-blur-xs">
                 <FolderLock className="w-5 h-5" />
               </div>
               <h3 className="font-bold text-base leading-tight">Document Vault</h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
+              <p className="text-xs text-indigo-100 leading-relaxed">
                 Securely store your Ayushman Bharat card, prescription slips, and lab reports.
               </p>
             </div>
-            <div className="pt-2 flex items-center justify-between text-xs font-bold text-slate-300 group-hover:text-white">
+            <div className="pt-2 flex items-center justify-between text-xs font-bold text-indigo-100 group-hover:text-white">
               <span>View Documents</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -271,7 +271,7 @@ export const PatientDashboard: React.FC = () => {
           value={`${completionProbability}%`}
           subtitle={t('patient.completionProbDesc', 'Estimated journey completion forecast')}
           icon={Sparkles}
-          iconColor="text-teal-600 bg-teal-50 border-teal-100 dark:bg-teal-950/40"
+          iconColor="text-teal-600 bg-teal-50 border-teal-100"
           badge={`${completionProbability}%`}
           badgeType={completionProbability >= 70 ? 'success' : completionProbability >= 50 ? 'warning' : 'danger'}
         />
@@ -291,7 +291,7 @@ export const PatientDashboard: React.FC = () => {
           value={topBarrier.split(' ')[0]}
           subtitle={topBarrier}
           icon={AlertTriangle}
-          iconColor="text-orange-600 bg-orange-50 border-orange-100 dark:bg-orange-950/40"
+          iconColor="text-orange-600 bg-orange-50 border-orange-100"
           badge="High Barrier"
           badgeType="warning"
         />
@@ -301,13 +301,13 @@ export const PatientDashboard: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left 2 Cols: Gauge & Friction Breakdown */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 shadow-card space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+          <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-card space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div>
-                <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                <h3 className="text-base font-bold text-slate-900">
                   {t('patient.explainableIntelligence', 'Explainable Accessibility Intelligence')}
                 </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
+                <p className="text-xs text-slate-500">
                   {t('patient.explainableDesc', 'How socio-geographic factors shape your estimated healthcare completion')}
                 </p>
               </div>
@@ -334,8 +334,8 @@ export const PatientDashboard: React.FC = () => {
               <div className="sm:col-span-2 space-y-3 text-xs">
                 <div className={`p-4 rounded-2xl border space-y-1.5 ${
                   simpleLanguageMode
-                    ? 'bg-amber-50/80 border-amber-200 text-amber-900 dark:bg-amber-950/40 dark:border-amber-800 dark:text-amber-200'
-                    : 'bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'
+                    ? 'bg-amber-50/80 border-amber-200 text-amber-900'
+                    : 'bg-slate-50 border-slate-200 text-slate-700'
                 }`}>
                   <p className="font-bold text-xs flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 text-amber-500" />
@@ -356,11 +356,11 @@ export const PatientDashboard: React.FC = () => {
           </div>
 
           {/* Active Patient Requests Ledger */}
-          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 shadow-card space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+          <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-card space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2">
                 <ListOrdered className="w-4 h-4 text-teal-600" />
-                <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                <h3 className="text-base font-bold text-slate-900">
                   {t('patient.activeRequests', 'Active Hospital Requests')}
                 </h3>
               </div>
@@ -370,7 +370,7 @@ export const PatientDashboard: React.FC = () => {
             </div>
 
             {activeRequests.length === 0 ? (
-              <div className="p-8 text-center text-xs text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-dashed border-slate-200 dark:border-slate-700 space-y-3">
+              <div className="p-8 text-center text-xs text-slate-400 bg-slate-50 rounded-2xl border border-dashed border-slate-200 space-y-3">
                 <p>No active hospital intake requests.</p>
                 <Link to="/patient/hospitals">
                   <Button variant="primary" size="sm">
@@ -384,22 +384,22 @@ export const PatientDashboard: React.FC = () => {
                   <Link
                     key={req._id}
                     to={`/patient/requests/${req._id}`}
-                    className="block p-4 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-teal-300 dark:hover:border-teal-600 hover:bg-slate-50/70 dark:hover:bg-slate-800/50 transition-all text-xs space-y-2"
+                    className="block p-4 rounded-2xl border border-slate-200 hover:border-teal-300 hover:bg-slate-50/70 transition-all text-xs space-y-2"
                   >
                     <div className="flex items-start justify-between">
                       <div>
                         <span className="text-[10px] font-bold text-slate-400 block">{req.requestCode}</span>
-                        <h4 className="font-bold text-sm text-slate-900 dark:text-white">
+                        <h4 className="font-bold text-sm text-slate-900">
                           {(req.hospitalId as any)?.name || 'Civil Hospital'}
                         </h4>
-                        <p className="text-slate-500 dark:text-slate-400 font-medium">Department: {req.departmentName}</p>
+                        <p className="text-slate-500 font-medium">Department: {req.departmentName}</p>
                       </div>
                       <StatusBadge status={req.status} size="sm" />
                     </div>
 
-                    <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-1 border-t border-slate-100 dark:border-slate-800">
+                    <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1 border-t border-slate-100">
                       <span>Reason: {req.reasonForVisit}</span>
-                      <span className="font-semibold text-teal-700 dark:text-teal-400">
+                      <span className="font-semibold text-teal-700">
                         {req.distanceKm ? `${req.distanceKm} km transit` : 'Nearby'}
                       </span>
                     </div>
@@ -414,32 +414,32 @@ export const PatientDashboard: React.FC = () => {
         <div className="space-y-6">
           {/* Nearest Hospital Card with Doctors */}
           {nearestHospital && (
-            <div className="bg-gradient-to-tr from-slate-900 via-slate-800 to-navy-900 text-white rounded-3xl p-6 shadow-xl border border-slate-800 space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                <span className="text-[11px] font-bold text-teal-400 uppercase tracking-wider flex items-center gap-1.5">
+            <div className="bg-white rounded-3xl p-6 shadow-xl shadow-slate-200/50 border border-slate-200/90 space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                <span className="text-[11px] font-bold text-teal-700 uppercase tracking-wider flex items-center gap-1.5">
                   <Building2 className="w-4 h-4" /> {t('patient.nearestFacility', 'Nearest Verified Facility')}
                 </span>
-                <span className="text-[10px] bg-teal-950 text-teal-300 px-2.5 py-0.5 rounded-full border border-teal-800 font-bold uppercase">
+                <span className="text-[10px] bg-teal-50 text-teal-800 px-2.5 py-0.5 rounded-full border border-teal-200 font-bold uppercase">
                   {nearestHospital.type}
                 </span>
               </div>
 
               <div>
-                <h4 className="font-bold text-lg text-white">{nearestHospital.name}</h4>
-                <p className="text-xs text-slate-300 mt-0.5 flex items-center gap-1">
-                  <MapPin className="w-3.5 h-3.5 text-teal-400 shrink-0" />
+                <h4 className="font-bold text-lg text-slate-900">{nearestHospital.name}</h4>
+                <p className="text-xs text-slate-500 mt-0.5 flex items-center gap-1">
+                  <MapPin className="w-3.5 h-3.5 text-teal-600 shrink-0" />
                   {nearestHospital.address}, {nearestHospital.city}
                 </p>
               </div>
 
               <div className="grid grid-cols-2 gap-2 text-xs">
-                <div className="p-2.5 bg-slate-800/80 rounded-xl border border-slate-700">
-                  <span className="text-[10px] text-slate-400 block">{t('hospital.distance', 'Distance')}:</span>
-                  <span className="font-bold text-teal-300">{nearestHospital.distanceKm || 4.2} km away</span>
+                <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200/80">
+                  <span className="text-[10px] text-slate-500 block">{t('hospital.distance', 'Distance')}:</span>
+                  <span className="font-bold text-teal-700">{nearestHospital.distanceKm || 4.2} km away</span>
                 </div>
-                <div className="p-2.5 bg-slate-800/80 rounded-xl border border-slate-700">
-                  <span className="text-[10px] text-slate-400 block">Emergency:</span>
-                  <span className="font-bold text-emerald-300">
+                <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200/80">
+                  <span className="text-[10px] text-slate-500 block">Emergency:</span>
+                  <span className="font-bold text-emerald-700">
                     {nearestHospital.emergencyAvailable ? '24/7 Active' : 'OPD Hours'}
                   </span>
                 </div>
@@ -454,11 +454,11 @@ export const PatientDashboard: React.FC = () => {
           )}
 
           {/* Document Vault Quick Card */}
-          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 shadow-card space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+          <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-card space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2">
                 <FolderLock className="w-4 h-4 text-teal-600" />
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                <h4 className="text-sm font-bold text-slate-900">
                   {t('patient.documentVault', 'Medical Records Vault')}
                 </h4>
               </div>
@@ -468,7 +468,7 @@ export const PatientDashboard: React.FC = () => {
             </div>
 
             {recentDocs.length === 0 ? (
-              <div className="p-4 text-center text-xs text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-800/50 rounded-2xl">
+              <div className="p-4 text-center text-xs text-slate-400 bg-slate-50 rounded-2xl">
                 Upload your Ayushman Bharat card and prescriptions for 1-click hospital intake.
               </div>
             ) : (
@@ -476,13 +476,13 @@ export const PatientDashboard: React.FC = () => {
                 {recentDocs.map((doc) => (
                   <div
                     key={doc._id}
-                    className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 text-xs"
+                    className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-100 text-xs"
                   >
                     <div className="flex items-center gap-2 truncate">
                       <FileText className="w-4 h-4 text-slate-500 shrink-0" />
-                      <span className="font-medium text-slate-800 dark:text-slate-200 truncate">{doc.title}</span>
+                      <span className="font-medium text-slate-800 truncate">{doc.title}</span>
                     </div>
-                    <span className="text-[10px] bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded-md font-bold">
+                    <span className="text-[10px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded-md font-bold">
                       {doc.type}
                     </span>
                   </div>

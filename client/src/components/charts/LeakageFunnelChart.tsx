@@ -27,7 +27,7 @@ export const LeakageFunnelChart: React.FC<{
           <div key={item.stageName} className="space-y-1.5">
             <div className="flex items-center justify-between text-xs">
               <div className="flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-slate-900 text-white text-[10px] font-bold flex items-center justify-center">
+                <span className="w-5 h-5 rounded-full bg-teal-700 text-white text-[10px] font-bold flex items-center justify-center shadow-xs">
                   {idx + 1}
                 </span>
                 <span className="font-bold text-slate-800">{item.stageName}</span>

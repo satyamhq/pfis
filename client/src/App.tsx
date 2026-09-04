@@ -67,7 +67,7 @@ const PageLoader: React.FC = () => (
       <div className="w-12 h-12 rounded-full border-2 border-teal-500/20 border-t-teal-600 animate-spin" />
       <div className="w-6 h-6 rounded-full border-2 border-teal-500/30 border-b-teal-500 animate-spin absolute" />
     </div>
-    <span className="text-xs font-medium text-slate-400 dark:text-slate-500 tracking-wider uppercase animate-pulse">
+    <span className="text-xs font-medium text-slate-400 tracking-wider uppercase animate-pulse">
       Loading Module...
     </span>
   </div>

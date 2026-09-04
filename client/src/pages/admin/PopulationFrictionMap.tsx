@@ -103,7 +103,7 @@ export const PopulationFrictionMap: React.FC = () => {
                         <p className="font-bold text-teal-700">Friction: {cluster.averageFrictionScore}/100</p>
                         <button
                           onClick={() => setSelectedCluster(cluster)}
-                          className="mt-1 w-full bg-slate-900 text-white px-2 py-1 rounded text-[11px] font-semibold"
+                          className="mt-1 w-full bg-teal-600 hover:bg-teal-700 text-white px-2 py-1 rounded text-[11px] font-bold shadow-2xs transition-colors cursor-pointer"
                         >
                           Inspect Cluster
                         </button>

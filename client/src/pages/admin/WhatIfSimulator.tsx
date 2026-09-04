@@ -119,17 +119,17 @@ export const WhatIfSimulator: React.FC = () => {
   return (
     <div className="space-y-8 max-w-6xl mx-auto">
       {/* Header Banner */}
-      <div className="bg-gradient-to-tr from-slate-900 via-navy-900 to-slate-800 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-800 space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50 border border-slate-200/90 space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-950 text-teal-300 text-xs font-bold border border-teal-800 mb-2">
-              <Cpu className="w-3.5 h-3.5 text-teal-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold border border-teal-200 mb-2">
+              <Cpu className="w-3.5 h-3.5 text-teal-600" />
               <span>Enterprise Live Scenario Simulator</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
               What-If Intervention Simulator
             </h1>
-            <p className="text-xs text-slate-300">
+            <p className="text-xs text-slate-500">
               Interactive scenario modeling to evaluate estimated care completion gains from community interventions
             </p>
           </div>
@@ -137,7 +137,7 @@ export const WhatIfSimulator: React.FC = () => {
           <Button
             variant="outline"
             size="sm"
-            className="text-slate-900 bg-white hover:bg-slate-100 self-start sm:self-auto"
+            className="self-start sm:self-auto border-slate-300 text-slate-700 hover:bg-slate-50"
             onClick={() => {
               setSelectedCodes([]);
               triggerSimulation([]);
@@ -149,10 +149,10 @@ export const WhatIfSimulator: React.FC = () => {
         </div>
 
         {/* Safety Disclaimer Banner */}
-        <div className="p-3 bg-slate-800/90 rounded-xl text-xs text-slate-300 flex items-center gap-2.5">
-          <HeartHandshake className="w-4 h-4 text-teal-400 flex-shrink-0" />
+        <div className="p-3 bg-teal-50/80 border border-teal-200/80 rounded-xl text-xs text-teal-950 flex items-center gap-2.5">
+          <HeartHandshake className="w-4 h-4 text-teal-700 flex-shrink-0" />
           <span>
-            <strong className="text-teal-300">Simulation / Operational Estimate:</strong> Modeled using
+            <strong className="text-teal-900 font-bold">Simulation / Operational Estimate:</strong> Modeled using
             sublinear barrier-reduction algorithms. Values represent operational forecasts, not medically validated clinical outcomes.
           </span>
         </div>

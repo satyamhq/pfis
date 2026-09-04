@@ -67,23 +67,23 @@ export const InterventionOptimizer: React.FC = () => {
   return (
     <div className="space-y-8 max-w-5xl mx-auto">
       {/* Header Banner */}
-      <div className="bg-gradient-to-tr from-slate-900 via-navy-900 to-slate-800 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-800 space-y-4">
+      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50 border border-slate-200/90 space-y-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-950 text-teal-300 text-xs font-bold border border-teal-800 mb-2">
-            <Sliders className="w-3.5 h-3.5 text-teal-400" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold border border-teal-200 mb-2">
+            <Sliders className="w-3.5 h-3.5 text-teal-600" />
             <span>Knapsack Multi-Criteria Budget Optimizer</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
             Intervention Budget Allocation Optimizer
           </h1>
-          <p className="text-xs text-slate-300">
+          <p className="text-xs text-slate-500">
             Algorithmic portfolio optimizer selecting highest accessibility ROI interventions for any available grant budget
           </p>
         </div>
 
         {/* Budget Selector Ribbon */}
         <div className="pt-2 space-y-3">
-          <label className="block text-xs font-bold uppercase tracking-wider text-slate-400">
+          <label className="block text-xs font-bold uppercase tracking-wider text-slate-600">
             Select or Enter Total Community Health Budget (INR):
           </label>
           <div className="flex flex-wrap gap-2">
@@ -91,10 +91,10 @@ export const InterventionOptimizer: React.FC = () => {
               <button
                 key={preset.value}
                 onClick={() => handleBudgetChange(preset.value)}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                   budgetINR === preset.value
-                    ? 'bg-teal-500 text-slate-950 shadow-md font-extrabold'
-                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                    ? 'bg-teal-600 text-white shadow-md font-extrabold'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200/80 border border-slate-200'
                 }`}
               >
                 {preset.label}
@@ -109,45 +109,51 @@ export const InterventionOptimizer: React.FC = () => {
         <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-card space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
             <div>
-              <span className="text-[10px] font-bold text-teal-700 uppercase tracking-wider block">
-                Calculated Optimal Decision
-              </span>
-              <h2 className="text-xl font-black text-slate-900 tracking-tight">
-                Recommended Intervention Portfolio ({recommendation.selectedInterventions.length} Interventions)
-              </h2>
+              <div className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                <span className="text-[11px] font-bold text-emerald-700 uppercase tracking-wider">
+                  Knapsack Exact Combinatorial Solution Found
+                </span>
+              </div>
+              <h3 className="text-lg font-black text-slate-900">
+                Recommended Policy Package: {recommendation.selectedInterventions.length} Interventions
+              </h3>
             </div>
 
-            <span className="px-3 py-1 rounded-full bg-teal-50 text-teal-800 border border-teal-200 text-xs font-bold">
-              Budget Cap: ₹{recommendation.availableBudgetINR.toLocaleString('en-IN')}
-            </span>
+            <div className="text-right">
+              <span className="text-xs text-slate-500 block">Total Package Expenditure</span>
+              <span className="text-xl font-black text-slate-900">
+                ₹{recommendation.totalAllocatedCostINR.toLocaleString('en-IN')}
+              </span>
+            </div>
           </div>
 
-          {/* 4 Optimization Summary Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
-            <div className="p-4 bg-teal-50 rounded-2xl border border-teal-200 space-y-1">
-              <span className="text-[10px] text-teal-700 font-bold uppercase block">Est. Completion Gain</span>
-              <span className="text-2xl sm:text-3xl font-black text-teal-950">
+          {/* Outcome Prediction Ribbon */}
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+            <div className="p-4 bg-teal-50 rounded-2xl border border-teal-100 space-y-1">
+              <span className="text-[10px] text-teal-800 font-bold uppercase block">Completion Rate Gain</span>
+              <span className="text-2xl sm:text-3xl font-black text-teal-900">
                 +{recommendation.projectedGainPercent}%
               </span>
-              <p className="text-[10px] text-teal-700">
-                {recommendation.projectedBaselineProbability}% → {recommendation.projectedOptimizedProbability}%
+              <p className="text-[10px] text-teal-700 font-medium">
+                Baseline {recommendation.projectedBaselineProbability}% → {recommendation.projectedOptimizedProbability}%
               </p>
             </div>
 
-            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
-              <span className="text-[10px] text-slate-500 font-bold uppercase block">Patients Helped</span>
-              <span className="text-2xl sm:text-3xl font-black text-slate-900">
+            <div className="p-4 bg-emerald-50 rounded-2xl border border-emerald-100 space-y-1">
+              <span className="text-[10px] text-emerald-800 font-bold uppercase block">Patients Helped</span>
+              <span className="text-2xl sm:text-3xl font-black text-emerald-900">
                 ~{recommendation.estimatedPatientsHelped}
               </span>
-              <p className="text-[10px] text-slate-400">across target population</p>
+              <p className="text-[10px] text-emerald-700 font-medium">Per 1,000 Patient Cohort</p>
             </div>
 
             <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
-              <span className="text-[10px] text-slate-500 font-bold uppercase block">Allocated Budget</span>
+              <span className="text-[10px] text-slate-500 font-bold uppercase block">Budget Utilization</span>
               <span className="text-2xl sm:text-3xl font-black text-slate-900">
-                ₹{recommendation.totalAllocatedCostINR.toLocaleString('en-IN')}
+                {Math.round((recommendation.totalAllocatedCostINR / recommendation.availableBudgetINR) * 100)}%
               </span>
-              <p className="text-[10px] text-slate-400">
+              <p className="text-[10px] text-slate-500">
                 ₹{recommendation.remainingBudgetINR.toLocaleString('en-IN')} unspent buffer
               </p>
             </div>
@@ -162,11 +168,11 @@ export const InterventionOptimizer: React.FC = () => {
           </div>
 
           {/* Explainable Optimization Rationale */}
-          <div className="p-4 bg-slate-900 text-white rounded-2xl space-y-1.5 text-xs">
-            <span className="text-[10px] font-bold text-teal-400 uppercase tracking-wider block">
+          <div className="p-4 bg-slate-50 border border-slate-200/90 rounded-2xl space-y-1.5 text-xs">
+            <span className="text-[10px] font-bold text-teal-700 uppercase tracking-wider block">
               Explainable Decision Rationale
             </span>
-            <p className="text-slate-200 leading-relaxed">{recommendation.rationale}</p>
+            <p className="text-slate-700 leading-relaxed">{recommendation.rationale}</p>
           </div>
 
           {/* Selected Interventions Detailed Cards */}

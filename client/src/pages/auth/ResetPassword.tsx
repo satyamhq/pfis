@@ -67,20 +67,20 @@ export const ResetPassword = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-navy-950 to-slate-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full">
         {/* Brand Logo */}
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center gap-2.5 mb-2 group">
-            <div className="w-10 h-10 rounded-xl bg-teal-500/20 border border-teal-500/30 flex items-center justify-center group-hover:scale-105 transition-transform">
-              <Activity className="w-5 h-5 text-teal-400" />
+            <div className="w-10 h-10 rounded-xl bg-teal-50 border border-teal-200 flex items-center justify-center group-hover:scale-105 transition-transform shadow-xs">
+              <Activity className="w-5 h-5 text-teal-600" />
             </div>
-            <span className="text-xl font-bold tracking-tight text-white">PFIS</span>
+            <span className="text-xl font-bold tracking-tight text-slate-900">PFIS</span>
           </Link>
-          <h1 className="text-xl font-bold text-white tracking-tight">
+          <h1 className="text-xl font-bold text-slate-900 tracking-tight">
             {simpleLanguageMode ? 'Set a New Password' : 'Reset Account Password'}
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-slate-500 mt-1">
             {simpleLanguageMode
               ? 'Choose a secure password that you can remember easily.'
               : 'Create a new secure password for your PFIS accessibility account.'}
@@ -88,10 +88,10 @@ export const ResetPassword = () => {
         </div>
 
         {/* Form Card */}
-        <div className="bg-white/10 dark:bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl">
+        <div className="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50">
           {errorMessage && (
-            <div className="mb-5 p-3.5 rounded-xl bg-rose-500/20 border border-rose-500/30 text-rose-200 text-xs flex items-center gap-2.5">
-              <AlertCircle className="w-4 h-4 flex-shrink-0 text-rose-400" />
+            <div className="mb-5 p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs flex items-center gap-2.5">
+              <AlertCircle className="w-4 h-4 flex-shrink-0 text-rose-600" />
               <span>{errorMessage}</span>
             </div>
           )}
@@ -99,7 +99,7 @@ export const ResetPassword = () => {
           {!isSuccess ? (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-200 mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
                   Registered Email
                 </label>
                 <input
@@ -107,12 +107,12 @@ export const ResetPassword = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 text-xs focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 text-xs focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-600 transition-all shadow-2xs"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-200 mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
                   {simpleLanguageMode ? 'New Password (min 6 characters)' : 'New Password'}
                 </label>
                 <div className="relative">
@@ -126,12 +126,12 @@ export const ResetPassword = () => {
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full pl-10 pr-10 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 text-xs focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all"
+                    className="w-full pl-10 pr-10 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 text-xs focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-600 transition-all shadow-2xs"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword((prev) => !prev)}
-                    className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-200"
+                    className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 cursor-pointer"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -139,7 +139,7 @@ export const ResetPassword = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-200 mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
                   {simpleLanguageMode ? 'Type New Password Again' : 'Confirm New Password'}
                 </label>
                 <div className="relative">
@@ -153,7 +153,7 @@ export const ResetPassword = () => {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 text-xs focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 text-xs focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-600 transition-all shadow-2xs"
                   />
                 </div>
               </div>
@@ -161,10 +161,10 @@ export const ResetPassword = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-teal-500 hover:bg-teal-450 text-navy-950 font-bold text-xs tracking-wide shadow-lg shadow-teal-500/20 hover:shadow-teal-500/30 active:scale-[0.98] transition-all disabled:opacity-60 mt-2"
+                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs tracking-wide shadow-md shadow-teal-600/20 active:scale-[0.98] transition-all disabled:opacity-60 mt-2 cursor-pointer"
               >
                 {isLoading ? (
-                  <div className="w-4 h-4 border-2 border-navy-950 border-t-transparent rounded-full animate-spin" />
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                 ) : (
                   <span>{simpleLanguageMode ? 'Update My Password' : 'Save New Password'}</span>
                 )}
@@ -172,14 +172,14 @@ export const ResetPassword = () => {
             </form>
           ) : (
             <div className="text-center py-4 space-y-4 animate-in fade-in duration-300">
-              <div className="w-12 h-12 mx-auto rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+              <div className="w-12 h-12 mx-auto rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-white">
+                <h3 className="text-sm font-bold text-slate-900">
                   {simpleLanguageMode ? 'Password Changed!' : 'Password Updated Successfully'}
                 </h3>
-                <p className="text-xs text-slate-300 mt-1">
+                <p className="text-xs text-slate-600 mt-1">
                   You can now log in to your account with your new credentials.
                 </p>
               </div>
@@ -187,7 +187,7 @@ export const ResetPassword = () => {
               <button
                 type="button"
                 onClick={() => navigate('/auth/login')}
-                className="w-full py-2.5 px-4 rounded-xl bg-teal-500 hover:bg-teal-450 text-navy-950 font-bold text-xs shadow-lg transition-all"
+                className="w-full py-2.5 px-4 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md transition-all cursor-pointer"
               >
                 Proceed to Login
               </button>
@@ -195,8 +195,8 @@ export const ResetPassword = () => {
           )}
 
           {/* Back link */}
-          <div className="mt-6 pt-4 border-t border-white/10 text-center">
-            <Link to="/auth/login" className="text-xs text-slate-400 hover:text-teal-300 transition-colors">
+          <div className="mt-6 pt-4 border-t border-slate-100 text-center">
+            <Link to="/auth/login" className="text-xs text-slate-500 hover:text-teal-600 transition-colors">
               Return to Login
             </Link>
           </div>
@@ -205,7 +205,7 @@ export const ResetPassword = () => {
         {/* Non-Clinical Guardrail Notice */}
         <div className="mt-6 text-center">
           <p className="text-[11px] text-slate-500 flex items-center justify-center gap-1.5">
-            <ShieldAlert className="w-3.5 h-3.5 text-teal-500/60" />
+            <ShieldAlert className="w-3.5 h-3.5 text-teal-600" />
             <span>PFIS is a non-clinical healthcare accessibility navigation portal.</span>
           </p>
         </div>

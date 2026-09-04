@@ -114,24 +114,24 @@ export const GoogleCallback: React.FC = () => {
   }, [searchParams, navigate, setAuthSession]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950 p-4">
-      <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl p-8 text-center space-y-6">
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
+      <div className="w-full max-w-md bg-white rounded-3xl border border-slate-200 shadow-2xl p-8 text-center space-y-6">
         {status === 'processing' && (
           <div className="space-y-4">
             <div className="relative flex justify-center">
-              <div className="w-16 h-16 rounded-full bg-teal-50 dark:bg-teal-950/60 flex items-center justify-center">
-                <Loader2 className="w-8 h-8 text-teal-600 dark:text-teal-400 animate-spin" />
+              <div className="w-16 h-16 rounded-full bg-teal-50 flex items-center justify-center">
+                <Loader2 className="w-8 h-8 text-teal-600 animate-spin" />
               </div>
             </div>
             <div>
-              <h2 className="text-xl font-black text-slate-900 dark:text-white">
+              <h2 className="text-xl font-black text-slate-900">
                 Verifying with Google Cloud...
               </h2>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+              <p className="text-xs text-slate-500 mt-1">
                 Securely completing OAuth 2.0 exchange and initializing your non-clinical profile.
               </p>
             </div>
-            <div className="flex items-center justify-center gap-1.5 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+            <div className="flex items-center justify-center gap-1.5 text-[11px] font-semibold text-emerald-600">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>Google Cloud Client Secret Connected</span>
             </div>
@@ -141,15 +141,15 @@ export const GoogleCallback: React.FC = () => {
         {status === 'success' && (
           <div className="space-y-4">
             <div className="relative flex justify-center">
-              <div className="w-16 h-16 rounded-full bg-emerald-50 dark:bg-emerald-950/60 flex items-center justify-center">
-                <CheckCircle2 className="w-9 h-9 text-emerald-600 dark:text-emerald-400" />
+              <div className="w-16 h-16 rounded-full bg-emerald-50 flex items-center justify-center">
+                <CheckCircle2 className="w-9 h-9 text-emerald-600" />
               </div>
             </div>
             <div>
-              <h2 className="text-xl font-black text-slate-900 dark:text-white">
+              <h2 className="text-xl font-black text-slate-900">
                 Welcome, {userProfile?.name || 'Authenticated User'}!
               </h2>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+              <p className="text-xs text-slate-500 mt-1">
                 Google account verified successfully. Redirecting you to your portal dashboard...
               </p>
             </div>
@@ -159,21 +159,21 @@ export const GoogleCallback: React.FC = () => {
         {status === 'error' && (
           <div className="space-y-5">
             <div className="relative flex justify-center">
-              <div className="w-16 h-16 rounded-full bg-rose-50 dark:bg-rose-950/60 flex items-center justify-center">
-                <AlertCircle className="w-9 h-9 text-rose-600 dark:text-rose-400" />
+              <div className="w-16 h-16 rounded-full bg-rose-50 flex items-center justify-center">
+                <AlertCircle className="w-9 h-9 text-rose-600" />
               </div>
             </div>
             <div>
-              <h2 className="text-xl font-black text-slate-900 dark:text-white">
+              <h2 className="text-xl font-black text-slate-900">
                 Authentication Error
               </h2>
-              <p className="text-xs text-rose-600 dark:text-rose-400 mt-2 bg-rose-50 dark:bg-rose-950/40 p-3 rounded-xl border border-rose-200 dark:border-rose-900 text-left leading-relaxed">
+              <p className="text-xs text-rose-600 mt-2 bg-rose-50 p-3 rounded-xl border border-rose-200 text-left leading-relaxed">
                 {errorMessage}
               </p>
             </div>
             <Link
               to="/login"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-all shadow-sm"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold transition-all shadow-md shadow-teal-600/20 cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Return to Login</span>

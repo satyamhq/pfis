@@ -49,8 +49,8 @@ export const LandingPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-4xl mx-auto space-y-6">
             {/* Tag Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 dark:bg-teal-950/60 text-teal-800 dark:text-teal-300 text-xs font-bold border border-teal-200/80 dark:border-teal-800 shadow-xs mb-4">
-              <Sparkles className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 text-teal-800 text-xs font-bold border border-teal-200/80 shadow-xs mb-4">
+              <Sparkles className="w-3.5 h-3.5 text-teal-600" />
               <span>{t('landing.heroTag', 'National Healthcare Accessibility Platform • Non-Clinical AI')}</span>
             </div>
 
@@ -235,23 +235,23 @@ export const LandingPage: React.FC = () => {
           </div>
 
           {/* Solution Highlight Visual Card */}
-          <div className="bg-gradient-to-tr from-slate-900 to-navy-800 text-white rounded-3xl p-7 sm:p-9 shadow-2xl border border-slate-800 space-y-6">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+          <div className="bg-white text-slate-800 rounded-3xl p-7 sm:p-9 shadow-xl shadow-slate-200/60 border border-slate-200/90 space-y-6">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-4">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-teal-500 flex items-center justify-center text-slate-950 font-black">
+                <div className="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center text-white font-black shadow-xs">
                   8D
                 </div>
                 <div>
-                  <h4 className="font-bold text-sm text-white">Deterministic Friction Engine</h4>
-                  <p className="text-[11px] text-teal-300">Explainable Multi-Factor Scoring</p>
+                  <h4 className="font-bold text-sm text-slate-900">Deterministic Friction Engine</h4>
+                  <p className="text-[11px] text-teal-700 font-medium">Explainable Multi-Factor Scoring</p>
                 </div>
               </div>
-              <span className="px-2.5 py-1 rounded-full bg-teal-950 text-teal-300 text-[10px] font-bold border border-teal-800">
+              <span className="px-2.5 py-1 rounded-full bg-teal-50 text-teal-700 text-[10px] font-bold border border-teal-200">
                 Non-Blackbox
               </span>
             </div>
 
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-xs text-slate-600 leading-relaxed">
               PFIS evaluates 8 distinct socio-geographic vectors without ever making unverified medical
               claims. Every friction score provides transparent mathematical rationale:
             </p>
@@ -259,48 +259,48 @@ export const LandingPage: React.FC = () => {
             <div className="space-y-3">
               <div className="space-y-1">
                 <div className="flex justify-between text-xs">
-                  <span className="text-slate-300">Travel Distance & Terrain</span>
-                  <span className="font-bold text-rose-400">82 / 100 (Critical)</span>
+                  <span className="text-slate-700 font-medium">Travel Distance & Terrain</span>
+                  <span className="font-bold text-rose-600">82 / 100 (Critical)</span>
                 </div>
-                <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
                   <div className="h-full bg-rose-500 rounded-full w-[82%]" />
                 </div>
               </div>
 
               <div className="space-y-1">
                 <div className="flex justify-between text-xs">
-                  <span className="text-slate-300">Public Transit Availability</span>
-                  <span className="font-bold text-orange-400">75 / 100 (High)</span>
+                  <span className="text-slate-700 font-medium">Public Transit Availability</span>
+                  <span className="font-bold text-amber-600">75 / 100 (High)</span>
                 </div>
-                <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-orange-500 rounded-full w-[75%]" />
+                <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                  <div className="h-full bg-amber-500 rounded-full w-[75%]" />
                 </div>
               </div>
 
               <div className="space-y-1">
                 <div className="flex justify-between text-xs">
-                  <span className="text-slate-300">Family & Caregiver Support</span>
-                  <span className="font-bold text-amber-400">65 / 100 (Moderate)</span>
+                  <span className="text-slate-700 font-medium">Family & Caregiver Support</span>
+                  <span className="font-bold text-amber-600">65 / 100 (Moderate)</span>
                 </div>
-                <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
                   <div className="h-full bg-amber-500 rounded-full w-[65%]" />
                 </div>
               </div>
 
               <div className="space-y-1">
                 <div className="flex justify-between text-xs">
-                  <span className="text-slate-300">Digital Access & Literacy</span>
-                  <span className="font-bold text-emerald-400">30 / 100 (Low)</span>
+                  <span className="text-slate-700 font-medium">Digital Access & Literacy</span>
+                  <span className="font-bold text-emerald-600">30 / 100 (Low)</span>
                 </div>
-                <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
                   <div className="h-full bg-emerald-500 rounded-full w-[30%]" />
                 </div>
               </div>
             </div>
 
-            <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
-              <span className="text-slate-400">Est. Care Completion Probability:</span>
-              <span className="text-lg font-black text-teal-400">38% (High Dropout Risk)</span>
+            <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+              <span className="text-slate-500">Est. Care Completion Probability:</span>
+              <span className="text-lg font-black text-teal-700">38% (High Dropout Risk)</span>
             </div>
           </div>
         </div>

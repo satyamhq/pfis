@@ -67,21 +67,21 @@ export const Navbar: React.FC = () => {
       case 'admin':
         return {
           label: t('nav.adminView', 'Admin'),
-          icon: <Shield className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />,
-          bg: 'bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/20',
+          icon: <Shield className="w-3.5 h-3.5 text-amber-500" />,
+          bg: 'bg-amber-500/10 text-amber-700 border-amber-500/20',
         };
       case 'hospital':
         return {
           label: t('nav.hospitalView', 'Hospital'),
-          icon: <Building2 className="w-3.5 h-3.5 text-blue-500 dark:text-blue-400" />,
-          bg: 'bg-blue-500/10 text-blue-700 dark:text-blue-300 border-blue-500/20',
+          icon: <Building2 className="w-3.5 h-3.5 text-blue-500" />,
+          bg: 'bg-blue-500/10 text-blue-700 border-blue-500/20',
         };
       case 'patient':
       default:
         return {
           label: t('nav.patientView', 'Patient'),
-          icon: <UserIcon className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />,
-          bg: 'bg-teal-500/10 text-teal-700 dark:text-teal-300 border-teal-500/20',
+          icon: <UserIcon className="w-3.5 h-3.5 text-teal-600" />,
+          bg: 'bg-teal-500/10 text-teal-700 border-teal-500/20',
         };
     }
   };
@@ -94,7 +94,7 @@ export const Navbar: React.FC = () => {
       <div className="h-[2.5px] w-full bg-gradient-to-r from-teal-500 via-emerald-400 to-indigo-500" />
 
       {/* Main Bar with Glassmorphic Backdrop */}
-      <div className="bg-white/85 dark:bg-slate-900/85 backdrop-blur-xl border-b border-slate-200/80 dark:border-slate-800/80 shadow-xs">
+      <div className="bg-white/85 backdrop-blur-xl border-b border-slate-200/80 shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 gap-3 sm:gap-4">
             {/* Brand & Logo */}
@@ -104,19 +104,19 @@ export const Navbar: React.FC = () => {
                   <Activity className="w-5 h-5 stroke-[2.3]" />
                   <span className="absolute -top-0.5 -right-0.5 flex h-2.5 w-2.5">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 border-2 border-white dark:border-slate-900"></span>
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 border-2 border-white"></span>
                   </span>
                 </div>
                 <div className="flex flex-col">
                   <div className="flex items-center gap-1.5">
-                    <span className="font-black text-lg tracking-tight bg-gradient-to-r from-slate-900 via-teal-900 to-slate-800 dark:from-white dark:via-teal-200 dark:to-slate-100 bg-clip-text text-transparent">
+                    <span className="font-black text-lg tracking-tight bg-gradient-to-r from-slate-900 via-teal-900 to-slate-800 bg-clip-text text-transparent">
                       PFIS
                     </span>
-                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-teal-50 dark:bg-teal-950/80 text-teal-700 dark:text-teal-300 border border-teal-200/80 dark:border-teal-800/80 uppercase tracking-wide">
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-teal-50 text-teal-700 border border-teal-200/80 uppercase tracking-wide">
                       {t('nav.version', 'v1.0')}
                     </span>
                   </div>
-                  <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400 -mt-0.5 tracking-tight hidden sm:inline">
+                  <span className="text-[10px] font-medium text-slate-500 -mt-0.5 tracking-tight hidden sm:inline">
                     {t('nav.platformTagline', 'Patient Friction Intelligence')}
                   </span>
                 </div>
@@ -124,7 +124,7 @@ export const Navbar: React.FC = () => {
             </div>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden md:flex items-center gap-1 text-xs font-semibold text-slate-600 dark:text-slate-300">
+            <nav className="hidden md:flex items-center gap-1 text-xs font-semibold text-slate-600">
               {/* PATIENT NAV */}
               {user?.role === 'patient' && (
                 <>
@@ -132,11 +132,11 @@ export const Navbar: React.FC = () => {
                     to="/patient/hospitals"
                     className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
                       isActive('/patient/hospitals')
-                        ? 'bg-teal-50 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 border border-teal-200/80 dark:border-teal-800/80 font-bold shadow-xs'
-                        : 'hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/60'
+                        ? 'bg-teal-50 text-teal-700 border border-teal-200/80 font-bold shadow-xs'
+                        : 'hover:text-teal-600 hover:bg-slate-100/80'
                     }`}
                   >
-                    <MapPin className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400 shrink-0" />
+                    <MapPin className="w-3.5 h-3.5 text-teal-600 shrink-0" />
                     <span>{t('nav.findHospitalsDoctors', 'Find Hospitals & Doctors')}</span>
                   </Link>
 
@@ -144,11 +144,11 @@ export const Navbar: React.FC = () => {
                     to="/patient/teleconsult"
                     className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
                       isActive('/patient/teleconsult')
-                        ? 'bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 border border-blue-200/80 dark:border-blue-800/80 font-bold shadow-xs'
-                        : 'hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/60'
+                        ? 'bg-blue-50 text-blue-700 border border-blue-200/80 font-bold shadow-xs'
+                        : 'hover:text-blue-600 hover:bg-slate-100/80'
                     }`}
                   >
-                    <Laptop className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
+                    <Laptop className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                     <span>{t('nav.liveTeleconsult', 'Live Teleconsult')}</span>
                   </Link>
 
@@ -156,8 +156,8 @@ export const Navbar: React.FC = () => {
                     to="/patient/digital-twin"
                     className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
                       isActive('/patient/digital-twin')
-                        ? 'bg-teal-50 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 border border-teal-200/80 dark:border-teal-800/80 font-bold shadow-xs'
-                        : 'hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/60'
+                        ? 'bg-teal-50 text-teal-700 border border-teal-200/80 font-bold shadow-xs'
+                        : 'hover:text-teal-600 hover:bg-slate-100/80'
                     }`}
                   >
                     <Sparkles className="w-3.5 h-3.5 text-amber-500 shrink-0" />
@@ -168,8 +168,8 @@ export const Navbar: React.FC = () => {
                     to="/patient/dashboard"
                     className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
                       isActive('/patient/dashboard')
-                        ? 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-bold border border-slate-300/80 dark:border-slate-700/80 shadow-xs'
-                        : 'hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/60'
+                        ? 'bg-slate-100 text-slate-900 font-bold border border-slate-300/80 shadow-xs'
+                        : 'hover:text-slate-900 hover:bg-slate-100/80'
                     }`}
                   >
                     <LayoutDashboard className="w-3.5 h-3.5 text-slate-500 shrink-0" />
@@ -185,8 +185,8 @@ export const Navbar: React.FC = () => {
                     to="/hospital/dashboard"
                     className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
                       isActive('/hospital/dashboard')
-                        ? 'bg-teal-50 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 border border-teal-200/80 dark:border-teal-800/80 font-bold shadow-xs'
-                        : 'hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/60'
+                        ? 'bg-teal-50 text-teal-700 border border-teal-200/80 font-bold shadow-xs'
+                        : 'hover:text-teal-600 hover:bg-slate-100/80'
                     }`}
                   >
                     <LayoutDashboard className="w-3.5 h-3.5 text-teal-600 shrink-0" />
@@ -196,8 +196,8 @@ export const Navbar: React.FC = () => {
                     to="/hospital/requests"
                     className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
                       isActive('/hospital/requests')
-                        ? 'bg-teal-50 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 border border-teal-200/80 dark:border-teal-800/80 font-bold shadow-xs'
-                        : 'hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/60'
+                        ? 'bg-teal-50 text-teal-700 border border-teal-200/80 font-bold shadow-xs'
+                        : 'hover:text-teal-600 hover:bg-slate-100/80'
                     }`}
                   >
                     <Layers className="w-3.5 h-3.5 text-teal-600 shrink-0" />
@@ -207,8 +207,8 @@ export const Navbar: React.FC = () => {
                     to="/hospital/teleconsult"
                     className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
                       isActive('/hospital/teleconsult')
-                        ? 'bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 border border-blue-200/80 dark:border-blue-800/80 font-bold shadow-xs'
-                        : 'hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/60'
+                        ? 'bg-blue-50 text-blue-700 border border-blue-200/80 font-bold shadow-xs'
+                        : 'hover:text-blue-600 hover:bg-slate-100/80'
                     }`}
                   >
                     <Laptop className="w-3.5 h-3.5 text-blue-500 shrink-0" />
@@ -218,8 +218,8 @@ export const Navbar: React.FC = () => {
                     to="/hospital/departments"
                     className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
                       isActive('/hospital/departments')
-                        ? 'bg-teal-50 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 border border-teal-200/80 dark:border-teal-800/80 font-bold shadow-xs'
-                        : 'hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/60'
+                        ? 'bg-teal-50 text-teal-700 border border-teal-200/80 font-bold shadow-xs'
+                        : 'hover:text-teal-600 hover:bg-slate-100/80'
                     }`}
                   >
                     <Building2 className="w-3.5 h-3.5 text-teal-600 shrink-0" />
@@ -235,8 +235,8 @@ export const Navbar: React.FC = () => {
                     to="/admin/dashboard"
                     className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
                       isActive('/admin/dashboard')
-                        ? 'bg-teal-50 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 border border-teal-200/80 dark:border-teal-800/80 font-bold shadow-xs'
-                        : 'hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/60'
+                        ? 'bg-teal-50 text-teal-700 border border-teal-200/80 font-bold shadow-xs'
+                        : 'hover:text-teal-600 hover:bg-slate-100/80'
                     }`}
                   >
                     <LayoutDashboard className="w-3.5 h-3.5 text-teal-600 shrink-0" />
@@ -246,8 +246,8 @@ export const Navbar: React.FC = () => {
                     to="/admin/simulator"
                     className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
                       isActive('/admin/simulator')
-                        ? 'bg-teal-50 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 border border-teal-200/80 dark:border-teal-800/80 font-bold shadow-xs'
-                        : 'hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/60'
+                        ? 'bg-teal-50 text-teal-700 border border-teal-200/80 font-bold shadow-xs'
+                        : 'hover:text-teal-600 hover:bg-slate-100/80'
                     }`}
                   >
                     <Cpu className="w-3.5 h-3.5 text-teal-600 shrink-0" />
@@ -257,8 +257,8 @@ export const Navbar: React.FC = () => {
                     to="/admin/digital-twin"
                     className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
                       isActive('/admin/digital-twin')
-                        ? 'bg-teal-50 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 border border-teal-200/80 dark:border-teal-800/80 font-bold shadow-xs'
-                        : 'hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/60'
+                        ? 'bg-teal-50 text-teal-700 border border-teal-200/80 font-bold shadow-xs'
+                        : 'hover:text-teal-600 hover:bg-slate-100/80'
                     }`}
                   >
                     <Sparkles className="w-3.5 h-3.5 text-amber-500 shrink-0" />
@@ -268,8 +268,8 @@ export const Navbar: React.FC = () => {
                     to="/admin/interventions"
                     className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
                       isActive('/admin/interventions')
-                        ? 'bg-teal-50 dark:bg-teal-950/70 text-teal-700 dark:text-teal-300 border border-teal-200/80 dark:border-teal-800/80 font-bold shadow-xs'
-                        : 'hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/60'
+                        ? 'bg-teal-50 text-teal-700 border border-teal-200/80 font-bold shadow-xs'
+                        : 'hover:text-teal-600 hover:bg-slate-100/80'
                     }`}
                   >
                     <Layers className="w-3.5 h-3.5 text-teal-600 shrink-0" />
@@ -277,21 +277,21 @@ export const Navbar: React.FC = () => {
                   </Link>
 
                   {/* Portal Quick-Switcher for Admin */}
-                  <div className="flex items-center gap-1 ml-1.5 p-1 rounded-xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/80">
+                  <div className="flex items-center gap-1 ml-1.5 p-1 rounded-xl bg-slate-100/80 border border-slate-200/80">
                     <Link
                       to="/patient/dashboard"
-                      className="px-2 py-0.5 rounded-lg text-[11px] font-semibold text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 hover:text-teal-700 dark:hover:text-teal-300 transition-all flex items-center gap-1.5"
+                      className="px-2 py-0.5 rounded-lg text-[11px] font-semibold text-slate-600 hover:bg-white hover:text-teal-700 transition-all flex items-center gap-1.5"
                       title={t('nav.patientView', 'Patient View')}
                     >
-                      <UserIcon className="w-3 h-3 text-teal-600 dark:text-teal-400 shrink-0" />
+                      <UserIcon className="w-3 h-3 text-teal-600 shrink-0" />
                       <span>{t('nav.patientView', 'Patient View')}</span>
                     </Link>
                     <Link
                       to="/hospital/dashboard"
-                      className="px-2 py-0.5 rounded-lg text-[11px] font-semibold text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 hover:text-blue-700 dark:hover:text-blue-300 transition-all flex items-center gap-1.5"
+                      className="px-2 py-0.5 rounded-lg text-[11px] font-semibold text-slate-600 hover:bg-white hover:text-blue-700 transition-all flex items-center gap-1.5"
                       title={t('nav.hospitalView', 'Hospital View')}
                     >
-                      <Building2 className="w-3 h-3 text-blue-600 dark:text-blue-400 shrink-0" />
+                      <Building2 className="w-3 h-3 text-blue-600 shrink-0" />
                       <span>{t('nav.hospitalView', 'Hospital View')}</span>
                     </Link>
                   </div>
@@ -303,21 +303,21 @@ export const Navbar: React.FC = () => {
                 <>
                   <Link
                     to="/patient/hospitals"
-                    className="px-3 py-1.5 rounded-xl hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/60 transition-colors flex items-center gap-1.5"
+                    className="px-3 py-1.5 rounded-xl hover:text-teal-600 hover:bg-slate-100/80 transition-colors flex items-center gap-1.5"
                   >
                     <MapPin className="w-3.5 h-3.5 text-teal-600" />
                     <span>{t('nav.findHospitals', 'Find Hospitals')}</span>
                   </Link>
                   <Link
                     to="/architecture"
-                    className="px-3 py-1.5 rounded-xl text-teal-700 dark:text-teal-300 bg-teal-50 dark:bg-teal-950/50 hover:bg-teal-100/80 dark:hover:bg-teal-900/40 font-bold transition-colors flex items-center gap-1.5 border border-teal-200/80 dark:border-teal-800/80 shadow-2xs"
+                    className="px-3 py-1.5 rounded-xl text-teal-700 bg-teal-50 hover:bg-teal-100/80 font-bold transition-colors flex items-center gap-1.5 border border-teal-200/80 shadow-2xs"
                   >
                     <Sparkles className="w-3.5 h-3.5 text-teal-600" />
                     <span>{t('nav.systemArchitecture', 'System Architecture')}</span>
                   </Link>
                   <Link
                     to="/about"
-                    className="px-3 py-1.5 rounded-xl hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/60 transition-colors"
+                    className="px-3 py-1.5 rounded-xl hover:text-teal-600 hover:bg-slate-100/80 transition-colors"
                   >
                     <span>{t('nav.aboutPlatform', 'About Platform')}</span>
                   </Link>
@@ -340,9 +340,9 @@ export const Navbar: React.FC = () => {
                 <div className="relative" ref={notifRef}>
                   <button
                     onClick={() => setIsNotifOpen(!isNotifOpen)}
-                    className={`p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/80 border transition-all duration-150 relative ${
+                    className={`p-2 rounded-xl text-slate-600 hover:bg-slate-100/80 border transition-all duration-150 relative ${
                       isNotifOpen
-                        ? 'bg-teal-50 dark:bg-teal-950/50 border-teal-200 dark:border-teal-800 text-teal-700 dark:text-teal-300 shadow-xs'
+                        ? 'bg-teal-50 border-teal-200 text-teal-700 shadow-xs'
                         : 'border-transparent'
                     }`}
                     title={t('nav.notifications', 'Notifications')}
@@ -357,23 +357,23 @@ export const Navbar: React.FC = () => {
 
                   {/* Notifications Dropdown */}
                   {isNotifOpen && (
-                    <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200/90 dark:border-slate-800/90 py-3 z-50 overflow-hidden">
-                      <div className="px-4 pb-2.5 border-b border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+                    <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200/90 py-3 z-50 overflow-hidden">
+                      <div className="px-4 pb-2.5 border-b border-slate-100 flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <Bell className="w-4 h-4 text-teal-600" />
-                          <h4 className="font-bold text-xs text-slate-900 dark:text-white uppercase tracking-wider">
+                          <h4 className="font-bold text-xs text-slate-900 uppercase tracking-wider">
                             {t('nav.notifications', 'Notifications')}
                           </h4>
                         </div>
-                        <span className="text-[10px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded-full">
+                        <span className="text-[10px] font-semibold bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">
                           {unreadCount} {t('nav.unread', 'unread')}
                         </span>
                       </div>
 
-                      <div className="max-h-72 overflow-y-auto divide-y divide-slate-100 dark:divide-slate-800/60">
+                      <div className="max-h-72 overflow-y-auto divide-y divide-slate-100">
                         {notifications.length === 0 ? (
                           <div className="p-8 text-center text-xs text-slate-400 flex flex-col items-center gap-2">
-                            <CheckCircle2 className="w-6 h-6 text-slate-300 dark:text-slate-600" />
+                            <CheckCircle2 className="w-6 h-6 text-slate-300" />
                             <span>{t('nav.noNotifications', 'No notifications yet.')}</span>
                           </div>
                         ) : (
@@ -387,19 +387,19 @@ export const Navbar: React.FC = () => {
                                   navigate(notif.actionUrl);
                                 }
                               }}
-                              className={`p-3.5 hover:bg-slate-50/90 dark:hover:bg-slate-800/60 cursor-pointer transition-colors ${
-                                !notif.isRead ? 'bg-teal-50/40 dark:bg-teal-950/25' : ''
+                              className={`p-3.5 hover:bg-slate-50/90 cursor-pointer transition-colors ${
+                                !notif.isRead ? 'bg-teal-50/40' : ''
                               }`}
                             >
                               <div className="flex items-start justify-between gap-2">
-                                <p className="text-xs font-semibold text-slate-900 dark:text-white leading-snug">
+                                <p className="text-xs font-semibold text-slate-900 leading-snug">
                                   {notif.title}
                                 </p>
                                 {!notif.isRead && (
                                   <span className="w-2 h-2 rounded-full bg-teal-500 shrink-0 mt-1" />
                                 )}
                               </div>
-                              <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5 line-clamp-2">
+                              <p className="text-[11px] text-slate-600 mt-0.5 line-clamp-2">
                                 {notif.message}
                               </p>
                               <div className="flex items-center justify-between mt-1 text-[10px] text-slate-400">
@@ -410,7 +410,7 @@ export const Navbar: React.FC = () => {
                                   })}
                                 </span>
                                 {notif.actionUrl && (
-                                  <span className="text-teal-600 dark:text-teal-400 font-semibold flex items-center gap-0.5">
+                                  <span className="text-teal-600 font-semibold flex items-center gap-0.5">
                                     {t('common.view', 'View')} <ChevronRight className="w-3 h-3" />
                                   </span>
                                 )}
@@ -426,7 +426,7 @@ export const Navbar: React.FC = () => {
 
               {/* User Profile Pill or Sign In / Register Buttons */}
               {isAuthenticated && user ? (
-                <div className="flex items-center gap-1 sm:gap-1.5 pl-1.5 sm:pl-2 border-l border-slate-200 dark:border-slate-800">
+                <div className="flex items-center gap-1 sm:gap-1.5 pl-1.5 sm:pl-2 border-l border-slate-200">
                   {/* Settings Button */}
                   <Link
                     to={
@@ -437,7 +437,7 @@ export const Navbar: React.FC = () => {
                         : '/admin/settings'
                     }
                     title={t('nav.settings', 'Settings & Language')}
-                    className="p-2 text-slate-500 hover:text-teal-600 hover:bg-slate-100/80 dark:hover:bg-slate-800/80 rounded-xl transition-colors"
+                    className="p-2 text-slate-500 hover:text-teal-600 hover:bg-slate-100/80 rounded-xl transition-colors"
                   >
                     <SettingsIcon className="w-4 h-4" />
                   </Link>
@@ -451,13 +451,13 @@ export const Navbar: React.FC = () => {
                         ? '/hospital/profile'
                         : '/admin/dashboard'
                     }
-                    className="flex items-center gap-2 p-1 sm:px-2.5 sm:py-1 rounded-xl hover:bg-slate-100/80 dark:hover:bg-slate-800/80 border border-slate-200/60 dark:border-slate-800/60 transition-all text-left group"
+                    className="flex items-center gap-2 p-1 sm:px-2.5 sm:py-1 rounded-xl hover:bg-slate-100/80 border border-slate-200/60 transition-all text-left group"
                   >
-                    <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-slate-800 to-slate-700 dark:from-slate-700 dark:to-slate-600 text-white flex items-center justify-center font-bold text-xs shadow-xs group-hover:scale-105 transition-transform">
+                    <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-slate-800 to-slate-700 text-white flex items-center justify-center font-bold text-xs shadow-xs group-hover:scale-105 transition-transform">
                       {roleMeta.icon}
                     </div>
                     <div className="hidden lg:flex flex-col">
-                      <span className="text-xs font-bold text-slate-900 dark:text-white leading-tight">
+                      <span className="text-xs font-bold text-slate-900 leading-tight">
                         {user.name?.split(' ')[0]}
                       </span>
                       <span className={`text-[9px] font-bold px-1.5 py-0.2 rounded border ${roleMeta.bg} uppercase tracking-wider mt-0.5 inline-block w-fit`}>
@@ -470,7 +470,7 @@ export const Navbar: React.FC = () => {
                   <button
                     onClick={handleLogout}
                     title={t('nav.logout', 'Sign Out')}
-                    className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 rounded-xl transition-colors"
+                    className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-colors"
                   >
                     <LogOut className="w-4 h-4" />
                   </button>
@@ -479,7 +479,7 @@ export const Navbar: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <Link
                     to="/login?role=admin"
-                    className="text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-teal-600 px-3 py-1.5 rounded-xl hover:bg-slate-100/80 dark:hover:bg-slate-800/80 transition-all"
+                    className="text-xs font-bold text-slate-700 hover:text-teal-600 px-3 py-1.5 rounded-xl hover:bg-slate-100/80 transition-all"
                   >
                     {t('nav.adminSignIn', 'Admin Sign In')}
                   </Link>
@@ -495,7 +495,7 @@ export const Navbar: React.FC = () => {
               {/* Mobile Menu Toggle Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/80 rounded-xl transition-colors"
+                className="md:hidden p-2 text-slate-600 hover:bg-slate-100/80 rounded-xl transition-colors"
                 aria-label="Toggle Navigation Menu"
               >
                 {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -507,9 +507,9 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer Menu with Backdrop Blur */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-slate-200/80 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-3 shadow-2xl">
+        <div className="md:hidden border-t border-slate-200/80 bg-white/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-3 shadow-2xl">
           {/* Top Controls in Drawer */}
-          <div className="pb-3 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+          <div className="pb-3 border-b border-slate-100 flex items-center justify-between">
             <SimpleModeToggle />
             <Link
               to={
@@ -520,7 +520,7 @@ export const Navbar: React.FC = () => {
                   : '/admin/settings'
               }
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-xs font-semibold text-teal-700 dark:text-teal-300 flex items-center gap-1 px-2.5 py-1 rounded-lg bg-teal-50 dark:bg-teal-950/60 border border-teal-200 dark:border-teal-800"
+              className="text-xs font-semibold text-teal-700 flex items-center gap-1 px-2.5 py-1 rounded-lg bg-teal-50 border border-teal-200"
             >
               <SettingsIcon className="w-3.5 h-3.5" />
               <span>{t('nav.settings', 'Settings & Language')}</span>
@@ -536,7 +536,7 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/patient/hospitals"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-teal-50 dark:hover:bg-teal-950/40 hover:text-teal-700"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-teal-50 hover:text-teal-700"
               >
                 <MapPin className="w-4 h-4 text-teal-600" />
                 <span>{t('nav.findHospitalsDoctors', 'Find Hospitals & Doctors')}</span>
@@ -544,7 +544,7 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/patient/teleconsult"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-700"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-blue-50 hover:text-blue-700"
               >
                 <Laptop className="w-4 h-4 text-blue-600" />
                 <span>{t('nav.liveTeleconsult', 'Live Teleconsultation')}</span>
@@ -552,7 +552,7 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/patient/digital-twin"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-amber-50 dark:hover:bg-amber-950/40 hover:text-amber-700"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-amber-50 hover:text-amber-700"
               >
                 <Sparkles className="w-4 h-4 text-amber-500" />
                 <span>{t('nav.digitalTwin', 'Digital Twin Simulator')}</span>
@@ -560,7 +560,7 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/patient/dashboard"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100"
               >
                 <LayoutDashboard className="w-4 h-4 text-slate-500" />
                 <span>{t('nav.patientDashboard', 'Patient Dashboard')}</span>
@@ -568,7 +568,7 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/patient/friction"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100"
               >
                 <Layers className="w-4 h-4 text-slate-500" />
                 <span>{t('nav.frictionProfile', 'Friction Profile')}</span>
@@ -576,7 +576,7 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/patient/documents"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100"
               >
                 <CheckCircle2 className="w-4 h-4 text-slate-500" />
                 <span>{t('nav.myDocuments', 'Document Vault')}</span>
@@ -593,7 +593,7 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/hospital/dashboard"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100"
               >
                 <LayoutDashboard className="w-4 h-4 text-teal-600" />
                 <span>{t('nav.hospitalDashboard', 'Hospital Dashboard')}</span>
@@ -601,7 +601,7 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/hospital/requests"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100"
               >
                 <Layers className="w-4 h-4 text-teal-600" />
                 <span>{t('nav.patientQueue', 'Patient Queue')}</span>
@@ -609,7 +609,7 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/hospital/teleconsult"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-700"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-blue-50 hover:text-blue-700"
               >
                 <Laptop className="w-4 h-4 text-blue-600" />
                 <span>{t('nav.teleTriage', 'Tele-Triage')}</span>
@@ -617,7 +617,7 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/hospital/departments"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100"
               >
                 <Building2 className="w-4 h-4 text-teal-600" />
                 <span>{t('nav.departmentsOpd', 'Departments & OPD')}</span>
@@ -634,7 +634,7 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/admin/dashboard"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100"
               >
                 <LayoutDashboard className="w-4 h-4 text-amber-500" />
                 <span>{t('nav.adminDashboard', 'Admin Dashboard')}</span>
@@ -642,7 +642,7 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/admin/simulator"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-teal-50 dark:hover:bg-teal-950/40 hover:text-teal-700"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-teal-50 hover:text-teal-700"
               >
                 <Cpu className="w-4 h-4 text-teal-600" />
                 <span>{t('nav.whatIfSimulator', 'What-If Simulator')}</span>
@@ -650,7 +650,7 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/admin/digital-twin"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-amber-50 dark:hover:bg-amber-950/40 hover:text-amber-700"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-amber-50 hover:text-amber-700"
               >
                 <Sparkles className="w-4 h-4 text-amber-500" />
                 <span>{t('nav.digitalTwin', 'Digital Twin')}</span>
@@ -658,28 +658,28 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/admin/interventions"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100"
               >
                 <Layers className="w-4 h-4 text-teal-600" />
                 <span>{t('nav.budgetOptimizer', 'Budget Optimizer')}</span>
               </Link>
 
               {/* Admin Switcher Pills */}
-              <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex gap-2">
+              <div className="pt-2 border-t border-slate-100 flex gap-2">
                 <Link
                   to="/patient/dashboard"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex-1 py-1.5 text-center text-xs font-semibold rounded-lg bg-teal-50 text-teal-800 dark:bg-teal-950/60 dark:text-teal-300 border border-teal-200 dark:border-teal-800 flex items-center justify-center gap-1.5"
+                  className="flex-1 py-1.5 text-center text-xs font-semibold rounded-lg bg-teal-50 text-teal-800 border border-teal-200 flex items-center justify-center gap-1.5"
                 >
-                  <UserIcon className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+                  <UserIcon className="w-3.5 h-3.5 text-teal-600" />
                   <span>{t('nav.patientView', 'Patient View')}</span>
                 </Link>
                 <Link
                   to="/hospital/dashboard"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex-1 py-1.5 text-center text-xs font-semibold rounded-lg bg-blue-50 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300 border border-blue-200 dark:border-blue-800 flex items-center justify-center gap-1.5"
+                  className="flex-1 py-1.5 text-center text-xs font-semibold rounded-lg bg-blue-50 text-blue-800 border border-blue-200 flex items-center justify-center gap-1.5"
                 >
-                  <Building2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                  <Building2 className="w-3.5 h-3.5 text-blue-600" />
                   <span>{t('nav.hospitalView', 'Hospital View')}</span>
                 </Link>
               </div>
@@ -692,7 +692,7 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/patient/hospitals"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100"
               >
                 <MapPin className="w-4 h-4 text-teal-600" />
                 <span>{t('nav.findHospitals', 'Find Nearby Hospitals')}</span>
@@ -700,7 +700,7 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/architecture"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-teal-700 dark:text-teal-300 hover:bg-teal-50 dark:hover:bg-teal-950/40"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-teal-700 hover:bg-teal-50"
               >
                 <Sparkles className="w-4 h-4 text-teal-600" />
                 <span>{t('nav.systemArchitecture', 'System Architecture')}</span>
@@ -708,16 +708,16 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/about"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100"
               >
                 <Building2 className="w-4 h-4 text-slate-500" />
                 <span>{t('nav.aboutPlatform', 'About Platform')}</span>
               </Link>
-              <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex gap-2">
+              <div className="pt-2 border-t border-slate-100 flex gap-2">
                 <Link
                   to="/login?role=admin"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex-1 py-2 text-center text-xs font-bold rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300"
+                  className="flex-1 py-2 text-center text-xs font-bold rounded-xl border border-slate-200 text-slate-700"
                 >
                   {t('nav.adminSignIn', 'Admin Sign In')}
                 </Link>
@@ -734,13 +734,13 @@ export const Navbar: React.FC = () => {
 
           {/* Logout in Drawer if authenticated */}
           {isAuthenticated && (
-            <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
+            <div className="pt-2 border-t border-slate-100">
               <button
                 onClick={() => {
                   setIsMobileMenuOpen(false);
                   handleLogout();
                 }}
-                className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-sm font-semibold text-rose-600 dark:text-rose-400 bg-rose-50/60 dark:bg-rose-950/30 border border-rose-200/80 dark:border-rose-900/50"
+                className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-sm font-semibold text-rose-600 bg-rose-50/60 border border-rose-200/80"
               >
                 <LogOut className="w-4 h-4" />
                 <span>{t('nav.logout', 'Sign Out')}</span>

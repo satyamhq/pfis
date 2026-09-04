@@ -219,22 +219,22 @@ export const AdminHospitals: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header & Controls */}
-      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 p-6 shadow-card space-y-4">
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-card space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
               <Building2 className="w-7 h-7 text-brand-500" />
-              <h2 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+              <h2 className="text-2xl font-black text-slate-900 tracking-tight">
                 Connected Hospital Registry
               </h2>
             </div>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+            <p className="text-xs text-slate-500 mt-1">
               Registered public and private facilities saved in the database with verified OPD tokens, doctor rosters & disease treatments
             </p>
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-teal-50 dark:bg-teal-950/60 text-teal-800 dark:text-teal-300 border border-teal-200 dark:border-teal-800 flex items-center gap-1.5 shadow-2xs">
+            <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200 flex items-center gap-1.5 shadow-2xs">
               <ShieldCheck className="w-4 h-4 text-teal-600" />
               {filteredHospitals.length} Registered Facilities
             </span>
@@ -251,7 +251,7 @@ export const AdminHospitals: React.FC = () => {
         </div>
 
         {/* Filter Ribbon */}
-        <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
+        <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 pt-3 border-t border-slate-100">
           <div className="sm:col-span-6 relative">
             <Input
               placeholder="Search registered hospitals by Name, City, Phone, or Disease (e.g. Heart, Sugar)..."
@@ -285,7 +285,7 @@ export const AdminHospitals: React.FC = () => {
           </div>
 
           <div className="sm:col-span-3 flex items-center">
-            <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 cursor-pointer bg-slate-50 dark:bg-slate-800/60 p-2.5 rounded-xl border border-slate-200/80 dark:border-slate-700 w-full">
+            <label className="flex items-center gap-2 text-xs font-bold text-slate-700 cursor-pointer bg-slate-50 p-2.5 rounded-xl border border-slate-200/80 w-full">
               <input
                 type="checkbox"
                 checked={emergencyOnly}
@@ -303,9 +303,9 @@ export const AdminHospitals: React.FC = () => {
 
       {/* Facilities Grid */}
       {filteredHospitals.length === 0 ? (
-        <div className="p-12 text-center bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-card space-y-3">
+        <div className="p-12 text-center bg-white rounded-2xl border border-slate-200/80 shadow-card space-y-3">
           <Building2 className="w-12 h-12 text-slate-300 mx-auto" />
-          <h3 className="font-bold text-slate-700 dark:text-slate-300 text-base">
+          <h3 className="font-bold text-slate-700 text-base">
             No Registered Hospitals Found
           </h3>
           <p className="text-xs text-slate-500 max-w-md mx-auto">
@@ -331,7 +331,7 @@ export const AdminHospitals: React.FC = () => {
             return (
               <div
                 key={hid}
-                className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 p-5 shadow-card space-y-3.5 text-xs flex flex-col justify-between hover:border-slate-300 transition-all"
+                className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-card space-y-3.5 text-xs flex flex-col justify-between hover:border-slate-300 transition-all"
               >
                 <div className="space-y-3">
                   {/* Top Badges & Emergency */}
@@ -341,38 +341,38 @@ export const AdminHospitals: React.FC = () => {
                         <span
                           className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase ${
                             hosp.type === 'Government'
-                              ? 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300'
+                              ? 'bg-blue-100 text-blue-800'
                               : hosp.type === 'Private'
-                              ? 'bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300'
-                              : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
+                              ? 'bg-purple-100 text-purple-800'
+                              : 'bg-emerald-100 text-emerald-800'
                           }`}
                         >
                           {hosp.type || 'Government'}
                         </span>
                         {hosp.emergencyAvailable && (
-                          <span className="text-[10px] font-bold text-rose-700 bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-900 px-2 py-0.5 rounded-full flex items-center gap-1">
+                          <span className="text-[10px] font-bold text-rose-700 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded-full flex items-center gap-1">
                             <AlertCircle className="w-3 h-3 text-rose-600 shrink-0" />
                             24/7 Emergency
                           </span>
                         )}
-                        <span className="text-[10px] font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 px-2 py-0.5 rounded-full flex items-center gap-1">
+                        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full flex items-center gap-1">
                           <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                           Saved in Database
                         </span>
                       </div>
 
-                      <h4 className="text-base font-bold text-slate-900 dark:text-white mt-1 leading-snug">
+                      <h4 className="text-base font-bold text-slate-900 mt-1 leading-snug">
                         {hosp.name}
                       </h4>
-                      <p className="text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                      <p className="text-slate-500 flex items-center gap-1">
                         <MapPin className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
                         <span>{hosp.address}, {hosp.city}</span>
                       </p>
                     </div>
 
-                    <div className="text-right flex-shrink-0 bg-slate-50 dark:bg-slate-800/60 p-2 rounded-xl border border-slate-100 dark:border-slate-800">
+                    <div className="text-right flex-shrink-0 bg-slate-50 p-2 rounded-xl border border-slate-100">
                       <span className="text-[10px] text-slate-400 font-bold block uppercase">Rating</span>
-                      <span className="text-xs font-black text-amber-600 dark:text-amber-400 flex items-center justify-end gap-1">
+                      <span className="text-xs font-black text-amber-600 flex items-center justify-end gap-1">
                         <Star className="w-3 h-3 text-amber-500 fill-amber-500 shrink-0" />
                         <span>{hosp.rating || 4.5}</span>
                       </span>
@@ -380,22 +380,22 @@ export const AdminHospitals: React.FC = () => {
                   </div>
 
                   {/* Bed & Token Availability Metrics */}
-                  <div className="grid grid-cols-3 gap-2 bg-slate-50 dark:bg-slate-800/40 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800">
+                  <div className="grid grid-cols-3 gap-2 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
                     <div>
                       <span className="text-[10px] text-slate-400 font-bold uppercase block">Beds Vacant</span>
-                      <span className="font-bold text-slate-900 dark:text-white">
+                      <span className="font-bold text-slate-900">
                         {hosp.availableBeds} <span className="font-normal text-slate-500 text-[10px]">/ {hosp.totalBeds}</span>
                       </span>
                     </div>
                     <div>
                       <span className="text-[10px] text-slate-400 font-bold uppercase block">OPD Tokens Today</span>
-                      <span className="font-bold text-teal-700 dark:text-teal-400">
+                      <span className="font-bold text-teal-700">
                         {hosp.totalAvailableTokens ?? 30} <span className="font-normal text-slate-500 text-[10px]">Seats</span>
                       </span>
                     </div>
                     <div>
                       <span className="text-[10px] text-slate-400 font-bold uppercase block">Doctors Active</span>
-                      <span className="font-bold text-brand-600 dark:text-brand-400">
+                      <span className="font-bold text-brand-600">
                         {docCount} Specialists
                       </span>
                     </div>
@@ -411,14 +411,14 @@ export const AdminHospitals: React.FC = () => {
                         {conditions.slice(0, 4).map((cond: string, idx: number) => (
                           <span
                             key={idx}
-                            className="text-[10px] bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 px-2 py-0.5 rounded font-medium flex items-center gap-1"
+                            className="text-[10px] bg-emerald-50 text-emerald-800 border border-emerald-200 px-2 py-0.5 rounded font-medium flex items-center gap-1"
                           >
                             <Check className="w-2.5 h-2.5 text-emerald-600 shrink-0" />
                             <span>{cond}</span>
                           </span>
                         ))}
                         {conditions.length > 4 && (
-                          <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold px-1 py-0.5">
+                          <span className="text-[10px] text-emerald-600 font-bold px-1 py-0.5">
                             +{conditions.length - 4} more
                           </span>
                         )}
@@ -427,7 +427,7 @@ export const AdminHospitals: React.FC = () => {
                   )}
 
                   {/* Contact Phone & Working Hours */}
-                  <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-1 border-t border-slate-100 dark:border-slate-800">
+                  <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1 border-t border-slate-100">
                     <span className="flex items-center gap-1">
                       <Phone className="w-3.5 h-3.5 text-slate-400" />
                       {hosp.phone || '01824-260230'}
@@ -440,11 +440,11 @@ export const AdminHospitals: React.FC = () => {
                 </div>
 
                 {/* Card Actions: View Full Details / Export & Remove Facility */}
-                <div className="flex items-center gap-2 pt-3 border-t border-slate-100 dark:border-slate-800">
+                <div className="flex items-center gap-2 pt-3 border-t border-slate-100">
                   <button
                     type="button"
                     onClick={() => setSelectedHospital(hosp)}
-                    className="flex-1 py-2 px-3 bg-teal-50 dark:bg-teal-950/40 hover:bg-teal-100 text-teal-800 dark:text-teal-300 font-bold text-xs rounded-xl border border-teal-200 dark:border-teal-800 flex items-center justify-center gap-1.5 transition-colors shadow-2xs cursor-pointer"
+                    className="flex-1 py-2 px-3 bg-teal-50 hover:bg-teal-100 text-teal-800 font-bold text-xs rounded-xl border border-teal-200 flex items-center justify-center gap-1.5 transition-colors shadow-2xs cursor-pointer"
                   >
                     <Eye className="w-3.5 h-3.5" />
                     <span>View Details & Export</span>
@@ -453,7 +453,7 @@ export const AdminHospitals: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setHospitalToDelete(hosp)}
-                    className="py-2 px-3 bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 text-rose-700 dark:text-rose-300 font-bold text-xs rounded-xl border border-rose-200 dark:border-rose-900 flex items-center justify-center gap-1.5 transition-colors shadow-2xs cursor-pointer"
+                    className="py-2 px-3 bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs rounded-xl border border-rose-200 flex items-center justify-center gap-1.5 transition-colors shadow-2xs cursor-pointer"
                     title="Remove hospital from registry"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
@@ -468,10 +468,10 @@ export const AdminHospitals: React.FC = () => {
 
       {/* MODAL 1: VIEW FULL DETAILS & EXPORT SPLASH (adin-e-lpash-se-sara-hospital-details-nial-aye) */}
       {selectedHospital && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 overflow-y-auto">
-          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 space-y-6 animate-fadeIn">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-xs p-4 overflow-y-auto">
+          <div className="bg-white rounded-3xl border border-slate-200 w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 space-y-6 animate-fadeIn">
             {/* Modal Header */}
-            <div className="flex items-start justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
+            <div className="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
                   <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase bg-brand-50 text-brand-700 border border-brand-200">
@@ -488,7 +488,7 @@ export const AdminHospitals: React.FC = () => {
                     100% Verified Profile
                   </span>
                 </div>
-                <h3 className="text-xl font-black text-slate-900 dark:text-white">
+                <h3 className="text-xl font-black text-slate-900">
                   {selectedHospital.name}
                 </h3>
                 <p className="text-xs text-slate-500 flex items-center gap-1.5">
@@ -500,7 +500,7 @@ export const AdminHospitals: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setSelectedHospital(null)}
-                className="p-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 transition-colors"
+                className="p-1.5 rounded-full bg-slate-100 text-slate-500 hover:text-slate-800 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -508,41 +508,41 @@ export const AdminHospitals: React.FC = () => {
 
             {/* Quick Metrics Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-              <div className="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-100 dark:border-slate-800 space-y-0.5">
+              <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-0.5">
                 <span className="text-[10px] text-slate-400 font-bold uppercase">Bed Availability</span>
-                <p className="font-bold text-slate-900 dark:text-white">
+                <p className="font-bold text-slate-900">
                   {selectedHospital.availableBeds} / {selectedHospital.totalBeds} Vacant
                 </p>
               </div>
-              <div className="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-100 dark:border-slate-800 space-y-0.5">
+              <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-0.5">
                 <span className="text-[10px] text-slate-400 font-bold uppercase">OPD Token Capacity</span>
-                <p className="font-bold text-teal-700 dark:text-teal-400">
+                <p className="font-bold text-teal-700">
                   {selectedHospital.totalAvailableTokens ?? 30} Available Today
                 </p>
               </div>
-              <div className="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-100 dark:border-slate-800 space-y-0.5">
+              <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-0.5">
                 <span className="text-[10px] text-slate-400 font-bold uppercase">Avg Wait Time</span>
-                <p className="font-bold text-slate-900 dark:text-white">
+                <p className="font-bold text-slate-900">
                   ~{selectedHospital.averageWaitTimeMinutes || 20} Minutes
                 </p>
               </div>
-              <div className="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-100 dark:border-slate-800 space-y-0.5">
+              <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-0.5">
                 <span className="text-[10px] text-slate-400 font-bold uppercase">GPS Coordinates</span>
-                <p className="font-bold text-slate-900 dark:text-white truncate">
+                <p className="font-bold text-slate-900 truncate">
                   {selectedHospital.latitude?.toFixed(4)}, {selectedHospital.longitude?.toFixed(4)}
                 </p>
               </div>
             </div>
 
             {/* Contact & Registration Information */}
-            <div className="space-y-2 bg-slate-50 dark:bg-slate-800/40 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 text-xs">
-              <h4 className="font-bold text-slate-800 dark:text-slate-200 text-xs uppercase tracking-wider">
+            <div className="space-y-2 bg-slate-50 p-4 rounded-2xl border border-slate-100 text-xs">
+              <h4 className="font-bold text-slate-800 text-xs uppercase tracking-wider">
                 Registration & Contact Details
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
                 <div>
                   <span className="text-[10px] text-slate-400 block">General Phone</span>
-                  <span className="font-semibold text-slate-800 dark:text-slate-200">{selectedHospital.phone || 'N/A'}</span>
+                  <span className="font-semibold text-slate-800">{selectedHospital.phone || 'N/A'}</span>
                 </div>
                 <div>
                   <span className="text-[10px] text-slate-400 block">Emergency Helpline</span>
@@ -550,7 +550,7 @@ export const AdminHospitals: React.FC = () => {
                 </div>
                 <div>
                   <span className="text-[10px] text-slate-400 block">Contact Email</span>
-                  <span className="font-semibold text-slate-800 dark:text-slate-200 truncate block">{selectedHospital.email || 'N/A'}</span>
+                  <span className="font-semibold text-slate-800 truncate block">{selectedHospital.email || 'N/A'}</span>
                 </div>
               </div>
             </div>
@@ -558,7 +558,7 @@ export const AdminHospitals: React.FC = () => {
             {/* Clinical Departments & Doctors */}
             {selectedHospital.departments && selectedHospital.departments.length > 0 && (
               <div className="space-y-3">
-                <h4 className="font-bold text-slate-800 dark:text-slate-200 text-xs uppercase tracking-wider flex items-center gap-1.5">
+                <h4 className="font-bold text-slate-800 text-xs uppercase tracking-wider flex items-center gap-1.5">
                   <Stethoscope className="w-4 h-4 text-brand-600" />
                   Clinical Departments & Specialist Doctors ({selectedHospital.departments.length})
                 </h4>
@@ -566,16 +566,16 @@ export const AdminHospitals: React.FC = () => {
                   {selectedHospital.departments.map((d: any, idx: number) => (
                     <div
                       key={idx}
-                      className="p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-xs space-y-1.5"
+                      className="p-3 bg-white rounded-xl border border-slate-200 text-xs space-y-1.5"
                     >
                       <div className="flex items-center justify-between">
-                        <span className="font-bold text-slate-900 dark:text-white">{d.name}</span>
-                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
+                        <span className="font-bold text-slate-900">{d.name}</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-100 text-slate-700">
                           {d.consultationFee === 0 ? 'FREE OPD' : `₹${d.consultationFee}`}
                         </span>
                       </div>
                       {d.headDoctorName && (
-                        <p className="text-[11px] text-teal-700 dark:text-teal-400 font-medium flex items-center gap-1">
+                        <p className="text-[11px] text-teal-700 font-medium flex items-center gap-1">
                           <Stethoscope className="w-3 h-3 text-teal-600 shrink-0" />
                           <span>{d.headDoctorName}</span>
                         </p>
@@ -592,8 +592,8 @@ export const AdminHospitals: React.FC = () => {
 
             {/* Treated Diseases & Conditions */}
             {selectedHospital.allTreatedConditions && selectedHospital.allTreatedConditions.length > 0 && (
-              <div className="space-y-2 bg-emerald-50/70 dark:bg-emerald-950/30 p-4 rounded-2xl border border-emerald-200/70 dark:border-emerald-900 text-xs">
-                <h4 className="font-bold text-emerald-900 dark:text-emerald-300 text-xs uppercase tracking-wider flex items-center gap-1.5">
+              <div className="space-y-2 bg-emerald-50/70 p-4 rounded-2xl border border-emerald-200/70 text-xs">
+                <h4 className="font-bold text-emerald-900 text-xs uppercase tracking-wider flex items-center gap-1.5">
                   <Stethoscope className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
                   <span>बीमारियों का इलाज (Treated Conditions - {selectedHospital.allTreatedConditions.length} Covered)</span>
                 </h4>
@@ -601,7 +601,7 @@ export const AdminHospitals: React.FC = () => {
                   {selectedHospital.allTreatedConditions.map((cond: string, cIdx: number) => (
                     <span
                       key={cIdx}
-                      className="text-[10px] bg-white dark:bg-slate-900 text-emerald-900 dark:text-emerald-200 border border-emerald-200 dark:border-emerald-800 px-2.5 py-1 rounded-md font-medium shadow-2xs flex items-center gap-1"
+                      className="text-[10px] bg-white text-emerald-900 border border-emerald-200 px-2.5 py-1 rounded-md font-medium shadow-2xs flex items-center gap-1"
                     >
                       <Check className="w-2.5 h-2.5 text-emerald-600 shrink-0" />
                       <span>{cond}</span>
@@ -612,7 +612,7 @@ export const AdminHospitals: React.FC = () => {
             )}
 
             {/* Extraction & Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-slate-100">
               <div className="flex items-center gap-2 w-full sm:w-auto">
                 <Button
                   variant="primary"
@@ -650,14 +650,14 @@ export const AdminHospitals: React.FC = () => {
 
       {/* MODAL 2: CONFIRM DELETE HOSPITAL (ye-sara-hospital-reove-ar-do) */}
       {hospitalToDelete && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
-          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-rose-200 dark:border-rose-900 max-w-md w-full p-6 shadow-2xl space-y-4 animate-fadeIn text-xs">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-xs p-4">
+          <div className="bg-white rounded-3xl border border-rose-200 max-w-md w-full p-6 shadow-2xl space-y-4 animate-fadeIn text-xs">
             <div className="flex items-center gap-3 text-rose-600">
-              <div className="p-3 bg-rose-100 dark:bg-rose-950/60 rounded-2xl">
+              <div className="p-3 bg-rose-100 rounded-2xl">
                 <Trash2 className="w-6 h-6 text-rose-600" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                <h3 className="text-base font-bold text-slate-900">
                   Remove Facility from Registry?
                 </h3>
                 <p className="text-[11px] text-slate-500">
@@ -666,8 +666,8 @@ export const AdminHospitals: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 space-y-1">
-              <span className="font-bold text-slate-900 dark:text-white block">
+            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+              <span className="font-bold text-slate-900 block">
                 {hospitalToDelete.name}
               </span>
               <p className="text-[11px] text-slate-500">
@@ -675,7 +675,7 @@ export const AdminHospitals: React.FC = () => {
               </p>
             </div>
 
-            <p className="text-slate-600 dark:text-slate-400">
+            <p className="text-slate-600">
               Are you sure you want to permanently delete this hospital? All associated clinical departments and OPD tokens will be removed from the database.
             </p>
 
@@ -705,11 +705,11 @@ export const AdminHospitals: React.FC = () => {
 
       {/* MODAL 3: REGISTER NEW HOSPITAL */}
       {isAddModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 overflow-y-auto">
-          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 space-y-6 animate-fadeIn text-xs">
-            <div className="flex items-start justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-xs p-4 overflow-y-auto">
+          <div className="bg-white rounded-3xl border border-slate-200 w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 space-y-6 animate-fadeIn text-xs">
+            <div className="flex items-start justify-between border-b border-slate-100 pb-4">
               <div>
-                <h3 className="text-lg font-black text-slate-900 dark:text-white flex items-center gap-2">
+                <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
                   <Building2 className="w-5 h-5 text-brand-500" />
                   Register New Hospital Facility
                 </h3>
@@ -720,7 +720,7 @@ export const AdminHospitals: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setIsAddModalOpen(false)}
-                className="p-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800"
+                className="p-1.5 rounded-full bg-slate-100 text-slate-500 hover:text-slate-800"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -806,7 +806,7 @@ export const AdminHospitals: React.FC = () => {
                   onChange={(e) => setNewHosp({ ...newHosp, availableBeds: parseInt(e.target.value, 10) || 0 })}
                 />
                 <div className="flex flex-col justify-end">
-                  <label className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 pb-2">
+                  <label className="flex items-center gap-2 text-xs font-bold text-slate-700 pb-2">
                     <input
                       type="checkbox"
                       checked={newHosp.emergencyAvailable}
@@ -819,8 +819,8 @@ export const AdminHospitals: React.FC = () => {
               </div>
 
               {/* Initial Clinical Department */}
-              <div className="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-700 space-y-3">
-                <span className="font-bold text-slate-800 dark:text-slate-200 text-xs block">
+              <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+                <span className="font-bold text-slate-800 text-xs block">
                   Primary OPD Department & Doctor Details
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -837,7 +837,7 @@ export const AdminHospitals: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 pt-3 border-t border-slate-100 dark:border-slate-800">
+              <div className="flex items-center gap-2 pt-3 border-t border-slate-100">
                 <Button
                   type="submit"
                   variant="primary"
