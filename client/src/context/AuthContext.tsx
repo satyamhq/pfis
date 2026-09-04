@@ -65,7 +65,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsLoading(true);
     try {
       const res = await authService.login(email, pass);
-      if (res.success && res.token) {
+      if (res.success && res.token && res.user) {
         setToken(res.token);
         setUser(res.user);
         setProfile(res.profile || null);
@@ -85,7 +85,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsLoading(true);
     try {
       const res = await authService.loginWithGoogle(credential, role, profileData);
-      if (res.success && res.token) {
+      if (res.success && res.token && res.user) {
         setToken(res.token);
         setUser(res.user);
         setProfile(res.profile || null);
@@ -105,7 +105,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsLoading(true);
     try {
       const res = await authService.register(data);
-      if (res.success && res.token) {
+      if (res.success && res.token && res.user) {
         setToken(res.token);
         setUser(res.user);
         setProfile(res.profile || null);

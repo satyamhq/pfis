@@ -1,4 +1,4 @@
-export type UserRole = 'patient' | 'hospital' | 'admin';
+export type UserRole = 'patient' | 'hospital' | 'admin' | 'doctor' | 'asha' | 'government';
 
 export interface User {
   id: string;
@@ -7,6 +7,62 @@ export interface User {
   role: UserRole;
   phone?: string;
   avatarUrl?: string;
+  profile?: any;
+}
+
+export interface Doctor {
+  _id: string;
+  userId: string;
+  name: string;
+  email: string;
+  phone?: string;
+  hospitalId?: string;
+  hospitalName?: string;
+  department: string;
+  qualification: string;
+  registrationNumber: string;
+  specialization: string;
+  experienceYears: number;
+  opdTimings?: string;
+  availableDays?: string[];
+  consultationFee?: number;
+  isAvailable?: boolean;
+  rating?: number;
+  totalPatientsConsulted?: number;
+}
+
+export interface AshaWorker {
+  _id: string;
+  userId: string;
+  workerId: string;
+  name: string;
+  email: string;
+  phone: string;
+  assignedVillage?: string;
+  assignedWard?: string;
+  district: string;
+  state: string;
+  primaryHealthCenter: string;
+  communityPopulation?: number;
+  assignedPatientsCount?: number;
+  activeCases?: number;
+  languagesSpoken?: string[];
+  isFieldActive?: boolean;
+}
+
+export interface GovernmentOfficial {
+  _id: string;
+  userId: string;
+  name: string;
+  email: string;
+  phone?: string;
+  officialDesignation: string;
+  department: string;
+  jurisdictionLevel: 'DISTRICT' | 'STATE' | 'NATIONAL';
+  district?: string;
+  state: string;
+  officeAddress?: string;
+  clearanceLevel?: string;
 }
 
 export interface PatientLocation {

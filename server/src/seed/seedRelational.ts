@@ -6,6 +6,9 @@ import { FrictionRepository } from '../database/repositories/FrictionRepository.
 import { RequestRepository } from '../database/repositories/RequestRepository.js';
 import { DocumentRepository } from '../database/repositories/DocumentRepository.js';
 import { NotificationRepository } from '../database/repositories/NotificationRepository.js';
+import { Doctor } from '../models/Doctor.js';
+import { AshaWorker } from '../models/AshaWorker.js';
+import { GovernmentOfficial } from '../models/GovernmentOfficial.js';
 
 export const runRelationalSeed = async (): Promise<void> => {
   try {
@@ -16,6 +19,9 @@ export const runRelationalSeed = async (): Promise<void> => {
     const adminHash = await bcrypt.hash('Admin@123', 10);
     const patientHash = await bcrypt.hash('Patient@123', 10);
     const hospitalHash = await bcrypt.hash('Hospital@123', 10);
+    const doctorHash = await bcrypt.hash('Doctor@123', 10);
+    const ashaHash = await bcrypt.hash('Asha@123', 10);
+    const govtHash = await bcrypt.hash('Govt@123', 10);
 
     // 1. Authorized Admin Accounts
     const authorizedAdmins = [
@@ -74,6 +80,98 @@ export const runRelationalSeed = async (): Promise<void> => {
         name: 'Sunita Devi',
         role: 'patient',
         phone: '+91 98140 12345',
+      });
+    }
+
+    // 4. Demo Doctor Account & Profile (Dr. Rajesh Sharma, MD)
+    let doctorUser = await UserRepository.findByEmail('doctor@pfis.org');
+    if (!doctorUser) {
+      doctorUser = await UserRepository.create({
+        email: 'doctor@pfis.org',
+        password_hash: doctorHash,
+        name: 'Dr. Rajesh Sharma, MD',
+        role: 'doctor',
+        phone: '+91 98765 22334',
+      });
+    }
+    const existingDoctor = await Doctor.findOne({ userId: doctorUser.id });
+    if (!existingDoctor) {
+      await Doctor.create({
+        userId: doctorUser.id,
+        name: 'Dr. Rajesh Sharma',
+        email: 'doctor@pfis.org',
+        phone: '+91 98765 22334',
+        department: 'Cardiology & General Medicine',
+        qualification: 'MBBS, MD (Medicine), FACC',
+        registrationNumber: 'MCI-PBI-2012-08492',
+        specialization: 'Preventive Cardiology & Chronic Care Non-Adherence Mitigation',
+        experienceYears: 14,
+        opdTimings: '09:00 AM - 01:30 PM',
+        availableDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        consultationFee: 300,
+        isAvailable: true,
+        rating: 4.8,
+        totalPatientsConsulted: 1420,
+      });
+    }
+
+    // 5. Demo ASHA Worker Account & Profile (Kamla Devi)
+    let ashaUser = await UserRepository.findByEmail('asha@pfis.org');
+    if (!ashaUser) {
+      ashaUser = await UserRepository.create({
+        email: 'asha@pfis.org',
+        password_hash: ashaHash,
+        name: 'Kamla Devi (Senior ASHA Worker)',
+        role: 'asha',
+        phone: '+91 98765 33445',
+      });
+    }
+    const existingAsha = await AshaWorker.findOne({ userId: ashaUser.id });
+    if (!existingAsha) {
+      await AshaWorker.create({
+        userId: ashaUser.id,
+        workerId: 'ASHA-PB-KPR-042',
+        name: 'Kamla Devi',
+        email: 'asha@pfis.org',
+        phone: '+91 98765 33445',
+        assignedVillage: 'Mehli',
+        assignedWard: 'Ward 4 (Phagwara Rural Sub-Center)',
+        district: 'Kapurthala',
+        state: 'Punjab',
+        primaryHealthCenter: 'Community Health Centre Phagwara',
+        communityPopulation: 1850,
+        assignedPatientsCount: 28,
+        activeCases: 7,
+        languagesSpoken: ['Punjabi', 'Hindi'],
+        isFieldActive: true,
+      });
+    }
+
+    // 6. Demo Government Official Account & Profile (Dr. Arvind Verma)
+    let govtUser = await UserRepository.findByEmail('government@pfis.org');
+    if (!govtUser) {
+      govtUser = await UserRepository.create({
+        email: 'government@pfis.org',
+        password_hash: govtHash,
+        name: 'Dr. Arvind Verma (Chief Medical Officer)',
+        role: 'government',
+        phone: '+91 98765 44556',
+      });
+    }
+    const existingGovt = await GovernmentOfficial.findOne({ userId: govtUser.id });
+    if (!existingGovt) {
+      await GovernmentOfficial.create({
+        userId: govtUser.id,
+        name: 'Dr. Arvind Verma',
+        email: 'government@pfis.org',
+        phone: '+91 98765 44556',
+        officialDesignation: 'District Chief Medical Officer (CMO)',
+        department: 'District Health & Family Welfare Department',
+        jurisdictionLevel: 'DISTRICT',
+        district: 'Kapurthala',
+        state: 'Punjab',
+        officeAddress: 'Civil Secretariat Complex, Kapurthala, Punjab 144601',
+        clearanceLevel: 'LEVEL_4_HEALTH_INTELLIGENCE',
       });
     }
 
@@ -313,9 +411,11 @@ export const runRelationalSeed = async (): Promise<void> => {
 
     console.log('[Seed] Relational database seeding finished successfully!');
     console.log('  -> Admin: admin@pfis.org (Admin@123)');
-    console.log('  -> Admin: dhirajkumar464748@gmail.com (Admin@123)');
     console.log('  -> Patient: patient@pfis.org (Patient@123)');
     console.log('  -> Hospital: staff@hospital.org (Hospital@123)');
+    console.log('  -> Doctor: doctor@pfis.org (Doctor@123)');
+    console.log('  -> ASHA Worker: asha@pfis.org (Asha@123)');
+    console.log('  -> Government: government@pfis.org (Govt@123)');
     console.log('===========================================================');
   } catch (err: any) {
     console.error('[Seed Error] Failed to seed relational database:', err.message);

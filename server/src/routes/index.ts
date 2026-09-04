@@ -10,12 +10,18 @@ import interventionRoutes from './interventionRoutes.js';
 import adminRoutes from './adminRoutes.js';
 import notificationRoutes from './notificationRoutes.js';
 import languageRoutes from './languageRoutes.js';
+import doctorRoutes from './doctorRoutes.js';
+import ashaRoutes from './ashaRoutes.js';
+import governmentRoutes from './governmentRoutes.js';
 
 const router = Router();
 
 router.use('/auth', authRoutes);
 router.use('/patients', patientRoutes);
 router.use('/hospitals', hospitalRoutes);
+router.use('/doctor', doctorRoutes);
+router.use('/asha', ashaRoutes);
+router.use('/government', governmentRoutes);
 router.use('/requests', requestRoutes);
 router.use('/consents', consentRoutes);
 router.use('/documents', documentRoutes);

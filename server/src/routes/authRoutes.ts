@@ -11,6 +11,7 @@ router.get('/google/config', AuthController.getGoogleConfig);
 router.post('/google/config', AuthController.saveGoogleClientId);
 router.get('/google/url', AuthController.getGoogleAuthUrl);
 router.post('/google/callback', AuthController.googleCallback);
+router.post('/complete-onboarding', AuthController.completeOnboarding);
 router.post('/forgot-password', AuthController.forgotPassword);
 router.post('/reset-password', AuthController.resetPassword);
 router.get('/me', authenticate, AuthController.getMe);

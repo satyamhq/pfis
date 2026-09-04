@@ -4,9 +4,13 @@ import { User } from '../types';
 export interface LoginResponse {
   success: boolean;
   message: string;
-  token: string;
-  user: User;
+  token?: string;
+  user?: User;
   profile?: any;
+  needsOnboarding?: boolean;
+  email?: string;
+  name?: string;
+  avatarUrl?: string;
 }
 
 const DEMO_FALLBACK_ACCOUNTS: Record<string, { pass: string; user: User; profile: any }> = {
@@ -14,6 +18,41 @@ const DEMO_FALLBACK_ACCOUNTS: Record<string, { pass: string; user: User; profile
     pass: 'Admin@123',
     user: { id: 'admin-demo-1', name: 'PFIS Executive Admin', email: 'admin@pfis.org', role: 'admin', phone: '+91 98765 43210' },
     profile: null,
+  },
+  'doctor@pfis.org': {
+    pass: 'Doctor@123',
+    user: { id: 'doctor-demo-1', name: 'Dr. Rajesh Sharma, MD', email: 'doctor@pfis.org', role: 'doctor', phone: '+91 98765 22334' },
+    profile: {
+      name: 'Dr. Rajesh Sharma, MD',
+      department: 'Cardiology & General Medicine',
+      qualification: 'MBBS, MD (Medicine), FACC',
+      registrationNumber: 'MCI-PBI-2012-08492',
+      rating: 4.8,
+    },
+  },
+  'asha@pfis.org': {
+    pass: 'Asha@123',
+    user: { id: 'asha-demo-1', name: 'Kamla Devi (Senior ASHA Worker)', email: 'asha@pfis.org', role: 'asha', phone: '+91 98765 33445' },
+    profile: {
+      name: 'Kamla Devi',
+      workerId: 'ASHA-PB-KPR-042',
+      assignedVillage: 'Mehli',
+      district: 'Kapurthala',
+      state: 'Punjab',
+      primaryHealthCenter: 'CHC Phagwara',
+    },
+  },
+  'government@pfis.org': {
+    pass: 'Govt@123',
+    user: { id: 'govt-demo-1', name: 'Dr. Arvind Verma (Chief Medical Officer)', email: 'government@pfis.org', role: 'government', phone: '+91 98765 44556' },
+    profile: {
+      name: 'Dr. Arvind Verma',
+      officialDesignation: 'District Chief Medical Officer (CMO)',
+      department: 'District Health & Family Welfare Department',
+      jurisdictionLevel: 'DISTRICT',
+      district: 'Kapurthala',
+      state: 'Punjab',
+    },
   },
   'dhirajkumar464748@gmail.com': {
     pass: 'Admin@123',
@@ -209,6 +248,17 @@ export const authService = {
 
   async googleCallback(code: string, role?: string, clientId?: string): Promise<LoginResponse> {
     const res = await api.post<LoginResponse>('/auth/google/callback', { code, role, clientId });
+    return res.data;
+  },
+
+  async completeOnboarding(data: {
+    email: string;
+    name?: string;
+    avatarUrl?: string;
+    role: string;
+    profileData?: any;
+  }): Promise<LoginResponse> {
+    const res = await api.post<LoginResponse>('/auth/complete-onboarding', data);
     return res.data;
   },
 

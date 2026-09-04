@@ -90,8 +90,83 @@ async function runAPITests() {
   });
   console.log('[PASS] /api/simulation/run: OK | Simulated Completion Rate:', `${simRes.simulation?.simulatedCompletionProbability}%`);
 
+  // 5. Doctor Clinical Decision Support Endpoints
+  const doctorRes = await req(`${BASE_URL}/auth/login`, {
+    method: 'POST',
+    body: JSON.stringify({ email: 'doctor@pfis.org', password: 'Doctor@123' })
+  });
+  console.log('[PASS] Doctor Login: OK | Doctor:', doctorRes.user?.name, '| Role:', doctorRes.user?.role);
+  const doctorHeaders = { Authorization: `Bearer ${doctorRes.token}` };
+
+  const doctorDash = await req(`${BASE_URL}/doctor/dashboard`, { headers: doctorHeaders });
+  console.log('[PASS] /api/doctor/dashboard: OK | Monitored Patients:', doctorDash.metrics?.totalMonitoredPatients, '| Disclaimer Present:', !!doctorDash.disclaimer);
+
+  const doctorPatients = await req(`${BASE_URL}/doctor/patients`, { headers: doctorHeaders });
+  console.log('[PASS] /api/doctor/patients: OK | Patients Found:', doctorPatients.count);
+
+  // 6. ASHA Worker Grassroots Endpoints
+  const ashaRes = await req(`${BASE_URL}/auth/login`, {
+    method: 'POST',
+    body: JSON.stringify({ email: 'asha@pfis.org', password: 'Asha@123' })
+  });
+  console.log('[PASS] ASHA Login: OK | Worker:', ashaRes.user?.name, '| Role:', ashaRes.user?.role);
+  const ashaHeaders = { Authorization: `Bearer ${ashaRes.token}` };
+
+  const ashaDash = await req(`${BASE_URL}/asha/dashboard`, { headers: ashaHeaders });
+  console.log('[PASS] /api/asha/dashboard: OK | Monitored Households:', ashaDash.metrics?.assignedHouseholds);
+
+  const ashaPatients = await req(`${BASE_URL}/asha/patients`, { headers: ashaHeaders });
+  console.log('[PASS] /api/asha/patients: OK | Community Patients:', ashaPatients.count);
+
+  // 7. Government Health Official Aggregated Endpoints
+  const govtRes = await req(`${BASE_URL}/auth/login`, {
+    method: 'POST',
+    body: JSON.stringify({ email: 'government@pfis.org', password: 'Govt@123' })
+  });
+  console.log('[PASS] Government Official Login: OK | Official:', govtRes.user?.name, '| Role:', govtRes.user?.role);
+  const govtHeaders = { Authorization: `Bearer ${govtRes.token}` };
+
+  const govtDash = await req(`${BASE_URL}/government/dashboard`, { headers: govtHeaders });
+  console.log('[PASS] /api/government/dashboard: OK | District Friction Score:', govtDash.districtSummary?.overallDistrictFrictionScore);
+
+  const govtMap = await req(`${BASE_URL}/government/friction-map`, { headers: govtHeaders });
+  console.log('[PASS] /api/government/friction-map: OK | District Clusters:', govtMap.clusters?.length);
+
+  const govtInterventions = await req(`${BASE_URL}/government/interventions`, { headers: govtHeaders });
+  console.log('[PASS] /api/government/interventions: OK | Interventions:', govtInterventions.interventions?.length);
+
+  // 8. Google Onboarding Flow Verification
+  const onboardingTestEmail = `onboard_test_${Date.now()}@example.com`;
+  const onboardRes = await req(`${BASE_URL}/auth/complete-onboarding`, {
+    method: 'POST',
+    body: JSON.stringify({
+      email: onboardingTestEmail,
+      name: 'Onboarded Doctor',
+      role: 'doctor',
+      profileData: { department: 'General Medicine' }
+    })
+  });
+  console.log('[PASS] /api/auth/complete-onboarding: OK | Assigned Role:', onboardRes.user?.role);
+
+  // Verify Admin role is blocked from self-selection in onboarding (returns 403)
+  const fakeAdminEmail = `fake_admin_${Date.now()}@unauthorized.com`;
+  const forbiddenAdminRes = await fetch(`${BASE_URL}/auth/complete-onboarding`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email: fakeAdminEmail,
+      name: 'Hacker',
+      role: 'admin'
+    })
+  });
+  if (forbiddenAdminRes.status === 403) {
+    console.log('[PASS] /api/auth/complete-onboarding strictly rejected self-selected admin role (403 Forbidden)');
+  } else {
+    throw new Error(`Expected 403 for self-selected admin onboarding, got ${forbiddenAdminRes.status}`);
+  }
+
   console.log('===========================================================');
-  console.log('  ALL CORE API ENDPOINTS VERIFIED (100% PASS)             ');
+  console.log('  ALL 6 USER ROLES & ONBOARDING FULLY VERIFIED (100% PASS) ');
   console.log('===========================================================');
 }
 

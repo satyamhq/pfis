@@ -107,6 +107,9 @@ function resolveForeignTable(path: string): string | null {
   if (p.includes('user')) return 'users';
   if (p.includes('patient')) return 'patient_profiles';
   if (p.includes('hospital')) return 'hospitals';
+  if (p.includes('doctor')) return 'doctors';
+  if (p.includes('asha')) return 'asha_workers';
+  if (p.includes('government') || p.includes('official')) return 'government_officials';
   if (p.includes('friction') || p.includes('profile')) return 'friction_profiles';
   if (p.includes('risk')) return 'accessibility_risks';
   if (p.includes('document')) return 'documents';

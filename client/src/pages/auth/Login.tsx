@@ -22,9 +22,13 @@ import {
   Loader2,
   Zap,
   X,
+  Stethoscope,
+  HeartHandshake,
+  Landmark,
 } from 'lucide-react';
+import { OnboardingModal } from './OnboardingModal';
 
-type PortalRole = 'patient' | 'hospital' | 'admin';
+type PortalRole = 'patient' | 'hospital' | 'admin' | 'doctor' | 'asha' | 'government';
 
 interface PortalConfig {
   id: PortalRole;
@@ -54,27 +58,48 @@ export const Login: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [redirectingMessage, setRedirectingMessage] = useState<string | null>(null);
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  const [onboardingData, setOnboardingData] = useState<{ email: string; name?: string; avatarUrl?: string } | null>(null);
 
   const { user, isAuthenticated, login, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
 
+  const getDashboardPath = (roleName: string) => {
+    switch (roleName) {
+      case 'admin': return '/admin/dashboard';
+      case 'hospital': return '/hospital/dashboard';
+      case 'doctor': return '/doctor/dashboard';
+      case 'asha': return '/asha/dashboard';
+      case 'government': return '/government/dashboard';
+      case 'patient':
+      default: return '/patient/dashboard';
+    }
+  };
+
   // If already authenticated, redirect to the user's dashboard immediately
   useEffect(() => {
     if (isAuthenticated && user) {
-      if (user.role === 'admin') navigate('/admin/dashboard', { replace: true });
-      else if (user.role === 'hospital') navigate('/hospital/dashboard', { replace: true });
-      else navigate('/patient/dashboard', { replace: true });
+      navigate(getDashboardPath(user.role), { replace: true });
     }
   }, [isAuthenticated, user, navigate]);
 
   // Set default fields whenever portal switches
   useEffect(() => {
     if (activePortal === 'admin') {
-      setEmail('dhirajkumar464748@gmail.com');
+      setEmail('admin@pfis.org');
       setPassword('Admin@123');
     } else if (activePortal === 'hospital') {
       setEmail('hospital@apollo.org');
       setPassword('Hospital@123');
+    } else if (activePortal === 'doctor') {
+      setEmail('doctor@pfis.org');
+      setPassword('Doctor@123');
+    } else if (activePortal === 'asha') {
+      setEmail('asha@pfis.org');
+      setPassword('Asha@123');
+    } else if (activePortal === 'government') {
+      setEmail('government@pfis.org');
+      setPassword('Govt@123');
     } else {
       setEmail('patient@pfis.org');
       setPassword('Patient@123');
@@ -93,12 +118,18 @@ export const Login: React.FC = () => {
               setRedirectingMessage('Verifying Google credentials with MongoDB...');
               try {
                 const res = await loginWithGoogle(response.credential, activePortal);
-                if (res.success) {
+                if (res.needsOnboarding) {
+                  setOnboardingData({
+                    email: res.email || '',
+                    name: res.name || '',
+                    avatarUrl: res.avatarUrl || '',
+                  });
+                  setShowOnboarding(true);
+                } else if (res.success && res.user) {
                   setRedirectingMessage('Authenticated! Redirecting to Dashboard...');
+                  const targetRole = res.user.role;
                   setTimeout(() => {
-                    if (res.user.role === 'admin') navigate('/admin/dashboard', { replace: true });
-                    else if (res.user.role === 'hospital') navigate('/hospital/dashboard', { replace: true });
-                    else navigate('/patient/dashboard', { replace: true });
+                    navigate(getDashboardPath(targetRole), { replace: true });
                   }, 200);
                 }
               } catch (err: any) {
@@ -134,15 +165,63 @@ export const Login: React.FC = () => {
       ],
     },
     {
+      id: 'doctor',
+      title: 'Doctor & Medical Officer',
+      subtitle: 'Clinical decision-support & non-clinical friction context',
+      badge: 'Clinical Support',
+      badgeColor: 'bg-teal-100 text-teal-800 border-teal-300',
+      icon: <Stethoscope className="w-5 h-5 text-teal-600" />,
+      defaultEmail: 'doctor@pfis.org',
+      defaultPass: 'Doctor@123',
+      accentBorder: 'border-teal-500 ring-teal-500/20',
+      features: [
+        'Pre-Consultation Friction Intelligence Summaries',
+        'Follow-Up Dropout Risk Predictor',
+        'Full Clinical Autonomy Guarantee',
+      ],
+    },
+    {
+      id: 'asha',
+      title: 'ASHA Grassroots Worker',
+      subtitle: 'Village barrier logging, transport requests & field telemetry',
+      badge: 'Field Cadre',
+      badgeColor: 'bg-amber-100 text-amber-800 border-amber-300',
+      icon: <HeartHandshake className="w-5 h-5 text-amber-600" />,
+      defaultEmail: 'asha@pfis.org',
+      defaultPass: 'Asha@123',
+      accentBorder: 'border-amber-500 ring-amber-500/20',
+      features: [
+        'Village Barrier Quick-Logger (Bus, Wage, Digital)',
+        'Assisted Appointment & Transit Logistics Logging',
+        'Primary Health Center (PHC) Coordination',
+      ],
+    },
+    {
+      id: 'government',
+      title: 'Government Health Official',
+      subtitle: 'District CMO macro friction monitoring & DPDP telemetry',
+      badge: 'Macro Governance',
+      badgeColor: 'bg-blue-100 text-blue-800 border-blue-300',
+      icon: <Landmark className="w-5 h-5 text-blue-600" />,
+      defaultEmail: 'government@pfis.org',
+      defaultPass: 'Govt@123',
+      accentBorder: 'border-blue-500 ring-blue-500/20',
+      features: [
+        'District & State Friction Leakage Analytics',
+        'DPDP Act Aggregated Privacy Preservation',
+        'Targeted Healthcare Intervention Planning',
+      ],
+    },
+    {
       id: 'hospital',
       title: t('auth.hospitalPortalTitle', 'Hospital & Clinical Facility'),
       subtitle: t('auth.hospitalPortalSubtitle', 'Triage desk, patient intake review, & OPD capacity management'),
       badge: t('auth.hospitalBadge', 'Clinical Desk'),
-      badgeColor: 'bg-blue-100 text-blue-800 border-blue-300',
-      icon: <Building2 className="w-5 h-5 text-blue-600" />,
+      badgeColor: 'bg-indigo-100 text-indigo-800 border-indigo-300',
+      icon: <Building2 className="w-5 h-5 text-indigo-600" />,
       defaultEmail: 'hospital@apollo.org',
       defaultPass: 'Hospital@123',
-      accentBorder: 'border-blue-500 ring-blue-500/20',
+      accentBorder: 'border-indigo-500 ring-indigo-500/20',
       features: [
         'Live Patient Triage & Risk Prioritization',
         'Daily Department Token Allocation',
@@ -183,12 +262,11 @@ export const Login: React.FC = () => {
 
     try {
       const res = await login(roleEmail, rolePass);
-      if (res.success) {
-        setRedirectingMessage(`Welcome back! Redirecting to ${role} dashboard...`);
+      if (res.success && res.user) {
+        setRedirectingMessage(`Welcome back! Redirecting to ${res.user.role} dashboard...`);
+        const targetRole = res.user.role;
         setTimeout(() => {
-          if (res.user.role === 'admin') navigate('/admin/dashboard', { replace: true });
-          else if (res.user.role === 'hospital') navigate('/hospital/dashboard', { replace: true });
-          else navigate('/patient/dashboard', { replace: true });
+          navigate(getDashboardPath(targetRole), { replace: true });
         }, 200);
       }
     } catch (err: any) {
@@ -243,6 +321,16 @@ export const Login: React.FC = () => {
 
   return (
     <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-2xl p-4 sm:p-8 lg:p-10 space-y-6 sm:space-y-8 transition-all relative">
+      {/* Google Onboarding Modal for New Accounts */}
+      {showOnboarding && onboardingData && (
+        <OnboardingModal
+          email={onboardingData.email}
+          name={onboardingData.name}
+          avatarUrl={onboardingData.avatarUrl}
+          onCancel={() => setShowOnboarding(false)}
+        />
+      )}
+
       {/* Redirecting Overlay */}
       {redirectingMessage && (
         <div className="absolute inset-0 z-40 bg-white/95 backdrop-blur-xs rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center p-6 text-center space-y-4">
@@ -276,20 +364,20 @@ export const Login: React.FC = () => {
 
       {/* Main Title & Subtitle */}
       <div className="text-center space-y-2">
-        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-[11px] sm:text-xs font-bold mb-1">
-          <ShieldCheck className="w-3.5 h-3.5 text-purple-600 shrink-0" />
-          <span>PFIS Health Ministry & Administration Command Portal</span>
+        <div className={`inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full border text-[11px] sm:text-xs font-bold mb-1 ${currentPortalConfig.badgeColor}`}>
+          <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
+          <span>PFIS Multi-Role Decision Intelligence Platform</span>
         </div>
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
-          Admin Portal Sign In
+          {currentPortalConfig.title} Sign In
         </h1>
         <p className="text-xs sm:text-sm text-slate-500 max-w-lg mx-auto">
-          Health Ministry & Administrative Intelligence Engine. Sign in as Admin or switch to Clinical / Citizen access.
+          {currentPortalConfig.subtitle}. Sign in with verified credentials or switch portals below.
         </p>
       </div>
 
-      {/* 3 Dedicated Portal Selection Cards with 1-Click Entry */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+      {/* 6 Dedicated Portal Selection Cards with 1-Click Entry */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
         {portals.map((portal) => {
           const isSelected = activePortal === portal.id;
           return (
@@ -335,6 +423,12 @@ export const Login: React.FC = () => {
                     portal.id === 'admin'
                       ? 'bg-purple-600 hover:bg-purple-700 text-white'
                       : portal.id === 'hospital'
+                      ? 'bg-indigo-600 hover:bg-indigo-700 text-white'
+                      : portal.id === 'doctor'
+                      ? 'bg-teal-600 hover:bg-teal-700 text-white'
+                      : portal.id === 'asha'
+                      ? 'bg-amber-600 hover:bg-amber-700 text-white'
+                      : portal.id === 'government'
                       ? 'bg-blue-600 hover:bg-blue-700 text-white'
                       : 'bg-emerald-600 hover:bg-emerald-700 text-white'
                   }`}
@@ -468,7 +562,7 @@ export const Login: React.FC = () => {
             type="button"
             onClick={() => handleDirectSignIn('hospital@apollo.org', 'Hospital@123', 'hospital')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shadow-xs flex items-center gap-1.5 ${
-              activePortal === 'hospital'
+              activePortal === 'hospital' || email === 'hospital@apollo.org'
                 ? 'bg-blue-600 text-white border-blue-600'
                 : 'bg-white text-slate-700 border-slate-200 hover:border-blue-400'
             }`}
@@ -478,9 +572,45 @@ export const Login: React.FC = () => {
           </button>
           <button
             type="button"
+            onClick={() => handleDirectSignIn('doctor@pfis.org', 'Doctor@123', 'doctor')}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shadow-xs flex items-center gap-1.5 ${
+              activePortal === 'doctor' || email === 'doctor@pfis.org'
+                ? 'bg-teal-600 text-white border-teal-600'
+                : 'bg-white text-slate-700 border-slate-200 hover:border-teal-400'
+            }`}
+          >
+            <Stethoscope className="w-3.5 h-3.5 text-teal-500 shrink-0" />
+            <span>Dr. Rajesh Sharma (Doctor)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => handleDirectSignIn('asha@pfis.org', 'Asha@123', 'asha')}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shadow-xs flex items-center gap-1.5 ${
+              activePortal === 'asha' || email === 'asha@pfis.org'
+                ? 'bg-amber-600 text-white border-amber-600'
+                : 'bg-white text-slate-700 border-slate-200 hover:border-amber-400'
+            }`}
+          >
+            <HeartHandshake className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+            <span>Kamla Devi (ASHA Worker)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => handleDirectSignIn('government@pfis.org', 'Govt@123', 'government')}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shadow-xs flex items-center gap-1.5 ${
+              activePortal === 'government' || email === 'government@pfis.org'
+                ? 'bg-blue-600 text-white border-blue-600'
+                : 'bg-white text-slate-700 border-slate-200 hover:border-blue-400'
+            }`}
+          >
+            <Landmark className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+            <span>Dr. Arvind Verma (Govt CMO)</span>
+          </button>
+          <button
+            type="button"
             onClick={() => handleDirectSignIn('patient@pfis.org', 'Patient@123', 'patient')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shadow-xs flex items-center gap-1.5 ${
-              activePortal === 'patient'
+              activePortal === 'patient' || email === 'patient@pfis.org'
                 ? 'bg-emerald-600 text-white border-emerald-600'
                 : 'bg-white text-slate-700 border-slate-200 hover:border-emerald-400'
             }`}

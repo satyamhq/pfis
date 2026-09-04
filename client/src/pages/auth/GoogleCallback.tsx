@@ -3,35 +3,41 @@ import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { authService } from '../../services/authService';
 import { useAuth } from '../../context/AuthContext';
 import { Loader2, CheckCircle2, AlertCircle, ArrowLeft, ShieldCheck } from 'lucide-react';
+import { OnboardingModal } from './OnboardingModal';
 
 export const GoogleCallback: React.FC = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { setAuthSession } = useAuth();
 
-  const [status, setStatus] = useState<'processing' | 'success' | 'error'>('processing');
+  const [status, setStatus] = useState<'processing' | 'success' | 'onboarding' | 'error'>('processing');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [userProfile, setUserProfile] = useState<any>(null);
+  const [onboardingData, setOnboardingData] = useState<{ email: string; name?: string; avatarUrl?: string } | null>(null);
 
   const hasCalledRef = React.useRef(false);
 
+  const getDashboardPath = (roleName: string) => {
+    switch (roleName) {
+      case 'admin': return '/admin/dashboard';
+      case 'hospital': return '/hospital/dashboard';
+      case 'doctor': return '/doctor/dashboard';
+      case 'asha': return '/asha/dashboard';
+      case 'government': return '/government/dashboard';
+      case 'patient':
+      default: return '/patient/dashboard';
+    }
+  };
+
   useEffect(() => {
     // 1. If already authenticated, redirect straight to dashboard
-    const existingToken = localStorage.getItem('pfis_token');
-    const existingUser = localStorage.getItem('pfis_user');
+    const existingToken = localStorage.getItem('pfis_auth_token') || localStorage.getItem('pfis_token');
+    const existingUser = localStorage.getItem('pfis_auth_user') || localStorage.getItem('pfis_user');
     if (existingToken && existingUser) {
       try {
         const parsedUser = JSON.parse(existingUser);
-        if (parsedUser.role === 'admin') {
-          navigate('/admin/dashboard', { replace: true });
-          return;
-        } else if (parsedUser.role === 'hospital') {
-          navigate('/hospital/dashboard', { replace: true });
-          return;
-        } else {
-          navigate('/patient/dashboard', { replace: true });
-          return;
-        }
+        navigate(getDashboardPath(parsedUser.role), { replace: true });
+        return;
       } catch {}
     }
 
@@ -41,7 +47,7 @@ export const GoogleCallback: React.FC = () => {
 
     const handleCallback = async () => {
       const code = searchParams.get('code');
-      const rawState = searchParams.get('state') || 'admin';
+      const rawState = searchParams.get('state') || 'patient';
       const errorParam = searchParams.get('error');
 
       if (errorParam) {
@@ -56,32 +62,43 @@ export const GoogleCallback: React.FC = () => {
         return;
       }
 
-      let role = 'admin';
+      let role = 'patient';
       let clientId = '';
       try {
         const parsed = JSON.parse(decodeURIComponent(rawState));
-        role = parsed.role || 'admin';
+        role = parsed.role || 'patient';
         clientId = parsed.clientId || '';
       } catch {
-        role = rawState || 'admin';
+        role = rawState || 'patient';
       }
 
       try {
         const res = await authService.googleCallback(code, role, clientId);
+
+        // Check if user is new public user requiring onboarding role selection
+        if (res.needsOnboarding) {
+          setOnboardingData({
+            email: res.email || '',
+            name: res.name || '',
+            avatarUrl: res.avatarUrl || '',
+          });
+          setStatus('onboarding');
+          return;
+        }
+
         if (res.success && res.token && res.user) {
           setAuthSession(res.token, res.user, res.profile);
 
           setUserProfile(res.user);
           setStatus('success');
 
+          const targetRole = res.user.role;
           setTimeout(() => {
-            if (res.user.role === 'admin') navigate('/admin/dashboard', { replace: true });
-            else if (res.user.role === 'hospital') navigate('/hospital/dashboard', { replace: true });
-            else navigate('/patient/dashboard', { replace: true });
+            navigate(getDashboardPath(targetRole), { replace: true });
           }, 600);
         } else {
           // If token was already created
-          const tokenNow = localStorage.getItem('pfis_token');
+          const tokenNow = localStorage.getItem('pfis_auth_token') || localStorage.getItem('pfis_token');
           if (tokenNow) {
             navigate('/admin/dashboard', { replace: true });
             return;
@@ -92,7 +109,7 @@ export const GoogleCallback: React.FC = () => {
       } catch (err: any) {
         console.error('[GoogleCallback Page Error]', err);
         // If already authenticated in localStorage despite duplicate request error
-        const tokenNow = localStorage.getItem('pfis_token');
+        const tokenNow = localStorage.getItem('pfis_auth_token') || localStorage.getItem('pfis_token');
         if (tokenNow) {
           navigate('/admin/dashboard', { replace: true });
           return;
@@ -115,6 +132,14 @@ export const GoogleCallback: React.FC = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
+      {status === 'onboarding' && onboardingData && (
+        <OnboardingModal
+          email={onboardingData.email}
+          name={onboardingData.name}
+          avatarUrl={onboardingData.avatarUrl}
+        />
+      )}
+
       <div className="w-full max-w-md bg-white rounded-3xl border border-slate-200 shadow-2xl p-8 text-center space-y-6">
         {status === 'processing' && (
           <div className="space-y-4">

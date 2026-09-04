@@ -76,6 +76,24 @@ export const Navbar: React.FC = () => {
           icon: <Building2 className="w-3.5 h-3.5 text-blue-500" />,
           bg: 'bg-blue-500/10 text-blue-700 border-blue-500/20',
         };
+      case 'doctor':
+        return {
+          label: 'Clinical Doctor',
+          icon: <Activity className="w-3.5 h-3.5 text-purple-600" />,
+          bg: 'bg-purple-500/10 text-purple-700 border-purple-500/20',
+        };
+      case 'asha':
+        return {
+          label: 'ASHA Worker',
+          icon: <UserIcon className="w-3.5 h-3.5 text-rose-600" />,
+          bg: 'bg-rose-500/10 text-rose-700 border-rose-500/20',
+        };
+      case 'government':
+        return {
+          label: 'Government Health Official',
+          icon: <Shield className="w-3.5 h-3.5 text-emerald-600" />,
+          bg: 'bg-emerald-500/10 text-emerald-700 border-emerald-500/20',
+        };
       case 'patient':
       default:
         return {
@@ -224,6 +242,112 @@ export const Navbar: React.FC = () => {
                   >
                     <Building2 className="w-3.5 h-3.5 text-teal-600 shrink-0" />
                     <span>{t('nav.departmentsOpd', 'Departments & OPD')}</span>
+                  </Link>
+                </>
+              )}
+
+              {/* DOCTOR NAV */}
+              {user?.role === 'doctor' && (
+                <>
+                  <Link
+                    to="/doctor/dashboard"
+                    className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
+                      isActive('/doctor/dashboard')
+                        ? 'bg-purple-50 text-purple-700 border border-purple-200/80 font-bold shadow-xs'
+                        : 'hover:text-purple-600 hover:bg-slate-100/80'
+                    }`}
+                  >
+                    <LayoutDashboard className="w-3.5 h-3.5 text-purple-600 shrink-0" />
+                    <span>Clinical Decision Support</span>
+                  </Link>
+                  <Link
+                    to="/doctor/patients"
+                    className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
+                      isActive('/doctor/patients')
+                        ? 'bg-purple-50 text-purple-700 border border-purple-200/80 font-bold shadow-xs'
+                        : 'hover:text-purple-600 hover:bg-slate-100/80'
+                    }`}
+                  >
+                    <Layers className="w-3.5 h-3.5 text-purple-600 shrink-0" />
+                    <span>Patient Friction Queue</span>
+                  </Link>
+                </>
+              )}
+
+              {/* ASHA WORKER NAV */}
+              {user?.role === 'asha' && (
+                <>
+                  <Link
+                    to="/asha/dashboard"
+                    className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
+                      isActive('/asha/dashboard')
+                        ? 'bg-rose-50 text-rose-700 border border-rose-200/80 font-bold shadow-xs'
+                        : 'hover:text-rose-600 hover:bg-slate-100/80'
+                    }`}
+                  >
+                    <LayoutDashboard className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                    <span>Village Cluster</span>
+                  </Link>
+                  <Link
+                    to="/asha/patients"
+                    className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
+                      isActive('/asha/patients')
+                        ? 'bg-rose-50 text-rose-700 border border-rose-200/80 font-bold shadow-xs'
+                        : 'hover:text-rose-600 hover:bg-slate-100/80'
+                    }`}
+                  >
+                    <UserIcon className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                    <span>Community Patients</span>
+                  </Link>
+                  <Link
+                    to="/asha/log-barrier"
+                    className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
+                      isActive('/asha/log-barrier')
+                        ? 'bg-rose-50 text-rose-700 border border-rose-200/80 font-bold shadow-xs'
+                        : 'hover:text-rose-600 hover:bg-slate-100/80'
+                    }`}
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                    <span>Log Field Barrier</span>
+                  </Link>
+                </>
+              )}
+
+              {/* GOVERNMENT OFFICIAL NAV */}
+              {user?.role === 'government' && (
+                <>
+                  <Link
+                    to="/government/dashboard"
+                    className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
+                      isActive('/government/dashboard')
+                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-200/80 font-bold shadow-xs'
+                        : 'hover:text-emerald-600 hover:bg-slate-100/80'
+                    }`}
+                  >
+                    <LayoutDashboard className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>District Intelligence</span>
+                  </Link>
+                  <Link
+                    to="/government/friction-map"
+                    className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
+                      isActive('/government/friction-map')
+                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-200/80 font-bold shadow-xs'
+                        : 'hover:text-emerald-600 hover:bg-slate-100/80'
+                    }`}
+                  >
+                    <MapPin className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>Friction Heat-Map</span>
+                  </Link>
+                  <Link
+                    to="/government/interventions"
+                    className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
+                      isActive('/government/interventions')
+                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-200/80 font-bold shadow-xs'
+                        : 'hover:text-emerald-600 hover:bg-slate-100/80'
+                    }`}
+                  >
+                    <Cpu className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>Macro Interventions</span>
                   </Link>
                 </>
               )}

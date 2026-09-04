@@ -50,6 +50,27 @@ export const Sidebar: React.FC = () => {
     { name: t('nav.settings', 'Settings & Language'), path: '/hospital/settings', icon: Settings },
   ];
 
+  const doctorLinks = [
+    { name: 'Decision Support Dashboard', path: '/doctor/dashboard', icon: LayoutDashboard },
+    { name: 'Patient Friction Queue', path: '/doctor/patients', icon: Users },
+    { name: 'Non-Clinical Alerts', path: '/doctor/dashboard', icon: ShieldAlert },
+    { name: 'Care Journey Tracker', path: '/doctor/patients', icon: GitFork },
+  ];
+
+  const ashaLinks = [
+    { name: 'Grassroots Dashboard', path: '/asha/dashboard', icon: LayoutDashboard },
+    { name: 'Village Patient Registry', path: '/asha/patients', icon: Users },
+    { name: 'Log Field Barrier', path: '/asha/log-barrier', icon: Sparkles },
+    { name: 'Transit & Escort Requests', path: '/asha/request-transit', icon: ListOrdered },
+  ];
+
+  const governmentLinks = [
+    { name: 'District Health Overview', path: '/government/dashboard', icon: LayoutDashboard },
+    { name: 'Friction Heat-Map', path: '/government/friction-map', icon: MapPin },
+    { name: 'Care Leakage Funnel', path: '/government/dashboard', icon: GitFork },
+    { name: 'Macro Policy Interventions', path: '/government/interventions', icon: Sliders },
+  ];
+
   const adminLinks = [
     { name: t('nav.dashboard', 'System Dashboard'), path: '/admin/dashboard', icon: LayoutDashboard },
     { name: 'Friction Digital Twin', path: '/admin/digital-twin', icon: Sparkles },
@@ -64,8 +85,12 @@ export const Sidebar: React.FC = () => {
     { name: t('nav.settings', 'Settings & Language'), path: '/admin/settings', icon: Settings },
   ];
 
-  const links =
-    role === 'patient' ? patientLinks : role === 'hospital' ? hospitalLinks : adminLinks;
+  let links = patientLinks;
+  if (role === 'hospital') links = hospitalLinks;
+  else if (role === 'doctor') links = doctorLinks;
+  else if (role === 'asha') links = ashaLinks;
+  else if (role === 'government') links = governmentLinks;
+  else if (role === 'admin') links = adminLinks;
 
   return (
     <aside className="w-64 bg-white border-r border-slate-200/80 min-h-[calc(100vh-4rem)] p-4 flex flex-col justify-between hidden md:flex">
