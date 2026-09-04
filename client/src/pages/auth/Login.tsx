@@ -454,6 +454,18 @@ export const Login: React.FC = () => {
           </button>
           <button
             type="button"
+            onClick={() => handleDirectSignIn('irfan@pfis.org', 'Admin@123', 'admin')}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shadow-xs flex items-center gap-1.5 ${
+              email === 'irfan@pfis.org'
+                ? 'bg-purple-600 text-white border-purple-600'
+                : 'bg-white text-slate-700 border-slate-200 hover:border-purple-400'
+            }`}
+          >
+            <Shield className="w-3.5 h-3.5 text-purple-400 shrink-0" />
+            <span>Irfan (Admin)</span>
+          </button>
+          <button
+            type="button"
             onClick={() => handleDirectSignIn('hospital@apollo.org', 'Hospital@123', 'hospital')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shadow-xs flex items-center gap-1.5 ${
               activePortal === 'hospital'

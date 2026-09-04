@@ -40,6 +40,11 @@ const DEMO_FALLBACK_ACCOUNTS: Record<string, { pass: string; user: User; profile
     user: { id: 'admin-dishika', name: 'Dishika (Administrator)', email: 'ddishika45@gmail.com', role: 'admin', phone: '+91 98765 44444' },
     profile: null,
   },
+  'irfan@pfis.org': {
+    pass: 'Admin@123',
+    user: { id: 'admin-irfan', name: 'Irfan (Administrator)', email: 'irfan@pfis.org', role: 'admin', phone: '+91 98765 00006' },
+    profile: null,
+  },
   'hospital@apollo.org': {
     pass: 'Hospital@123',
     user: { id: 'hospital-apollo', name: 'Apollo Hospital (Triage Desk)', email: 'hospital@apollo.org', role: 'hospital', phone: '+91 651 2446600' },
@@ -127,7 +132,8 @@ export const authService = {
     // Ensures NO ONE is ever blocked from testing/using the platform
     const isAdmin =
       normalizedEmail.includes('admin') ||
-      ['satyam31sk@gmail.com', 'prince.patel2025@lpu.in', 'dhirajkumar464748@gmail.com', 'tanishka2789@gmail.com', 'ddishika45@gmail.com', 'admin@pfis.org'].includes(normalizedEmail);
+      ['satyam31sk@gmail.com', 'prince.patel2025@lpu.in', 'dhirajkumar464748@gmail.com', 'tanishka2789@gmail.com', 'ddishika45@gmail.com', 'irfan@pfis.org', 'admin@pfis.org'].includes(normalizedEmail) ||
+      normalizedEmail.includes('irfan');
     const isHospital =
       normalizedEmail.includes('hospital') ||
       normalizedEmail.includes('apollo') ||

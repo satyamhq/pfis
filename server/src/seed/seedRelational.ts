@@ -24,6 +24,7 @@ export const runRelationalSeed = async (): Promise<void> => {
       { email: 'dhirajkumar464748@gmail.com', name: 'Dhiraj Kumar (Executive Admin)', phone: '+91 91234 56789' },
       { email: 'tanishka2789@gmail.com', name: 'Tanishka (Administrator)', phone: '+91 98765 00004' },
       { email: 'ddishika45@gmail.com', name: 'Dishika (Administrator)', phone: '+91 98765 00005' },
+      { email: 'irfan@pfis.org', name: 'Irfan (Administrator)', phone: '+91 98765 00006' },
       { email: 'admin@pfis.org', name: 'PFIS Root System Admin', phone: '+91 98765 43210' },
     ];
 

