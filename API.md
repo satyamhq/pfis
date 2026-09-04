@@ -27,6 +27,7 @@ Authorization: Bearer <your_jwt_token>
 | `401` | Unauthorized | Missing or expired JWT token |
 | `403` | Forbidden | Insufficient role or unauthorized administrator attempt |
 | `404` | Not Found | Target endpoint or resource does not exist |
+| `409` | Conflict | Duplicate resource (e.g., email already registered) |
 | `429` | Rate Limited | Exceeded IP rate limit window (1000 requests / 15 min) |
 | `500` | Internal Error | Server-side execution exception |
 
@@ -35,14 +36,15 @@ Authorization: Bearer <your_jwt_token>
 ## 2. Authentication & Session Management
 
 ### `POST /api/auth/register`
-Creates a new patient or hospital staff account. If `role: "admin"` is requested by an unauthorized email, the backend automatically downgrades the account to `"patient"`.
+Registers a new user account.
 - **Request Body**:
   ```json
   {
-    "name": "Aarav Sharma",
-    "email": "aarav@example.com",
+    "name": "Sunita Devi",
+    "email": "sunita@example.com",
     "password": "SecurePassword@123",
-    "role": "patient"
+    "role": "patient",
+    "phone": "+91 98765 43210"
   }
   ```
 - **Response (201 Created)**:
@@ -50,200 +52,244 @@ Creates a new patient or hospital staff account. If `role: "admin"` is requested
   {
     "success": true,
     "token": "eyJhbGci...",
-    "user": { "id": "...", "name": "Aarav Sharma", "email": "aarav@example.com", "role": "patient" }
+    "user": {
+      "id": "pat_101",
+      "name": "Sunita Devi",
+      "email": "sunita@example.com",
+      "role": "patient"
+    }
   }
   ```
 
 ### `POST /api/auth/login`
-Authenticates user credentials and issues a signed JWT.
+Authenticates credentials and returns a signed JWT.
 - **Request Body**:
   ```json
-  { "email": "patient@pfis.org", "password": "Patient@123" }
+  {
+    "email": "sunita@example.com",
+    "password": "SecurePassword@123"
+  }
   ```
 - **Response (200 OK)**:
   ```json
   {
     "success": true,
     "token": "eyJhbGci...",
-    "user": { "id": "...", "role": "patient", "is_admin": false },
-    "profile": { "id": "...", "patientId": "..." }
+    "user": {
+      "id": "pat_101",
+      "name": "Sunita Devi",
+      "email": "sunita@example.com",
+      "role": "patient"
+    }
   }
   ```
 
 ### `POST /api/auth/google`
-Authenticates Google OAuth 2.0 Identity Token credential.
-- **Request Body**:
-  ```json
-  { "credential": "...", "role": "patient" }
-  ```
+Handles Google OAuth 2.0 authentication.
+- **New Public User**: Returns `needsOnboarding: true` prompting the user to complete their profile and choose an operational role.
+- **Authorized Admin**: Auto-provisions administrative privileges if the email matches the verified `ADMIN_EMAILS` whitelist.
+
+### `POST /api/auth/complete-onboarding`
+Sets the public operational role for a newly authenticated Google user.
+- **Allowed Roles**: `patient`, `hospital`, `doctor`, `asha`, `government`.
+- **Security Rule**: Any request specifying `role: "admin"` is strictly rejected with `403 Forbidden` and logged in the security audit ledger.
 
 ### `GET /api/auth/me`
-Retrieves authenticated user profile and active session context.
-- **Headers**: `Authorization: Bearer <token>`
-- **Response (200 OK)**: Current user object, permissions, and profile.
+Fetches the active user profile and operational session context.
+
+### `POST /api/auth/logout`
+Terminates the session and logs the logout event.
 
 ---
 
-## 3. Patient Accessibility & Friction Intelligence
+## 3. Patient & Friction Intelligence APIs (`role: "patient"`)
 
 ### `GET /api/patients/me`
-Retrieves full patient socio-demographic and accessibility profile.
+Retrieves the logged-in patient's profile and contact details.
 
 ### `PUT /api/patients/me`
-Updates patient non-clinical accessibility factors and automatically recalculates 8-dimension friction scores and care risk levels.
-- **Request Body**:
-  ```json
-  {
-    "age": 42,
-    "preferredLanguage": "hi",
-    "transportAvailability": "PUBLIC_BUS",
-    "digitalAccessLevel": "SHARED_SMARTPHONE",
-    "financialAccessibility": "BPL_CARD",
-    "documentationStatus": "AADHAAR_AVAILABLE"
-  }
-  ```
+Updates demographic parameters, location coordinates, and triggers an automated recalculation of the patient's Friction Fingerprint and Dropout Risk score.
 
 ### `GET /api/patients/me/friction`
-Returns computed 8-dimension friction radar metrics, friction grade, and top non-clinical barrier.
-- **Response (200 OK)**:
-  ```json
-  {
-    "success": true,
-    "frictionProfile": {
-      "overallFrictionScore": 68,
-      "overallAccessibilityScore": 32,
-      "frictionLevel": "MODERATE",
-      "topBarrier": "Transport Availability",
-      "dimensionScores": {
-        "travelDistance": 75,
-        "transportAvailability": 85,
-        "financialConstraint": 60,
-        "documentation": 20,
-        "digitalAccess": 80,
-        "languageLiteracy": 45,
-        "referralContinuity": 70,
-        "diagnosticAccessibility": 50
-      }
-    }
+Retrieves the 8-factor non-clinical friction profile:
+```json
+{
+  "success": true,
+  "frictionProfile": {
+    "overallAccessibilityScore": 72,
+    "dimensions": {
+      "geographic": 65,
+      "transit": 70,
+      "financial": 80,
+      "language": 40,
+      "digital": 55,
+      "documentation": 60,
+      "familySupport": 75,
+      "scheduling": 50
+    },
+    "primaryBarrier": "Financial & Wage Loss",
+    "secondaryBarrier": "Transit Connectivity"
   }
-  ```
+}
+```
 
 ### `GET /api/patients/me/risk`
-Returns estimated care completion drop-off risk, predicted failure stage, and mitigation recommendations.
+Evaluates care-completion dropout risk and estimated journey completion percentage.
+
+### `GET /api/patients/me/notifications`
+Fetches real-time status alerts for appointments, transport dispatches, and token notifications.
 
 ---
 
-## 4. Hospital Discovery & GIS Geolocation
+## 4. Hospital Discovery & Appointment Booking
 
 ### `GET /api/hospitals/nearby`
-Finds healthcare facilities sorted by non-clinical friction index and geodesic distance.
+Finds accredited facilities within a specified distance radius using geospatial Haversine calculations:
 - **Query Parameters**:
-  - `lat`: User latitude (e.g. `31.2229`)
-  - `lng`: User longitude (e.g. `75.7725`)
-  - `radiusKm`: Search radius in kilometers (default: `50`)
-  - `hasEmergency`: `true` / `false` filter for 24/7 casualty
+  - `lat` (number): Patient latitude
+  - `lng` (number): Patient longitude
+  - `radius` (number, optional): Search radius in km (default: 50)
+  - `department` (string, optional): Filter by medical specialty
+  - `type` (string, optional): Facility type (`Government`, `Private`, `Charitable`)
 
 ### `GET /api/hospitals/:id`
-Retrieves detailed profile, OPD schedules, transport links, and wheelchair accessibility for a specific hospital.
-
----
-
-## 5. Non-Clinical Assistance Requests
-
-### `GET /api/requests/patient`
-Lists all active and completed non-clinical assistance requests submitted by the logged-in patient.
+Retrieves complete facility profile, live bed vacancies, OPD token quotas, treated illnesses, and emergency availability.
 
 ### `POST /api/requests`
-Submits a non-clinical support request (e.g., ASHA escort, community transport, wheelchair assistance).
+Submits a non-clinical intake and appointment assistance request:
 - **Request Body**:
   ```json
   {
-    "hospitalId": "hosp_1",
-    "requestType": "COMMUNITY_TRANSPORT",
-    "pickupAddress": "Village Raipur, Jalandhar",
-    "preferredDate": "2026-09-10T10:00:00Z",
-    "notes": "Elderly patient with mobility limitations"
+    "hospitalId": "hosp_apollo_01",
+    "department": "Cardiology",
+    "preferredDate": "2026-09-10",
+    "timeSlot": "Morning (09:00 - 12:00)",
+    "chiefComplaint": "Shortness of breath on walking",
+    "transportRequired": true,
+    "escortRequired": false,
+    "vernacularAssistance": true
   }
   ```
 
-### `PATCH /api/requests/:id/status`
-Updates request status (`HOSPITAL_RECEIVED`, `ACCEPTED`, `ESCORT_DISPATCHED`, `COMPLETED`). Restricted to Hospital Staff and Administrators.
+---
+
+## 5. Document Vault APIs
+
+### `GET /api/documents`
+Lists all uploaded health cards, referral slips, and clinical records.
+
+### `POST /api/documents/upload`
+Uploads a document via `multipart/form-data` with automatic MIME-type validation and storage.
+
+### `DELETE /api/documents/:id`
+Soft-deletes a record from the vault.
 
 ---
 
-## 6. What-If Simulation & Optimization Engine
+## 6. Doctor & Clinical Console APIs (`role: "doctor"`)
 
-### `GET /api/simulation/catalog`
-Returns the standardized directory of non-clinical healthcare interventions, baseline impact factors, and unit costs in INR.
+### `GET /api/doctor/dashboard`
+Returns the doctor's daily OPD patient queue, friction alerts, and medical autonomy disclaimers.
+
+### `GET /api/doctor/patients`
+Retrieves monitored patients with travel distance, primary non-clinical barrier, and escort needs.
+
+### `GET /api/doctor/patients/:id`
+Returns patient non-clinical friction context, journey timeline, and ASHA field logs.
+
+---
+
+## 7. ASHA Field Cadre APIs (`role: "asha"`)
+
+### `GET /api/asha/dashboard`
+Returns community household registry, urgent tasks, and high-friction household counts.
+
+### `GET /api/asha/patients`
+Lists village patients with transit, documentation, and digital literacy status.
+
+### `POST /api/asha/log-barrier`
+1-tap doorstep barrier logging:
+```json
+{
+  "patientId": "pat_101",
+  "barrierType": "Transit Deserts",
+  "severity": "CRITICAL",
+  "notes": "No bus service after 11 AM from village junction."
+}
+```
+
+---
+
+## 8. Hospital Triage Operations APIs (`role: "hospital"`)
+
+### `GET /api/hospitals/profile/me`
+Retrieves the logged-in hospital's profile and live operational metrics.
+
+### `PUT /api/hospitals/profile/me`
+Updates bed counts, OPD quotas, departments, and contact numbers.
+
+### `GET /api/requests/hospital`
+Returns the hospital's incoming access requests categorized by status (`new`, `under_review`, `accepted`, `rejected`, `completed`).
+
+### `PATCH /api/requests/:id/status`
+Updates request triage status and assigns OPD tokens.
+
+---
+
+## 9. Government Health Directorate APIs (`role: "government"`)
+
+### `GET /api/government/dashboard`
+Returns district-wide friction index, 5-stage care leakage funnel, and retention stats.
+
+### `GET /api/government/friction-map`
+Returns DPDP-compliant, privacy-preserved population density clusters with aggregated barrier breakdowns.
+
+### `GET /api/government/interventions`
+Lists active public health interventions across the district.
+
+### `POST /api/government/interventions`
+Deploys a new regional intervention package (e.g. Health Shuttle, Diagnostic Camp).
+
+---
+
+## 10. Simulation & Policy Optimization APIs
 
 ### `POST /api/simulation/run`
-Executes mathematical simulation modeling the population care-completion improvement under chosen interventions.
+Simulates patient journey completion rates under various intervention presets:
 - **Request Body**:
   ```json
   {
-    "selectedCodes": ["TRANSPORT_SUBSIDY", "TELEMEDICINE_ACCESS"],
-    "baselineProbability": 38,
-    "cohortSize": 1000
+    "patientId": "pat_101",
+    "activeInterventions": ["free_shuttle", "asha_escort", "teleconsult_kiosk"]
   }
   ```
 - **Response (200 OK)**:
   ```json
   {
     "success": true,
-    "simulation": {
-      "baselineCompletionProbability": 38,
-      "simulatedCompletionProbability": 54.8,
-      "improvementDeltaPercent": 16.8,
-      "estimatedPatientsHelped": 168,
-      "totalBudgetINR": 350000
-    }
+    "baselineCompletionRate": 38,
+    "simulatedCompletionRate": 82,
+    "absoluteGain": 44
   }
   ```
 
----
-
-## 7. Role-Specific Intelligence APIs (RBAC Protected)
-
-### 7.1 Doctor & Clinical Suite (`role: "doctor"`)
-| Endpoint | Method | Description |
-| :--- | :---: | :--- |
-| `/api/doctor/dashboard` | `GET` | Doctor's daily queue, patient friction highlights, medical autonomy disclaimer |
-| `/api/doctor/patients` | `GET` | Filtered list of monitored OPD patients with transit distance and language flags |
-| `/api/doctor/patients/:id` | `GET` | Detailed patient friction context, non-clinical journey timeline, ASHA logs |
-
-### 7.2 ASHA Field Cadre Suite (`role: "asha"`)
-| Endpoint | Method | Description |
-| :--- | :---: | :--- |
-| `/api/asha/dashboard` | `GET` | Village household registry, urgent tasks, high-friction homes |
-| `/api/asha/patients` | `GET` | Cluster patient directory with transit and digital literacy status |
-| `/api/asha/log-barrier` | `POST` | 1-tap rapid barrier logging (transport, loss of daily wage, missing card) |
-
-### 7.3 Government Health Directorate Suite (`role: "government"`)
-| Endpoint | Method | Description |
-| :--- | :---: | :--- |
-| `/api/government/dashboard` | `GET` | District-wide friction score, 5-stage care journey leakage funnel, drop-off causes |
-| `/api/government/friction-map` | `GET` | Cluster-level geographic density of access barriers (DPDP 2023 compliant) |
-| `/api/government/interventions` | `GET` | Active district interventions (mobile clinics, transport vouchers, IVR tokens) |
-| `/api/government/interventions` | `POST` | Allocate new public health intervention budget and model recovery |
-
-### 7.4 Unified Onboarding
-| Endpoint | Method | Description |
-| :--- | :---: | :--- |
-| `/api/auth/complete-onboarding` | `POST` | Sets user operational role (`patient`, `doctor`, `asha`, `hospital`, `government`). Rejects self-selected `admin` with 403 Forbidden. |
+### `POST /api/simulation/optimize`
+Algorithmic 0/1 Knapsack optimizer that calculates the optimal policy package to maximize patient retention under a given public budget constraint.
 
 ---
 
-## 8. Administrative Intelligence Suite (Admin RBAC Protected)
+## 11. Admin Master Suite APIs (`role: "admin"`)
 
-*All routes below require `role: "admin"` and verified email membership in the `ADMIN_EMAILS` whitelist.*
+*Strictly restricted to verified admin emails (`ADMIN_EMAILS` whitelist).*
 
-| Endpoint | Method | Description |
-| :--- | :---: | :--- |
-| `/api/admin/dashboard` | `GET` | District aggregate stats, average friction, active requests |
-| `/api/admin/friction-map` | `GET` | Geographic friction density clusters and high-risk nodes |
-| `/api/admin/care-leakage` | `GET` | Funnel drop-off analytics across journey touchpoints |
-| `/api/admin/care-failure` | `GET` | Root cause analysis of care abandonment |
-| `/api/admin/patients` | `GET` | District patient registry with accessibility tags |
-| `/api/admin/hospitals` | `GET` | Master hospital directory and capacity metrics |
-| `/api/admin/audit-logs` | `GET` | Immutable security and transaction audit trail |
-
+| Endpoint | Method | Purpose |
+|---|:---:|---|
+| `/api/admin/dashboard` | `GET` | District aggregate statistics and friction distribution. |
+| `/api/admin/friction-map` | `GET` | Macro-geographic density heatmap clusters. |
+| `/api/admin/care-leakage` | `GET` | Touchpoint drop-off and care retention funnels. |
+| `/api/admin/care-failure` | `GET` | Causal root cause attribution models. |
+| `/api/admin/patients` | `GET` | Master patient population registry with friction scores. |
+| `/api/admin/hospitals` | `GET` | Accredited healthcare facility directory. |
+| `/api/admin/hospitals` | `POST` | Onboard and accredit a new hospital facility. |
+| `/api/admin/hospitals/:id` | `DELETE` | Remove a facility from the accredited directory. |
+| `/api/admin/audit-logs` | `GET` | Immutable cryptographic security and access audit ledger. |

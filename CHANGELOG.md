@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [1.2.0] - 2026-09-04 - Complete Project & UI Transformation
+
+### Added
+- **Unified 6-Role Portal Architecture**:
+  - Full dedicated portals and workflows for all 6 stakeholders: Patient, Hospital, Doctor, ASHA Worker, Government Official, and Admin.
+- **Google OAuth Onboarding & Public Role Guard**:
+  - Seamless Google OAuth flow with interactive onboarding modal: "How would you like to use PFIS?"
+  - Strict security boundary preventing public self-selection of `admin` role (403 Forbidden with audit logging).
+- **Comprehensive 36-Test Automation Suite**:
+  - Expanded `server/tests/run_all_tests.cjs` verifying 36/36 endpoints across all 6 roles, Google onboarding, and privilege escalation prevention in 2.99s.
+
+### Changed
+- **Crisp 1–2 Word UI Design Standard**:
+  - Condensed all main titles, primary navigation items, stat card headers, tab badges, and key action buttons across all portals to 1–2 words maximum (*Dashboard, Nearby Hospitals, Digital Twin, Document Vault, Doctor Console, Field Console, Triage Console, District Dashboard, Budget Optimizer, etc.*).
+- **Master Documentation Suite Overhaul**:
+  - Fully synchronized all 15 project markdown documents with current architecture, schemas, and runbooks.
+
+---
+
 ## [1.1.0] - 2026-09-04 - Production Hardening & Autonomous QA
 
 ### Added

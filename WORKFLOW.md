@@ -1,10 +1,10 @@
 # PFIS Operational Workflows & User Journeys
 
-This document outlines the end-to-end operational workflows, state machines, and user journeys executed across the **Patient Friction Intelligence System (PFIS)**.
+This document outlines the end-to-end operational workflows, state machines, and user journeys executed across the **Patient Friction Intelligence System (PFIS)** for all 6 user roles.
 
 ---
 
-## 1. End-to-End Patient Journey Workflow
+## 1. Patient Healthcare Journey Workflow
 
 ```mermaid
 sequenceDiagram
@@ -16,31 +16,25 @@ sequenceDiagram
     participant Staff as Hospital Ground Staff (Sahayak)
 
     Patient->>Portal: Registers / Logs In (or 1-Click Demo Access)
-    Patient->>Portal: Inputs Non-Clinical Accessibility Parameters (Distance, Bus transit, Wage loss, etc.)
+    Patient->>Portal: Inputs Non-Clinical Accessibility Parameters (Distance, Transit, Wage Loss)
     Portal->>Engine: POST /api/patients/me (Save Profile)
     Engine-->>Portal: Computes 8-Dimension Friction Score & Dropout Risk
-    Portal-->>Patient: Displays Explainable Friction Fingerprint & Bottlenecks
+    Portal-->>Patient: Displays Friction Profile & Primary Barrier
     
     Patient->>Portal: Searches Nearby Hospitals (GPS Proximity)
     Portal-->>Patient: Displays Verified Hospitals with Accessibility Badges
     
-    Patient->>Portal: Submits Intake Request (Chooses OPD Window, Wheelchair Escort, Transport Shuttle)
+    Patient->>Portal: Submits Intake Request (Chooses OPD Window, Wheelchair Escort, Shuttle)
     Patient->>Portal: Selects Consented Non-Clinical Factors to Disclose
     Portal->>Hospital: POST /api/requests (Pending Triage)
     
     Hospital->>Hospital: Reviews Consented Non-Clinical Accessibility Matrix
     Hospital->>Staff: Assigns Ground Escort / Allocates Morning Token
-    Hospital->>Portal: PATCH /api/requests/:id/status (Approved & Scheduled)
+    Hospital->>Portal: PATCH /api/requests/:id/status (Accepted & Scheduled)
     
     Portal-->>Patient: Real-Time Notification (Token # & Escort Assigned)
     Patient->>Staff: Arrives at Hospital -> Meets Escort -> Completes Consultation Without Dropout
 ```
-
-### Key Stages Explained:
-1. **Intake & Demographics**: The patient or an ASHA health worker records the patient's distance from the facility, transit frequency, phone type, literacy level, caregiver availability, and daily wage dependency.
-2. **Explainable Scoring**: The system calculates the friction score (0–100) and displays plain-language mitigation actions.
-3. **Consent Handshake**: The patient decides exactly which operational factors (e.g., mobility disability, transit schedule) are transmitted to the receiving hospital.
-4. **Closing the Loop**: The hospital nodal officer reviews the request, reserves an OPD token matching the patient's transit arrival, and arranges a ramp concierge.
 
 ---
 
@@ -48,89 +42,117 @@ sequenceDiagram
 
 ```mermaid
 stateDiagram-v2
-    [*] --> Pending: Patient Submits Request
-    Pending --> Processing: Nodal Officer Opens Request
-    Processing --> Approved: Facility Can Accommodate Access Needs
-    Processing --> Declined: Capacity Exhausted / Redirected
-    Approved --> Scheduled: Token Number & Escort Assigned
-    Scheduled --> Completed: Patient Arrives & Attends OPD
-    Declined --> [*]
+    [*] --> New: Patient Submits Intake Request
+    New --> UnderReview: Triage Coordinator Inspects Non-Clinical Barriers
+    UnderReview --> Accepted: Facility Allocates OPD Token & Escort
+    UnderReview --> Rejected: Quota Exhausted / Redirected
+    Accepted --> Completed: Patient Arrives & Attends Consultation
+    Rejected --> [*]
     Completed --> [*]
 ```
 
 ### Operational Steps for Hospital Staff:
-1. **Request Intake**: Staff navigate to `/hospital/requests` to review the prioritized queue.
-2. **Accessibility Inspection**: Staff review the patient's consented barriers (e.g., *"Patient arriving by 09:30 AM bus; needs wheelchair ramp assistance at Gate 1"*).
-3. **Action Allocation**: Staff assign a patient concierge or reserve a subsidized transport seat.
-4. **Token Decrement**: The department's daily token counter automatically decrements to prevent overcrowding.
-5. **Patient Notification**: An automatic notification is dispatched to the patient's dashboard with arrival instructions.
+1. **Intake Queue** (`/hospital/requests`): Coordinator reviews incoming access requests.
+2. **Barrier Inspection**: Reviews patient travel constraints (e.g. *"Arrives on 09:15 bus from 60 km; requires ground-floor wheelchair ramp"*).
+3. **Capacity Allocation**: Assigns morning token and alerts ground ramp concierge.
+4. **Quota Update**: Decrements available department token quota in real time.
 
 ---
 
-## 3. Administrative Policy & What-If Simulation Workflow
-
-```mermaid
-flowchart TD
-    StartAdmin([Admin Logs In with Authorized Email]) --> LoadDash[Load Statewide Health Intelligence Overview]
-    LoadDash --> InspectMap[Examine Population Friction Heatmap & Clusters]
-    InspectMap --> IdentifyDrop[Identify Leakage Hotspot: e.g. 52% Drop in Diagnostics]
-    IdentifyDrop --> OpenSim[Launch What-If Simulation Engine]
-    OpenSim --> AdjustSliders[Configure Proposed Interventions: e.g., 70% Transport Subsidy + 50% ASHA Navigators]
-    AdjustSliders --> RunSim[Execute Diminishing-Returns Simulation Algorithm]
-    RunSim --> ReviewResults[Review Projected Care Completion Gain & Lives Helped]
-    ReviewResults --> RunOpt[Launch Budget Optimizer for Fixed Cap e.g. ₹10,00,000]
-    RunOpt --> FinalPolicy[Export Optimal Resource Allocation Plan for District Health Society]
-```
-
-### Operational Steps for Administrators:
-1. **Monitor Drop-out Leakage**: Review the 5-stage patient attrition funnel (`/admin/care-leakage`) to identify where patients are lost.
-2. **Attribute Failure Root Causes**: Run Why Care Failed attribution (`/admin/care-failure`) to separate transit failure from financial or documentation barriers.
-3. **Simulate Interventions**: Use `/admin/simulator` to test policy packages and assess whether community transport vouchers yield higher completion rates than teleconsultation kiosks.
-4. **Optimize Expenditure**: Input available district funding into `/admin/interventions` to receive an optimal knapsack allocation.
-
----
-
-## 4. Authentication, RBAC & Security Session Lifecycle
+## 3. Doctor Clinical Queue & Non-Clinical Guidance Workflow
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor User as User / Admin
-    participant Client as Web Browser
-    participant API as API Server
+    actor Doctor as OPD Physician
+    participant Console as Doctor Console
     participant DB as Relational Database
-    participant Audit as Audit Logging Service
 
-    User->>Client: Enters Credentials / Google OAuth
-    Client->>API: POST /api/auth/login
-    API->>DB: Query User Record by Email
+    Doctor->>Console: Logs In (`doctor@pfis.org`)
+    Console->>DB: GET /api/doctor/dashboard
+    DB-->>Console: Returns Daily Monitored Queue with Non-Clinical Flags
+    Doctor->>Console: Inspects Patient (Distance, Dialect, Escort Status)
+    Console-->>Doctor: Shows Non-Clinical Context (Does NOT alter clinical autonomy)
+    Doctor->>Doctor: Conducts Consultation with Sensitivity to Travel Constraints
+```
+
+---
+
+## 4. ASHA Field Cadre Doorstep Logging Workflow
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor ASHA as Frontline ASHA Worker
+    participant Field as ASHA Field Console
+    participant API as PFIS API Engine
+
+    ASHA->>Field: Visits Rural Household
+    ASHA->>Field: Identifies Systemic Access Barrier (Lost Wage, Flooded Road, Missing Ayushman Card)
+    ASHA->>Field: Taps "Log Barrier" (/asha/log-barrier)
+    Field->>API: POST /api/asha/log-barrier
+    API-->>Field: Confirms Telemetry Ingested
+    API-->>API: Recalculates Cluster Friction & Alerts PHC Coordinator
+```
+
+---
+
+## 5. Government Policy & District Intervention Workflow
+
+```mermaid
+flowchart TD
+    StartGov([Government Official Logs In]) --> OpenDash[Open District Dashboard]
+    OpenDash --> InspectLeakage[Analyze 5-Stage Care Leakage Funnel]
+    InspectLeakage --> SpotDrop[Identify 42% Drop at Diagnostic Stage]
+    SpotDrop --> Heatmap[Inspect Friction Map for Transit Deserts]
+    Heatmap --> DeployIntervention[Deploy Mobile Diagnostic Camp Intervention]
+    DeployIntervention --> TrackImpact[Monitor Real-Time Retention Gain]
+```
+
+---
+
+## 6. Admin Master Simulation & 0/1 Knapsack Optimization
+
+```mermaid
+flowchart TD
+    StartAdmin([Admin Logs In with Verified Email]) --> OpenConsole[Open Admin Console]
+    OpenConsole --> LaunchSim[Launch What-If Simulator]
+    LaunchSim --> ConfigPackage[Configure Policy Interventions]
+    ConfigPackage --> RunKnapsack[Run 0/1 Knapsack Budget Optimizer]
+    RunKnapsack --> OptimalResult[View Optimal Allocation for District Health Budget]
+    OptimalResult --> ExportPolicy[Export Verified Implementation Plan]
+```
+
+---
+
+## 7. Google OAuth & Role Onboarding Lifecycle
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as New or Returning User
+    participant Browser as Web Browser
+    participant API as PFIS Backend
+    participant Whitelist as Admin Whitelist
+
+    User->>Browser: Clicks "Sign in with Google"
+    Browser->>API: POST /api/auth/google (Google ID Token)
     
-    alt User is Authorized Admin (Email in Whitelist)
-        API->>DB: Enforce role = 'admin' & is_admin = true
-    else User is Regular Patient / Hospital
-        API->>DB: Enforce role = 'patient' or 'hospital' (Demote if falsely claiming admin)
+    alt Existing User
+        API-->>Browser: Returns Signed JWT + Existing Profile
+    else New User
+        alt Email matches Admin Whitelist
+            API-->>Browser: Auto-provisions Admin Role + Returns JWT
+        else Public User
+            API-->>Browser: Returns needsOnboarding: true
+            Browser-->>User: Displays Onboarding Modal: "How would you like to use PFIS?"
+            User->>Browser: Selects Role (Patient, Hospital, Doctor, ASHA, or Government)
+            Browser->>API: POST /api/auth/complete-onboarding
+            alt User attempted to submit role === 'admin'
+                API-->>Browser: 403 Forbidden (Strict Security Boundary)
+            else Valid Public Role Selected
+                API-->>Browser: Returns Signed JWT + Initializes Role Profile
+            end
+        end
     end
-
-    API->>API: Generate Signed JWT with Role & User ID (7-day expiry)
-    API-->>Client: Return Token & User Profile
-    Client->>Client: Store pfis_auth_token & pfis_auth_profile in localStorage
-
-    Note over Client,API: User calls Protected Admin Route (/api/admin/dashboard)
-    Client->>API: GET /api/admin/dashboard (Bearer JWT)
-    API->>API: [authenticate] Middleware verifies token signature & expiration
-    API->>API: [requireAdmin] Middleware verifies role === 'admin' AND email in Whitelist
-    
-    alt Verification Passes
-        API->>DB: Fetch Aggregated Population Analytics
-        API-->>Client: 200 OK with Admin Dashboard Data
-    else Verification Fails (Unauthorized Attempt)
-        API->>Audit: Log SECURITY_UNAUTHORIZED_ADMIN_ATTEMPT
-        API-->>Client: 403 Forbidden
-    end
-
-    Note over Client,API: User Logs Out
-    User->>Client: Clicks Logout
-    Client->>API: POST /api/auth/logout
-    Client->>Client: Purge pfis_auth_token, pfis_auth_user, pfis_auth_profile from localStorage
-    Client-->>User: Redirect to /login
 ```

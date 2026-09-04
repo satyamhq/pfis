@@ -35,9 +35,12 @@ PFIS is an **Explainable Artificial Intelligence (XAI) and Operational Intellige
 ### 1.4 Target Users
 | Target User Group | Key Objectives in PFIS | Primary Interfaces |
 | :--- | :--- | :--- |
-| **Patients & Caregivers** | View personalized friction barriers, discover accessible nearby hospitals, submit non-clinical transit/escort requests, store documents, and conduct virtual teleconsultations. | Patient Portal, Mobile Responsive Views, Vernacular Voice Modals |
-| **Hospital Triage Coordinators** | Monitor incoming patient access requests, triage patient appointments based on travel constraints, assign tokens, and resolve documentation bottlenecks. | Hospital Desk Dashboard, Request Manager, Department Token Allocator |
-| **Healthcare Administrators & Policymakers** | Analyze population-wide care completion bottlenecks, model public health subsidy scenarios, and allocate healthcare budgets with algorithmic precision. | Admin Intelligence Suite, What-If Simulator, Intervention Optimizer, Friction Heatmap |
+| **Patients & Caregivers** | View personalized friction barriers, discover accessible nearby hospitals, submit non-clinical transit/escort requests, store documents, and conduct virtual teleconsultations. | Dashboard, Nearby Hospitals, Digital Twin, Document Vault, Teleconsult |
+| **Hospital Triage Staff** | Monitor incoming patient access requests, triage appointments based on travel constraints, assign tokens, and resolve documentation bottlenecks. | Triage Console, Intake Queue, Departments, Hospital Profile |
+| **Doctors & Clinicians** | Review monitored patient queue, non-clinical friction flags, travel distances, and language needs while preserving complete clinical autonomy. | Doctor Console, Patient Queue |
+| **ASHA Field Workers** | Community household registry, 1-tap doorstep barrier logging, transit coordination, and village follow-ups. | Field Console, Log Barrier, Tasks |
+| **Government Health Officials**| District-wide population friction heatmaps, 5-stage care leakage funnels, and public health intervention planning. | District Dashboard, Friction Map, Interventions, Care Leakage |
+| **System Administrators** | Cryptographic RBAC governance, population simulations, 0/1 knapsack budget optimization, hospital accreditation, and immutable audit logs. | Admin Console, Simulator, Budget Optimizer, Patient Registry, Audit Ledger |
 
 ### 1.5 Key Goals
 - **Eliminate Preventable Non-Clinical Care Drop-offs**: Target zero care abandonment resulting from logistical or linguistic confusion.
@@ -69,7 +72,8 @@ graph TD
         Controllers --> Engines
     end
 
-    subgraph Storage ["Hybrid Relational Storage Architecture"]
+    subgraph Storage ["Multi-Engine Storage Architecture"]
+        MongoDB[(MongoDB Atlas / Driver)]
         PG[(PostgreSQL Pool)]
         MySQL[(MySQL Pool)]
         EmbeddedSQL[(Embedded Relational SQL Engine)]

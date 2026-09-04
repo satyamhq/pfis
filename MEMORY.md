@@ -14,10 +14,10 @@ This document serves as the persistent memory, contextual ledger, and institutio
 
 ## 2. Key Architectural Pivots & Evolution
 
-### Pivot 1: Complete Elimination of MongoDB / Mongoose
-- **Original State**: The system initially utilized MongoDB with Mongoose ODM.
-- **Problem**: Requirement for zero-dependency portability, enterprise relational compliance, and robust relational queries across appointments, requests, and facilities without managing an external NoSQL cluster.
-- **Resolution**: Completely migrated to a custom **Database Abstraction Layer (`IDatabaseClient`)** supporting PostgreSQL, MySQL, and an **Embedded Relational SQL Engine**. All `mongoose` imports were eradicated; models use a clean SQL abstraction (`server/src/database/sqlModel.ts`).
+### Pivot 1: Multi-Engine Database Abstraction Layer (`IDatabaseClient`)
+- **Original State**: The system initially had monolithic Mongoose ODM lock-in.
+- **Problem**: Need for flexible enterprise deployments across MongoDB Atlas, PostgreSQL, MySQL, and zero-dependency local environments without external database installations.
+- **Resolution**: Implemented a universal **Database Abstraction Layer (`IDatabaseClient`)** supporting MongoDB (native MongoClient), PostgreSQL (`pg`), MySQL (`mysql2`), and an **Embedded Relational SQL Engine** with JSON auto-persistence. Models communicate through a clean database interface (`server/src/database/sqlModel.ts`).
 
 ### Pivot 2: Zero-Dependency Embedded Relational SQL Engine
 - **Decision**: To ensure any developer, judge, or hospital technician can launch PFIS immediately with `npm run dev` without installing PostgreSQL, Docker, or MySQL, an embedded in-memory transactional SQL engine was implemented in `server/src/database/db.ts`.
