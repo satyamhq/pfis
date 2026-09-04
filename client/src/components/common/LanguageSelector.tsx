@@ -44,7 +44,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
         onClick={() => setIsOpen(!isOpen)}
         className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all border shadow-xs ${
           compact
-            ? 'bg-slate-800/90 text-slate-200 border-slate-700 hover:bg-slate-750'
+            ? 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50 hover:border-teal-400'
             : 'bg-slate-50/90 text-slate-700 border-slate-200/80 hover:bg-white hover:border-teal-400'
         }`}
         title="Choose Language"

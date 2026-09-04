@@ -261,10 +261,10 @@ export const DigitalTwinSimulator: React.FC = () => {
         </div>
 
         {/* Safety Disclaimer Banner */}
-        <div className="p-3 bg-slate-800/90 rounded-xl text-xs text-slate-300 flex items-center gap-2.5">
-          <ShieldAlert className="w-4 h-4 text-teal-400 flex-shrink-0" />
+        <div className="p-3 bg-teal-50/80 border border-teal-200/80 rounded-xl text-xs text-slate-700 flex items-center gap-2.5">
+          <ShieldAlert className="w-4 h-4 text-teal-600 flex-shrink-0" />
           <span>
-            <strong className="text-teal-300">Non-Clinical Digital Twin:</strong> Models socio-geographic,
+            <strong className="text-teal-800">Non-Clinical Digital Twin:</strong> Models socio-geographic,
             transit, and operational bottlenecks. Does NOT model disease pathophysiology or medical outcomes.
           </span>
         </div>

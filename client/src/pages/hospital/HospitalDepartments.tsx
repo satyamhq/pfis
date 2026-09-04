@@ -361,7 +361,7 @@ export const HospitalDepartments: React.FC = () => {
 
       {/* MODAL 1: ADD OR EDIT DEPARTMENT & DOCTOR */}
       {isAddModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-xs p-4 overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/20 backdrop-blur-xs p-4 overflow-y-auto">
           <div className="bg-white rounded-3xl border border-slate-200 w-full max-w-xl max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 space-y-5 animate-fadeIn text-xs">
             <div className="flex items-start justify-between border-b border-slate-100 pb-3">
               <div>
@@ -504,7 +504,7 @@ export const HospitalDepartments: React.FC = () => {
 
       {/* MODAL 2: CONFIRM DELETE DEPARTMENT */}
       {deptToDelete && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-xs p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/20 backdrop-blur-xs p-4">
           <div className="bg-white rounded-3xl border border-rose-200 max-w-sm w-full p-6 shadow-2xl space-y-4 animate-fadeIn text-xs">
             <div className="flex items-center gap-3 text-rose-600">
               <div className="p-3 bg-rose-100 rounded-2xl">

@@ -45,9 +45,9 @@ export const AccessibilityToolbar: React.FC = () => {
         aria-expanded={isOpen}
         aria-controls="accessibility-panel"
         aria-label="Open Accessibility Toolbar"
-        className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-navy-900 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all border border-white/20 text-xs tracking-wide"
+        className="flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-white text-slate-800 font-bold shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all border border-slate-200 text-xs tracking-wide"
       >
-        <Eye className="w-4 h-4 text-teal-400" />
+        <Eye className="w-4 h-4 text-teal-600" />
         <span className="hidden sm:inline">Accessibility Controls</span>
         {isOpen ? <ChevronDown className="w-3.5 h-3.5" /> : <ChevronUp className="w-3.5 h-3.5" />}
       </button>

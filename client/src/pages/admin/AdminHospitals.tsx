@@ -468,7 +468,7 @@ export const AdminHospitals: React.FC = () => {
 
       {/* MODAL 1: VIEW FULL DETAILS & EXPORT SPLASH (adin-e-lpash-se-sara-hospital-details-nial-aye) */}
       {selectedHospital && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-xs p-4 overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/20 backdrop-blur-xs p-4 overflow-y-auto">
           <div className="bg-white rounded-3xl border border-slate-200 w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 space-y-6 animate-fadeIn">
             {/* Modal Header */}
             <div className="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
@@ -650,7 +650,7 @@ export const AdminHospitals: React.FC = () => {
 
       {/* MODAL 2: CONFIRM DELETE HOSPITAL (ye-sara-hospital-reove-ar-do) */}
       {hospitalToDelete && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-xs p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/20 backdrop-blur-xs p-4">
           <div className="bg-white rounded-3xl border border-rose-200 max-w-md w-full p-6 shadow-2xl space-y-4 animate-fadeIn text-xs">
             <div className="flex items-center gap-3 text-rose-600">
               <div className="p-3 bg-rose-100 rounded-2xl">
@@ -705,7 +705,7 @@ export const AdminHospitals: React.FC = () => {
 
       {/* MODAL 3: REGISTER NEW HOSPITAL */}
       {isAddModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-xs p-4 overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/20 backdrop-blur-xs p-4 overflow-y-auto">
           <div className="bg-white rounded-3xl border border-slate-200 w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 space-y-6 animate-fadeIn text-xs">
             <div className="flex items-start justify-between border-b border-slate-100 pb-4">
               <div>

@@ -164,9 +164,9 @@ export const TeleconsultationRoom: React.FC = () => {
             )}
 
             {/* Self-View Picture-in-Picture */}
-            <div className="absolute top-4 right-4 w-28 h-20 bg-slate-800 rounded-xl border border-slate-700 overflow-hidden shadow-md flex items-center justify-center text-white text-[10px]">
-              <span className="flex items-center gap-1.5 px-2 py-1">
-                <User className="w-3.5 h-3.5 text-teal-400 shrink-0" />
+            <div className="absolute top-4 right-4 w-28 h-20 bg-white/95 backdrop-blur-xs rounded-xl border border-slate-200 overflow-hidden shadow-md flex items-center justify-center text-slate-700 text-[10px]">
+              <span className="flex items-center gap-1.5 px-2 py-1 font-semibold">
+                <User className="w-3.5 h-3.5 text-teal-600 shrink-0" />
                 <span>{user?.name || 'Sunita Devi'}</span>
               </span>
             </div>
