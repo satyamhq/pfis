@@ -79,6 +79,7 @@ flowchart TB
 
     subgraph DataAbstractionTier ["Clean Database Abstraction Layer (IDatabaseClient)"]
         SQLModel["Custom SQL Model / Entity Layer"]
+        MongoDriver["MongoDB Driver (Native MongoClient)"]
         PGDriver["PostgreSQL Driver (pg pool)"]
         MySQLDriver["MySQL Driver (mysql2 pool)"]
         EmbeddedDriver["Zero-Config Embedded Relational SQL Driver"]

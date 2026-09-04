@@ -6,11 +6,12 @@ This document provides a comprehensive technical reference for the relational da
 
 ## 1. Multi-Engine Architecture Overview
 
-PFIS implements a pluggable database architecture via the `IDatabaseClient` interface defined in `server/src/database/db.ts`. The platform dynamically selects or falls back between three relational engines:
+PFIS implements a pluggable database architecture via the `IDatabaseClient` interface defined in `server/src/database/db.ts`. The platform dynamically selects or falls back across four enterprise engines:
 
-1. **PostgreSQL** (`pg.Pool`): Recommended for enterprise high-availability production clusters.
-2. **MySQL** (`mysql2/promise`): Supported for legacy hospital IT environments.
-3. **Embedded Relational SQL Engine** (`EmbeddedSQLDriver`): An in-memory, zero-dependency relational SQL engine with ACID-like transactional persistence to `server/data/pfis_relational.json`. Enables instant local execution without installing database servers.
+1. **MongoDB Atlas / Document Database** (`mongodb.MongoClient`): Supported via native driver connection when `MONGODB_URI` is supplied.
+2. **PostgreSQL** (`pg.Pool`): Recommended for enterprise high-availability production clusters (`DATABASE_URL` or `POSTGRES_*`).
+3. **MySQL** (`mysql2/promise`): Supported for legacy hospital IT environments (`DATABASE_TYPE=mysql`).
+4. **Embedded Relational SQL Engine** (`EmbeddedSQLDriver`): An in-memory, zero-dependency relational SQL engine with ACID-like transactional persistence to `server/data/pfis_relational.json`. Enables instant local execution and automated unit testing without requiring external database servers.
 
 ---
 

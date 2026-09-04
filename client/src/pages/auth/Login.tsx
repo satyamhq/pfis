@@ -115,7 +115,7 @@ export const Login: React.FC = () => {
           callback: async (response: any) => {
             if (response.credential) {
               setIsGoogleLoading(true);
-              setRedirectingMessage('Verifying Google credentials with MongoDB...');
+              setRedirectingMessage('Verifying Google credentials with directory service...');
               try {
                 const res = await loginWithGoogle(response.credential, activePortal);
                 if (res.needsOnboarding) {
@@ -258,7 +258,7 @@ export const Login: React.FC = () => {
     setIsLoading(true);
     setError(null);
     setSuccessMessage(null);
-    setRedirectingMessage(`Authenticating ${roleEmail} in MongoDB...`);
+    setRedirectingMessage(`Authenticating ${roleEmail} with directory service...`);
 
     try {
       const res = await login(roleEmail, rolePass);
@@ -483,7 +483,7 @@ export const Login: React.FC = () => {
             <KeyRound className="w-4 h-4 text-brand-600" />
             <span>1-Click Verified Database Credentials (Click to Sign In):</span>
           </span>
-          <span className="text-[10px] text-slate-500 font-normal">Real MongoDB Accounts</span>
+          <span className="text-[10px] text-slate-500 font-normal">Active Directory Accounts</span>
         </div>
         <div className="flex flex-wrap gap-1.5 sm:gap-2">
           <button

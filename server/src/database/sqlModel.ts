@@ -71,20 +71,31 @@ export class SQLQuery<T = any> {
       rows = rows.slice(0, this.limitNum);
     }
 
-    // Apply populates (foreign keys)
+    // Apply populates (foreign keys) - Batched Single-Query Resolution (O(1) roundtrips)
     for (const pop of this.populateList) {
       const targetTable = resolveForeignTable(pop.path);
       if (targetTable) {
+        const foreignKeyVals = new Set<string>();
         for (const row of rows) {
-          const foreignKeyVal = row[pop.path];
-          if (foreignKeyVal) {
-            // Find target record in foreign table
-            const fRes = await db.query(`SELECT * FROM ${targetTable}`);
-            const fMatch = (fRes.rows || []).find(
-              (fr) => fr.id === foreignKeyVal || fr._id === foreignKeyVal
-            );
-            if (fMatch) {
-              row[pop.path] = wrapModelInstance(targetTable, fMatch);
+          const val = row[pop.path];
+          if (val && typeof val === 'string') foreignKeyVals.add(val);
+          else if (val && typeof val === 'object' && (val.id || val._id)) foreignKeyVals.add(val.id || val._id);
+        }
+
+        if (foreignKeyVals.size > 0) {
+          const fRes = await db.query(`SELECT * FROM ${targetTable}`);
+          const fMap = new Map<string, any>();
+          for (const fr of fRes.rows || []) {
+            const wrapped = wrapModelInstance(targetTable, fr);
+            if (fr.id) fMap.set(String(fr.id), wrapped);
+            if (fr._id) fMap.set(String(fr._id), wrapped);
+          }
+
+          for (const row of rows) {
+            const foreignKeyVal = row[pop.path];
+            const lookupKey = typeof foreignKeyVal === 'object' ? (foreignKeyVal?.id || foreignKeyVal?._id) : foreignKeyVal;
+            if (lookupKey && fMap.has(String(lookupKey))) {
+              row[pop.path] = fMap.get(String(lookupKey));
             }
           }
         }
@@ -357,6 +368,30 @@ function wrapModelInstance(tableName: string, raw: any): any {
   return instance;
 }
 
+function getNestedValue(obj: any, path: string): any {
+  if (!obj || typeof obj !== 'object') return undefined;
+  if (!path.includes('.')) {
+    let val = obj[path];
+    if (val === undefined) {
+      const lower = path.toLowerCase();
+      const snake = path.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
+      if (obj[lower] !== undefined) val = obj[lower];
+      else if (obj[snake] !== undefined) val = obj[snake];
+      else if (path === '_id') val = obj.id;
+      else if (path === 'id') val = obj._id;
+    }
+    return val;
+  }
+
+  const parts = path.split('.');
+  let curr = obj;
+  for (const part of parts) {
+    if (curr === null || curr === undefined) return undefined;
+    curr = curr[part] !== undefined ? curr[part] : curr[part.toLowerCase()];
+  }
+  return curr;
+}
+
 function matchFilter(row: any, filter: any): boolean {
   if (!filter || Object.keys(filter).length === 0) return true;
 
@@ -373,16 +408,8 @@ function matchFilter(row: any, filter: any): boolean {
       continue;
     }
 
-    // Resolving rowVal across camelCase, lowercase, and snake_case
-    let rowVal = row[key];
-    if (rowVal === undefined) {
-      const lower = key.toLowerCase();
-      const snake = key.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
-      if (row[lower] !== undefined) rowVal = row[lower];
-      else if (row[snake] !== undefined) rowVal = row[snake];
-      else if (key === '_id') rowVal = row.id;
-      else if (key === 'id') rowVal = row._id;
-    }
+    // Resolving rowVal across dot-notation, camelCase, lowercase, and snake_case
+    let rowVal = getNestedValue(row, key);
 
     // Boolean equality matching (supporting 1, 0, '1', '0', 'true', 'false', true, false)
     if (typeof val === 'boolean') {
@@ -423,8 +450,30 @@ function matchFilter(row: any, filter: any): boolean {
       continue;
     }
 
-    // Direct equality
-    if (String(rowVal).toLowerCase() !== String(val).toLowerCase()) {
+    // Null/undefined checks
+    if (val === null || val === undefined) {
+      if (rowVal !== null && rowVal !== undefined) return false;
+      continue;
+    }
+    if (rowVal === null || rowVal === undefined) return false;
+
+    // Array contains check if rowVal is array (e.g. treatedConditions contains val)
+    if (Array.isArray(rowVal)) {
+      const targetStr = String(val).toLowerCase();
+      const contains = rowVal.some((item) => String(item).toLowerCase() === targetStr);
+      if (!contains) return false;
+      continue;
+    }
+
+    // Direct equality (case-insensitive for strings/numbers)
+    if (typeof val === 'string' || typeof val === 'number') {
+      if (String(rowVal).toLowerCase() !== String(val).toLowerCase()) {
+        return false;
+      }
+      continue;
+    }
+
+    if (rowVal !== val) {
       return false;
     }
   }

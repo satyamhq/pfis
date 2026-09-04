@@ -606,7 +606,7 @@ export class AdminController {
 
       res.status(201).json({
         success: true,
-        message: 'Hospital created successfully in MongoDB Atlas.',
+        message: 'Hospital created successfully in system directory.',
         hospital,
       });
     } catch (error: any) {
@@ -615,7 +615,7 @@ export class AdminController {
   }
 
   /**
-   * Update an existing hospital facility in MongoDB Atlas
+   * Update an existing hospital facility in system directory
    */
   public static async updateHospital(req: AuthenticatedRequest, res: Response): Promise<void> {
     try {
@@ -645,7 +645,7 @@ export class AdminController {
 
       res.status(200).json({
         success: true,
-        message: 'Hospital updated successfully in MongoDB Atlas.',
+        message: 'Hospital updated successfully in system directory.',
         hospital,
       });
     } catch (error: any) {
@@ -654,7 +654,7 @@ export class AdminController {
   }
 
   /**
-   * Delete a hospital facility and its departments from MongoDB Atlas
+   * Delete a hospital facility and its departments from system directory
    */
   public static async deleteHospital(req: AuthenticatedRequest, res: Response): Promise<void> {
     try {
@@ -676,7 +676,7 @@ export class AdminController {
 
       res.status(200).json({
         success: true,
-        message: 'Hospital and associated departments deleted from MongoDB Atlas.',
+        message: 'Hospital and associated departments deleted from system directory.',
       });
     } catch (error: any) {
       res.status(500).json({ success: false, message: error.message || 'Failed to delete hospital.' });

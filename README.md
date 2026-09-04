@@ -187,9 +187,8 @@ For detailed schema definitions, data types, and ER diagrams, see [DATABASE.md](
 ### Backend
 - **Runtime**: Node.js 22+ (ECMAScript Modules)
 - **Framework**: Express.js (TypeScript)
-- **Security**: Helmet, CORS, Express-Rate-Limit, Bcrypt.js, JSONWebToken
-- **Database Layer**: Custom `IDatabaseClient` supporting PostgreSQL (`pg`), MySQL (`mysql2`), and zero-setup Embedded Relational SQL
-- **Zero MongoDB**: Mongoose and MongoDB dependencies have been completely removed.
+- **Database Layer**: Custom `IDatabaseClient` supporting PostgreSQL (`pg`), MySQL (`mysql2`), MongoDB Atlas (`mongodb`), and zero-setup Embedded Relational SQL
+- **Pluggable Multi-Engine Architecture**: Dynamically connects to PostgreSQL, MySQL, or MongoDB Atlas when configured, with automated fallback to the zero-dependency Embedded Relational SQL engine.
 
 ---
 
