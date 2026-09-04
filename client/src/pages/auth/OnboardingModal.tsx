@@ -74,7 +74,7 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
   const roleOptions: RoleOption[] = [
     {
       id: 'patient',
-      title: 'Patient & Citizen Portal',
+      title: 'Patient',
       tagline: 'Operational friction evaluation, provider discovery & token booking',
       badge: 'Citizen Access',
       badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
@@ -89,7 +89,7 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
     },
     {
       id: 'doctor',
-      title: 'Medical Officer & Clinician',
+      title: 'Doctor',
       tagline: 'Pre-consultation non-clinical risk telemetry & adherence support',
       badge: 'Clinical Decision Support',
       badgeColor: 'bg-purple-50 text-purple-700 border-purple-200',
@@ -104,7 +104,7 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
     },
     {
       id: 'asha',
-      title: 'ASHA Field Cadre / Community Worker',
+      title: 'ASHA Worker',
       tagline: 'Grassroots cohort management & doorstep logistics coordination',
       badge: 'Community Frontline',
       badgeColor: 'bg-rose-50 text-rose-700 border-rose-200',
@@ -119,7 +119,7 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
     },
     {
       id: 'hospital',
-      title: 'Hospital Facility & Triage Desk',
+      title: 'Hospital',
       tagline: 'Institutional intake orchestration & departmental capacity management',
       badge: 'Institutional Operations',
       badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
@@ -134,7 +134,7 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
     },
     {
       id: 'government',
-      title: 'Government Health Directorate Official',
+      title: 'Government',
       tagline: 'Macro population health monitoring & policy optimization',
       badge: 'Directorate & Policy',
       badgeColor: 'bg-teal-50 text-teal-700 border-teal-200',

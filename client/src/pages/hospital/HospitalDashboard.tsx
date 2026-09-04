@@ -71,7 +71,7 @@ export const HospitalDashboard: React.FC = () => {
               {hospital?.type || 'Government'} Facility
             </span>
             <span className="text-xs bg-emerald-50 text-emerald-700 font-bold px-2.5 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> Live Triage Desk Active
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> Triage Active
             </span>
           </div>
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">{hospital?.name}</h2>
@@ -84,12 +84,12 @@ export const HospitalDashboard: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full md:w-auto relative z-10">
           <Link to="/hospital/requests" className="w-full sm:w-auto">
             <Button variant="primary" size="sm" icon={<ListOrdered className="w-4 h-4" />} className="w-full sm:w-auto justify-center shadow-xs">
-              Review Patient Queue ({newRequestsCount})
+              Intake Queue
             </Button>
           </Link>
           <Link to="/hospital/departments" className="w-full sm:w-auto">
             <Button variant="outline" size="sm" icon={<Layers className="w-4 h-4" />} className="w-full sm:w-auto justify-center shadow-xs">
-              Manage Departments
+              Departments
             </Button>
           </Link>
         </div>
@@ -101,9 +101,9 @@ export const HospitalDashboard: React.FC = () => {
         what="Institutional Triage Console — coordinate incoming patient intake, department quotas, and barrier accommodation."
         why="Balances daily token quotas across clinical specialties while proactively reviewing transport, language, and wheelchair assistance needs."
         next="Execute 'Triage Incoming Queue' to review high-risk patient intakes or adjust specialist capacities under 'Manage Departments'."
-        actionText="Triage Incoming Queue"
+        actionText="Intake Queue"
         actionLink="/hospital/requests"
-        badge="Institutional Triage"
+        badge="Triage Console"
         role="hospital"
       />
 
@@ -128,7 +128,7 @@ export const HospitalDashboard: React.FC = () => {
         />
 
         <StatCard
-          title="Accepted / Scheduled"
+          title="Accepted Requests"
           value={acceptedCount}
           subtitle="OPD token scheduled"
           icon={CheckCircle2}
@@ -152,14 +152,14 @@ export const HospitalDashboard: React.FC = () => {
           <div>
             <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
               <ListOrdered className="w-4 h-4 text-brand-600" />
-              Recent Patient Intake Requests
+              Triage Queue
             </h3>
             <p className="text-xs text-slate-500 mt-0.5">
               Only patient-consented demographic and non-clinical friction data is displayed
             </p>
           </div>
           <Link to="/hospital/requests" className="text-xs font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1">
-            <span>View All Queue</span>
+            <span>All Requests</span>
             <span className="px-1.5 py-0.5 rounded-full bg-brand-50 text-brand-700 text-[10px]">{requests.length}</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>

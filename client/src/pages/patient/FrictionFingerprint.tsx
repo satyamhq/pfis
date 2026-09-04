@@ -101,7 +101,7 @@ export const FrictionFingerprint: React.FC = () => {
             <div className="flex flex-wrap items-center gap-2">
               <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
                 <Sparkles className="w-6 h-6 text-teal-600 shrink-0" />
-                Patient Friction Fingerprint™
+                Friction Profile
               </h2>
               <StatusBadge status={frictionLevel} size="sm" />
             </div>
@@ -112,7 +112,7 @@ export const FrictionFingerprint: React.FC = () => {
 
           <div className="flex items-center gap-3">
             <div className="text-left sm:text-right">
-              <span className="text-[10px] text-slate-400 font-bold uppercase block">Overall Accessibility Index</span>
+              <span className="text-[10px] text-slate-400 font-bold uppercase block">Accessibility Index</span>
               <span className="text-2xl font-black text-teal-700">
                 {overallScore} / 100
               </span>
@@ -128,20 +128,20 @@ export const FrictionFingerprint: React.FC = () => {
 
         <div className="grid grid-cols-1 min-[360px]:grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 text-xs pt-1">
           <div className="p-3 bg-teal-50/60 rounded-xl border border-teal-100">
-            <span className="text-[10px] text-teal-700 font-bold uppercase block">Primary Operational Constraint</span>
+            <span className="text-[10px] text-teal-700 font-bold uppercase block">Primary Barrier</span>
             <p className="font-bold text-teal-950 truncate">{profile.topBarrier}</p>
           </div>
           <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
-            <span className="text-[10px] text-slate-400 font-bold uppercase block">Secondary Systemic Barrier</span>
+            <span className="text-[10px] text-slate-400 font-bold uppercase block">Secondary Barrier</span>
             <p className="font-bold text-slate-800 truncate">{profile.secondaryBarrier}</p>
           </div>
           <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
-            <span className="text-[10px] text-slate-400 font-bold uppercase block">Composite Friction Index</span>
+            <span className="text-[10px] text-slate-400 font-bold uppercase block">Friction Score</span>
             <p className="font-bold text-slate-800">{profile.overallFrictionScore} / 100</p>
           </div>
           <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
-            <span className="text-[10px] text-slate-400 font-bold uppercase block">Evaluated Dimensions</span>
-            <p className="font-bold text-slate-800">8 Factor Dimensions</p>
+            <span className="text-[10px] text-slate-400 font-bold uppercase block">Factor Dimensions</span>
+            <p className="font-bold text-slate-800">8 Dimensions</p>
           </div>
         </div>
       </div>
@@ -159,7 +159,7 @@ export const FrictionFingerprint: React.FC = () => {
             <AlertTriangle className="w-5 h-5 text-amber-700" />
             <div>
               <h3 className="text-sm font-bold text-amber-950">
-                Compound Friction Interaction Synergies Detected ({interactions.length})
+                Compound Barriers ({interactions.length})
               </h3>
               <p className="text-xs text-amber-800">
                 Non-linear barrier amplification when multiple high friction factors co-occur

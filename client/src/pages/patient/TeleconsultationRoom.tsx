@@ -108,11 +108,11 @@ export const TeleconsultationRoom: React.FC = () => {
           <div>
             <div className="flex items-center gap-2">
               <h2 className="text-base font-bold text-slate-900">
-                Clinical Teleconsultation Terminal • Dr. Gurpreet Singh, MD
+                Teleconsult
               </h2>
               <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
-                Encrypted Session Active
+                Connected
               </span>
             </div>
             <p className="text-xs text-slate-500">
@@ -200,14 +200,14 @@ export const TeleconsultationRoom: React.FC = () => {
                 className="px-5 py-3 rounded-full bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs flex items-center gap-2 transition-colors shadow-lg"
               >
                 <PhoneOff className="w-4 h-4" />
-                <span>End Teleconsultation</span>
+                <span>End Call</span>
               </button>
             ) : (
               <button
                 onClick={() => setIsCallActive(true)}
                 className="px-5 py-3 rounded-full bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs flex items-center gap-2 transition-colors shadow-lg"
               >
-                <span>Re-Connect Call</span>
+                <span>Reconnect</span>
               </button>
             )}
           </div>
@@ -217,10 +217,10 @@ export const TeleconsultationRoom: React.FC = () => {
             <div className="flex items-center justify-between text-emerald-900 font-bold">
               <span className="flex items-center gap-1.5">
                 <Sparkles className="w-4 h-4 text-emerald-600" />
-                Non-Clinical Friction Mitigated by Teleconsultation:
+                Impact Summary:
               </span>
               <span className="text-[10px] bg-emerald-200 px-2 py-0.5 rounded-full">
-                Saved 100% Transit
+                Zero Transit
               </span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1 text-[11px] text-emerald-800">
@@ -247,7 +247,7 @@ export const TeleconsultationRoom: React.FC = () => {
             <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-3">
               <div className="flex items-center gap-1.5 text-xs font-bold text-slate-900">
                 <MessageSquare className="w-4 h-4 text-teal-600" />
-                <span>Live Multilingual Consultation Transcript</span>
+                <span>Consultation Transcript</span>
               </div>
               <span className="text-[10px] text-teal-600 font-bold">Auto-Translated</span>
             </div>
@@ -292,7 +292,7 @@ export const TeleconsultationRoom: React.FC = () => {
             <div className="flex items-center justify-between border-b border-slate-100 pb-2">
               <span className="font-bold text-slate-900 flex items-center gap-1.5">
                 <FileText className="w-4 h-4 text-teal-600" />
-                Live Digital Prescription & Care Note
+                Digital Prescription
               </span>
               <span className="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono">
                 Rx #TC-9042
@@ -314,7 +314,7 @@ export const TeleconsultationRoom: React.FC = () => {
                 onClick={() => navigate('/patient/documents')}
                 icon={<CheckCircle2 className="w-3.5 h-3.5 text-teal-600" />}
               >
-                Save Rx to Document Vault
+                Save Rx
               </Button>
             </div>
           </div>

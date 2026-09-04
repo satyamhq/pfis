@@ -145,7 +145,7 @@ export const PatientProfile: React.FC = () => {
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Patient Accessibility Profile</h2>
+          <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Patient Profile</h2>
           <p className="text-xs text-slate-500">
             Configure demographic, socio-economic, and geographic parameters to evaluate personal friction
           </p>
@@ -406,7 +406,7 @@ export const PatientProfile: React.FC = () => {
             icon={<Save className="w-4 h-4" />}
             className="w-full sm:w-auto justify-center"
           >
-            Save Profile & Recalculate Friction
+            Save Profile
           </Button>
         </div>
       </form>

@@ -34,94 +34,94 @@ export const Sidebar: React.FC = () => {
   const role = user.role;
 
   const patientLinks = [
-    { name: t('nav.dashboard', 'Operational Health Dashboard'), path: '/patient/dashboard', icon: LayoutDashboard },
-    { name: t('nav.hospitals', 'Verified Healthcare Facilities'), path: '/patient/hospitals', icon: MapPin },
-    { name: 'Clinical Teleconsultation Room', path: '/patient/teleconsult', icon: Layers },
-    { name: 'Digital Twin Journey Simulator', path: '/patient/digital-twin', icon: Sparkles },
-    { name: t('nav.frictionProfile', 'Patient Friction Fingerprint™'), path: '/patient/friction', icon: Sparkles },
-    { name: t('nav.accessibilityRisk', 'Care Journey & Risk Trajectory'), path: '/patient/risk', icon: ShieldAlert },
-    { name: t('nav.myRequests', 'Care Intake & Token Requests'), path: '/patient/requests', icon: ListOrdered },
-    { name: t('nav.myDocuments', 'Medical Records & Document Vault'), path: '/patient/documents', icon: FolderLock },
-    { name: t('auth.fullName', 'Demographic & Geographic Profile'), path: '/patient/profile', icon: User },
-    { name: t('nav.settings', 'System & Language Preferences'), path: '/patient/settings', icon: Settings },
+    { name: t('nav.dashboard', 'Dashboard'), path: '/patient/dashboard', icon: LayoutDashboard },
+    { name: t('nav.hospitals', 'Hospitals'), path: '/patient/hospitals', icon: MapPin },
+    { name: 'Teleconsult', path: '/patient/teleconsult', icon: Layers },
+    { name: 'Digital Twin', path: '/patient/digital-twin', icon: Sparkles },
+    { name: t('nav.frictionProfile', 'Friction Profile'), path: '/patient/friction', icon: Sparkles },
+    { name: t('nav.accessibilityRisk', 'Journey Risk'), path: '/patient/risk', icon: ShieldAlert },
+    { name: t('nav.myRequests', 'Intake Requests'), path: '/patient/requests', icon: ListOrdered },
+    { name: t('nav.myDocuments', 'Documents'), path: '/patient/documents', icon: FolderLock },
+    { name: t('auth.fullName', 'Profile'), path: '/patient/profile', icon: User },
+    { name: t('nav.settings', 'Settings'), path: '/patient/settings', icon: Settings },
   ];
 
   const hospitalLinks = [
-    { name: t('nav.dashboard', 'Institutional Triage Console'), path: '/hospital/dashboard', icon: LayoutDashboard },
-    { name: t('nav.triageQueue', 'Intake Queue & Triage Ledger'), path: '/hospital/requests', icon: ListOrdered },
-    { name: 'Teleconsultation Triage Terminal', path: '/hospital/teleconsult', icon: Layers },
-    { name: t('nav.opdManagement', 'Department & Token Capacity Manager'), path: '/hospital/departments', icon: Layers },
-    { name: t('nav.hospitalProfile', 'Facility Credentials & Infrastructure'), path: '/hospital/profile', icon: Building2 },
-    { name: t('nav.settings', 'Facility Configuration & Locale'), path: '/hospital/settings', icon: Settings },
+    { name: t('nav.dashboard', 'Dashboard'), path: '/hospital/dashboard', icon: LayoutDashboard },
+    { name: t('nav.triageQueue', 'Intake Queue'), path: '/hospital/requests', icon: ListOrdered },
+    { name: 'Teleconsult', path: '/hospital/teleconsult', icon: Layers },
+    { name: t('nav.opdManagement', 'Departments'), path: '/hospital/departments', icon: Layers },
+    { name: t('nav.hospitalProfile', 'Hospital Profile'), path: '/hospital/profile', icon: Building2 },
+    { name: t('nav.settings', 'Settings'), path: '/hospital/settings', icon: Settings },
   ];
 
   const doctorLinks = [
-    { name: 'Clinical Decision-Support Station', path: '/doctor/dashboard', icon: LayoutDashboard },
-    { name: 'Patient Queue & Operational Risk Roster', path: '/doctor/patients', icon: Users },
-    { name: 'Encrypted Teleconsultation Terminal', path: '/doctor/teleconsult', icon: Layers },
-    { name: 'Clinical Credentials & Preferences', path: '/doctor/settings', icon: Settings },
+    { name: 'Dashboard', path: '/doctor/dashboard', icon: LayoutDashboard },
+    { name: 'Patient Queue', path: '/doctor/patients', icon: Users },
+    { name: 'Teleconsult', path: '/doctor/teleconsult', icon: Layers },
+    { name: 'Settings', path: '/doctor/settings', icon: Settings },
   ];
 
   const ashaLinks = [
-    { name: 'Community Health Field Console', path: '/asha/dashboard', icon: LayoutDashboard },
-    { name: 'Household Cohort Registry', path: '/asha/patients', icon: Users },
-    { name: 'Rapid Field Barrier Telemetry', path: '/asha/log-barrier', icon: Sparkles },
-    { name: 'Community Urgent Task Ledger', path: '/asha/notifications', icon: Layers },
-    { name: 'Field Station Configuration', path: '/asha/settings', icon: Settings },
+    { name: 'Dashboard', path: '/asha/dashboard', icon: LayoutDashboard },
+    { name: 'Households', path: '/asha/patients', icon: Users },
+    { name: 'Log Barrier', path: '/asha/log-barrier', icon: Sparkles },
+    { name: 'Tasks', path: '/asha/notifications', icon: Layers },
+    { name: 'Settings', path: '/asha/settings', icon: Settings },
   ];
 
   const governmentLinks = [
-    { name: 'District Directorate Dashboard', path: '/government/dashboard', icon: LayoutDashboard },
-    { name: 'Macro Friction & Geographic Heat-Map', path: '/government/friction-map', icon: MapPin },
-    { name: 'Policy Interventions & Optimization', path: '/government/interventions', icon: Sliders },
-    { name: 'Care Continuum Leakage Analytics', path: '/government/leakage', icon: GitFork },
-    { name: 'Predictive Population Simulator', path: '/government/simulator', icon: Cpu },
-    { name: 'Directorate System Configuration', path: '/government/settings', icon: Settings },
+    { name: 'Dashboard', path: '/government/dashboard', icon: LayoutDashboard },
+    { name: 'Friction Map', path: '/government/friction-map', icon: MapPin },
+    { name: 'Interventions', path: '/government/interventions', icon: Sliders },
+    { name: 'Care Leakage', path: '/government/leakage', icon: GitFork },
+    { name: 'Simulator', path: '/government/simulator', icon: Cpu },
+    { name: 'Settings', path: '/government/settings', icon: Settings },
   ];
 
   const adminLinks = [
-    { name: t('nav.dashboard', 'Master System Telemetry'), path: '/admin/dashboard', icon: LayoutDashboard },
-    { name: 'What-If Scenario Simulation Engine', path: '/admin/simulator', icon: Cpu },
-    { name: 'Intervention Budget Knapsack Optimizer', path: '/admin/interventions', icon: Sliders },
-    { name: 'Macro Access Density Heatmap', path: '/admin/friction-map', icon: MapPin },
-    { name: '5-Stage Care Continuum Leakage Funnel', path: '/admin/care-leakage', icon: GitFork },
-    { name: 'Care Attrition Root-Cause Analysis', path: '/admin/care-failure', icon: BarChart3 },
-    { name: 'Universal Patient Registry', path: '/admin/patients', icon: Users },
-    { name: 'Accredited Facilities Directory', path: '/admin/hospitals', icon: Building2 },
-    { name: 'Cryptographic Audit & Security Ledger', path: '/admin/audit-logs', icon: History },
-    { name: 'Enterprise System Configuration', path: '/admin/settings', icon: Settings },
+    { name: t('nav.dashboard', 'Dashboard'), path: '/admin/dashboard', icon: LayoutDashboard },
+    { name: 'Simulator', path: '/admin/simulator', icon: Cpu },
+    { name: 'Budget Optimizer', path: '/admin/interventions', icon: Sliders },
+    { name: 'Friction Map', path: '/admin/friction-map', icon: MapPin },
+    { name: 'Care Leakage', path: '/admin/care-leakage', icon: GitFork },
+    { name: 'Root Cause', path: '/admin/care-failure', icon: BarChart3 },
+    { name: 'Patient Registry', path: '/admin/patients', icon: Users },
+    { name: 'Hospital Directory', path: '/admin/hospitals', icon: Building2 },
+    { name: 'Audit Ledger', path: '/admin/audit-logs', icon: History },
+    { name: 'Settings', path: '/admin/settings', icon: Settings },
   ];
 
   let links = patientLinks;
   let roleIcon = <User className="w-4 h-4 text-emerald-600" />;
   let roleBadge = 'bg-emerald-50 text-emerald-700 border-emerald-200/80';
-  let roleTitle = 'Patient & Citizen';
+  let roleTitle = 'Patient';
 
   if (role === 'hospital') {
     links = hospitalLinks;
     roleIcon = <Building2 className="w-4 h-4 text-indigo-600" />;
     roleBadge = 'bg-indigo-50 text-indigo-700 border-indigo-200/80';
-    roleTitle = 'Hospital Facility';
+    roleTitle = 'Hospital';
   } else if (role === 'doctor') {
     links = doctorLinks;
     roleIcon = <Stethoscope className="w-4 h-4 text-teal-600" />;
     roleBadge = 'bg-teal-50 text-teal-700 border-teal-200/80';
-    roleTitle = 'Clinical Doctor';
+    roleTitle = 'Doctor';
   } else if (role === 'asha') {
     links = ashaLinks;
     roleIcon = <HeartHandshake className="w-4 h-4 text-amber-600" />;
     roleBadge = 'bg-amber-50 text-amber-700 border-amber-200/80';
-    roleTitle = 'ASHA Cadre';
+    roleTitle = 'ASHA Worker';
   } else if (role === 'government') {
     links = governmentLinks;
     roleIcon = <Landmark className="w-4 h-4 text-blue-600" />;
     roleBadge = 'bg-blue-50 text-blue-700 border-blue-200/80';
-    roleTitle = 'Govt Official';
+    roleTitle = 'Government';
   } else if (role === 'admin') {
     links = adminLinks;
     roleIcon = <Shield className="w-4 h-4 text-purple-600" />;
     roleBadge = 'bg-purple-50 text-purple-700 border-purple-200/80';
-    roleTitle = 'Executive Admin';
+    roleTitle = 'Admin';
   }
 
   return (

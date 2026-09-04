@@ -75,11 +75,11 @@ export const AdminDashboard: React.FC = () => {
       <PageClarityRibbon
         pageKey="admin_dashboard"
         role="admin"
-        badge="Operational Briefing"
+        badge="Admin Console"
         what="Master System Telemetry & Administrative Governance — global observability, algorithmic model sensitivity, and infrastructure integrity across all district nodes."
         why="Consolidates cross-cluster audit trails, patient population demographics, healthcare facility capacity utilization, and algorithmic intervention effectiveness."
         next="Analyze system throughput, evaluate simulation engines, calibrate budget knapsack constraints, and monitor cryptographic access ledgers."
-        actionText="Run What-If Simulation"
+        actionText="Simulator"
         actionLink="/admin/simulator"
       />
 
@@ -90,10 +90,10 @@ export const AdminDashboard: React.FC = () => {
         <div className="space-y-2.5 max-w-2xl relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold border border-teal-200/80">
             <Shield className="w-3.5 h-3.5 text-teal-600" />
-            <span>Population Health Intelligence & Operations</span>
+            <span>Admin Console</span>
           </div>
           <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">
-            PFIS Master Command & Executive Telemetry Console
+            Admin Console
           </h1>
           <p className="text-xs text-slate-500 leading-relaxed">
             Live real-time monitoring of all authenticated user logins (Patient, Clinical Hospital, and Google accounts),
@@ -104,12 +104,12 @@ export const AdminDashboard: React.FC = () => {
         <div className="flex flex-col sm:flex-row flex-wrap gap-2.5 w-full md:w-auto relative z-10">
           <Link to="/admin/simulator" className="w-full sm:w-auto">
             <Button variant="primary" size="sm" className="w-full sm:w-auto justify-center shadow-xs" icon={<Cpu className="w-4 h-4" />}>
-              What-If Scenario Simulation Engine
+              Simulator
             </Button>
           </Link>
           <Link to="/admin/audit-logs" className="w-full sm:w-auto">
             <Button variant="secondary" size="sm" className="w-full sm:w-auto justify-center shadow-xs" icon={<Activity className="w-4 h-4" />}>
-              Cryptographic Audit Ledger
+              Audit Ledger
             </Button>
           </Link>
         </div>
@@ -118,34 +118,25 @@ export const AdminDashboard: React.FC = () => {
       {/* Official Master Admin Verification Bar */}
       <div className="bg-purple-50/70 border border-purple-200/70 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs shadow-2xs">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-xl bg-purple-600 text-white shadow-xs shrink-0">
+          <div className="p-2 bg-purple-100 text-purple-700 rounded-xl shrink-0">
             <ShieldCheck className="w-5 h-5" />
           </div>
           <div>
-            <div className="font-bold text-slate-900 flex flex-wrap items-center gap-2">
-              <span>Master Administrator Account:</span>
-              <span className="px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 font-mono text-[11px] font-bold border border-purple-200">
-                admin@pfis.org
-              </span>
-            </div>
-            <p className="text-[11px] text-slate-500 mt-0.5">
-              Role: System Health Director • Permanent Master Admin Security • Database Relational Store Active
-            </p>
+            <span className="font-bold text-purple-950 block">Verified Master Administrative Console</span>
+            <span className="text-purple-800 text-[11px]">
+              Active Multi-Engine Node: SQLite & PostgreSQL Dual Mode • Full Cryptographic Key Authorization
+            </span>
           </div>
         </div>
-
-        <div className="flex items-center gap-2 bg-white/80 px-3 py-1.5 rounded-xl border border-purple-200/60 shrink-0">
-          <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-[11px] font-bold text-emerald-700">
-            Audit Stream Live
-          </span>
-        </div>
+        <span className="bg-purple-600 text-white font-bold px-3 py-1 rounded-full text-[10px] self-start sm:self-auto shadow-xs">
+          Audit Stream Live
+        </span>
       </div>
 
       {/* KPI Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <StatCard
-          title="Monitored Population"
+          title="Population"
           value={stats?.totalPatients || 0}
           subtitle="Registered patients in registry"
           icon={Users}
@@ -156,7 +147,7 @@ export const AdminDashboard: React.FC = () => {
         />
 
         <StatCard
-          title="Connected Hospitals"
+          title="Hospitals"
           value={stats?.totalHospitals || 0}
           subtitle="Verified facility network"
           icon={Building2}
@@ -165,7 +156,7 @@ export const AdminDashboard: React.FC = () => {
         />
 
         <StatCard
-          title="Active Intake Requests"
+          title="Intake Requests"
           value={stats?.activeRequests || 0}
           subtitle="Tokens & consults pending triage"
           icon={ListOrdered}
@@ -176,7 +167,7 @@ export const AdminDashboard: React.FC = () => {
         />
 
         <StatCard
-          title="Avg Friction Index"
+          title="Average Friction"
           value={stats?.avgFrictionScore || 58}
           subtitle="0 (Zero Friction) to 100"
           icon={TrendingUp}
@@ -193,7 +184,7 @@ export const AdminDashboard: React.FC = () => {
           <div className="space-y-1">
             <h2 className="text-lg font-bold text-slate-900 tracking-tight flex items-center gap-2">
               <Activity className="w-5 h-5 text-brand-600" />
-              <span>Live User Logins & Real-Time Security Feed</span>
+              <span>User Logins</span>
             </h2>
             <p className="text-xs text-slate-500">
               Live audit stream showing authenticated users (Google accounts, patients, hospitals, admin) in relational database.
@@ -204,7 +195,7 @@ export const AdminDashboard: React.FC = () => {
             to="/admin/audit-logs"
             className="inline-flex items-center gap-1 text-xs font-bold text-brand-600 hover:text-brand-700 self-start sm:self-auto"
           >
-            <span>View Full Audit Stream</span>
+            <span>Audit Stream</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
@@ -326,7 +317,7 @@ export const AdminDashboard: React.FC = () => {
             <MapPin className="w-5 h-5" />
           </div>
           <h3 className="font-bold text-base text-slate-900 group-hover:text-blue-700 transition-colors flex items-center justify-between">
-            <span>Population Friction Map</span>
+            <span>Friction Map</span>
             <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
           </h3>
           <p className="text-xs text-slate-500 leading-relaxed">
@@ -342,7 +333,7 @@ export const AdminDashboard: React.FC = () => {
             <Cpu className="w-5 h-5" />
           </div>
           <h3 className="font-bold text-base text-slate-900 group-hover:text-indigo-700 transition-colors flex items-center justify-between">
-            <span>What-If Simulator</span>
+            <span>Simulator</span>
             <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-indigo-600 group-hover:translate-x-1 transition-all" />
           </h3>
           <p className="text-xs text-slate-500 leading-relaxed">

@@ -117,7 +117,7 @@ export const PatientDocuments: React.FC = () => {
         <div>
           <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
             <FolderLock className="w-6 h-6 text-brand-500 shrink-0" />
-            Secure Medical Document Vault
+            Document Vault
           </h2>
           <p className="text-xs text-slate-500">
             Encrypted storage for prescriptions, Ayushman Bharat PM-JAY cards, and diagnostic baseline reports

@@ -225,7 +225,7 @@ export const AdminHospitals: React.FC = () => {
             <div className="flex items-center gap-2">
               <Building2 className="w-7 h-7 text-brand-500 shrink-0" />
               <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                Accredited Healthcare Facilities Directory
+                Hospital Directory
               </h2>
             </div>
             <p className="text-xs text-slate-500 mt-1">
@@ -236,7 +236,7 @@ export const AdminHospitals: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
             <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200 flex items-center justify-center gap-1.5 shadow-2xs">
               <ShieldCheck className="w-4 h-4 text-teal-600 shrink-0" />
-              {filteredHospitals.length} Accredited Facilities
+              {filteredHospitals.length} Hospitals
             </span>
 
             <Button
@@ -246,7 +246,7 @@ export const AdminHospitals: React.FC = () => {
               icon={<Plus className="w-4 h-4" />}
               className="w-full sm:w-auto justify-center"
             >
-              Accredit & Onboard Facility
+              Add Hospital
             </Button>
           </div>
         </div>
@@ -448,7 +448,7 @@ export const AdminHospitals: React.FC = () => {
                     className="flex-1 py-2 px-3 bg-teal-50 hover:bg-teal-100 text-teal-800 font-bold text-xs rounded-xl border border-teal-200 flex items-center justify-center gap-1.5 transition-colors shadow-2xs cursor-pointer"
                   >
                     <Eye className="w-3.5 h-3.5" />
-                    <span>View Details & Export</span>
+                    <span>View Details</span>
                   </button>
 
                   <button

@@ -147,7 +147,7 @@ export const DoctorDashboard: React.FC = () => {
             to="/doctor/patients"
             className="px-4 py-2 text-xs font-bold text-white bg-purple-600 hover:bg-purple-700 rounded-xl shadow-xs transition flex items-center gap-1.5 active:scale-[0.98]"
           >
-            <span>Full Patient Queue</span>
+            <span>Patient Queue</span>
             <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
@@ -159,9 +159,9 @@ export const DoctorDashboard: React.FC = () => {
         what="Clinical Decision-Support Station — pre-consultation non-clinical risk telemetry and patient adherence monitoring."
         why="Provides immediate visibility into transit distance, language dialect match, and caregiver support constraints to preempt follow-up care attrition."
         next="Filter by 'High-Friction Risk' or select 'Review Non-Clinical Context' on any queued patient to coordinate supportive interventions."
-        actionText="Access Full Patient Queue"
+        actionText="Patient Queue"
         actionLink="/doctor/patients"
-        badge="Clinical Station"
+        badge="Doctor Console"
         role="doctor"
       />
 
@@ -180,7 +180,7 @@ export const DoctorDashboard: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4">
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all duration-200">
           <div className="flex items-center justify-between text-slate-400">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Monitored Cohort</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Monitored Patients</span>
             <div className="p-1.5 rounded-lg bg-blue-50 text-blue-600">
               <Users className="w-4 h-4" />
             </div>
@@ -193,7 +193,7 @@ export const DoctorDashboard: React.FC = () => {
 
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all duration-200">
           <div className="flex items-center justify-between text-slate-400">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">High-Friction Risk</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Friction Risk</span>
             <div className="p-1.5 rounded-lg bg-amber-50 text-amber-600">
               <AlertOctagon className="w-4 h-4" />
             </div>
@@ -206,7 +206,7 @@ export const DoctorDashboard: React.FC = () => {
 
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all duration-200">
           <div className="flex items-center justify-between text-slate-400">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Pending OPD Tokens</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Pending Tokens</span>
             <div className="p-1.5 rounded-lg bg-purple-50 text-purple-600">
               <Clock className="w-4 h-4" />
             </div>
@@ -219,7 +219,7 @@ export const DoctorDashboard: React.FC = () => {
 
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all duration-200">
           <div className="flex items-center justify-between text-slate-400">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Care Completion Rate</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Completion Rate</span>
             <div className="p-1.5 rounded-lg bg-emerald-50 text-emerald-600">
               <TrendingUp className="w-4 h-4" />
             </div>
@@ -232,7 +232,7 @@ export const DoctorDashboard: React.FC = () => {
 
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all duration-200">
           <div className="flex items-center justify-between text-slate-400">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">ASHA Escort Trips</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Escort Trips</span>
             <div className="p-1.5 rounded-lg bg-rose-50 text-rose-600">
               <Car className="w-4 h-4" />
             </div>
@@ -248,11 +248,11 @@ export const DoctorDashboard: React.FC = () => {
       <div className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-slate-200/80 shadow-card space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
           <div>
-            <h2 className="text-base font-bold text-slate-900">5-Stage Care Journey Progression & Bottlenecks</h2>
+            <h2 className="text-base font-bold text-slate-900">Care Journey</h2>
             <p className="text-xs text-slate-500 mt-0.5">Non-clinical friction monitoring from primary referral to long-term follow-up</p>
           </div>
           <span className="text-[11px] bg-slate-100 text-slate-700 px-3 py-1 rounded-full font-bold self-start sm:self-auto border border-slate-200/60">
-            Active Cohort Analysis
+            Active Cohort
           </span>
         </div>
 
@@ -284,7 +284,7 @@ export const DoctorDashboard: React.FC = () => {
       <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 shadow-card overflow-hidden">
         <div className="p-5 sm:p-6 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h2 className="text-base font-bold text-slate-900">Today's Patient Adherence & Friction Queue</h2>
+            <h2 className="text-base font-bold text-slate-900">Patient Queue</h2>
             <p className="text-xs text-slate-500 mt-0.5">Review non-clinical barriers before prescribing or scheduling follow-up</p>
           </div>
           <div className="flex items-center gap-1.5 p-1 bg-slate-100/80 rounded-xl border border-slate-200/60">
@@ -294,7 +294,7 @@ export const DoctorDashboard: React.FC = () => {
                 filter === 'ALL' ? 'bg-purple-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              All Patients ({patientsList.length})
+              All ({patientsList.length})
             </button>
             <button
               onClick={() => setFilter('HIGH_FRICTION')}
@@ -302,7 +302,7 @@ export const DoctorDashboard: React.FC = () => {
                 filter === 'HIGH_FRICTION' ? 'bg-amber-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              High Friction Only
+              High Friction
             </button>
           </div>
         </div>

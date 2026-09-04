@@ -201,13 +201,13 @@ export const PatientDashboard: React.FC = () => {
               <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/20 flex items-center justify-center text-white backdrop-blur-sm shadow-xs">
                 <Building2 className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-base leading-tight">Accredited Healthcare Facilities</h3>
+              <h3 className="font-bold text-base leading-tight">Find Hospitals</h3>
               <p className="text-xs text-teal-100/90 leading-relaxed">
                 Examine departmental rosters, verified specialist availability, and real-time bed capacity.
               </p>
             </div>
             <div className="pt-2 flex items-center justify-between text-xs font-bold text-teal-100 group-hover:text-white relative z-10 border-t border-white/10">
-              <span>Explore Facilities</span>
+              <span>Find Hospitals</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
@@ -222,13 +222,13 @@ export const PatientDashboard: React.FC = () => {
               <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/20 flex items-center justify-center text-white backdrop-blur-sm shadow-xs">
                 <Laptop className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-base leading-tight">Clinical Teleconsultation Room</h3>
+              <h3 className="font-bold text-base leading-tight">Teleconsult</h3>
               <p className="text-xs text-blue-100/90 leading-relaxed">
                 Initiate encrypted pre-consultation tele-triage with duty clinicians and live multi-lingual translation.
               </p>
             </div>
             <div className="pt-2 flex items-center justify-between text-xs font-bold text-blue-100 group-hover:text-white relative z-10 border-t border-white/10">
-              <span>Connect Teleconsultation</span>
+              <span>Start Teleconsult</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
@@ -243,13 +243,13 @@ export const PatientDashboard: React.FC = () => {
               <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/20 flex items-center justify-center text-white backdrop-blur-sm shadow-xs">
                 <Sparkles className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-base leading-tight">Digital Twin Journey Simulator</h3>
+              <h3 className="font-bold text-base leading-tight">Digital Twin</h3>
               <p className="text-xs text-emerald-100/90 leading-relaxed">
                 Model your 7-stage care pathway to identify transit bottlenecks and quantify the impact of community interventions.
               </p>
             </div>
             <div className="pt-2 flex items-center justify-between text-xs font-bold text-emerald-100 group-hover:text-white relative z-10 border-t border-white/10">
-              <span>Launch Simulator</span>
+              <span>Launch Twin</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
@@ -264,13 +264,13 @@ export const PatientDashboard: React.FC = () => {
               <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/20 flex items-center justify-center text-white backdrop-blur-sm shadow-xs">
                 <FolderLock className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-base leading-tight">Medical Records & Document Vault</h3>
+              <h3 className="font-bold text-base leading-tight">Document Vault</h3>
               <p className="text-xs text-indigo-100/90 leading-relaxed">
                 Securely manage Ayushman Bharat scheme credentials, diagnostic slips, and digital prescriptions.
               </p>
             </div>
             <div className="pt-2 flex items-center justify-between text-xs font-bold text-indigo-100 group-hover:text-white relative z-10 border-t border-white/10">
-              <span>Access Vault</span>
+              <span>Open Vault</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
@@ -280,7 +280,7 @@ export const PatientDashboard: React.FC = () => {
       {/* 3. 4 Key Travel & Ease Metrics Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
-          title="Operational Accessibility Index"
+          title="Accessibility Index"
           value={`${accessibilityScore} / 100`}
           subtitle="Composite non-clinical accessibility metric"
           icon={TrendingUp}
@@ -289,7 +289,7 @@ export const PatientDashboard: React.FC = () => {
         />
 
         <StatCard
-          title="Care Completion Forecast"
+          title="Completion Forecast"
           value={`${completionProbability}%`}
           subtitle="Predicted care trajectory completion rate"
           icon={Sparkles}
@@ -299,7 +299,7 @@ export const PatientDashboard: React.FC = () => {
         />
 
         <StatCard
-          title="Operational Attrition Risk"
+          title="Dropout Risk"
           value={riskCategory === 'CRITICAL' ? 'CRITICAL RISK' : riskCategory === 'HIGH' ? 'HIGH RISK' : 'LOW RISK'}
           subtitle="Non-clinical barrier drop-off hazard"
           icon={ShieldAlert}
@@ -309,7 +309,7 @@ export const PatientDashboard: React.FC = () => {
         />
 
         <StatCard
-          title="Primary Operational Barrier"
+          title="Primary Barrier"
           value={topBarrier.split(' ')[0]}
           subtitle={topBarrier}
           icon={AlertTriangle}
@@ -327,7 +327,7 @@ export const PatientDashboard: React.FC = () => {
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div>
                 <h3 className="text-base font-bold text-slate-900">
-                  Explainable Accessibility Intelligence & Attrition Decomposition
+                  Accessibility Factors
                 </h3>
                 <p className="text-xs text-slate-500">
                   Deterministic evaluation of socio-geographic and infrastructural access determinants
@@ -380,23 +380,33 @@ export const PatientDashboard: React.FC = () => {
           {/* Active Patient Requests Ledger */}
           <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-4 sm:p-6 shadow-card space-y-4">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-              <div className="flex items-center gap-2">
-                <ListOrdered className="w-4 h-4 text-teal-600" />
+              <div>
                 <h3 className="text-base font-bold text-slate-900">
-                  Active Patient Intake & Token Requests
+                  Active Requests
                 </h3>
+                <p className="text-xs text-slate-500">
+                  Status transitions, scheduling slots & gate triage updates
+                </p>
               </div>
-              <Link to="/patient/requests" className="text-xs font-semibold text-teal-600 hover:text-teal-700">
-                {t('patient.viewAll', 'View All')} ({activeRequests.length})
+              <Link to="/patient/requests">
+                <Button variant="ghost" size="sm" icon={<ArrowRight className="w-3.5 h-3.5" />}>
+                  View All
+                </Button>
               </Link>
             </div>
 
             {activeRequests.length === 0 ? (
-              <div className="p-8 text-center text-xs text-slate-400 bg-slate-50 rounded-2xl border border-dashed border-slate-200 space-y-3">
-                <p>No active hospital intake requests.</p>
+              <div className="p-8 text-center bg-slate-50/50 rounded-2xl border border-dashed border-slate-200 text-xs space-y-3">
+                <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center mx-auto text-slate-400">
+                  <ListOrdered className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="font-bold text-slate-700">No Active Intake Requests</p>
+                  <p className="text-slate-400 text-[11px] mt-0.5">Find an accredited facility to book a visit token</p>
+                </div>
                 <Link to="/patient/hospitals">
-                  <Button variant="primary" size="sm">
-                    Find Hospital & Book Slot
+                  <Button variant="outline" size="sm" icon={<MapPin className="w-3.5 h-3.5" />}>
+                    Find Facilities
                   </Button>
                 </Link>
               </div>
@@ -440,7 +450,7 @@ export const PatientDashboard: React.FC = () => {
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <span className="text-[11px] font-bold text-teal-700 uppercase tracking-wider flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
-                  <Building2 className="w-3.5 h-3.5" /> {t('patient.nearestFacility', 'Nearest Verified Facility')}
+                  <Building2 className="w-3.5 h-3.5" /> {t('patient.nearestFacility', 'Nearest Hospital')}
                 </span>
                 <span className="text-[10px] bg-teal-50 text-teal-800 px-2.5 py-0.5 rounded-full border border-teal-200/80 font-bold uppercase tracking-wider">
                   {nearestHospital.type}

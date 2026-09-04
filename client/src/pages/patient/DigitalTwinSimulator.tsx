@@ -282,9 +282,9 @@ export const DigitalTwinSimulator: React.FC = () => {
         what="Non-Clinical Digital Twin Journey Simulator — dynamic discrete-event modeling of patient transit and intake pathways."
         why="Simulates friction bottlenecks across 7 care stages and computes sensitivity deltas when deploying targeted interventions."
         next="Execute the discrete-event trajectory simulation or toggle systemic intervention switches to analyze completion delta."
-        actionText={isRunning ? 'Simulation Running...' : 'Execute Simulation Run'}
+        actionText={isRunning ? 'Running...' : 'Run Simulation'}
         onAction={isRunning ? undefined : handleStartSimulation}
-        badge="Digital Twin Engine"
+        badge="Digital Twin"
         role="patient"
       />
 
@@ -294,10 +294,10 @@ export const DigitalTwinSimulator: React.FC = () => {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold border border-teal-200 mb-2">
               <Sparkles className="w-3.5 h-3.5 text-teal-600" />
-              <span>PFIS Core Engine: Discrete-Event Digital Twin</span>
+              <span>Digital Twin</span>
             </div>
             <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">
-              Patient Friction Digital Twin Simulator
+              Digital Twin
             </h1>
             <p className="text-xs text-slate-500">
               Discrete-event trajectory simulation of non-clinical healthcare access barriers & intervention sensitivity
@@ -306,7 +306,7 @@ export const DigitalTwinSimulator: React.FC = () => {
 
           <div className="flex items-center gap-2">
             <TTSButton
-              text={`Patient Friction Digital Twin Simulator. Current estimated care completion probability is ${completionProb} percent.`}
+              text={`Digital Twin simulator. Current estimated care completion probability is ${completionProb} percent.`}
             />
             <Button
               variant="outline"
@@ -315,34 +315,34 @@ export const DigitalTwinSimulator: React.FC = () => {
               onClick={handleResetSimulation}
               icon={<RotateCcw className="w-3.5 h-3.5" />}
             >
-              Reset Simulation
+              Reset
             </Button>
           </div>
         </div>
 
         {/* 1-Click Quick Presets */}
         <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
-          <span className="text-slate-500 font-bold text-[11px] uppercase tracking-wider">Archetype Presets:</span>
+          <span className="text-slate-500 font-bold text-[11px] uppercase tracking-wider">Presets:</span>
           <button
             type="button"
             onClick={() => applyPreset('remote_village')}
             className="px-3 py-1 rounded-full bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200 font-semibold transition-all shadow-xs"
           >
-            Isolated Rural Cohort (High Friction)
+            Rural Preset
           </button>
           <button
             type="button"
             onClick={() => applyPreset('supported_care')}
             className="px-3 py-1 rounded-full bg-teal-50 text-teal-700 hover:bg-teal-100 border border-teal-200 font-semibold transition-all shadow-xs"
           >
-            Supported Community Cohort (Mitigated)
+            Supported Preset
           </button>
           <button
             type="button"
             onClick={() => applyPreset('urban_town')}
             className="px-3 py-1 rounded-full bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 font-semibold transition-all shadow-xs"
           >
-            Peri-Urban Transit Cohort (Low Friction)
+            Urban Preset
           </button>
         </div>
 
@@ -460,9 +460,9 @@ export const DigitalTwinSimulator: React.FC = () => {
             <div className="flex items-center justify-between border-b border-slate-100 pb-2">
               <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-teal-600" />
-                Deploy Practical Interventions
+                Active Interventions
               </h3>
-              <span className="text-[10px] text-teal-600 font-bold">Toggle to Mitigate</span>
+              <span className="text-[10px] text-teal-600 font-bold">Toggle Switches</span>
             </div>
 
             <div className="space-y-2 text-xs">
@@ -472,7 +472,7 @@ export const DigitalTwinSimulator: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <Bus className="w-4 h-4 text-teal-600" />
                   <div>
-                    <span className="font-bold text-slate-900 block">Community Health Shuttle</span>
+                    <span className="font-bold text-slate-900 block">Health Shuttle</span>
                     <span className="text-[10px] text-slate-500">Fixed-schedule rural mini-bus</span>
                   </div>
                 </div>
@@ -490,7 +490,7 @@ export const DigitalTwinSimulator: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <Activity className="w-4 h-4 text-teal-600" />
                   <div>
-                    <span className="font-bold text-slate-900 block">Point-of-Care Diagnostic Camp</span>
+                    <span className="font-bold text-slate-900 block">Diagnostic Camp</span>
                     <span className="text-[10px] text-slate-500">Satellite mobile blood tests & X-ray</span>
                   </div>
                 </div>
@@ -508,7 +508,7 @@ export const DigitalTwinSimulator: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <Users2 className="w-4 h-4 text-teal-600" />
                   <div>
-                    <span className="font-bold text-slate-900 block">Dedicated ASHA Worker Escort</span>
+                    <span className="font-bold text-slate-900 block">ASHA Escort</span>
                     <span className="text-[10px] text-slate-500">Queue navigation & scheme guidance</span>
                   </div>
                 </div>
@@ -526,7 +526,7 @@ export const DigitalTwinSimulator: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <Laptop className="w-4 h-4 text-teal-600" />
                   <div>
-                    <span className="font-bold text-slate-900 block">Village Teleconsultation Kiosk</span>
+                    <span className="font-bold text-slate-900 block">Teleconsult Kiosk</span>
                     <span className="text-[10px] text-slate-500">Video triage to avoid physical travel</span>
                   </div>
                 </div>
@@ -544,7 +544,7 @@ export const DigitalTwinSimulator: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <Pill className="w-4 h-4 text-teal-600" />
                   <div>
-                    <span className="font-bold text-slate-900 block">Home Essential Drug Delivery</span>
+                    <span className="font-bold text-slate-900 block">Medicine Delivery</span>
                     <span className="text-[10px] text-slate-500">Postal 60-day prescription delivery</span>
                   </div>
                 </div>
@@ -568,14 +568,14 @@ export const DigitalTwinSimulator: React.FC = () => {
                 <CompletionGauge
                   score={completionProb}
                   size={160}
-                  label="Care Completion"
-                  sublabel="Digital Twin Index"
+                  label="Completion"
+                  sublabel="Twin Index"
                 />
               </div>
 
               <div className="sm:col-span-2 space-y-2 text-xs">
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-500 font-bold">Simulation Status:</span>
+                  <span className="text-slate-500 font-bold">Status:</span>
                   <span className={`px-3 py-1 rounded-full font-bold flex items-center gap-1.5 ${
                     simulationOutcome === 'COMPLETED'
                       ? 'bg-emerald-100 text-emerald-800'
@@ -586,27 +586,27 @@ export const DigitalTwinSimulator: React.FC = () => {
                     {simulationOutcome === 'COMPLETED' ? (
                       <>
                         <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                        <span>Care Completed Successfully</span>
+                        <span>Completed</span>
                       </>
                     ) : simulationOutcome === 'LEAKED_DROPOUT' ? (
                       <>
                         <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
-                        <span>Care Leakage Dropout Detected</span>
+                        <span>Dropout Detected</span>
                       </>
                     ) : isRunning ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin text-amber-600 shrink-0" />
-                        <span>Simulating Healthcare Journey...</span>
+                        <span>Simulating...</span>
                       </>
                     ) : (
-                      'Ready to Run'
+                      'Ready'
                     )}
                   </span>
                 </div>
 
                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
                   <p className="font-bold text-slate-800">
-                    Forecast: {completionProb >= 70 ? 'High Completion Likelihood' : completionProb >= 45 ? 'Moderate Risk of Drop-out' : 'High Operational Leakage Risk'}
+                    Forecast: {completionProb >= 70 ? 'High Likelihood' : completionProb >= 45 ? 'Moderate Risk' : 'High Risk'}
                   </p>
                   <p className="text-slate-500">
                     {hasTransportShuttle && hasSatelliteDiagnostics
@@ -624,7 +624,7 @@ export const DigitalTwinSimulator: React.FC = () => {
                     disabled={isRunning}
                     icon={isRunning ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                   >
-                    {isRunning ? 'Running Journey...' : 'Run Live Virtual Journey'}
+                    {isRunning ? 'Running...' : 'Run Simulation'}
                   </Button>
                 </div>
               </div>
@@ -636,7 +636,7 @@ export const DigitalTwinSimulator: React.FC = () => {
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
                 <Activity className="w-4 h-4 text-teal-600" />
-                Virtual Healthcare Journey Pathway (7 Milestones)
+                Journey Pathway
               </h3>
               <span className="text-[11px] text-slate-400">Step {currentStepIndex + 1} of 7</span>
             </div>
@@ -714,7 +714,7 @@ export const DigitalTwinSimulator: React.FC = () => {
             {simulationLog.length > 0 && (
               <div className="p-3 bg-slate-50 border border-slate-200 text-slate-800 rounded-xl font-mono text-[11px] space-y-1 max-h-32 overflow-y-auto">
                 <div className="text-[10px] text-teal-700 uppercase font-bold tracking-wider">
-                  Digital Twin Real-Time Telemetry Log:
+                  Telemetry Log:
                 </div>
                 {simulationLog.map((log, i) => (
                   <div key={i}>{log}</div>

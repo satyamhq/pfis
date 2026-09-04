@@ -184,11 +184,11 @@ export const HospitalDetails: React.FC = () => {
         what="Facility Profile & OPD Intake Coordination — review departmental rosters, token capacity, and submit non-clinical intake requests."
         why="Ensures advance quota reservation to minimize waiting latency and coordinates barrier mitigation (ambulance transit or Sahayak escort)."
         next="Select your target clinical department, specify visit rationale, and submit the verified intake request."
-        actionText="Proceed to Intake Request"
+        actionText="Book Appointment"
         onAction={() => {
           document.getElementById('booking-form')?.scrollIntoView({ behavior: 'smooth' });
         }}
-        badge="Facility Dossier"
+        badge="Hospital Details"
         role="patient"
       />
 
@@ -203,12 +203,12 @@ export const HospitalDetails: React.FC = () => {
               {hospital.emergencyAvailable && (
                 <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-red-50 text-red-700 border border-red-200 flex items-center gap-1">
                   <AlertCircle className="w-3.5 h-3.5 text-red-600 shrink-0" />
-                  24/7 Emergency Active
+                  Emergency 24/7
                 </span>
               )}
               <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-300 flex items-center gap-1">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                100% Verified Profile Details
+                Verified Facility
               </span>
             </div>
             <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">
@@ -389,7 +389,7 @@ export const HospitalDetails: React.FC = () => {
       <div id="booking-form" className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-8 shadow-card space-y-6">
         <div>
           <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <Send className="w-5 h-5 text-teal-600" /> Patient Intake & Windowed Token Allocation Request
+            <Send className="w-5 h-5 text-teal-600" /> Book Appointment
           </h3>
           <p className="text-xs text-slate-500">
             Secure an advance OPD consultation slot and request non-clinical accommodations with verified patient consent
@@ -401,7 +401,7 @@ export const HospitalDetails: React.FC = () => {
         <form onSubmit={handleOpenConsent} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Select
-              label="Target Clinical Department"
+              label="Department"
               value={selectedDept}
               onChange={(e) => setSelectedDept(e.target.value)}
               options={departments.map((d) => ({ label: `${d.name} (Fee: ₹${d.consultationFee})`, value: d.name }))}
@@ -410,7 +410,7 @@ export const HospitalDetails: React.FC = () => {
 
             <div className="grid grid-cols-1 min-[420px]:grid-cols-2 gap-2">
               <Input
-                label="Preferred Consultation Date"
+                label="Consultation Date"
                 type="date"
                 value={preferredDate}
                 onChange={(e) => setPreferredDate(e.target.value)}
@@ -419,7 +419,7 @@ export const HospitalDetails: React.FC = () => {
               />
 
               <Select
-                label="OPD Intake Window"
+                label="Time Slot"
                 value={preferredTimeSlot}
                 onChange={(e) => setPreferredTimeSlot(e.target.value)}
                 options={[
@@ -434,10 +434,10 @@ export const HospitalDetails: React.FC = () => {
           <div className="space-y-2">
             <div className="flex flex-wrap items-center justify-between gap-1">
               <label className="block text-xs font-semibold text-slate-700">
-                Clinical Presentation & Chief Complaint
+                Chief Complaint
               </label>
               <span className="text-[11px] text-slate-400">
-                Common Clinical Indications (Quick Select):
+                Quick Select:
               </span>
             </div>
 
@@ -467,7 +467,7 @@ export const HospitalDetails: React.FC = () => {
 
           <div>
             <label className="block text-xs font-semibold text-slate-700 mb-1">
-              Additional Accessibility Accommodation Requests (Optional)
+              Special Requests (Optional)
             </label>
             <textarea
               className="w-full rounded-lg border border-slate-300 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
@@ -483,7 +483,7 @@ export const HospitalDetails: React.FC = () => {
             <div>
               <h4 className="font-bold text-sm text-slate-900 flex items-center gap-2">
                 <Car className="w-4 h-4 text-teal-600 shrink-0" />
-                <span>Non-Clinical Transport & Care-Attendant Assistance</span>
+                <span>Transport Support</span>
               </h4>
               <p className="text-xs text-slate-500">
                 Select if you have difficulty traveling to the hospital or need an attendant to accompany you.
@@ -578,10 +578,10 @@ export const HospitalDetails: React.FC = () => {
           <div className="space-y-2 pt-2 border-t border-slate-100">
             <div className="flex justify-between items-center">
               <label className="text-xs font-semibold text-slate-700">
-                Attach Medical Documents from Your Vault ({selectedDocIds.length} Selected)
+                Attached Documents ({selectedDocIds.length})
               </label>
               <Link to="/patient/documents" className="text-[11px] font-bold text-brand-600 hover:text-brand-700">
-                + Upload More Documents
+                + Upload
               </Link>
             </div>
 
@@ -628,7 +628,7 @@ export const HospitalDetails: React.FC = () => {
               size="lg"
               icon={<ShieldCheck className="w-5 h-5" />}
             >
-              Review Consent & Send Request
+              Book Appointment
             </Button>
           </div>
         </form>

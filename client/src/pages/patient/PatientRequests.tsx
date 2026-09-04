@@ -39,7 +39,7 @@ export const PatientRequests: React.FC = () => {
         <div>
           <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
             <ListOrdered className="w-6 h-6 text-brand-500 shrink-0" />
-            Patient Intake & Ambulatory Token Ledger
+            My Requests
           </h2>
           <p className="text-xs text-slate-500">
             Real-time status transitions, triage prioritization updates, and scheduled outpatient appointments
@@ -48,7 +48,7 @@ export const PatientRequests: React.FC = () => {
 
         <Link to="/patient/hospitals" className="w-full sm:w-auto">
           <Button variant="primary" size="sm" icon={<Building2 className="w-4 h-4" />} className="w-full sm:w-auto justify-center">
-            Initiate New Clinical Intake Request
+            New Request
           </Button>
         </Link>
       </div>
@@ -57,7 +57,7 @@ export const PatientRequests: React.FC = () => {
         <EmptyState
           title="No Requests Submitted Yet"
           description="Search for nearby hospitals and submit an intake request with your verified consent."
-          actionText="Find Nearby Hospitals"
+          actionText="Find Hospitals"
           onAction={() => (window.location.href = '/patient/hospitals')}
         />
       ) : (
@@ -111,7 +111,7 @@ export const PatientRequests: React.FC = () => {
               <div className="flex justify-end pt-2 border-t border-slate-100">
                 <Link to={`/patient/requests/${req._id}`} className="w-full sm:w-auto">
                   <Button variant="outline" size="sm" icon={<ArrowRight className="w-4 h-4" />} className="w-full sm:w-auto justify-center">
-                    View Live Timeline & Consented Data
+                    View Details
                   </Button>
                 </Link>
               </div>

@@ -99,7 +99,7 @@ export const HospitalProfile: React.FC = () => {
       <div>
         <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
           <Building2 className="w-6 h-6 text-brand-500 shrink-0" />
-          Hospital Facility Profile & Settings
+          Hospital Profile
         </h2>
         <p className="text-xs text-slate-500">
           Update operational hours, emergency triage contacts, and bed capacity for live discovery

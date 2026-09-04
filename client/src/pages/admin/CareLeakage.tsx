@@ -40,7 +40,7 @@ export const CareLeakage: React.FC = () => {
             <div className="flex flex-wrap items-center gap-2">
               <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
                 <GitFork className="w-6 h-6 text-brand-500 shrink-0" />
-                Care Continuum Leakage & Operational Retention Funnel
+                Care Leakage
               </h2>
               <span className="px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-700 text-xs font-bold border border-rose-200">
                 Total Leakage: {leakageData?.totalLeakagePercentage || 82}%
@@ -60,7 +60,7 @@ export const CareLeakage: React.FC = () => {
         <div className="p-4 bg-rose-50/70 border border-rose-200 rounded-2xl flex items-start gap-3 text-xs text-rose-950 leading-relaxed">
           <AlertTriangle className="w-5 h-5 text-rose-600 flex-shrink-0 mt-0.5" />
           <div>
-            <strong className="block font-bold text-sm">Critical Drop-off Stage Identified:</strong>
+            <strong className="block font-bold text-sm">Critical Bottleneck:</strong>
             <p className="mt-0.5">
               <strong>{leakageData?.highestLeakageStage || 'Treatment Started -> Treatment Completed'}</strong>.
               Patients routinely begin pharmaceutical or therapy regimens, but abandon multi-week attendance due to
@@ -74,7 +74,7 @@ export const CareLeakage: React.FC = () => {
       <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-8 shadow-card space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-100 pb-3">
           <h3 className="text-base font-bold text-slate-900">
-            Cohort Progression: 1,000 Referred Patients
+            Cohort Progression
           </h3>
           <span className="text-xs text-slate-500">Only 18% complete full 30-day regimen</span>
         </div>

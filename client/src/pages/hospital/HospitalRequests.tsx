@@ -32,10 +32,10 @@ export const HospitalRequests: React.FC = () => {
   }, [activeTab]);
 
   const tabs = [
-    { key: 'all', label: 'All Requests' },
-    { key: 'new', label: 'New / Received' },
-    { key: 'pending', label: 'Under Review' },
-    { key: 'accepted', label: 'Accepted / Scheduled' },
+    { key: 'all', label: 'All' },
+    { key: 'new', label: 'New' },
+    { key: 'pending', label: 'Pending' },
+    { key: 'accepted', label: 'Accepted' },
     { key: 'rejected', label: 'Rejected' },
     { key: 'completed', label: 'Completed' },
   ];
@@ -46,7 +46,7 @@ export const HospitalRequests: React.FC = () => {
         <div>
           <h2 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
             <ListOrdered className="w-6 h-6 text-brand-500" />
-            Institutional Intake Queue & Access Triage Ledger
+            Intake Queue
           </h2>
           <p className="text-xs text-slate-500">
             Validate and prioritize incoming clinical admissions with cryptographic consent and non-clinical barrier accommodations
@@ -101,20 +101,14 @@ export const HospitalRequests: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div className="space-y-1">
-                  <span className="text-[10px] text-slate-400 uppercase font-semibold">Patient Demographics</span>
-                  <p className="font-bold text-slate-900">
-                    {(req.patientId as any)?.patientCode || 'PAT-1048'} • {(req.patientId as any)?.age} yrs •{' '}
-                    {(req.patientId as any)?.gender}
-                  </p>
-                  <p className="text-slate-500">
-                    Language: {(req.patientId as any)?.preferredLanguage} • Phone:{' '}
-                    {(req.patientId as any)?.phone || 'N/A'}
-                  </p>
+                  <span className="text-[10px] text-slate-400 uppercase font-semibold">Patient & Demographics</span>
+                  <h4 className="font-bold text-sm text-slate-900">{(req.patientId as any)?.name || 'Anonymized Patient'}</h4>
+                  <p className="text-slate-500">{(req.patientId as any)?.age || 45} yrs • {(req.patientId as any)?.gender || 'Patient'}</p>
                 </div>
 
                 <div className="space-y-1">
-                  <span className="text-[10px] text-slate-400 uppercase font-semibold">Department & Schedule</span>
-                  <p className="font-bold text-teal-800">{req.departmentName}</p>
+                  <span className="text-[10px] text-slate-400 uppercase font-semibold">Department & Preferred Date</span>
+                  <p className="font-bold text-slate-800">{req.departmentName}</p>
                   <p className="text-slate-600 flex items-center gap-1">
                     <Calendar className="w-3.5 h-3.5 text-slate-400" />
                     <span>{new Date(req.preferredDate).toLocaleDateString()} ({req.preferredTimeSlot})</span>
@@ -122,19 +116,10 @@ export const HospitalRequests: React.FC = () => {
                 </div>
 
                 <div className="space-y-1">
-                  <span className="text-[10px] text-slate-400 uppercase font-semibold">Transit & Accessibility</span>
-                  <p className="font-bold text-slate-800">{req.distanceKm || 25} km travel distance</p>
-                  <p className="text-slate-500 truncate">
-                    Transport: {(req.patientId as any)?.transportAvailability || 'Low'}
-                  </p>
+                  <span className="text-[10px] text-slate-400 uppercase font-semibold">Access Profile & Transit</span>
+                  <p className="font-bold text-teal-700">{req.distanceKm || 25} km transit distance</p>
+                  <p className="text-slate-500 truncate">Reason: {req.reasonForVisit}</p>
                 </div>
-              </div>
-
-              <div className="space-y-1 text-xs">
-                <span className="font-bold text-slate-700">Reason for Visit:</span>
-                <p className="text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                  {req.reasonForVisit}
-                </p>
               </div>
 
               {req.additionalMessage && (
@@ -146,7 +131,7 @@ export const HospitalRequests: React.FC = () => {
               <div className="flex flex-col sm:flex-row justify-end pt-2 border-t border-slate-100">
                 <Link to={`/hospital/requests/${req._id}`} className="w-full sm:w-auto">
                   <Button variant="primary" size="sm" className="w-full sm:w-auto" icon={<ArrowRight className="w-4 h-4" />}>
-                    Open & Review Request
+                    Review Request
                   </Button>
                 </Link>
               </div>

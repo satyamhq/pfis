@@ -34,7 +34,7 @@ export const AuditLogs: React.FC = () => {
         <div>
           <h2 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
             <History className="w-6 h-6 text-brand-500" />
-            Cryptographic Audit & Regulatory Compliance Ledger
+            Audit Ledger
           </h2>
           <p className="text-xs text-slate-500">
             Tamper-evident audit trail capturing authentication events, consent grant revocations, and role-based data access vectors

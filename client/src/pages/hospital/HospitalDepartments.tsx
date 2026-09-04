@@ -204,7 +204,7 @@ export const HospitalDepartments: React.FC = () => {
           <div className="flex items-center gap-2">
             <Layers className="w-6 h-6 text-brand-500" />
             <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-              Department & Ambulatory Token Capacity Manager
+              Departments
             </h2>
           </div>
           <p className="text-xs text-slate-500 mt-1">
@@ -219,7 +219,7 @@ export const HospitalDepartments: React.FC = () => {
           onClick={openAddModal}
           icon={<Plus className="w-4 h-4" />}
         >
-          Add Doctor & Department
+          Add Department
         </Button>
       </div>
 
@@ -228,7 +228,7 @@ export const HospitalDepartments: React.FC = () => {
         <div className="p-12 text-center bg-white rounded-2xl border border-slate-200/80 shadow-card space-y-3">
           <Stethoscope className="w-12 h-12 text-slate-300 mx-auto" />
           <h3 className="font-bold text-slate-700 text-base">
-            No Doctors or Clinical Departments Configured
+            No Departments Configured
           </h3>
           <p className="text-xs text-slate-500 max-w-md mx-auto">
             Add your active clinical departments and specialist doctors on duty so patients can view and book OPD token seats.
@@ -239,7 +239,7 @@ export const HospitalDepartments: React.FC = () => {
             onClick={openAddModal}
             icon={<Plus className="w-4 h-4" />}
           >
-            Add First Doctor & Department
+            Add Department
           </Button>
         </div>
       ) : (

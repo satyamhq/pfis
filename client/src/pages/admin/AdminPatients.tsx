@@ -45,7 +45,7 @@ export const AdminPatients: React.FC = () => {
         <div>
           <h2 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
             <Users className="w-6 h-6 text-brand-500" />
-            Universal Patient Registry & Accessibility Cohort Ledger
+            Patient Registry
           </h2>
           <p className="text-xs text-slate-500">
             Comprehensive population ledger of registered individuals with real-time non-clinical friction indices and journey risk trajectories
@@ -53,7 +53,7 @@ export const AdminPatients: React.FC = () => {
         </div>
 
         <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-700">
-          {patients.length} Registered Patients
+          {patients.length} Patients
         </span>
       </div>
 

@@ -95,14 +95,14 @@ export const AshaDashboard: React.FC = () => {
             className="px-4 py-2 text-xs font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-xl shadow-xs transition flex items-center gap-1.5 active:scale-[0.98]"
           >
             <PlusCircle className="w-4 h-4" />
-            <span>Log Field Barrier</span>
+            <span>Log Barrier</span>
           </Link>
           <Link
             to="/asha/request-transit"
             className="px-4 py-2 text-xs font-bold text-rose-700 bg-rose-50 hover:bg-rose-100 rounded-xl border border-rose-200 transition flex items-center gap-1.5 active:scale-[0.98]"
           >
             <Car className="w-4 h-4" />
-            <span>Request Transit Support</span>
+            <span>Transit Support</span>
           </Link>
         </div>
       </div>
@@ -113,9 +113,9 @@ export const AshaDashboard: React.FC = () => {
         what="Community Health Worker Field Console — cluster cohort management, barrier telemetry, and transit dispatch."
         why="Identifies grassroots households facing acute transit attrition, lost referral paperwork, or daily wage barriers to ensure continuum of care."
         next="Execute 'Log Field Barrier' for doorstep telemetry or dispatch community transit vouchers for upcoming specialist consultations."
-        actionText="Log Field Barrier"
+        actionText="Log Barrier"
         actionLink="/asha/log-barrier"
-        badge="Field Operations"
+        badge="Field Console"
         role="asha"
       />
 
@@ -123,7 +123,7 @@ export const AshaDashboard: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all duration-200">
           <div className="flex items-center justify-between text-slate-400">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Village Households</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Households</span>
             <div className="p-1.5 rounded-lg bg-indigo-50 text-indigo-600">
               <Home className="w-4 h-4" />
             </div>
@@ -149,7 +149,7 @@ export const AshaDashboard: React.FC = () => {
 
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all duration-200">
           <div className="flex items-center justify-between text-slate-400">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">High-Friction Homes</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Friction Homes</span>
             <div className="p-1.5 rounded-lg bg-amber-50 text-amber-600">
               <AlertTriangle className="w-4 h-4" />
             </div>
@@ -162,7 +162,7 @@ export const AshaDashboard: React.FC = () => {
 
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all duration-200">
           <div className="flex items-center justify-between text-slate-400">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Pending Transit Trips</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Transit Trips</span>
             <div className="p-1.5 rounded-lg bg-emerald-50 text-emerald-600">
               <Car className="w-4 h-4" />
             </div>
@@ -178,11 +178,11 @@ export const AshaDashboard: React.FC = () => {
       <div className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-slate-200/80 shadow-card space-y-4">
         <div className="flex items-center justify-between border-b border-slate-100 pb-3">
           <div>
-            <h2 className="text-base font-bold text-slate-900">Today's Doorstep Support Action List</h2>
+            <h2 className="text-base font-bold text-slate-900">Urgent Tasks</h2>
             <p className="text-xs text-slate-500 mt-0.5">Field tasks prioritized by patient care drop-off probability</p>
           </div>
           <span className="text-[11px] font-bold text-rose-700 bg-rose-50 px-2.5 py-1 rounded-full border border-rose-200">
-            Field Day Active
+            Active
           </span>
         </div>
 
@@ -241,14 +241,14 @@ export const AshaDashboard: React.FC = () => {
       <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 shadow-card overflow-hidden">
         <div className="p-5 sm:p-6 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <h2 className="text-base font-bold text-slate-900">Assigned Community Patients & Household Barriers</h2>
+            <h2 className="text-base font-bold text-slate-900">Households</h2>
             <p className="text-xs text-slate-500 mt-0.5">Verified grassroots status across Mehli & Ward 4 Sub-Center</p>
           </div>
           <Link
             to="/asha/patients"
             className="text-xs font-bold text-rose-600 hover:text-rose-700 flex items-center gap-1 self-start sm:self-auto"
           >
-            <span>View All Patients</span>
+            <span>All Patients</span>
             <ChevronRight className="w-4 h-4" />
           </Link>
         </div>

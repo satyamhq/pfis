@@ -40,10 +40,10 @@ export const CareFailure: React.FC = () => {
             <div className="flex flex-wrap items-center gap-2">
               <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
                 <BarChart3 className="w-6 h-6 text-brand-500 shrink-0" />
-                Care Attrition Root-Cause Analysis & Causal Attribution Engine
+                Root Cause
               </h2>
               <span className="px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-700 text-xs font-bold border border-teal-200">
-                Non-Clinical Causal Attribution
+                Causal Attribution
               </span>
             </div>
             <p className="text-xs text-slate-500 mt-0.5">
@@ -66,7 +66,7 @@ export const CareFailure: React.FC = () => {
 
         <div className="lg:col-span-2 space-y-3">
           <h3 className="text-base font-bold text-slate-900">
-            Causal Distribution Breakdown ({attributionData?.totalEvaluatedCases || 1000} Cases)
+            Causal Breakdown ({attributionData?.totalEvaluatedCases || 1000} Cases)
           </h3>
 
           <div className="space-y-3">

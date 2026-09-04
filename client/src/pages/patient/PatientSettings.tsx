@@ -52,10 +52,10 @@ export const PatientSettings: React.FC = () => {
         <div className="relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold mb-3 border border-teal-200">
             <Globe className="w-3.5 h-3.5 text-teal-600 shrink-0" />
-            <span>{t('settings.languageSection', 'Language & Accessibility')}</span>
+            <span>{t('settings.languageSection', 'Preferences')}</span>
           </div>
           <h1 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight">
-            {t('settings.title', 'Language & Accessibility Preferences')}
+            {t('settings.title', 'Settings')}
           </h1>
           <p className="text-slate-500 text-sm mt-1 max-w-xl">
             {t(
@@ -272,7 +272,7 @@ export const PatientSettings: React.FC = () => {
       <div className="flex justify-end pt-4">
         <Button onClick={handleSave} className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3">
           <Save className="w-4 h-4" />
-          <span>{t('settings.savePreferences', 'Save Language & Accessibility Settings')}</span>
+          <span>{t('settings.savePreferences', 'Save Settings')}</span>
         </Button>
       </div>
     </div>

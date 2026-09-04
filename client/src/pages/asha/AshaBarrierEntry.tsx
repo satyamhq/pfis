@@ -50,7 +50,7 @@ export const AshaBarrierEntry: React.FC = () => {
         className="inline-flex items-center gap-2 text-sm font-semibold text-rose-700 hover:text-rose-800 transition"
       >
         <ArrowLeft className="w-4 h-4" />
-        <span>Return to Community Health Field Console</span>
+        <span>Field Console</span>
       </Link>
 
       <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-xs">
@@ -59,7 +59,7 @@ export const AshaBarrierEntry: React.FC = () => {
             <HeartHandshake className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-slate-900">Telemetry Ingestion: Frontline Access Barrier Observation</h1>
+            <h1 className="text-xl font-bold text-slate-900">Log Barrier</h1>
             <p className="text-xs text-slate-500">Log frontline non-clinical friction factors directly from household surveys in Mehli Cluster</p>
           </div>
         </div>
@@ -160,7 +160,7 @@ export const AshaBarrierEntry: React.FC = () => {
             disabled={isSubmitting}
             className="w-full py-3 text-sm font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-xl shadow-xs transition disabled:opacity-60"
           >
-            {isSubmitting ? 'Saving Barrier...' : 'Record Barrier & Synchronize with PFIS'}
+            {isSubmitting ? 'Saving...' : 'Log Barrier'}
           </button>
         </form>
       </div>

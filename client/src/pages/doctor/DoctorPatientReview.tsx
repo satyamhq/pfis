@@ -103,20 +103,20 @@ export const DoctorPatientReview: React.FC = () => {
         className="inline-flex items-center gap-2 text-sm font-semibold text-purple-700 hover:text-purple-800 transition"
       >
         <ArrowLeft className="w-4 h-4" />
-        <span>Return to Clinical Roster & Patient Triage Queue</span>
+        <span>Patient Queue</span>
       </Link>
 
       {/* Patient Header Card */}
       <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white text-xl font-bold shadow-md shadow-purple-500/20">
-            {patient.patientCode?.slice(-3) || 'PAT'}
+          <div className="w-14 h-14 rounded-2xl bg-purple-100 flex items-center justify-center text-purple-700 font-bold text-xl shrink-0">
+            {patient.fullName.charAt(0)}
           </div>
           <div>
-            <div className="flex items-center gap-2.5">
-              <h1 className="text-2xl font-bold text-slate-900">{patient.fullName || `Patient (${patient.patientCode})`}</h1>
-              <span className="bg-rose-100 text-rose-700 text-xs font-bold px-2.5 py-0.5 rounded-full">
-                Friction: {frictionProfile.overallFrictionScore} / 100 ({frictionProfile.frictionLevel})
+            <div className="flex items-center gap-2">
+              <h1 className="text-xl font-bold text-slate-900">{patient.fullName}</h1>
+              <span className="text-xs font-mono bg-slate-100 text-slate-600 px-2 py-0.5 rounded-md">
+                {patient.patientCode}
               </span>
             </div>
             <p className="text-sm text-slate-500 mt-1">
@@ -135,7 +135,7 @@ export const DoctorPatientReview: React.FC = () => {
         <div className="flex items-start gap-3">
           <Sparkles className="w-5 h-5 text-purple-300 shrink-0 mt-0.5" />
           <div>
-            <h3 className="font-bold text-base">Clinical Decision-Support: Non-Clinical Attrition Mitigation Directives</h3>
+            <h3 className="font-bold text-base">Clinical Guidance</h3>
             <p className="text-sm text-purple-200 mt-1">
               Patient exhibits high risk of treatment discontinuation due to transit and timing constraints. To safeguard clinical continuity:
             </p>
@@ -150,7 +150,7 @@ export const DoctorPatientReview: React.FC = () => {
 
       {/* 8 Non-Clinical Friction Dimensions Matrix */}
       <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs">
-        <h2 className="text-lg font-bold text-slate-900 mb-1">Explainable 8-Factor Friction Matrix & Attrition Drivers</h2>
+        <h2 className="text-lg font-bold text-slate-900 mb-1">Friction Breakdown</h2>
         <p className="text-sm text-slate-500 mb-5">Multivariate non-clinical operational indicators governing patient compliance and follow-up retention</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -189,7 +189,7 @@ export const DoctorPatientReview: React.FC = () => {
 
       {/* 5-Stage Care Journey Progression & Interactive Milestones */}
       <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs">
-        <h2 className="text-lg font-bold text-slate-900 mb-1">5-Stage Care Journey Progress Tracker</h2>
+        <h2 className="text-lg font-bold text-slate-900 mb-1">Care Journey</h2>
         <p className="text-sm text-slate-500 mb-6">Record non-clinical operational milestones as the patient navigates their health journey</p>
 
         {updateSuccess && (

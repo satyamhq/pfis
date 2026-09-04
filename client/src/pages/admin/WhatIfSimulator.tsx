@@ -124,10 +124,10 @@ export const WhatIfSimulator: React.FC = () => {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold border border-teal-200 mb-2">
               <Cpu className="w-3.5 h-3.5 text-teal-600" />
-              <span>Enterprise Live Scenario Simulator</span>
+              <span>Simulator</span>
             </div>
             <h1 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight">
-              What-If Scenario Simulation Engine
+              Simulator
             </h1>
             <p className="text-xs text-slate-500">
               Multivariate non-clinical intervention modeling to evaluate estimated care completion probability gains across population cohorts
@@ -144,7 +144,7 @@ export const WhatIfSimulator: React.FC = () => {
             }}
             icon={<RotateCcw className="w-3.5 h-3.5" />}
           >
-            Reset All Toggles
+            Reset
           </Button>
         </div>
 
@@ -166,7 +166,7 @@ export const WhatIfSimulator: React.FC = () => {
             <CompletionGauge
               score={simulatedProb}
               size={180}
-              label="Simulated Completion Rate"
+              label="Completion Rate"
               sublabel={`Baseline: ${baselineProb}%`}
             />
           </div>
@@ -175,7 +175,7 @@ export const WhatIfSimulator: React.FC = () => {
           <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             <div className="p-4 bg-teal-50/70 rounded-2xl border border-teal-200 space-y-1">
               <span className="text-[10px] font-bold text-teal-800 uppercase tracking-wider block">
-                Estimated Improvement Gain
+                Improvement Gain
               </span>
               <div className="text-2xl sm:text-3xl font-black text-teal-900">
                 +{improvementDelta}%
@@ -187,7 +187,7 @@ export const WhatIfSimulator: React.FC = () => {
 
             <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
               <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">
-                Estimated Patients Saved
+                Patients Saved
               </span>
               <div className="text-2xl sm:text-3xl font-black text-slate-900">
                 ~{patientsHelped}
@@ -197,7 +197,7 @@ export const WhatIfSimulator: React.FC = () => {
 
             <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
               <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">
-                Total Portfolio Budget
+                Total Budget
               </span>
               <div className="text-2xl sm:text-3xl font-black text-slate-900">
                 ₹{totalBudget.toLocaleString('en-IN')}
@@ -215,7 +215,7 @@ export const WhatIfSimulator: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2">
           <h3 className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-brand-500 shrink-0" />
-            Select Interventions to Simulate ({selectedCodes.length} Active)
+            Interventions ({selectedCodes.length})
           </h3>
           <span className="text-xs text-slate-500">Click any card to toggle on/off</span>
         </div>

@@ -111,14 +111,14 @@ export const GovernmentDashboard: React.FC = () => {
             className="px-4 py-2 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 rounded-xl border border-emerald-200/80 transition flex items-center gap-1.5 shadow-2xs active:scale-[0.98]"
           >
             <MapPin className="w-4 h-4" />
-            <span>Friction Heat-Map</span>
+            <span>Friction Map</span>
           </Link>
           <Link
             to="/government/interventions"
             className="px-4 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl shadow-xs transition flex items-center gap-1.5 active:scale-[0.98]"
           >
             <Sliders className="w-4 h-4" />
-            <span>Policy Interventions</span>
+            <span>Interventions</span>
           </Link>
         </div>
       </div>
@@ -129,9 +129,9 @@ export const GovernmentDashboard: React.FC = () => {
         what="District Health Directorate & Care Continuum Portal — population-level care retention and 5-stage leakage monitoring."
         why="Reveals geographic diagnostic deserts, public transit bottlenecks, and systemic economic drop-off drivers across district clusters."
         next="Execute 'Policy Interventions & Optimization' to simulate public health resource allocation and quantify continuum recovery."
-        actionText="Policy Interventions & Optimization"
+        actionText="Interventions"
         actionLink="/government/interventions"
-        badge="Directorate Oversight"
+        badge="District Dashboard"
         role="government"
       />
 
@@ -155,7 +155,7 @@ export const GovernmentDashboard: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all duration-200">
           <div className="flex items-center justify-between text-slate-400">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Monitored Cohort</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Monitored Patients</span>
             <div className="p-1.5 rounded-lg bg-blue-50 text-blue-600">
               <Users className="w-4 h-4" />
             </div>
@@ -170,7 +170,7 @@ export const GovernmentDashboard: React.FC = () => {
 
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all duration-200">
           <div className="flex items-center justify-between text-slate-400">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">District Avg Friction</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Average Friction</span>
             <div className="p-1.5 rounded-lg bg-amber-50 text-amber-600">
               <AlertOctagon className="w-4 h-4" />
             </div>
@@ -185,7 +185,7 @@ export const GovernmentDashboard: React.FC = () => {
 
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all duration-200">
           <div className="flex items-center justify-between text-slate-400">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Public Health Facilities</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Public Facilities</span>
             <div className="p-1.5 rounded-lg bg-emerald-50 text-emerald-600">
               <Building2 className="w-4 h-4" />
             </div>
@@ -200,7 +200,7 @@ export const GovernmentDashboard: React.FC = () => {
 
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all duration-200">
           <div className="flex items-center justify-between text-slate-400">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Overall Care Retention</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Care Retention</span>
             <div className="p-1.5 rounded-lg bg-indigo-50 text-indigo-600">
               <TrendingUp className="w-4 h-4" />
             </div>
@@ -218,11 +218,11 @@ export const GovernmentDashboard: React.FC = () => {
       <div className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-slate-200/80 shadow-card space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
           <div>
-            <h2 className="text-base font-bold text-slate-900">District Care Journey Leakage Funnel (5 Stages)</h2>
+            <h2 className="text-base font-bold text-slate-900">Care Leakage</h2>
             <p className="text-xs text-slate-500 mt-0.5">Tracking citizen drop-offs across non-clinical friction barriers</p>
           </div>
           <span className="text-[11px] font-bold text-rose-700 bg-rose-50 px-3 py-1 rounded-full border border-rose-200 self-start sm:self-auto">
-            Major Leakage at Diagnostics (34.8%)
+            Major Leakage (35%)
           </span>
         </div>
 
@@ -280,7 +280,7 @@ export const GovernmentDashboard: React.FC = () => {
       {/* Systemic Bottlenecks & Macro Policy Recommendations */}
       <div className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-slate-200/80 shadow-card space-y-4">
         <div className="border-b border-slate-100 pb-3">
-          <h2 className="text-base font-bold text-slate-900">Systemic Public Health Bottlenecks & Interventions</h2>
+          <h2 className="text-base font-bold text-slate-900">Priority Interventions</h2>
           <p className="text-xs text-slate-500 mt-0.5">High-ROI public health policy recommendations based on operational friction telemetry</p>
         </div>
 

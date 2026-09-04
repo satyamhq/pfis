@@ -62,7 +62,7 @@ export const PopulationFrictionMap: React.FC = () => {
         <div>
           <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
             <MapPin className="w-6 h-6 text-brand-500 shrink-0" />
-            Macro-Geographic Friction & Accessibility Density Heatmap
+            Friction Map
           </h2>
           <p className="text-xs text-slate-500">
             Spatial geospatial telemetry aggregating anonymized population clusters to isolate systemic transit deserts and non-clinical access friction
@@ -163,7 +163,7 @@ export const PopulationFrictionMap: React.FC = () => {
               {/* Dominant Barriers Breakdown */}
               <div className="space-y-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                  Cluster Barrier Breakdown (0–100)
+                  Barriers
                 </span>
                 <div className="space-y-2 text-xs">
                   {Object.entries(selectedCluster.barrierBreakdown || {}).map(([dim, val]: any) => (
@@ -189,7 +189,7 @@ export const PopulationFrictionMap: React.FC = () => {
               <div className="p-4 bg-teal-50 rounded-2xl border border-teal-200 text-xs space-y-1.5">
                 <span className="text-[10px] font-bold text-teal-800 uppercase flex items-center gap-1.5">
                   <Lightbulb className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-                  Priority Recommended Intervention
+                  Intervention
                 </span>
                 <p className="font-bold text-teal-950 text-sm">{selectedCluster.recommendedIntervention}</p>
                 <p className="text-teal-800 leading-relaxed text-[11px]">

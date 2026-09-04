@@ -47,9 +47,9 @@ export const AccessibilityRisk: React.FC = () => {
         what="Care Journey Continuum & Attrition Trajectory — predictive operational modeling of care completion."
         why="Identifies non-clinical attrition vulnerabilities across 9 care continuum stages to preempt premature drop-out."
         next="Review the operational bottleneck stage and evaluate recommended community mitigation pathways."
-        actionText="Explore Accredited Facilities"
+        actionText="Find Hospitals"
         actionLink="/patient/hospitals"
-        badge="Care Trajectory"
+        badge="Journey Risk"
         role="patient"
       />
 
@@ -60,7 +60,7 @@ export const AccessibilityRisk: React.FC = () => {
             <div className="flex flex-wrap items-center gap-2">
               <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
                 <ShieldAlert className="w-6 h-6 text-teal-600 shrink-0" />
-                Care Journey Continuum & Operational Attrition Risk
+                Journey Risk
               </h2>
               <StatusBadge status={riskCategory} size="sm" />
             </div>
@@ -84,14 +84,14 @@ export const AccessibilityRisk: React.FC = () => {
             <CompletionGauge
               score={completionProb}
               size={190}
-              label="Care Completion"
-              sublabel="Trajectory forecast"
+              label="Completion"
+              sublabel="Forecast"
             />
           </div>
 
           <div className="md:col-span-2 space-y-3 text-xs">
             <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
-              <span className="text-[10px] font-bold text-slate-400 uppercase">Identified Primary Journey Bottleneck Stage</span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase">Primary Bottleneck</span>
               <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
                 <Compass className="w-4 h-4 text-teal-600" />
                 {bottleneckStage}
@@ -104,7 +104,7 @@ export const AccessibilityRisk: React.FC = () => {
             {/* Primary Risk Factors */}
             <div className="space-y-2 pt-1">
               <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
-                Primary Socio-Geographic Risk Drivers
+                Risk Drivers
               </span>
               <div className="space-y-1.5">
                 {(careRisk?.primaryRiskFactors || []).map((rf, i) => (
@@ -128,7 +128,7 @@ export const AccessibilityRisk: React.FC = () => {
         {careRisk?.mitigationPathways && careRisk.mitigationPathways.length > 0 && (
           <div className="pt-4 border-t border-slate-100 space-y-2">
             <h4 className="text-xs font-bold uppercase tracking-wider text-teal-800">
-              Community Programs & Support Available
+              Recommended Actions
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {careRisk.mitigationPathways.map((mit, i) => (
