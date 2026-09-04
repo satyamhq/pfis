@@ -15,3 +15,16 @@ server/data/
 data/
 *.sqlite
 *.db
+
+# Temporary, scratch, and backup files
+scratch/
+*.tmp
+*.bak
+*.swp
+
+# IDE configurations
+.vscode/
+.idea/
+
+# Coverage reports
+coverage/

@@ -96,10 +96,10 @@ Intervention Optimization: PASS | Knapsack allocation computed for ₹5,00,000 c
 ---
 
 ### 2.3 RBAC & Admin Access Control Security Suite
-Located at `scratch/test_admin_rbac.cjs`, this test suite validates cryptographic email whitelisting, database flags, and privilege escalation safeguards:
+Located at `server/tests/rbac_security.test.cjs`, this test suite validates cryptographic email whitelisting, database flags, and privilege escalation safeguards:
 
 ```bash
-node scratch/test_admin_rbac.cjs
+node server/tests/rbac_security.test.cjs
 ```
 
 **Security Results Summary**:
