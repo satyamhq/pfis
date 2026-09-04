@@ -120,49 +120,49 @@ export const LandingPage: React.FC = () => {
 
             {/* 1-Click Instant Demo Launcher Bar */}
             <div className="pt-8 max-w-2xl mx-auto">
-              <div className="p-4 bg-slate-900 text-white rounded-2xl shadow-xl border border-slate-800 space-y-3">
-                <div className="flex items-center justify-between text-xs border-b border-slate-800 pb-2">
-                  <span className="font-bold text-teal-400 flex items-center gap-1.5">
+              <div className="p-4 bg-white text-slate-900 rounded-2xl shadow-md border border-slate-200 space-y-3">
+                <div className="flex items-center justify-between text-xs border-b border-slate-100 pb-2">
+                  <span className="font-bold text-teal-700 flex items-center gap-1.5">
                     <Activity className="w-4 h-4" />{' '}
                     {t('landing.quickDemoTitle', 'Instant Demo Role Access (1-Click Login):')}
                   </span>
-                  <span className="text-[10px] text-slate-400">Pre-seeded realistic profiles</span>
+                  <span className="text-[11px] text-slate-500 font-medium">Pre-seeded realistic profiles</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   <button
                     onClick={() =>
                       handleQuickDemoLogin('patient@pfis.org', 'Patient@123', '/patient/dashboard')
                     }
-                    className="p-2.5 bg-slate-800 hover:bg-teal-900/80 rounded-xl text-left border border-slate-700 hover:border-teal-500 transition-all text-xs"
+                    className="p-2.5 bg-slate-50 hover:bg-teal-50/80 rounded-xl text-left border border-slate-200 hover:border-teal-400 transition-all text-xs group"
                   >
-                    <p className="font-bold text-white flex items-center justify-between">
-                      {t('landing.patientView', 'Patient View')} <ArrowRight className="w-3 h-3 text-teal-400" />
+                    <p className="font-bold text-slate-800 group-hover:text-teal-700 flex items-center justify-between">
+                      {t('landing.patientView', 'Patient View')} <ArrowRight className="w-3 h-3 text-teal-600" />
                     </p>
-                    <p className="text-[11px] text-slate-400 truncate">Sunita Devi (Ramgarh)</p>
+                    <p className="text-[11px] text-slate-500 truncate">Sunita Devi (Ramgarh)</p>
                   </button>
 
                   <button
                     onClick={() =>
                       handleQuickDemoLogin('hospital@apollo.org', 'Hospital@123', '/hospital/dashboard')
                     }
-                    className="p-2.5 bg-slate-800 hover:bg-teal-900/80 rounded-xl text-left border border-slate-700 hover:border-teal-500 transition-all text-xs"
+                    className="p-2.5 bg-slate-50 hover:bg-teal-50/80 rounded-xl text-left border border-slate-200 hover:border-teal-400 transition-all text-xs group"
                   >
-                    <p className="font-bold text-white flex items-center justify-between">
-                      {t('landing.hospitalView', 'Hospital View')} <ArrowRight className="w-3 h-3 text-teal-400" />
+                    <p className="font-bold text-slate-800 group-hover:text-teal-700 flex items-center justify-between">
+                      {t('landing.hospitalView', 'Hospital View')} <ArrowRight className="w-3 h-3 text-teal-600" />
                     </p>
-                    <p className="text-[11px] text-slate-400 truncate">Apollo Super Speciality</p>
+                    <p className="text-[11px] text-slate-500 truncate">Apollo Super Speciality</p>
                   </button>
 
                   <button
                     onClick={() =>
                       handleQuickDemoLogin('admin@pfis.org', 'Admin@123', '/admin/dashboard')
                     }
-                    className="p-2.5 bg-slate-800 hover:bg-teal-900/80 rounded-xl text-left border border-slate-700 hover:border-teal-500 transition-all text-xs"
+                    className="p-2.5 bg-slate-50 hover:bg-teal-50/80 rounded-xl text-left border border-slate-200 hover:border-teal-400 transition-all text-xs group"
                   >
-                    <p className="font-bold text-white flex items-center justify-between">
-                      {t('landing.adminSuite', 'Admin Suite')} <ArrowRight className="w-3 h-3 text-teal-400" />
+                    <p className="font-bold text-slate-800 group-hover:text-teal-700 flex items-center justify-between">
+                      {t('landing.adminSuite', 'Admin Suite')} <ArrowRight className="w-3 h-3 text-teal-600" />
                     </p>
-                    <p className="text-[11px] text-slate-400 truncate">Simulators & Heatmaps</p>
+                    <p className="text-[11px] text-slate-500 truncate">Simulators & Heatmaps</p>
                   </button>
                 </div>
               </div>
@@ -430,19 +430,19 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* 5. WHAT-IF SIMULATOR & INTERVENTION OPTIMIZER SHOWCASE */}
-      <section className="bg-slate-900 text-white py-16 rounded-3xl max-w-7xl mx-auto px-6 sm:px-12 shadow-2xl border border-slate-800 space-y-10">
+      <section className="bg-gradient-to-br from-teal-50/80 via-emerald-50/40 to-slate-50 text-slate-900 py-16 rounded-3xl max-w-7xl mx-auto px-6 sm:px-12 shadow-lg border border-teal-200/80 space-y-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-950 text-teal-300 text-xs font-bold border border-teal-800">
-              <Cpu className="w-3.5 h-3.5 text-teal-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100/80 text-teal-800 text-xs font-bold border border-teal-200">
+              <Cpu className="w-3.5 h-3.5 text-teal-700" />
               <span>Operational Simulation Engine</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
               {t('landing.simulatorTitle', 'Simulate high-impact community interventions with precision.')}
             </h2>
 
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
               {t(
                 'landing.simulatorDesc',
                 'Model the exact care completion improvement when community transport, satellite diagnostic camps, or ASHA escorts are deployed.'
@@ -456,7 +456,7 @@ export const LandingPage: React.FC = () => {
                 </Button>
               </Link>
               <Link to="/admin/interventions">
-                <Button variant="outline" size="md" className="text-slate-900 bg-white hover:bg-slate-100">
+                <Button variant="outline" size="md" className="text-slate-800 bg-white hover:bg-slate-50 border-slate-300">
                   {t('nav.budgetOptimizer', 'Try Budget Optimizer (₹10 Lakhs)')}
                 </Button>
               </Link>
@@ -464,37 +464,37 @@ export const LandingPage: React.FC = () => {
           </div>
 
           {/* Simulation Preview Card */}
-          <div className="bg-slate-800/90 rounded-2xl p-6 border border-slate-700 space-y-5">
-            <div className="flex justify-between items-center border-b border-slate-700 pb-3 text-xs">
-              <span className="font-bold text-teal-400">Simulation Scenario: Multi-Tier Community Support</span>
-              <span className="text-[10px] text-slate-400">Cohort: 1,000 Patients</span>
+          <div className="bg-white/95 rounded-2xl p-6 border border-teal-100 shadow-md space-y-5">
+            <div className="flex justify-between items-center border-b border-slate-100 pb-3 text-xs">
+              <span className="font-bold text-teal-700">Simulation Scenario: Multi-Tier Community Support</span>
+              <span className="text-[10px] text-slate-500 font-medium">Cohort: 1,000 Patients</span>
             </div>
 
             <div className="space-y-3">
-              <div className="flex justify-between items-center p-3 rounded-xl bg-slate-900/80 border border-slate-700 text-xs">
-                <span>1. Baseline Completion Rate:</span>
-                <span className="font-bold text-rose-400">37%</span>
+              <div className="flex justify-between items-center p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-xs">
+                <span className="text-slate-600 font-medium">1. Baseline Completion Rate:</span>
+                <span className="font-bold text-rose-600">37%</span>
               </div>
 
-              <div className="flex justify-between items-center p-3 rounded-xl bg-slate-900/80 border border-teal-900 text-xs">
-                <span className="text-teal-300">+ Scheduled Community Health Shuttle:</span>
-                <span className="font-bold text-teal-400">37% → 62% (+25%)</span>
+              <div className="flex justify-between items-center p-3 rounded-xl bg-teal-50/70 border border-teal-200/80 text-xs">
+                <span className="text-teal-900 font-medium">+ Scheduled Community Health Shuttle:</span>
+                <span className="font-bold text-teal-700">37% → 62% (+25%)</span>
               </div>
 
-              <div className="flex justify-between items-center p-3 rounded-xl bg-slate-900/80 border border-teal-900 text-xs">
-                <span className="text-teal-300">+ Point-of-Care Satellite Diagnostic Camp:</span>
-                <span className="font-bold text-teal-400">62% → 79% (+17%)</span>
+              <div className="flex justify-between items-center p-3 rounded-xl bg-teal-50/70 border border-teal-200/80 text-xs">
+                <span className="text-teal-900 font-medium">+ Point-of-Care Satellite Diagnostic Camp:</span>
+                <span className="font-bold text-teal-700">62% → 79% (+17%)</span>
               </div>
 
-              <div className="flex justify-between items-center p-3 rounded-xl bg-slate-900/80 border border-teal-900 text-xs">
-                <span className="text-teal-300">+ ASHA Health Worker Guided Escort:</span>
-                <span className="font-bold text-teal-400">79% → 89% (+10%)</span>
+              <div className="flex justify-between items-center p-3 rounded-xl bg-teal-50/70 border border-teal-200/80 text-xs">
+                <span className="text-teal-900 font-medium">+ ASHA Health Worker Guided Escort:</span>
+                <span className="font-bold text-teal-700">79% → 89% (+10%)</span>
               </div>
             </div>
 
-            <div className="p-3 bg-teal-950/60 border border-teal-800 rounded-xl text-xs flex justify-between items-center">
-              <span className="text-slate-300 font-medium">Estimated Patients Saved from Dropout:</span>
-              <span className="font-black text-teal-300 text-sm">~520 Patients Helped</span>
+            <div className="p-3.5 bg-teal-100/70 border border-teal-200 rounded-xl text-xs flex justify-between items-center">
+              <span className="text-slate-700 font-semibold">Estimated Patients Saved from Dropout:</span>
+              <span className="font-black text-teal-900 text-sm">~520 Patients Helped</span>
             </div>
           </div>
         </div>

@@ -46,12 +46,12 @@ export const About: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-slate-900 text-white rounded-3xl p-8 shadow-xl border border-slate-800 space-y-4 text-xs leading-relaxed">
+      <div className="bg-gradient-to-br from-teal-50/80 to-slate-50 text-slate-800 rounded-3xl p-8 shadow-sm border border-teal-200 space-y-4 text-xs leading-relaxed">
         <div className="flex items-center gap-2">
-          <ShieldCheck className="w-5 h-5 text-teal-400" />
-          <h4 className="text-base font-bold text-white">Strict Non-Clinical AI Governance Mandate</h4>
+          <ShieldCheck className="w-5 h-5 text-teal-600" />
+          <h4 className="text-base font-bold text-slate-900">Strict Non-Clinical AI Governance Mandate</h4>
         </div>
-        <p className="text-slate-300">
+        <p className="text-slate-600">
           PFIS does NOT diagnose diseases, predict physiological pathology, or offer clinical treatment
           recommendations. All metrics—including "Estimated Healthcare Journey Accessibility Risk" and
           "Estimated Care Completion Probability"—are operational indicators designed exclusively for logistical

@@ -275,19 +275,19 @@ export const SystemArchitecture: React.FC = () => {
       </div>
 
       {/* Non-Clinical AI Mandate Callout */}
-      <div className="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div className="bg-gradient-to-r from-teal-50 via-emerald-50/50 to-slate-50 text-slate-900 rounded-3xl p-6 sm:p-8 border border-teal-200 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-400">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-700">
             <ShieldCheck className="w-4 h-4" /> Non-Clinical AI Governance Protocol
           </div>
-          <h3 className="text-xl font-bold">Strict Ethical AI Boundaries</h3>
-          <p className="text-xs text-slate-300 max-w-2xl leading-relaxed">
+          <h3 className="text-xl font-bold text-slate-900">Strict Ethical AI Boundaries</h3>
+          <p className="text-xs text-slate-600 max-w-2xl leading-relaxed">
             PFIS is strictly an operational intelligence layer. It never provides medical diagnoses, never replaces doctors, and operates transparently on explainable deterministic algorithms and counterfactual simulations.
           </p>
         </div>
 
         <Link to="/about" className="flex-shrink-0">
-          <Button variant="outline" size="sm" className="bg-white text-slate-900 hover:bg-slate-100">
+          <Button variant="primary" size="sm">
             Read Governance Mandate
           </Button>
         </Link>

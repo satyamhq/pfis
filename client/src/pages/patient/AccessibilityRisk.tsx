@@ -58,10 +58,10 @@ export const AccessibilityRisk: React.FC = () => {
         </div>
 
         {/* Safety Disclaimer Banner */}
-        <div className="p-3.5 bg-slate-900 text-white rounded-xl text-xs flex items-start gap-3">
-          <HeartHandshake className="w-5 h-5 text-teal-400 flex-shrink-0 mt-0.5" />
-          <p className="text-slate-300 leading-relaxed">
-            <strong className="text-teal-300">Operational Decision Notice:</strong> {careRisk?.disclaimer || 'This is an estimated operational accessibility index based on socio-geographic friction factors. This is NOT a clinical diagnosis or medical prediction.'}
+        <div className="p-3.5 bg-teal-50 text-slate-800 rounded-xl text-xs flex items-start gap-3 border border-teal-200">
+          <HeartHandshake className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
+          <p className="text-slate-700 leading-relaxed">
+            <strong className="text-teal-900">Operational Decision Notice:</strong> {careRisk?.disclaimer || 'This is an estimated operational accessibility index based on socio-geographic friction factors. This is NOT a clinical diagnosis or medical prediction.'}
           </p>
         </div>
 
