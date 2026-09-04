@@ -120,15 +120,15 @@ export const NearbyHospitals: React.FC = () => {
           <div className="flex items-center gap-2">
             <h2 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
               <MapPin className="w-6 h-6 text-brand-500" />
-              {t('patient.findNearbyHospital', 'Nearby Hospitals & Health Facilities')}
+              {t('patient.findNearbyHospital', 'Accredited Healthcare Facilities & OPD Registry')}
             </h2>
             <TTSButton
-              text={`${t('patient.findNearbyHospital')} - ${hospitals.length} facilities discovered with live doctor and seat availability`}
+              text={`${t('patient.findNearbyHospital', 'Accredited Healthcare Facilities')} - ${hospitals.length} facilities discovered with live doctor and seat availability`}
               label={t('common.listen', 'Listen')}
             />
           </div>
           <p className="text-xs text-slate-500">
-            Real-time verified hospitals with active doctor rosters, live OPD token seats, bed availability & transit friction
+            Real-time verified clinical facilities with active medical officer rosters, live OPD token quotas, bed availability & transit accessibility index
           </p>
         </div>
 
@@ -139,7 +139,7 @@ export const NearbyHospitals: React.FC = () => {
             className="flex-1 md:flex-none px-3.5 py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 rounded-xl text-xs font-bold border border-brand-200 flex items-center justify-center gap-2 transition-colors shadow-xs"
           >
             <MapPin className={`w-4 h-4 ${isLocLoading ? 'animate-bounce text-brand-600' : ''}`} />
-            <span>{isLocLoading ? 'Detecting GPS Location...' : 'Use My Live GPS Location'}</span>
+            <span>{isLocLoading ? 'Detecting Geospatial Coordinates...' : 'Synchronize Live Geolocation'}</span>
           </button>
         </div>
       </div>

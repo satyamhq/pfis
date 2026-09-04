@@ -127,10 +127,10 @@ export const WhatIfSimulator: React.FC = () => {
               <span>Enterprise Live Scenario Simulator</span>
             </div>
             <h1 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight">
-              What-If Intervention Simulator
+              What-If Scenario Simulation Engine
             </h1>
             <p className="text-xs text-slate-500">
-              Interactive scenario modeling to evaluate estimated care completion gains from community interventions
+              Multivariate non-clinical intervention modeling to evaluate estimated care completion probability gains across population cohorts
             </p>
           </div>
 

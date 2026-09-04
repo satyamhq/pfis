@@ -110,12 +110,12 @@ export const AshaDashboard: React.FC = () => {
       {/* Guidance Ribbon: What is this? Why is it useful? What should I do next? */}
       <PageClarityRibbon
         pageKey="asha_dashboard"
-        what="Village Health Care & Household Assistance Hub — manage your cluster visits and coordinate transport."
-        why="Shows which village families are missing hospital follow-ups due to bus costs, missing cards, or language barriers so you can step in."
-        next="Click 'Log Field Barrier' to report an obstacle, or 'Request Transit Support' to book a morning shuttle for a patient."
+        what="Community Health Worker Field Console — cluster cohort management, barrier telemetry, and transit dispatch."
+        why="Identifies grassroots households facing acute transit attrition, lost referral paperwork, or daily wage barriers to ensure continuum of care."
+        next="Execute 'Log Field Barrier' for doorstep telemetry or dispatch community transit vouchers for upcoming specialist consultations."
         actionText="Log Field Barrier"
         actionLink="/asha/log-barrier"
-        badge="ASHA Community"
+        badge="Field Operations"
         role="asha"
       />
 

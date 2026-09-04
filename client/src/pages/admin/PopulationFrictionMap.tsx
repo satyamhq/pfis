@@ -62,10 +62,10 @@ export const PopulationFrictionMap: React.FC = () => {
         <div>
           <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
             <MapPin className="w-6 h-6 text-brand-500 shrink-0" />
-            Population Friction & Access Heatmap
+            Macro-Geographic Friction & Accessibility Density Heatmap
           </h2>
           <p className="text-xs text-slate-500">
-            Aggregated, anonymized geographic clusters highlighting systemic transit deserts and regional friction
+            Spatial geospatial telemetry aggregating anonymized population clusters to isolate systemic transit deserts and non-clinical access friction
           </p>
         </div>
 

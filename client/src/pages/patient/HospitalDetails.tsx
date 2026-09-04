@@ -181,14 +181,14 @@ export const HospitalDetails: React.FC = () => {
       {/* Guidance Ribbon: What is this? Why is it useful? What should I do next? */}
       <PageClarityRibbon
         pageKey="hospital_details"
-        what="Hospital Profile & OPD Doctor Booking — view doctor timings, fees, and secure your visit token."
-        why="Shows live OPD token availability and doctor schedules so you never arrive at a full clinic, plus lets you request free ambulance or an escort."
-        next="Select your department below, pick a quick symptom, and click 'Confirm & Book OPD Token'."
-        actionText="Skip to Booking Form"
+        what="Facility Profile & OPD Intake Coordination — review departmental rosters, token capacity, and submit non-clinical intake requests."
+        why="Ensures advance quota reservation to minimize waiting latency and coordinates barrier mitigation (ambulance transit or Sahayak escort)."
+        next="Select your target clinical department, specify visit rationale, and submit the verified intake request."
+        actionText="Proceed to Intake Request"
         onAction={() => {
           document.getElementById('booking-form')?.scrollIntoView({ behavior: 'smooth' });
         }}
-        badge="Hospital Details"
+        badge="Facility Dossier"
         role="patient"
       />
 
@@ -389,10 +389,10 @@ export const HospitalDetails: React.FC = () => {
       <div id="booking-form" className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-8 shadow-card space-y-6">
         <div>
           <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <Send className="w-5 h-5 text-teal-600" /> Book OPD Appointment & Token
+            <Send className="w-5 h-5 text-teal-600" /> Patient Intake & Windowed Token Allocation Request
           </h3>
           <p className="text-xs text-slate-500">
-            Reserve your doctor consultation token in advance — free or subsidized under Ayushman Bharat
+            Secure an advance OPD consultation slot and request non-clinical accommodations with verified patient consent
           </p>
         </div>
 
@@ -401,7 +401,7 @@ export const HospitalDetails: React.FC = () => {
         <form onSubmit={handleOpenConsent} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Select
-              label="Selected Clinical Department"
+              label="Target Clinical Department"
               value={selectedDept}
               onChange={(e) => setSelectedDept(e.target.value)}
               options={departments.map((d) => ({ label: `${d.name} (Fee: ₹${d.consultationFee})`, value: d.name }))}
@@ -410,7 +410,7 @@ export const HospitalDetails: React.FC = () => {
 
             <div className="grid grid-cols-1 min-[420px]:grid-cols-2 gap-2">
               <Input
-                label="Preferred Visit Date"
+                label="Preferred Consultation Date"
                 type="date"
                 value={preferredDate}
                 onChange={(e) => setPreferredDate(e.target.value)}
@@ -419,7 +419,7 @@ export const HospitalDetails: React.FC = () => {
               />
 
               <Select
-                label="Time Window"
+                label="OPD Intake Window"
                 value={preferredTimeSlot}
                 onChange={(e) => setPreferredTimeSlot(e.target.value)}
                 options={[
@@ -434,10 +434,10 @@ export const HospitalDetails: React.FC = () => {
           <div className="space-y-2">
             <div className="flex flex-wrap items-center justify-between gap-1">
               <label className="block text-xs font-semibold text-slate-700">
-                Reason for Visit & Primary Symptoms
+                Clinical Presentation & Chief Complaint
               </label>
               <span className="text-[11px] text-slate-400">
-                Tap a chip below to auto-fill
+                Common Clinical Indications (Quick Select):
               </span>
             </div>
 

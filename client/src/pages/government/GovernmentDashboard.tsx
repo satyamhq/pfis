@@ -126,12 +126,12 @@ export const GovernmentDashboard: React.FC = () => {
       {/* Guidance Ribbon: What is this? Why is it useful? What should I do next? */}
       <PageClarityRibbon
         pageKey="government_dashboard"
-        what="District Health Access & Care Retention Portal — track where patients drop out of care across 5 stages."
-        why="Identifies diagnostic deserts, transit hurdles, and out-of-pocket costs at a district scale so you can fund mobile vans and targeted subsidies."
-        next="Click 'Policy Interventions' to simulate the impact of new bus shuttles or mobile diagnostic camps on district recovery."
-        actionText="Policy Interventions"
+        what="District Health Directorate & Care Continuum Portal — population-level care retention and 5-stage leakage monitoring."
+        why="Reveals geographic diagnostic deserts, public transit bottlenecks, and systemic economic drop-off drivers across district clusters."
+        next="Execute 'Policy Interventions & Optimization' to simulate public health resource allocation and quantify continuum recovery."
+        actionText="Policy Interventions & Optimization"
         actionLink="/government/interventions"
-        badge="District Official"
+        badge="Directorate Oversight"
         role="government"
       />
 

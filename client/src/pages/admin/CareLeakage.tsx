@@ -40,14 +40,14 @@ export const CareLeakage: React.FC = () => {
             <div className="flex flex-wrap items-center gap-2">
               <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
                 <GitFork className="w-6 h-6 text-brand-500 shrink-0" />
-                Care Leakage & Retention Funnel
+                Care Continuum Leakage & Operational Retention Funnel
               </h2>
               <span className="px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-700 text-xs font-bold border border-rose-200">
                 Total Leakage: {leakageData?.totalLeakagePercentage || 82}%
               </span>
             </div>
             <p className="text-xs text-slate-500 mt-0.5">
-              Tracking patient attrition across 6 operational milestones to isolate where journeys collapse
+              Tracking longitudinal patient attrition across 6 sequential operational milestones to isolate critical points of system drop-off
             </p>
           </div>
 

@@ -45,10 +45,10 @@ export const AdminPatients: React.FC = () => {
         <div>
           <h2 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
             <Users className="w-6 h-6 text-brand-500" />
-            Patient Accessibility Registry
+            Universal Patient Registry & Accessibility Cohort Ledger
           </h2>
           <p className="text-xs text-slate-500">
-            Comprehensive ledger of monitored patients with real-time friction and risk indices
+            Comprehensive population ledger of registered individuals with real-time non-clinical friction indices and journey risk trajectories
           </p>
         </div>
 

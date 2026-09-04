@@ -46,10 +46,10 @@ export const HospitalRequests: React.FC = () => {
         <div>
           <h2 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
             <ListOrdered className="w-6 h-6 text-brand-500" />
-            Patient Intake & Triage Queue
+            Institutional Intake Queue & Access Triage Ledger
           </h2>
           <p className="text-xs text-slate-500">
-            Review incoming requests with patient consent authorization and accessibility accommodations
+            Validate and prioritize incoming clinical admissions with cryptographic consent and non-clinical barrier accommodations
           </p>
         </div>
       </div>

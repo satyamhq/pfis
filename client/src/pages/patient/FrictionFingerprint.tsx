@@ -85,12 +85,12 @@ export const FrictionFingerprint: React.FC = () => {
       {/* Guidance Ribbon: What is this? Why is it useful? What should I do next? */}
       <PageClarityRibbon
         pageKey="patient_friction"
-        what="Your Journey Difficulty Map — shows where you might face delays or high costs when visiting a hospital."
-        why="Helps you know beforehand if buses are running, if morning lines will cost you daily wages, and how to get help."
-        next="Check the suggestions below to arrange a community bus or ask an ASHA worker to accompany you."
-        actionText="Plan Free Shuttle / Trip"
+        what="Patient Friction Fingerprint™ — 8-dimension quantitative decomposition of non-clinical healthcare access constraints."
+        why="Identifies systemic barriers across geographic distance, transit frequencies, digital literacy, and economic wage commitments before clinical arrival."
+        next="Examine compound friction synergies below or initiate a Digital Twin simulation to model targeted mitigation pathways."
+        actionText="Simulate Mitigation Pathways"
         actionLink="/patient/digital-twin"
-        badge="Journey Map"
+        badge="Friction Analytics"
         role="patient"
       />
 
@@ -101,18 +101,18 @@ export const FrictionFingerprint: React.FC = () => {
             <div className="flex flex-wrap items-center gap-2">
               <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
                 <Sparkles className="w-6 h-6 text-teal-600 shrink-0" />
-                Hospital Visit Ease Breakdown
+                Patient Friction Fingerprint™
               </h2>
               <StatusBadge status={frictionLevel} size="sm" />
             </div>
             <p className="text-xs text-slate-500 mt-0.5">
-              Clear breakdown of travel, transport, and waiting challenges that could slow down your visit
+              Deterministic, explainable quantification of non-clinical healthcare barriers
             </p>
           </div>
 
           <div className="flex items-center gap-3">
             <div className="text-left sm:text-right">
-              <span className="text-[10px] text-slate-400 font-bold uppercase block">Overall Travel Ease</span>
+              <span className="text-[10px] text-slate-400 font-bold uppercase block">Overall Accessibility Index</span>
               <span className="text-2xl font-black text-teal-700">
                 {overallScore} / 100
               </span>
@@ -122,26 +122,26 @@ export const FrictionFingerprint: React.FC = () => {
 
         {/* Explainable Rationale Banner */}
         <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1 text-xs">
-          <p className="font-bold text-slate-900">Why Your Score Looks Like This:</p>
+          <p className="font-bold text-slate-900">Deterministic Engine Rationale:</p>
           <p className="text-slate-600 leading-relaxed">{profile.explanation}</p>
         </div>
 
         <div className="grid grid-cols-1 min-[360px]:grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 text-xs pt-1">
           <div className="p-3 bg-teal-50/60 rounded-xl border border-teal-100">
-            <span className="text-[10px] text-teal-700 font-bold uppercase block">Main Travel Challenge</span>
+            <span className="text-[10px] text-teal-700 font-bold uppercase block">Primary Operational Constraint</span>
             <p className="font-bold text-teal-950 truncate">{profile.topBarrier}</p>
           </div>
           <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
-            <span className="text-[10px] text-slate-400 font-bold uppercase block">Second Challenge</span>
+            <span className="text-[10px] text-slate-400 font-bold uppercase block">Secondary Systemic Barrier</span>
             <p className="font-bold text-slate-800 truncate">{profile.secondaryBarrier}</p>
           </div>
           <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
-            <span className="text-[10px] text-slate-400 font-bold uppercase block">Travel Barrier Level</span>
+            <span className="text-[10px] text-slate-400 font-bold uppercase block">Composite Friction Index</span>
             <p className="font-bold text-slate-800">{profile.overallFrictionScore} / 100</p>
           </div>
           <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
-            <span className="text-[10px] text-slate-400 font-bold uppercase block">Evaluated Factors</span>
-            <p className="font-bold text-slate-800">8 Checkpoints</p>
+            <span className="text-[10px] text-slate-400 font-bold uppercase block">Evaluated Dimensions</span>
+            <p className="font-bold text-slate-800">8 Factor Dimensions</p>
           </div>
         </div>
       </div>
@@ -159,10 +159,10 @@ export const FrictionFingerprint: React.FC = () => {
             <AlertTriangle className="w-5 h-5 text-amber-700" />
             <div>
               <h3 className="text-sm font-bold text-amber-950">
-                Combined Obstacles & How to Solve Them ({interactions.length})
+                Compound Friction Interaction Synergies Detected ({interactions.length})
               </h3>
               <p className="text-xs text-amber-800">
-                When two difficulties happen together (e.g. high bus cost + morning timing), they make your trip much harder. Here is how we help:
+                Non-linear barrier amplification when multiple high friction factors co-occur
               </p>
             </div>
           </div>
@@ -178,7 +178,7 @@ export const FrictionFingerprint: React.FC = () => {
                     {interaction.primaryDimension} + {interaction.secondaryDimension}
                   </span>
                   <span className="px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 text-[10px] font-bold">
-                    {interaction.interactionMultiplier}x Combined Delay
+                    Multiplier: {interaction.interactionMultiplier}x
                   </span>
                 </div>
 
@@ -188,7 +188,7 @@ export const FrictionFingerprint: React.FC = () => {
 
                 <div className="p-2 bg-amber-50 rounded-lg text-amber-900 text-[11px] font-medium flex items-center gap-1.5">
                   <Lightbulb className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-                  <span><strong>How We Help:</strong> {interaction.recommendedMitigation}</span>
+                  <span><strong>Recommended Mitigation:</strong> {interaction.recommendedMitigation}</span>
                 </div>
               </div>
             ))}
@@ -199,7 +199,7 @@ export const FrictionFingerprint: React.FC = () => {
       {/* 8 Detailed Dimension Cards */}
       <div className="space-y-4">
         <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-          <Layers className="w-5 h-5 text-teal-600" /> All 8 Journey Factor Details
+          <Layers className="w-5 h-5 text-teal-600" /> Granular Factor Breakdowns
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

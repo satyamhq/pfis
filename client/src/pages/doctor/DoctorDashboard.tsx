@@ -156,12 +156,12 @@ export const DoctorDashboard: React.FC = () => {
       {/* Guidance Ribbon: What is this? Why is it useful? What should I do next? */}
       <PageClarityRibbon
         pageKey="doctor_dashboard"
-        what="Clinical Patient Queue & Travel Barrier Alerts — see today's OPD schedule with non-clinical context."
-        why="Alerts you if a patient traveled 60+ km, has language barriers, or might miss lab follow-ups, so you can tailor your consultation and request ASHA follow-up."
-        next="Filter by 'High-Friction Risk' or click 'Review Context' on any patient below to check their travel hurdles."
-        actionText="View Full Queue"
+        what="Clinical Decision-Support Station — pre-consultation non-clinical risk telemetry and patient adherence monitoring."
+        why="Provides immediate visibility into transit distance, language dialect match, and caregiver support constraints to preempt follow-up care attrition."
+        next="Filter by 'High-Friction Risk' or select 'Review Non-Clinical Context' on any queued patient to coordinate supportive interventions."
+        actionText="Access Full Patient Queue"
         actionLink="/doctor/patients"
-        badge="Doctor Station"
+        badge="Clinical Station"
         role="doctor"
       />
 

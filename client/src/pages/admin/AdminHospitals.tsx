@@ -225,18 +225,18 @@ export const AdminHospitals: React.FC = () => {
             <div className="flex items-center gap-2">
               <Building2 className="w-7 h-7 text-brand-500 shrink-0" />
               <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                Connected Hospital Registry
+                Accredited Healthcare Facilities Directory
               </h2>
             </div>
             <p className="text-xs text-slate-500 mt-1">
-              Registered public and private facilities saved in the database with verified OPD tokens, doctor rosters & disease treatments
+              Institutional directory of accredited public and private facilities with active clinical rosters, live OPD quotas, and disease treatment protocols
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
             <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200 flex items-center justify-center gap-1.5 shadow-2xs">
               <ShieldCheck className="w-4 h-4 text-teal-600 shrink-0" />
-              {filteredHospitals.length} Registered Facilities
+              {filteredHospitals.length} Accredited Facilities
             </span>
 
             <Button
@@ -246,7 +246,7 @@ export const AdminHospitals: React.FC = () => {
               icon={<Plus className="w-4 h-4" />}
               className="w-full sm:w-auto justify-center"
             >
-              Register New Hospital
+              Accredit & Onboard Facility
             </Button>
           </div>
         </div>

@@ -279,12 +279,12 @@ export const DigitalTwinSimulator: React.FC = () => {
       {/* Guidance Ribbon: What is this? Why is it useful? What should I do next? */}
       <PageClarityRibbon
         pageKey="patient_simulator"
-        what="Virtual Hospital Trip Planner — test your travel route and see how free shuttles or ASHA helpers make your visit faster."
-        why="Shows exactly where hospital trips usually get delayed or cost too much, and demonstrates how village shuttles and phone tokens fix those delays."
-        next="Click 'Start Trip Simulation' below to see the 7-step journey in action, or flip the intervention switches to test instant improvements."
-        actionText={isRunning ? 'Simulation Running...' : 'Start Trip Simulation'}
+        what="Non-Clinical Digital Twin Journey Simulator — dynamic discrete-event modeling of patient transit and intake pathways."
+        why="Simulates friction bottlenecks across 7 care stages and computes sensitivity deltas when deploying targeted interventions."
+        next="Execute the discrete-event trajectory simulation or toggle systemic intervention switches to analyze completion delta."
+        actionText={isRunning ? 'Simulation Running...' : 'Execute Simulation Run'}
         onAction={isRunning ? undefined : handleStartSimulation}
-        badge="Trip Planner"
+        badge="Digital Twin Engine"
         role="patient"
       />
 
@@ -294,19 +294,19 @@ export const DigitalTwinSimulator: React.FC = () => {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold border border-teal-200 mb-2">
               <Sparkles className="w-3.5 h-3.5 text-teal-600" />
-              <span>Interactive Trip Planner</span>
+              <span>PFIS Core Engine: Discrete-Event Digital Twin</span>
             </div>
             <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">
-              Hospital Trip Planner & Journey Simulator
+              Patient Friction Digital Twin Simulator
             </h1>
             <p className="text-xs text-slate-500">
-              See how travel distance, bus schedules, and waiting lines affect your visit — and test helpful solutions in real time
+              Discrete-event trajectory simulation of non-clinical healthcare access barriers & intervention sensitivity
             </p>
           </div>
 
           <div className="flex items-center gap-2">
             <TTSButton
-              text={`Hospital Trip Planner. Current estimated trip success chance is ${completionProb} percent.`}
+              text={`Patient Friction Digital Twin Simulator. Current estimated care completion probability is ${completionProb} percent.`}
             />
             <Button
               variant="outline"
@@ -322,27 +322,27 @@ export const DigitalTwinSimulator: React.FC = () => {
 
         {/* 1-Click Quick Presets */}
         <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
-          <span className="text-slate-500 font-bold text-[11px] uppercase tracking-wider">Quick Presets:</span>
+          <span className="text-slate-500 font-bold text-[11px] uppercase tracking-wider">Archetype Presets:</span>
           <button
             type="button"
             onClick={() => applyPreset('remote_village')}
             className="px-3 py-1 rounded-full bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200 font-semibold transition-all shadow-xs"
           >
-            Remote Village (No Bus)
+            Isolated Rural Cohort (High Friction)
           </button>
           <button
             type="button"
             onClick={() => applyPreset('supported_care')}
             className="px-3 py-1 rounded-full bg-teal-50 text-teal-700 hover:bg-teal-100 border border-teal-200 font-semibold transition-all shadow-xs"
           >
-            With Free Bus & ASHA (Supported)
+            Supported Community Cohort (Mitigated)
           </button>
           <button
             type="button"
             onClick={() => applyPreset('urban_town')}
             className="px-3 py-1 rounded-full bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 font-semibold transition-all shadow-xs"
           >
-            Near Town (Easy Access)
+            Peri-Urban Transit Cohort (Low Friction)
           </button>
         </div>
 
@@ -350,8 +350,8 @@ export const DigitalTwinSimulator: React.FC = () => {
         <div className="p-3 bg-teal-50/80 border border-teal-200/80 rounded-xl text-xs text-slate-700 flex items-center gap-2.5">
           <ShieldAlert className="w-4 h-4 text-teal-600 flex-shrink-0" />
           <span>
-            <strong className="text-teal-800">Journey & Travel Simulator:</strong> Models travel distance,
-            buses, and hospital waiting queues. Does NOT provide medical diagnosis or replace doctors.
+            <strong className="text-teal-800">Non-Clinical Operational Simulation:</strong> Models socio-geographic,
+            transit, and queue-latency bottlenecks. Strictly non-clinical; does not evaluate pathology or clinical therapy.
           </span>
         </div>
       </div>

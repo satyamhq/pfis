@@ -40,14 +40,14 @@ export const CareFailure: React.FC = () => {
             <div className="flex flex-wrap items-center gap-2">
               <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
                 <BarChart3 className="w-6 h-6 text-brand-500 shrink-0" />
-                Why Did Care Fail? Engine
+                Care Attrition Root-Cause Analysis & Causal Attribution Engine
               </h2>
               <span className="px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-700 text-xs font-bold border border-teal-200">
                 Non-Clinical Causal Attribution
               </span>
             </div>
             <p className="text-xs text-slate-500 mt-0.5">
-              Root-cause operational classification of factors triggering premature journey dropouts
+              Algorithmic causal decomposition of non-clinical friction factors triggering premature care abandonment
             </p>
           </div>
         </div>

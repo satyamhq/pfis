@@ -204,11 +204,11 @@ export const HospitalDepartments: React.FC = () => {
           <div className="flex items-center gap-2">
             <Layers className="w-6 h-6 text-brand-500" />
             <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-              Hospital Clinical Departments & Doctor Roster
+              Department & Ambulatory Token Capacity Manager
             </h2>
           </div>
           <p className="text-xs text-slate-500 mt-1">
-            Configure your real doctors on duty, clinical specializations, operating schedules & live token seat allocations
+            Configure clinical specializations, attending physician duty rosters, operating schedules & live ambulatory token quotas
           </p>
         </div>
 

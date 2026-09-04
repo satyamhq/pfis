@@ -159,10 +159,10 @@ export const PageClarityRibbon: React.FC<PageClarityRibbonProps> = ({
             type="button"
             onClick={toggle}
             className="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-white/80 transition-colors flex items-center gap-1 text-xs font-medium"
-            title={isCollapsed ? 'Show Guidance' : 'Hide Guidance'}
+            title={isCollapsed ? 'Show Operational Briefing' : 'Minimize Briefing'}
           >
             <span className="hidden md:inline text-[11px] text-slate-500">
-              {isCollapsed ? 'Explain Page' : 'Minimize'}
+              {isCollapsed ? 'Operational Briefing' : 'Minimize Briefing'}
             </span>
             {isCollapsed ? (
               <ChevronDown className="w-4 h-4 text-slate-600" />
@@ -177,33 +177,34 @@ export const PageClarityRibbon: React.FC<PageClarityRibbonProps> = ({
         <div className="px-3.5 pb-3.5 sm:px-4 sm:pb-4 pt-1 border-t border-slate-200/40">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 sm:gap-3 text-xs">
             {/* 1. What is this */}
+            {/* 1. Module Scope */}
             <div className="p-3 rounded-xl bg-white/80 border border-slate-100 shadow-xs space-y-1">
               <div className="flex items-center gap-1.5 font-bold text-slate-800">
                 <span className="w-4 h-4 rounded-full bg-teal-100 text-teal-800 flex items-center justify-center text-[10px] font-black shrink-0">1</span>
-                <span>What is this?</span>
+                <span>Operational Scope</span>
               </div>
               <p className="text-slate-600 text-[11px] sm:text-xs leading-relaxed pl-5.5">
                 {what}
               </p>
             </div>
 
-            {/* 2. Why is it useful */}
+            {/* 2. Strategic Utility */}
             <div className="p-3 rounded-xl bg-white/80 border border-slate-100 shadow-xs space-y-1">
               <div className="flex items-center gap-1.5 font-bold text-slate-800">
                 <span className="w-4 h-4 rounded-full bg-blue-100 text-blue-800 flex items-center justify-center text-[10px] font-black shrink-0">2</span>
-                <span>Why is it useful?</span>
+                <span>Strategic Relevance</span>
               </div>
               <p className="text-slate-600 text-[11px] sm:text-xs leading-relaxed pl-5.5">
                 {why}
               </p>
             </div>
 
-            {/* 3. What should I do next */}
+            {/* 3. Recommended Action */}
             <div className="p-3 rounded-xl bg-white/80 border border-slate-100 shadow-xs space-y-1 flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-1.5 font-bold text-slate-800">
                   <span className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center text-[10px] font-black shrink-0">3</span>
-                  <span>What should I do next?</span>
+                  <span>Recommended Action</span>
                 </div>
                 <p className="text-slate-600 text-[11px] sm:text-xs leading-relaxed pl-5.5">
                   {next}

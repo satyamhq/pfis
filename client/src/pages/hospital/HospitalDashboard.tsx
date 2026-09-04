@@ -98,12 +98,12 @@ export const HospitalDashboard: React.FC = () => {
       {/* Guidance Ribbon: What is this? Why is it useful? What should I do next? */}
       <PageClarityRibbon
         pageKey="hospital_dashboard"
-        what="Hospital Operations & Triage Hub — balance OPD capacity, review appointments, and allocate doctors."
-        why="Helps your facility anticipate daily patient volume, prioritize high-travel patients, and prevent clinic bottlenecks."
-        next="Click 'Review Patient Queue' to accept new patient bookings, or manage doctor quotas in 'Manage Departments'."
-        actionText="Review Patient Queue"
+        what="Institutional Triage Console — coordinate incoming patient intake, department quotas, and barrier accommodation."
+        why="Balances daily token quotas across clinical specialties while proactively reviewing transport, language, and wheelchair assistance needs."
+        next="Execute 'Triage Incoming Queue' to review high-risk patient intakes or adjust specialist capacities under 'Manage Departments'."
+        actionText="Triage Incoming Queue"
         actionLink="/hospital/requests"
-        badge="Hospital Ops"
+        badge="Institutional Triage"
         role="hospital"
       />
 

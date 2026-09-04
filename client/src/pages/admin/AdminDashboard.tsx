@@ -4,6 +4,7 @@ import { adminService } from '../../services/adminService';
 import { StatCard } from '../../components/common/StatCard';
 import { Button } from '../../components/common/Button';
 import { LoadingSkeleton } from '../../components/common/LoadingSkeleton';
+import { PageClarityRibbon } from '../../components/common/PageClarityRibbon';
 import {
   Shield,
   Users,
@@ -70,6 +71,18 @@ export const AdminDashboard: React.FC = () => {
 
   return (
     <div className="space-y-8">
+      {/* Operational Briefing Ribbon */}
+      <PageClarityRibbon
+        pageKey="admin_dashboard"
+        role="admin"
+        badge="Operational Briefing"
+        what="Master System Telemetry & Administrative Governance — global observability, algorithmic model sensitivity, and infrastructure integrity across all district nodes."
+        why="Consolidates cross-cluster audit trails, patient population demographics, healthcare facility capacity utilization, and algorithmic intervention effectiveness."
+        next="Analyze system throughput, evaluate simulation engines, calibrate budget knapsack constraints, and monitor cryptographic access ledgers."
+        actionText="Run What-If Simulation"
+        actionLink="/admin/simulator"
+      />
+
       {/* Header Banner */}
       <div className="relative overflow-hidden bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-card border border-slate-200/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 sm:gap-6">
         <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-teal-500/5 via-cyan-500/5 to-transparent rounded-full blur-3xl pointer-events-none" />
@@ -80,7 +93,7 @@ export const AdminDashboard: React.FC = () => {
             <span>Population Health Intelligence & Operations</span>
           </div>
           <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">
-            PFIS Administrative Control Suite
+            PFIS Master Command & Executive Telemetry Console
           </h1>
           <p className="text-xs text-slate-500 leading-relaxed">
             Live real-time monitoring of all authenticated user logins (Patient, Clinical Hospital, and Google accounts),
@@ -91,12 +104,12 @@ export const AdminDashboard: React.FC = () => {
         <div className="flex flex-col sm:flex-row flex-wrap gap-2.5 w-full md:w-auto relative z-10">
           <Link to="/admin/simulator" className="w-full sm:w-auto">
             <Button variant="primary" size="sm" className="w-full sm:w-auto justify-center shadow-xs" icon={<Cpu className="w-4 h-4" />}>
-              What-If Simulator
+              What-If Scenario Simulation Engine
             </Button>
           </Link>
           <Link to="/admin/audit-logs" className="w-full sm:w-auto">
             <Button variant="secondary" size="sm" className="w-full sm:w-auto justify-center shadow-xs" icon={<Activity className="w-4 h-4" />}>
-              Audit Trail
+              Cryptographic Audit Ledger
             </Button>
           </Link>
         </div>

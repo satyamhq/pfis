@@ -103,7 +103,7 @@ export const DoctorPatientReview: React.FC = () => {
         className="inline-flex items-center gap-2 text-sm font-semibold text-purple-700 hover:text-purple-800 transition"
       >
         <ArrowLeft className="w-4 h-4" />
-        <span>Back to Patient Queue</span>
+        <span>Return to Clinical Roster & Patient Triage Queue</span>
       </Link>
 
       {/* Patient Header Card */}
@@ -135,7 +135,7 @@ export const DoctorPatientReview: React.FC = () => {
         <div className="flex items-start gap-3">
           <Sparkles className="w-5 h-5 text-purple-300 shrink-0 mt-0.5" />
           <div>
-            <h3 className="font-bold text-base">Physician Decision-Support Insights: Mitigating Care Drop-Off</h3>
+            <h3 className="font-bold text-base">Clinical Decision-Support: Non-Clinical Attrition Mitigation Directives</h3>
             <p className="text-sm text-purple-200 mt-1">
               Patient exhibits high risk of treatment discontinuation due to transit and timing constraints. To safeguard clinical continuity:
             </p>
@@ -150,8 +150,8 @@ export const DoctorPatientReview: React.FC = () => {
 
       {/* 8 Non-Clinical Friction Dimensions Matrix */}
       <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs">
-        <h2 className="text-lg font-bold text-slate-900 mb-1">Explainable 8-Dimension Friction Breakdown</h2>
-        <p className="text-sm text-slate-500 mb-5">Objective operational indicators impacting patient care completion</p>
+        <h2 className="text-lg font-bold text-slate-900 mb-1">Explainable 8-Factor Friction Matrix & Attrition Drivers</h2>
+        <p className="text-sm text-slate-500 mb-5">Multivariate non-clinical operational indicators governing patient compliance and follow-up retention</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {dimensions.map((dim, idx) => (

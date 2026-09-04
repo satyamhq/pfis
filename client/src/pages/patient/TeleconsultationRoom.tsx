@@ -108,11 +108,11 @@ export const TeleconsultationRoom: React.FC = () => {
           <div>
             <div className="flex items-center gap-2">
               <h2 className="text-base font-bold text-slate-900">
-                Live Tele-Triage Room • Dr. Gurpreet Singh, MD
+                Clinical Teleconsultation Terminal • Dr. Gurpreet Singh, MD
               </h2>
               <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
-                Connected Live
+                Encrypted Session Active
               </span>
             </div>
             <p className="text-xs text-slate-500">

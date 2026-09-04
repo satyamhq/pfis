@@ -39,16 +39,16 @@ export const PatientRequests: React.FC = () => {
         <div>
           <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
             <ListOrdered className="w-6 h-6 text-brand-500 shrink-0" />
-            My Hospital Intake Requests
+            Patient Intake & Ambulatory Token Ledger
           </h2>
           <p className="text-xs text-slate-500">
-            Track real-time status transitions, triage updates, and scheduled visit slots
+            Real-time status transitions, triage prioritization updates, and scheduled outpatient appointments
           </p>
         </div>
 
         <Link to="/patient/hospitals" className="w-full sm:w-auto">
           <Button variant="primary" size="sm" icon={<Building2 className="w-4 h-4" />} className="w-full sm:w-auto justify-center">
-            New Hospital Request
+            Initiate New Clinical Intake Request
           </Button>
         </Link>
       </div>

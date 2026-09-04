@@ -44,12 +44,12 @@ export const AccessibilityRisk: React.FC = () => {
       {/* Guidance Ribbon: What is this? Why is it useful? What should I do next? */}
       <PageClarityRibbon
         pageKey="patient_journey_risk"
-        what="Journey Care Tracker & Support Guide — see which stage of your hospital visit might have delays."
-        why="Identifies if you are at risk of missing doctor visits due to lack of morning buses, long clinic lines, or high medicine costs."
-        next="Review the community solutions below or request a free transit escort to ensure a smooth visit."
-        actionText="Find Hospitals"
+        what="Care Journey Continuum & Attrition Trajectory — predictive operational modeling of care completion."
+        why="Identifies non-clinical attrition vulnerabilities across 9 care continuum stages to preempt premature drop-out."
+        next="Review the operational bottleneck stage and evaluate recommended community mitigation pathways."
+        actionText="Explore Accredited Facilities"
         actionLink="/patient/hospitals"
-        badge="Care Guide"
+        badge="Care Trajectory"
         role="patient"
       />
 
@@ -60,12 +60,12 @@ export const AccessibilityRisk: React.FC = () => {
             <div className="flex flex-wrap items-center gap-2">
               <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
                 <ShieldAlert className="w-6 h-6 text-teal-600 shrink-0" />
-                Your Hospital Journey Support Guide
+                Care Journey Continuum & Operational Attrition Risk
               </h2>
               <StatusBadge status={riskCategory} size="sm" />
             </div>
             <p className="text-xs text-slate-500 mt-0.5">
-              Clear breakdown of potential roadblocks and community assistance to help you finish your treatment
+              Non-clinical operational estimate of physical, logistical, and administrative completion likelihood
             </p>
           </div>
         </div>
@@ -84,27 +84,27 @@ export const AccessibilityRisk: React.FC = () => {
             <CompletionGauge
               score={completionProb}
               size={190}
-              label="Trip Success Chance"
-              sublabel="Ease forecast"
+              label="Care Completion"
+              sublabel="Trajectory forecast"
             />
           </div>
 
           <div className="md:col-span-2 space-y-3 text-xs">
             <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
-              <span className="text-[10px] font-bold text-slate-400 uppercase">Main Stage Where Delays Happen</span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase">Identified Primary Journey Bottleneck Stage</span>
               <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
                 <Compass className="w-4 h-4 text-teal-600" />
                 {bottleneckStage}
               </h4>
               <p className="text-slate-600 leading-relaxed">
-                Travel distance and morning bus frequencies are the main barriers before reaching the consultation counter.
+                The greatest operational drop-off hazard for this profile occurs during physical travel and transit timing prior to specialist intake.
               </p>
             </div>
 
             {/* Primary Risk Factors */}
             <div className="space-y-2 pt-1">
               <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
-                Key Challenges Identified
+                Primary Socio-Geographic Risk Drivers
               </span>
               <div className="space-y-1.5">
                 {(careRisk?.primaryRiskFactors || []).map((rf, i) => (
