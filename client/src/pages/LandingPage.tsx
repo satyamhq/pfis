@@ -79,24 +79,24 @@ export const LandingPage: React.FC = () => {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 pt-4 w-full">
               <Link to="/patient/hospitals" className="w-full sm:w-auto">
-                <Button variant="primary" size="lg" className="w-full sm:w-auto" icon={<MapPin className="w-5 h-5" />}>
+                <Button variant="primary" size="lg" className="w-full sm:w-auto shadow-md shadow-teal-600/20" icon={<MapPin className="w-5 h-5" />}>
                   {t('landing.findHospitals', 'Find Nearby Hospitals')}
                 </Button>
               </Link>
               {!isAuthenticated ? (
                 <>
                   <Link to="/login?role=admin" className="w-full sm:w-auto">
-                    <Button variant="primary" size="lg" className="w-full sm:w-auto" icon={<Shield className="w-4 h-4" />}>
+                    <Button variant="outline" size="lg" className="w-full sm:w-auto" icon={<Shield className="w-4 h-4 text-purple-600" />}>
                       Admin Sign In
                     </Button>
                   </Link>
                   <Link to="/login?role=hospital" className="w-full sm:w-auto">
-                    <Button variant="outline" size="lg" className="w-full sm:w-auto" icon={<Building2 className="w-4 h-4" />}>
+                    <Button variant="outline" size="lg" className="w-full sm:w-auto" icon={<Building2 className="w-4 h-4 text-indigo-600" />}>
                       {t('landing.hospitalPortal', 'Hospital Portal')}
                     </Button>
                   </Link>
                   <Link to="/login?role=patient" className="w-full sm:w-auto">
-                    <Button variant="ghost" size="lg" className="w-full sm:w-auto">
+                    <Button variant="secondary" size="lg" className="w-full sm:w-auto">
                       {t('landing.patientLogin', 'Patient Portal')}
                     </Button>
                   </Link>
@@ -108,6 +108,12 @@ export const LandingPage: React.FC = () => {
                       ? '/patient/dashboard'
                       : user?.role === 'hospital'
                       ? '/hospital/dashboard'
+                      : user?.role === 'doctor'
+                      ? '/doctor/dashboard'
+                      : user?.role === 'asha'
+                      ? '/asha/dashboard'
+                      : user?.role === 'government'
+                      ? '/government/dashboard'
                       : '/admin/dashboard'
                   }
                   className="w-full sm:w-auto"
@@ -119,51 +125,87 @@ export const LandingPage: React.FC = () => {
               )}
             </div>
 
-            {/* 1-Click Instant Demo Launcher Bar */}
-            <div className="pt-8 max-w-2xl mx-auto">
-              <div className="p-4 bg-white text-slate-900 rounded-2xl shadow-md border border-slate-200 space-y-3">
-                <div className="flex items-center justify-between text-xs border-b border-slate-100 pb-2">
-                  <span className="font-bold text-teal-700 flex items-center gap-1.5">
-                    <Activity className="w-4 h-4" />{' '}
-                    {t('landing.quickDemoTitle', 'Instant Demo Role Access (1-Click Login):')}
+            {/* 1-Click Instant Demo Launcher Bar (All 6 Roles) */}
+            <div className="pt-8 max-w-4xl mx-auto">
+              <div className="p-4 sm:p-5 bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-3xl shadow-card border border-slate-200/90 space-y-3.5">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs border-b border-slate-100 pb-3">
+                  <span className="font-bold text-slate-800 flex items-center gap-2">
+                    <Activity className="w-4 h-4 text-teal-600" />{' '}
+                    <span>Universal Cadre Access — 1-Click Instant Demo Login:</span>
                   </span>
-                  <span className="text-[11px] text-slate-500 font-medium">Pre-seeded realistic profiles</span>
+                  <span className="text-[11px] text-slate-500 font-medium">Pre-seeded operational profiles</span>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
                   <button
                     onClick={() =>
                       handleQuickDemoLogin('patient@pfis.org', 'Patient@123', '/patient/dashboard')
                     }
-                    className="p-2.5 bg-slate-50 hover:bg-teal-50/80 rounded-xl text-left border border-slate-200 hover:border-teal-400 transition-all text-xs group"
+                    className="p-2.5 bg-slate-50 hover:bg-emerald-50/80 rounded-xl text-left border border-slate-200 hover:border-emerald-400 transition-all text-xs group cursor-pointer"
                   >
-                    <p className="font-bold text-slate-800 group-hover:text-teal-700 flex items-center justify-between">
-                      {t('landing.patientView', 'Patient View')} <ArrowRight className="w-3 h-3 text-teal-600" />
+                    <p className="font-bold text-slate-800 group-hover:text-emerald-700 flex items-center justify-between">
+                      Patient <ArrowRight className="w-3 h-3 text-emerald-600 shrink-0" />
                     </p>
-                    <p className="text-[11px] text-slate-500 truncate">Sunita Devi (Ramgarh)</p>
+                    <p className="text-[10px] text-slate-500 truncate mt-0.5">Sunita Devi</p>
                   </button>
 
                   <button
                     onClick={() =>
                       handleQuickDemoLogin('hospital@apollo.org', 'Hospital@123', '/hospital/dashboard')
                     }
-                    className="p-2.5 bg-slate-50 hover:bg-teal-50/80 rounded-xl text-left border border-slate-200 hover:border-teal-400 transition-all text-xs group"
+                    className="p-2.5 bg-slate-50 hover:bg-indigo-50/80 rounded-xl text-left border border-slate-200 hover:border-indigo-400 transition-all text-xs group cursor-pointer"
+                  >
+                    <p className="font-bold text-slate-800 group-hover:text-indigo-700 flex items-center justify-between">
+                      Hospital <ArrowRight className="w-3 h-3 text-indigo-600 shrink-0" />
+                    </p>
+                    <p className="text-[10px] text-slate-500 truncate mt-0.5">Apollo Triage Desk</p>
+                  </button>
+
+                  <button
+                    onClick={() =>
+                      handleQuickDemoLogin('doctor@pfis.org', 'Doctor@123', '/doctor/dashboard')
+                    }
+                    className="p-2.5 bg-slate-50 hover:bg-teal-50/80 rounded-xl text-left border border-slate-200 hover:border-teal-400 transition-all text-xs group cursor-pointer"
                   >
                     <p className="font-bold text-slate-800 group-hover:text-teal-700 flex items-center justify-between">
-                      {t('landing.hospitalView', 'Hospital View')} <ArrowRight className="w-3 h-3 text-teal-600" />
+                      Doctor <ArrowRight className="w-3 h-3 text-teal-600 shrink-0" />
                     </p>
-                    <p className="text-[11px] text-slate-500 truncate">Apollo Super Speciality</p>
+                    <p className="text-[10px] text-slate-500 truncate mt-0.5">Dr. Rajesh Sharma</p>
+                  </button>
+
+                  <button
+                    onClick={() =>
+                      handleQuickDemoLogin('asha@pfis.org', 'Asha@123', '/asha/dashboard')
+                    }
+                    className="p-2.5 bg-slate-50 hover:bg-amber-50/80 rounded-xl text-left border border-slate-200 hover:border-amber-400 transition-all text-xs group cursor-pointer"
+                  >
+                    <p className="font-bold text-slate-800 group-hover:text-amber-700 flex items-center justify-between">
+                      ASHA <ArrowRight className="w-3 h-3 text-amber-600 shrink-0" />
+                    </p>
+                    <p className="text-[10px] text-slate-500 truncate mt-0.5">Kamla Devi (Mehli)</p>
+                  </button>
+
+                  <button
+                    onClick={() =>
+                      handleQuickDemoLogin('government@pfis.org', 'Govt@123', '/government/dashboard')
+                    }
+                    className="p-2.5 bg-slate-50 hover:bg-blue-50/80 rounded-xl text-left border border-slate-200 hover:border-blue-400 transition-all text-xs group cursor-pointer"
+                  >
+                    <p className="font-bold text-slate-800 group-hover:text-blue-700 flex items-center justify-between">
+                      Govt CMO <ArrowRight className="w-3 h-3 text-blue-600 shrink-0" />
+                    </p>
+                    <p className="text-[10px] text-slate-500 truncate mt-0.5">Dr. Arvind Verma</p>
                   </button>
 
                   <button
                     onClick={() =>
                       handleQuickDemoLogin('admin@pfis.org', 'Admin@123', '/admin/dashboard')
                     }
-                    className="p-2.5 bg-slate-50 hover:bg-teal-50/80 rounded-xl text-left border border-slate-200 hover:border-teal-400 transition-all text-xs group"
+                    className="p-2.5 bg-slate-50 hover:bg-purple-50/80 rounded-xl text-left border border-slate-200 hover:border-purple-400 transition-all text-xs group cursor-pointer"
                   >
-                    <p className="font-bold text-slate-800 group-hover:text-teal-700 flex items-center justify-between">
-                      {t('landing.adminSuite', 'Admin Suite')} <ArrowRight className="w-3 h-3 text-teal-600" />
+                    <p className="font-bold text-slate-800 group-hover:text-purple-700 flex items-center justify-between">
+                      Admin <ArrowRight className="w-3 h-3 text-purple-600 shrink-0" />
                     </p>
-                    <p className="text-[11px] text-slate-500 truncate">Simulators & Heatmaps</p>
+                    <p className="text-[10px] text-slate-500 truncate mt-0.5">Executive Suite</p>
                   </button>
                 </div>
               </div>

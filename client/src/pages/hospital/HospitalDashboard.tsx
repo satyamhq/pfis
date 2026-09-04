@@ -61,31 +61,33 @@ export const HospitalDashboard: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Hospital Identity Banner */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-8 shadow-card flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div className="space-y-1">
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 uppercase">
+      <div className="relative overflow-hidden bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-5 sm:p-8 shadow-card flex flex-col md:flex-row items-start md:items-center justify-between gap-5 sm:gap-6">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-brand-500/5 via-teal-500/5 to-transparent rounded-full blur-2xl pointer-events-none" />
+        
+        <div className="space-y-2 relative z-10">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 uppercase tracking-wider border border-slate-200/80">
               {hospital?.type || 'Government'} Facility
             </span>
-            <span className="text-xs text-emerald-600 font-bold flex items-center gap-1">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> Live Triage Desk
+            <span className="text-xs bg-emerald-50 text-emerald-700 font-bold px-2.5 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> Live Triage Desk Active
             </span>
           </div>
-          <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">{hospital?.name}</h2>
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">{hospital?.name}</h2>
           <p className="text-xs text-slate-500 flex items-center gap-1.5">
             <MapPin className="w-3.5 h-3.5 text-brand-500 shrink-0" />
             <span>{hospital?.address}, {hospital?.city}</span>
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full md:w-auto">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full md:w-auto relative z-10">
           <Link to="/hospital/requests" className="w-full sm:w-auto">
-            <Button variant="primary" size="sm" icon={<ListOrdered className="w-4 h-4" />} className="w-full sm:w-auto justify-center">
+            <Button variant="primary" size="sm" icon={<ListOrdered className="w-4 h-4" />} className="w-full sm:w-auto justify-center shadow-xs">
               Review Patient Queue ({newRequestsCount})
             </Button>
           </Link>
           <Link to="/hospital/departments" className="w-full sm:w-auto">
-            <Button variant="outline" size="sm" icon={<Layers className="w-4 h-4" />} className="w-full sm:w-auto justify-center">
+            <Button variant="outline" size="sm" icon={<Layers className="w-4 h-4" />} className="w-full sm:w-auto justify-center shadow-xs">
               Manage OPD
             </Button>
           </Link>
@@ -99,7 +101,7 @@ export const HospitalDashboard: React.FC = () => {
           value={newRequestsCount}
           subtitle="Awaiting initial triage review"
           icon={Clock}
-          badge="Action Required"
+          badge={newRequestsCount > 0 ? 'Action Required' : 'Up to date'}
           badgeType={newRequestsCount > 0 ? 'danger' : 'info'}
         />
 
@@ -132,56 +134,67 @@ export const HospitalDashboard: React.FC = () => {
       </div>
 
       {/* Triage Queue Table */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-6 shadow-card space-y-4">
-        <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+      <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-5 sm:p-6 shadow-card space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
           <div>
-            <h3 className="text-sm font-bold text-slate-900">Recent Patient Intake Requests</h3>
-            <p className="text-xs text-slate-500">
+            <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+              <ListOrdered className="w-4 h-4 text-brand-600" />
+              Recent Patient Intake Requests
+            </h3>
+            <p className="text-xs text-slate-500 mt-0.5">
               Only patient-consented demographic and non-clinical friction data is displayed
             </p>
           </div>
-          <Link to="/hospital/requests" className="text-xs font-semibold text-brand-600 hover:text-brand-700">
-            View All ({requests.length})
+          <Link to="/hospital/requests" className="text-xs font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1">
+            <span>View All Queue</span>
+            <span className="px-1.5 py-0.5 rounded-full bg-brand-50 text-brand-700 text-[10px]">{requests.length}</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
         {requests.length === 0 ? (
-          <div className="p-8 text-center text-xs text-slate-400 bg-slate-50 rounded-xl">
+          <div className="p-8 text-center text-xs text-slate-400 bg-slate-50 rounded-2xl border border-dashed border-slate-200">
             No incoming patient requests in the queue currently.
           </div>
         ) : (
-          <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
-            <table className="w-full min-w-[620px] text-left text-xs">
-              <thead className="bg-slate-50 text-slate-500 font-bold uppercase tracking-wider text-[10px]">
+          <div className="overflow-x-auto -mx-5 px-5 sm:mx-0 sm:px-0">
+            <table className="w-full min-w-[640px] text-left text-xs">
+              <thead className="bg-slate-50/80 text-slate-500 font-bold uppercase tracking-wider text-[10px] border-b border-slate-100">
                 <tr>
-                  <th className="p-3 rounded-l-lg">Request Code</th>
-                  <th className="p-3">Patient</th>
-                  <th className="p-3">Department</th>
-                  <th className="p-3">Reason for Visit</th>
-                  <th className="p-3">Distance</th>
-                  <th className="p-3">Status</th>
-                  <th className="p-3 rounded-r-lg text-right">Action</th>
+                  <th className="p-3.5 rounded-l-xl">Request Code</th>
+                  <th className="p-3.5">Patient</th>
+                  <th className="p-3.5">Department</th>
+                  <th className="p-3.5">Reason for Visit</th>
+                  <th className="p-3.5">Distance</th>
+                  <th className="p-3.5">Status</th>
+                  <th className="p-3.5 rounded-r-xl text-right">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-slate-700">
+              <tbody className="divide-y divide-slate-100/80 text-slate-700">
                 {requests.slice(0, 6).map((req) => (
-                  <tr key={req._id} className="hover:bg-slate-50/70 transition-colors">
-                    <td className="p-3 font-bold text-slate-900">{req.requestCode}</td>
-                    <td className="p-3">
-                      <span className="font-semibold block">{(req.patientId as any)?.patientCode || 'PAT-1048'}</span>
+                  <tr key={req._id} className="hover:bg-slate-50/80 transition-colors group">
+                    <td className="p-3.5 font-bold font-mono text-slate-900">{req.requestCode}</td>
+                    <td className="p-3.5">
+                      <span className="font-semibold text-slate-900 block">{(req.patientId as any)?.patientCode || 'PAT-1048'}</span>
                       <span className="text-[10px] text-slate-400">
                         {(req.patientId as any)?.age} yrs • {(req.patientId as any)?.preferredLanguage}
                       </span>
                     </td>
-                    <td className="p-3 font-semibold text-teal-800">{req.departmentName}</td>
-                    <td className="p-3 max-w-xs truncate">{req.reasonForVisit}</td>
-                    <td className="p-3 font-medium text-slate-600">{req.distanceKm || 25} km</td>
-                    <td className="p-3">
+                    <td className="p-3.5 font-semibold text-teal-800">
+                      <span className="px-2 py-0.5 rounded-md bg-teal-50 border border-teal-100/60">
+                        {req.departmentName}
+                      </span>
+                    </td>
+                    <td className="p-3.5 max-w-xs truncate text-slate-600">{req.reasonForVisit}</td>
+                    <td className="p-3.5 font-medium text-slate-600">
+                      <span className="font-semibold text-slate-800">{req.distanceKm || 25}</span> km
+                    </td>
+                    <td className="p-3.5">
                       <StatusBadge status={req.status} size="sm" />
                     </td>
-                    <td className="p-3 text-right">
+                    <td className="p-3.5 text-right">
                       <Link to={`/hospital/requests/${req._id}`}>
-                        <Button variant="outline" size="sm">
+                        <Button variant="outline" size="sm" className="shadow-2xs">
                           Review
                         </Button>
                       </Link>

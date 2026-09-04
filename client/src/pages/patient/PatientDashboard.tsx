@@ -131,14 +131,16 @@ export const PatientDashboard: React.FC = () => {
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
       {/* 1. Header Profile Greeting Banner */}
-      <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-4 sm:p-8 shadow-card flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-6">
-        <div className="space-y-2">
+      <div className="relative overflow-hidden bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-5 sm:p-8 shadow-card flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5 sm:gap-6">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-teal-500/5 via-cyan-500/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="space-y-2.5 relative z-10">
           <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">
-              {t('patient.welcome', 'Welcome')}, {user?.name}
+              {t('patient.welcome', 'Welcome')}, <span className="bg-gradient-to-r from-teal-800 to-teal-600 bg-clip-text text-transparent">{user?.name}</span>
             </h1>
             {patient?.patientCode && (
-              <span className="text-xs px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-mono font-bold border border-slate-200">
+              <span className="text-xs px-2.5 py-1 rounded-full bg-slate-100/90 text-slate-700 font-mono font-bold border border-slate-200/80 shadow-xs">
                 {patient.patientCode}
               </span>
             )}
@@ -147,19 +149,19 @@ export const PatientDashboard: React.FC = () => {
           </div>
 
           <p className="text-xs text-slate-500 flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1 font-semibold text-slate-700">
+            <span className="inline-flex items-center gap-1.5 font-semibold text-slate-700 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200/60">
               <MapPin className="w-3.5 h-3.5 text-teal-600" />
               {patient?.location?.address || 'Civil Lines'}, {patient?.location?.city || 'Phagwara'}
             </span>
             <span className="text-slate-300">•</span>
-            <span>{t('common.language', 'Language')}: <strong>{currentLanguage.nativeName}</strong></span>
+            <span className="text-slate-600">{t('common.language', 'Language')}: <strong className="text-slate-900">{currentLanguage.nativeName}</strong></span>
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 w-full lg:w-auto">
+        <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 w-full lg:w-auto relative z-10">
           <SimpleModeToggle />
           <Link to="/patient/profile">
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" className="shadow-xs">
               {t('patient.editProfile', 'Edit Profile')}
             </Button>
           </Link>
@@ -168,26 +170,30 @@ export const PatientDashboard: React.FC = () => {
 
       {/* 2. Primary 1-Click Patient Healthcare Action Hub */}
       <div className="space-y-3">
-        <h2 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
-          <Activity className="w-4 h-4 text-teal-600" /> Quick Patient Actions
-        </h2>
+        <div className="flex items-center justify-between">
+          <h2 className="text-xs font-bold text-slate-600 uppercase tracking-wider flex items-center gap-2">
+            <Activity className="w-3.5 h-3.5 text-teal-600" /> Quick Patient Actions
+          </h2>
+          <span className="text-[11px] font-medium text-slate-400">1-Click Telehealth & OPD Access</span>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {/* Card 1: Find Hospitals & Doctors */}
           <Link
             to="/patient/hospitals"
-            className="p-5 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-700 text-white shadow-lg shadow-teal-500/10 hover:shadow-xl hover:scale-[1.02] transition-all flex flex-col justify-between space-y-4 group"
+            className="group relative overflow-hidden p-5 rounded-2xl bg-gradient-to-br from-teal-600 to-teal-800 text-white shadow-md hover:shadow-xl hover:shadow-teal-900/15 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] transition-all duration-200 flex flex-col justify-between space-y-4 border border-teal-500/30"
           >
-            <div className="space-y-2">
-              <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-white backdrop-blur-xs">
+            <div className="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-white/10 rounded-full blur-xl pointer-events-none group-hover:scale-125 transition-transform" />
+            <div className="space-y-2 relative z-10">
+              <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/20 flex items-center justify-center text-white backdrop-blur-sm shadow-xs">
                 <Building2 className="w-5 h-5" />
               </div>
               <h3 className="font-bold text-base leading-tight">Find Hospitals & Doctors</h3>
-              <p className="text-xs text-teal-100 leading-relaxed">
+              <p className="text-xs text-teal-100/90 leading-relaxed">
                 View on-duty doctors, available OPD token seats, and bed capacity near you.
               </p>
             </div>
-            <div className="pt-2 flex items-center justify-between text-xs font-bold text-teal-100 group-hover:text-white">
+            <div className="pt-2 flex items-center justify-between text-xs font-bold text-teal-100 group-hover:text-white relative z-10 border-t border-white/10">
               <span>Find Nearby</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -196,18 +202,19 @@ export const PatientDashboard: React.FC = () => {
           {/* Card 2: Live Video Teleconsultation */}
           <Link
             to="/patient/teleconsult"
-            className="p-5 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-lg shadow-blue-500/10 hover:shadow-xl hover:scale-[1.02] transition-all flex flex-col justify-between space-y-4 group"
+            className="group relative overflow-hidden p-5 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-md hover:shadow-xl hover:shadow-indigo-900/15 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] transition-all duration-200 flex flex-col justify-between space-y-4 border border-blue-500/30"
           >
-            <div className="space-y-2">
-              <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-white backdrop-blur-xs">
+            <div className="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-white/10 rounded-full blur-xl pointer-events-none group-hover:scale-125 transition-transform" />
+            <div className="space-y-2 relative z-10">
+              <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/20 flex items-center justify-center text-white backdrop-blur-sm shadow-xs">
                 <Laptop className="w-5 h-5" />
               </div>
               <h3 className="font-bold text-base leading-tight">Live Teleconsultation</h3>
-              <p className="text-xs text-blue-100 leading-relaxed">
+              <p className="text-xs text-blue-100/90 leading-relaxed">
                 Connect instantly via video with duty doctors from home with live translation.
               </p>
             </div>
-            <div className="pt-2 flex items-center justify-between text-xs font-bold text-blue-100 group-hover:text-white">
+            <div className="pt-2 flex items-center justify-between text-xs font-bold text-blue-100 group-hover:text-white relative z-10 border-t border-white/10">
               <span>Start Video Call</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -216,18 +223,19 @@ export const PatientDashboard: React.FC = () => {
           {/* Card 3: Friction Digital Twin */}
           <Link
             to="/patient/digital-twin"
-            className="p-5 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-800 text-white shadow-lg shadow-emerald-500/10 hover:shadow-xl hover:scale-[1.02] transition-all flex flex-col justify-between space-y-4 group"
+            className="group relative overflow-hidden p-5 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-800 text-white shadow-md hover:shadow-xl hover:shadow-emerald-900/15 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] transition-all duration-200 flex flex-col justify-between space-y-4 border border-emerald-500/30"
           >
-            <div className="space-y-2">
-              <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-white backdrop-blur-xs">
+            <div className="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-white/10 rounded-full blur-xl pointer-events-none group-hover:scale-125 transition-transform" />
+            <div className="space-y-2 relative z-10">
+              <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/20 flex items-center justify-center text-white backdrop-blur-sm shadow-xs">
                 <Sparkles className="w-5 h-5" />
               </div>
               <h3 className="font-bold text-base leading-tight">Friction Digital Twin</h3>
-              <p className="text-xs text-emerald-100 leading-relaxed">
+              <p className="text-xs text-emerald-100/90 leading-relaxed">
                 Simulate your 7-step travel journey and see how shuttles and ASHA escorts save time.
               </p>
             </div>
-            <div className="pt-2 flex items-center justify-between text-xs font-bold text-emerald-100 group-hover:text-white">
+            <div className="pt-2 flex items-center justify-between text-xs font-bold text-emerald-100 group-hover:text-white relative z-10 border-t border-white/10">
               <span>Simulate Journey</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -236,18 +244,19 @@ export const PatientDashboard: React.FC = () => {
           {/* Card 4: Document Vault */}
           <Link
             to="/patient/documents"
-            className="p-5 rounded-2xl bg-gradient-to-br from-indigo-600 to-indigo-700 text-white shadow-lg shadow-indigo-600/15 hover:shadow-xl hover:scale-[1.02] transition-all flex flex-col justify-between space-y-4 group border border-indigo-500/20 cursor-pointer"
+            className="group relative overflow-hidden p-5 rounded-2xl bg-gradient-to-br from-indigo-600 to-slate-900 text-white shadow-md hover:shadow-xl hover:shadow-indigo-950/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] transition-all duration-200 flex flex-col justify-between space-y-4 border border-indigo-500/30 cursor-pointer"
           >
-            <div className="space-y-2">
-              <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-white backdrop-blur-xs">
+            <div className="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-white/10 rounded-full blur-xl pointer-events-none group-hover:scale-125 transition-transform" />
+            <div className="space-y-2 relative z-10">
+              <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/20 flex items-center justify-center text-white backdrop-blur-sm shadow-xs">
                 <FolderLock className="w-5 h-5" />
               </div>
               <h3 className="font-bold text-base leading-tight">Document Vault</h3>
-              <p className="text-xs text-indigo-100 leading-relaxed">
+              <p className="text-xs text-indigo-100/90 leading-relaxed">
                 Securely store your Ayushman Bharat card, prescription slips, and lab reports.
               </p>
             </div>
-            <div className="pt-2 flex items-center justify-between text-xs font-bold text-indigo-100 group-hover:text-white">
+            <div className="pt-2 flex items-center justify-between text-xs font-bold text-indigo-100 group-hover:text-white relative z-10 border-t border-white/10">
               <span>View Documents</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -414,32 +423,34 @@ export const PatientDashboard: React.FC = () => {
         <div className="space-y-6">
           {/* Nearest Hospital Card with Doctors */}
           {nearestHospital && (
-            <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xl shadow-slate-200/50 border border-slate-200/90 space-y-4">
+            <div className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-card hover:shadow-card-hover border border-slate-200/80 transition-all duration-200 space-y-4">
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <span className="text-[11px] font-bold text-teal-700 uppercase tracking-wider flex items-center gap-1.5">
-                  <Building2 className="w-4 h-4" /> {t('patient.nearestFacility', 'Nearest Verified Facility')}
+                  <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
+                  <Building2 className="w-3.5 h-3.5" /> {t('patient.nearestFacility', 'Nearest Verified Facility')}
                 </span>
-                <span className="text-[10px] bg-teal-50 text-teal-800 px-2.5 py-0.5 rounded-full border border-teal-200 font-bold uppercase">
+                <span className="text-[10px] bg-teal-50 text-teal-800 px-2.5 py-0.5 rounded-full border border-teal-200/80 font-bold uppercase tracking-wider">
                   {nearestHospital.type}
                 </span>
               </div>
 
               <div>
-                <h4 className="font-bold text-lg text-slate-900">{nearestHospital.name}</h4>
-                <p className="text-xs text-slate-500 mt-0.5 flex items-center gap-1">
+                <h4 className="font-bold text-lg text-slate-900 leading-snug">{nearestHospital.name}</h4>
+                <p className="text-xs text-slate-500 mt-1 flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-teal-600 shrink-0" />
-                  {nearestHospital.address}, {nearestHospital.city}
+                  <span>{nearestHospital.address}, {nearestHospital.city}</span>
                 </p>
               </div>
 
               <div className="grid grid-cols-2 gap-2 text-xs">
-                <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200/80">
-                  <span className="text-[10px] text-slate-500 block">{t('hospital.distance', 'Distance')}:</span>
-                  <span className="font-bold text-teal-700">{nearestHospital.distanceKm || 4.2} km away</span>
+                <div className="p-3 bg-slate-50/80 rounded-xl border border-slate-200/70">
+                  <span className="text-[10px] text-slate-500 font-medium block">{t('hospital.distance', 'Distance')}:</span>
+                  <span className="font-bold text-teal-700 text-sm">{nearestHospital.distanceKm || 4.2} km away</span>
                 </div>
-                <div className="p-2.5 bg-slate-50 rounded-xl border border-slate-200/80">
-                  <span className="text-[10px] text-slate-500 block">Emergency:</span>
-                  <span className="font-bold text-emerald-700">
+                <div className="p-3 bg-slate-50/80 rounded-xl border border-slate-200/70">
+                  <span className="text-[10px] text-slate-500 font-medium block">Emergency:</span>
+                  <span className="font-bold text-emerald-700 text-sm flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
                     {nearestHospital.emergencyAvailable ? '24/7 Active' : 'OPD Hours'}
                   </span>
                 </div>

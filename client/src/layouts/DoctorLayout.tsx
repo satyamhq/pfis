@@ -27,12 +27,12 @@ export const DoctorLayout: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50">
+    <div className="min-h-screen flex flex-col bg-slate-50/70">
       <DemoModeBanner message="DOCTOR DECISION-SUPPORT PORTAL: Tracking non-clinical care journey friction, transit barriers, and diagnostic drop-off risks." />
       
       {/* High-Visibility Clinical Decision-Support Notice */}
       <div className="bg-amber-500/10 border-b border-amber-300 text-amber-900 px-4 py-2 text-xs flex items-center justify-between shadow-xs">
-        <div className="flex items-center gap-2 max-w-7xl mx-auto w-full">
+        <div className="flex items-center gap-2 max-w-7xl 2xl:max-w-[1440px] mx-auto w-full">
           <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
           <span className="font-semibold">
             NON-CLINICAL DECISION SUPPORT NOTICE:
@@ -48,7 +48,7 @@ export const DoctorLayout: React.FC = () => {
       </div>
 
       <Navbar />
-      <div className="flex-grow flex max-w-7xl mx-auto w-full">
+      <div className="flex-grow flex max-w-7xl 2xl:max-w-[1440px] mx-auto w-full">
         <Sidebar />
         <main className="flex-1 p-4 sm:p-6 lg:p-8 min-w-0">
           <Outlet />
