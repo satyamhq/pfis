@@ -19,24 +19,10 @@ export const createApp = (): Express => {
     })
   );
 
-  // CORS Configuration
+  // CORS Configuration - Permissive for seamless cross-origin and local network access
   app.use(
     cors({
-      origin: (origin, callback) => {
-        // Allow requests with no origin (server-to-server, curl, mobile apps)
-        if (!origin) return callback(null, true);
-        // In development, allow localhost variants
-        if (config.nodeEnv === 'development') {
-          if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
-            return callback(null, true);
-          }
-        }
-        // Always allow configured client URL
-        if (config.clientUrl && origin === config.clientUrl) {
-          return callback(null, true);
-        }
-        callback(null, false);
-      },
+      origin: true,
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
       allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],

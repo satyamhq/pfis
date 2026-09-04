@@ -4,7 +4,6 @@ const ADMIN_EMAILS = [
   'satyam31sk@gmail.com',
   'prince.patel2025@lpu.in',
   'dhirajkumar464748@gmail.com',
-  'xel5760@gmail.com',
   'tanishka2789@gmail.com',
   'ddishika45@gmail.com',
 ];
@@ -26,8 +25,8 @@ async function runRBACTests() {
   console.log('  PFIS RBAC & PRIVILEGE SECURITY REGRESSION SUITE          ');
   console.log('===========================================================');
 
-  // 1. Verify 6 Authorized Admin Logins & Dash Access
-  console.log('\n--- 1. VERIFYING 6 AUTHORIZED ADMIN LOGINS ---');
+  // 1. Verify 5 Authorized Admin Logins & Dash Access
+  console.log('\n--- 1. VERIFYING 5 AUTHORIZED ADMIN LOGINS ---');
   for (const email of ADMIN_EMAILS) {
     const res = await req(`${BASE_URL}/auth/login`, {
       method: 'POST',
