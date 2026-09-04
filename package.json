@@ -12,7 +12,10 @@
     "client": "cd client && npm run dev",
     "build": "cd server && npm run build && cd ../client && npm run build",
     "seed": "cd server && npm run seed",
-    "test": "npm --prefix server test"
+    "test": "npm --prefix server test",
+    "test:client": "npm --prefix client run build",
+    "test:all": "npm run test && npm run test:client",
+    "check": "npm run build && npm run test"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

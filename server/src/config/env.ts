@@ -43,3 +43,12 @@ export const isAuthorizedAdminEmail = (email?: string): boolean => {
   return config.adminEmails.includes(normalized);
 };
 
+// Security Assertion: Warn if running in production with default secrets
+if (config.nodeEnv === 'production') {
+  if (!process.env.JWT_SECRET || config.jwtSecret === 'pfis_super_secure_jwt_secret_key_2026_sih') {
+    console.warn(
+      '[PFIS SECURITY WARNING] Running in PRODUCTION with default JWT_SECRET! Please configure a cryptographically random secret in your production environment.'
+    );
+  }
+}
+

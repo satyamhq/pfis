@@ -93,7 +93,18 @@ class EmbeddedSQLDriver implements IDatabaseClient {
   };
 
   constructor() {
-    this.dataDir = path.resolve(process.cwd(), 'data');
+    // Resilient data directory resolution across both project root and server directory contexts
+    const serverSubdir = path.resolve(process.cwd(), 'server', 'data');
+    const localDataDir = path.resolve(process.cwd(), 'data');
+    if (fs.existsSync(path.join(serverSubdir, 'pfis_relational.json'))) {
+      this.dataDir = serverSubdir;
+    } else if (fs.existsSync(path.join(localDataDir, 'pfis_relational.json'))) {
+      this.dataDir = localDataDir;
+    } else if (fs.existsSync(path.resolve(process.cwd(), 'server'))) {
+      this.dataDir = serverSubdir;
+    } else {
+      this.dataDir = localDataDir;
+    }
     this.filePath = path.join(this.dataDir, 'pfis_relational.json');
     this.load();
   }

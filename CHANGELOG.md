@@ -6,6 +6,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [1.1.0] - 2026-09-04 - Production Hardening & Autonomous QA
+
+### Added
+- **Autonomous Ephemeral Test Runner**:
+  - Upgraded `server/tests/run_all_tests.cjs` to probe the target server port and automatically spawn a background instance if offline, await `/api/health` readiness, execute all 18 API and RBAC checks, and gracefully terminate child processes on exit.
+- **Turnkey Root QA Scripts**:
+  - Added `test:client`, `test:all`, and `check` to root `package.json` enabling single-command verification of both backend intelligence tests and frontend production builds.
+
+### Changed
+- **Cross-Context Path Hardening**:
+  - Fortified path resolution for embedded database storage (`pfis_relational.json`) in `db.ts` and document vault file uploads in `uploadMiddleware.ts` and `app.ts` to seamlessly adapt whether processes are launched from project root or server subfolder.
+
+### Security
+- **0-Vulnerability Dependency Audit**:
+  - Resolved moderate severity transitive advisories in Express `qs`/`body-parser` by overriding `qs` to `^6.16.0`, achieving a clean 0-vulnerability `npm audit` across the server.
+- **Production Secret Guardrails**:
+  - Added runtime assertion in `server/src/config/env.ts` issuing high-priority alerts if `JWT_SECRET` remains at its default development value when `NODE_ENV === 'production'`.
+
+---
+
 ## [1.0.0] - 2026-09-04 - Production Release
 
 ### Added
@@ -16,11 +36,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - **Automated Regression & Test Suite**:
   - `npm test` script executing 18 automated validation checks across authentication, intelligence engines, and authorization boundaries in under 3 seconds.
 - **Enterprise Documentation Suite**:
-  - Added [DEPLOYMENT.md](file:///d:/PFIS-Patient-Friction-Intelligence-System/DEPLOYMENT.md) (Docker, Docker Compose, Nginx reverse proxy, cloud platforms).
-  - Added [DEVELOPMENT.md](file:///d:/PFIS-Patient-Friction-Intelligence-System/DEVELOPMENT.md) (Local setup, dev workflow, standards, debugging).
-  - Added [API.md](file:///d:/PFIS-Patient-Friction-Intelligence-System/API.md) (Comprehensive REST specification).
-  - Added [CONTRIBUTING.md](file:///d:/PFIS-Patient-Friction-Intelligence-System/CONTRIBUTING.md) (Guidelines, code standards, PR checklist).
-  - Added [CHANGELOG.md](file:///d:/PFIS-Patient-Friction-Intelligence-System/CHANGELOG.md) (Semantic versioning release notes).
+  - Added [DEPLOYMENT.md](DEPLOYMENT.md) (Docker, Docker Compose, Nginx reverse proxy, cloud platforms).
+  - Added [DEVELOPMENT.md](DEVELOPMENT.md) (Local setup, dev workflow, standards, debugging).
+  - Added [API.md](API.md) (Comprehensive REST specification).
+  - Added [CONTRIBUTING.md](CONTRIBUTING.md) (Guidelines, code standards, PR checklist).
+  - Added [CHANGELOG.md](CHANGELOG.md) (Semantic versioning release notes).
 - **Client Configuration Template**:
   - Added `client/.env.example` defining `VITE_API_BASE_URL` and `VITE_GOOGLE_CLIENT_ID`.
 

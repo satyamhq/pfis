@@ -84,7 +84,10 @@ Run these scripts from the repository root:
 | `npm run client` | Starts only the frontend Vite development server |
 | `npm run build` | Compiles TypeScript and builds production bundles for both tiers |
 | `npm run seed` | Seeds default demo profiles, hospitals, and authorized admins |
-| `npm test` | Runs the automated 18-point API and RBAC security regression suite |
+| `npm test` | Runs the automated 18-point API and RBAC security regression suite (ephemeral server) |
+| `npm run test:client` | Verifies client TypeScript typechecks and Vite bundle build |
+| `npm run test:all` | Runs full end-to-end verification (server API/RBAC suite + client build) |
+| `npm run check` | Unified production verification: builds both tiers and runs all tests |
 
 ---
 

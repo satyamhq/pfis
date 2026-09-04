@@ -37,12 +37,21 @@ npm --prefix client run build   # executes tsc && vite build
 
 ---
 
-### 2.2 Core API & Intelligence Engine Suite
-Located at `scratch/test_endpoints.cjs`, this automated test suite verifies all core backend routes, authentications, non-clinical scoring, and simulations:
+### 2.2 Canonical Autonomous Test Suite (`npm test`)
+PFIS features an automated, zero-configuration regression and security test runner located at `server/tests/run_all_tests.cjs`:
 
 ```bash
-node scratch/test_endpoints.cjs
+# Run from repository root or server directory
+npm test
+
+# Run complete end-to-end verification (API + RBAC + Client Build)
+npm run test:all
 ```
+
+**Autonomous Server Detection**:
+- The runner automatically probes the configured API endpoint (`http://localhost:5000/api/health`).
+- If no server is running, it spawns an ephemeral test instance, waits for `/api/health` to respond, executes both test suites, and gracefully terminates the test server process upon test completion.
+- When an active server is already running, it runs directly against the active instance.
 
 **Verification Results Summary**:
 ```

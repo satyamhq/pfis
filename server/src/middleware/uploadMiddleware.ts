@@ -4,7 +4,14 @@ import fs from 'fs';
 import { Request } from 'express';
 import { config } from '../config/env.js';
 
-const uploadDir = path.resolve(process.cwd(), 'uploads');
+const serverUploadDir = path.resolve(process.cwd(), 'server', 'uploads');
+const localUploadDir = path.resolve(process.cwd(), 'uploads');
+export const uploadDir = fs.existsSync(serverUploadDir)
+  ? serverUploadDir
+  : fs.existsSync(path.resolve(process.cwd(), 'server'))
+  ? serverUploadDir
+  : localUploadDir;
+
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }

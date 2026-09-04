@@ -3,6 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import path from 'path';
+import fs from 'fs';
 import rateLimit from 'express-rate-limit';
 import routes from './routes/index.js';
 import { errorHandler } from './middleware/errorMiddleware.js';
@@ -65,7 +66,13 @@ export const createApp = (): Express => {
   app.use(express.urlencoded({ extended: true, limit: '15mb' }));
 
   // Static uploads directory for document previews
-  const uploadsPath = path.resolve(process.cwd(), 'uploads');
+  const serverUploadDir = path.resolve(process.cwd(), 'server', 'uploads');
+  const localUploadDir = path.resolve(process.cwd(), 'uploads');
+  const uploadsPath = fs.existsSync(serverUploadDir)
+    ? serverUploadDir
+    : fs.existsSync(path.resolve(process.cwd(), 'server'))
+    ? serverUploadDir
+    : localUploadDir;
   app.use('/uploads', express.static(uploadsPath));
 
   // System Health Endpoint
