@@ -193,7 +193,11 @@ export const Login: React.FC = () => {
       }
     } catch (err: any) {
       setRedirectingMessage(null);
-      setError(err.response?.data?.message || 'Invalid credentials or server connection error.');
+      setError(
+        err.response?.data?.message ||
+        err.message ||
+        'Invalid credentials or server connection error.'
+      );
     } finally {
       setIsLoading(false);
     }

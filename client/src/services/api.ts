@@ -21,9 +21,17 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Response Interceptor: Handle unauthenticated or token expiration
+// Response Interceptor: Handle HTML fallback from static servers (Vercel) & 401s
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    // If static hosting returned HTML instead of JSON for an API call
+    if (typeof response.data === 'string' && response.data.trim().startsWith('<!DOCTYPE html')) {
+      const error: any = new Error('Backend server is not running or API endpoint not available.');
+      error.isServerDown = true;
+      return Promise.reject(error);
+    }
+    return response;
+  },
   (error) => {
     if (error.response?.status === 401) {
       // If unauthorized on protected route, clean up local state
