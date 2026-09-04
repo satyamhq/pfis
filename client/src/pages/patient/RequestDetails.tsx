@@ -77,22 +77,22 @@ export const RequestDetails: React.FC = () => {
       </div>
 
       {/* Header Request Summary */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-card space-y-4">
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-6 shadow-card space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
           <div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
                 {hospital?.name || 'Medical Facility'}
               </h2>
               <StatusBadge status={request.status} size="sm" />
             </div>
             <p className="text-xs text-slate-500 flex items-center gap-1.5 mt-0.5">
-              <MapPin className="w-3.5 h-3.5 text-brand-500" />
+              <MapPin className="w-3.5 h-3.5 text-brand-500 shrink-0" />
               <span>{hospital?.address}, {hospital?.city}</span>
             </p>
           </div>
 
-          <div className="text-right">
+          <div className="text-left sm:text-right">
             <span className="text-xs text-slate-400 block">Department</span>
             <span className="text-sm font-bold text-teal-700">{request.departmentName}</span>
           </div>
@@ -199,7 +199,7 @@ export const RequestDetails: React.FC = () => {
       <RequestTimeline currentStatus={request.status} timeline={request.timeline} />
 
       {/* Consented Data Stream & Attached Documents */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-card space-y-4">
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-6 shadow-card space-y-4">
         <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
           <ShieldCheck className="w-5 h-5 text-teal-600" />
           <div>

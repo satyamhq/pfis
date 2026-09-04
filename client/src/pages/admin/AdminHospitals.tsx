@@ -219,12 +219,12 @@ export const AdminHospitals: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header & Controls */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-card space-y-4">
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-6 shadow-card space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <Building2 className="w-7 h-7 text-brand-500" />
-              <h2 className="text-2xl font-black text-slate-900 tracking-tight">
+              <Building2 className="w-7 h-7 text-brand-500 shrink-0" />
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
                 Connected Hospital Registry
               </h2>
             </div>
@@ -233,9 +233,9 @@ export const AdminHospitals: React.FC = () => {
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
-            <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200 flex items-center gap-1.5 shadow-2xs">
-              <ShieldCheck className="w-4 h-4 text-teal-600" />
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
+            <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200 flex items-center justify-center gap-1.5 shadow-2xs">
+              <ShieldCheck className="w-4 h-4 text-teal-600 shrink-0" />
               {filteredHospitals.length} Registered Facilities
             </span>
 
@@ -244,6 +244,7 @@ export const AdminHospitals: React.FC = () => {
               size="sm"
               onClick={() => setIsAddModalOpen(true)}
               icon={<Plus className="w-4 h-4" />}
+              className="w-full sm:w-auto justify-center"
             >
               Register New Hospital
             </Button>
@@ -380,7 +381,7 @@ export const AdminHospitals: React.FC = () => {
                   </div>
 
                   {/* Bed & Token Availability Metrics */}
-                  <div className="grid grid-cols-3 gap-2 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                  <div className="grid grid-cols-1 min-[360px]:grid-cols-3 gap-2 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
                     <div>
                       <span className="text-[10px] text-slate-400 font-bold uppercase block">Beds Vacant</span>
                       <span className="font-bold text-slate-900">
@@ -468,8 +469,8 @@ export const AdminHospitals: React.FC = () => {
 
       {/* MODAL 1: VIEW FULL DETAILS & EXPORT SPLASH (adin-e-lpash-se-sara-hospital-details-nial-aye) */}
       {selectedHospital && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/20 backdrop-blur-xs p-4 overflow-y-auto">
-          <div className="bg-white rounded-3xl border border-slate-200 w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 space-y-6 animate-fadeIn">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/20 backdrop-blur-xs p-3 sm:p-4 overflow-y-auto">
+          <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 w-full max-w-3xl max-h-[92vh] overflow-y-auto shadow-2xl p-4 sm:p-8 space-y-6 animate-fadeIn">
             {/* Modal Header */}
             <div className="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
               <div className="space-y-1">
@@ -705,8 +706,8 @@ export const AdminHospitals: React.FC = () => {
 
       {/* MODAL 3: REGISTER NEW HOSPITAL */}
       {isAddModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/20 backdrop-blur-xs p-4 overflow-y-auto">
-          <div className="bg-white rounded-3xl border border-slate-200 w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 space-y-6 animate-fadeIn text-xs">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/20 backdrop-blur-xs p-3 sm:p-4 overflow-y-auto">
+          <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 w-full max-w-2xl max-h-[92vh] overflow-y-auto shadow-2xl p-4 sm:p-8 space-y-6 animate-fadeIn text-xs">
             <div className="flex items-start justify-between border-b border-slate-100 pb-4">
               <div>
                 <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">

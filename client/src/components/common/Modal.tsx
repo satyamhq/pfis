@@ -50,7 +50,7 @@ export const Modal: React.FC<ModalProps> = ({
 
         {/* Modal Dialog */}
         <div
-          className={`relative w-full ${maxWidthClasses[maxWidth]} transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-2xl transition-all border border-slate-200 z-10`}
+          className={`relative w-full ${maxWidthClasses[maxWidth]} transform overflow-y-auto max-h-[calc(100vh-2rem)] rounded-2xl bg-white p-4 sm:p-6 text-left align-middle shadow-2xl transition-all border border-slate-200 z-10`}
         >
           <div className="flex items-start justify-between border-b border-slate-100 pb-4">
             <div>

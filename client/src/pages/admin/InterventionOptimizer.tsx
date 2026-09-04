@@ -67,13 +67,13 @@ export const InterventionOptimizer: React.FC = () => {
   return (
     <div className="space-y-8 max-w-5xl mx-auto">
       {/* Header Banner */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50 border border-slate-200/90 space-y-4">
+      <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-xl shadow-slate-200/50 border border-slate-200/90 space-y-4">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold border border-teal-200 mb-2">
-            <Sliders className="w-3.5 h-3.5 text-teal-600" />
+            <Sliders className="w-3.5 h-3.5 text-teal-600 shrink-0" />
             <span>Knapsack Multi-Criteria Budget Optimizer</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+          <h1 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight">
             Intervention Budget Allocation Optimizer
           </h1>
           <p className="text-xs text-slate-500">
@@ -106,21 +106,21 @@ export const InterventionOptimizer: React.FC = () => {
 
       {/* Recommended Portfolio Solution */}
       {recommendation && (
-        <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-card space-y-6">
+        <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-4 sm:p-8 shadow-card space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
             <div>
               <div className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                <span className="h-2 w-2 rounded-full bg-emerald-500 shrink-0" />
                 <span className="text-[11px] font-bold text-emerald-700 uppercase tracking-wider">
                   Knapsack Exact Combinatorial Solution Found
                 </span>
               </div>
-              <h3 className="text-lg font-black text-slate-900">
+              <h3 className="text-base sm:text-lg font-black text-slate-900">
                 Recommended Policy Package: {recommendation.selectedInterventions.length} Interventions
               </h3>
             </div>
 
-            <div className="text-right">
+            <div className="text-left sm:text-right">
               <span className="text-xs text-slate-500 block">Total Package Expenditure</span>
               <span className="text-xl font-black text-slate-900">
                 ₹{recommendation.totalAllocatedCostINR.toLocaleString('en-IN')}
@@ -129,7 +129,7 @@ export const InterventionOptimizer: React.FC = () => {
           </div>
 
           {/* Outcome Prediction Ribbon */}
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
             <div className="p-4 bg-teal-50 rounded-2xl border border-teal-100 space-y-1">
               <span className="text-[10px] text-teal-800 font-bold uppercase block">Completion Rate Gain</span>
               <span className="text-2xl sm:text-3xl font-black text-teal-900">

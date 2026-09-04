@@ -61,7 +61,7 @@ export const HospitalDashboard: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Hospital Identity Banner */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-card flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-8 shadow-card flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 uppercase">
@@ -71,21 +71,21 @@ export const HospitalDashboard: React.FC = () => {
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> Live Triage Desk
             </span>
           </div>
-          <h2 className="text-2xl font-black text-slate-900 tracking-tight">{hospital?.name}</h2>
+          <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">{hospital?.name}</h2>
           <p className="text-xs text-slate-500 flex items-center gap-1.5">
-            <MapPin className="w-3.5 h-3.5 text-brand-500" />
+            <MapPin className="w-3.5 h-3.5 text-brand-500 shrink-0" />
             <span>{hospital?.address}, {hospital?.city}</span>
           </p>
         </div>
 
-        <div className="flex items-center gap-2 w-full md:w-auto">
-          <Link to="/hospital/requests" className="w-full md:w-auto">
-            <Button variant="primary" size="sm" icon={<ListOrdered className="w-4 h-4" />}>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full md:w-auto">
+          <Link to="/hospital/requests" className="w-full sm:w-auto">
+            <Button variant="primary" size="sm" icon={<ListOrdered className="w-4 h-4" />} className="w-full sm:w-auto justify-center">
               Review Patient Queue ({newRequestsCount})
             </Button>
           </Link>
-          <Link to="/hospital/departments" className="w-full md:w-auto">
-            <Button variant="outline" size="sm" icon={<Layers className="w-4 h-4" />}>
+          <Link to="/hospital/departments" className="w-full sm:w-auto">
+            <Button variant="outline" size="sm" icon={<Layers className="w-4 h-4" />} className="w-full sm:w-auto justify-center">
               Manage OPD
             </Button>
           </Link>
@@ -132,7 +132,7 @@ export const HospitalDashboard: React.FC = () => {
       </div>
 
       {/* Triage Queue Table */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-card space-y-4">
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-6 shadow-card space-y-4">
         <div className="flex items-center justify-between border-b border-slate-100 pb-3">
           <div>
             <h3 className="text-sm font-bold text-slate-900">Recent Patient Intake Requests</h3>
@@ -150,8 +150,8 @@ export const HospitalDashboard: React.FC = () => {
             No incoming patient requests in the queue currently.
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
+          <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+            <table className="w-full min-w-[620px] text-left text-xs">
               <thead className="bg-slate-50 text-slate-500 font-bold uppercase tracking-wider text-[10px]">
                 <tr>
                   <th className="p-3 rounded-l-lg">Request Code</th>

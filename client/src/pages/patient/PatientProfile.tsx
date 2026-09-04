@@ -143,14 +143,14 @@ export const PatientProfile: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h2 className="text-2xl font-black text-slate-900 tracking-tight">Patient Accessibility Profile</h2>
+          <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Patient Accessibility Profile</h2>
           <p className="text-xs text-slate-500">
             Configure demographic, socio-economic, and geographic parameters to evaluate personal friction
           </p>
         </div>
-        <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-700">
+        <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-700 self-start sm:self-auto">
           ID: {patient?.patientCode || 'PAT-1048'}
         </span>
       </div>
@@ -166,7 +166,7 @@ export const PatientProfile: React.FC = () => {
 
       <form onSubmit={handleSave} className="space-y-6">
         {/* Section 1: Demographics */}
-        <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-card space-y-4">
+        <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-6 shadow-card space-y-4">
           <h3 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-2">
             1. Personal Demographics & Contact
           </h3>
@@ -236,8 +236,8 @@ export const PatientProfile: React.FC = () => {
         </div>
 
         {/* Section 2: Non-Clinical Accessibility Factors (Deterministic Inputs) */}
-        <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-card space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+        <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-6 shadow-card space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-2">
             <div>
               <h3 className="text-sm font-bold text-slate-900">
                 2. Non-Clinical Accessibility Determinants
@@ -246,7 +246,7 @@ export const PatientProfile: React.FC = () => {
                 These factors directly drive your PFIS Friction Fingerprint and Risk Evaluation
               </p>
             </div>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-teal-50 text-teal-700 border border-teal-200">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-teal-50 text-teal-700 border border-teal-200 self-start sm:self-auto">
               Engine Core
             </span>
           </div>
@@ -258,53 +258,57 @@ export const PatientProfile: React.FC = () => {
               onChange={(e) => setTransportAvailability(e.target.value)}
               helperText="Determines transit frequency and physical transit barriers"
               options={[
-                { label: 'No Vehicle / Irregular Rural Bus (High Friction: 90/100)', value: 'none' },
-                { label: 'Shared Auto / Infrequent Bus (Moderate Friction: 75/100)', value: 'low' },
-                { label: 'Regular Public Transit / Multi-Hop Route (40/100)', value: 'moderate' },
-                { label: 'Dedicated Two-Wheeler / Four-Wheeler (Low Friction: 15/100)', value: 'high' },
+                { label: 'Public Transit (Bus / Auto) Available & Reliable (15/100)', value: 'public_transit' },
+                { label: 'Personal Two-Wheeler / Motorbike (20/100)', value: 'two_wheeler' },
+                { label: 'Infrequent Rural Shared Jeep / Minibus (60/100)', value: 'shared_rural' },
+                { label: 'Zero Direct Transit / Walking > 5km required (90/100)', value: 'no_direct_transit' },
+                { label: 'Personal Four-Wheeler / Car (5/100)', value: 'car' },
               ]}
             />
 
             <Select
-              label="Digital Access & Literacy"
+              label="Digital Health Literacy"
               value={digitalAccessLevel}
               onChange={(e) => setDigitalAccessLevel(e.target.value)}
-              helperText="Evaluates capability to handle SMS tokens & portal navigation"
+              helperText="Capacity to engage with online tokens and video visits"
               options={[
-                { label: 'Zero Internet / No Smartphone (High Friction: 90/100)', value: 'none' },
-                { label: 'Feature Phone / Shared Family Smartphone (65/100)', value: 'basic' },
-                { label: 'Smartphone User Needing Minor Form Assistance (30/100)', value: 'moderate' },
-                { label: 'High Smartphone & Digital Literacy (Low Friction: 10/100)', value: 'advanced' },
+                { label: 'Autonomous Smartphone User / Self-Bookings (10/100)', value: 'smartphone_independent' },
+                { label: 'Assisted by Family Member / Caregiver (40/100)', value: 'assisted_by_family' },
+                { label: 'Relies on Village Asha Worker / CSC Kiosk (70/100)', value: 'asha_assisted' },
+                { label: 'Basic Feature Phone Only / No Internet (90/100)', value: 'basic_phone_only' },
               ]}
             />
+          </div>
 
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Select
-              label="Family / Caregiver Escort Support"
+              label="Family & Caregiver Support"
               value={familySupport}
               onChange={(e) => setFamilySupport(e.target.value)}
-              helperText="Availability of family members to navigate hospital registration"
+              helperText="Presence of an attendant for elderly or vulnerable visits"
               options={[
-                { label: 'Lives Alone / Zero Escort Support (High Friction: 85/100)', value: 'none' },
-                { label: 'Caregiver has Conflicting Daily Wage Shifts (65/100)', value: 'low' },
-                { label: 'Family Escort Available on Advance Notice (35/100)', value: 'moderate' },
-                { label: 'Dedicated Full-Time Family Caregiver (Low Friction: 15/100)', value: 'high' },
+                { label: 'Full-time Attendant Available for Hospital Trips (10/100)', value: 'full_support' },
+                { label: 'Partial Support: Attendant available only on weekends (45/100)', value: 'weekend_only' },
+                { label: 'Solitary Patient: Must travel to hospital alone (85/100)', value: 'solitary' },
               ]}
             />
 
             <Select
-              label="Documentation & Scheme Readiness"
+              label="Documentation Readiness"
               value={documentationStatus}
               onChange={(e) => setDocumentationStatus(e.target.value)}
-              helperText="Status of Ayushman Bharat (PM-JAY) and baseline records"
+              helperText="Readiness of Aadhaar, Ayushman PM-JAY, or OPD booklets"
               options={[
-                { label: 'Incomplete / Missing Aadhaar or Scheme Card (85/100)', value: 'incomplete' },
-                { label: 'Partial: Has ID but No Formal Referral Slip (50/100)', value: 'partial' },
-                { label: 'Complete: PM-JAY & Verified Medical Records Ready (15/100)', value: 'complete' },
+                { label: 'Complete: Active Ayushman PM-JAY & Aadhaar Linked (10/100)', value: 'complete' },
+                { label: 'Partial: Physical OPD card only / PM-JAY unverified (50/100)', value: 'partial' },
+                { label: 'Unregistered / Missing Identification Documents (90/100)', value: 'missing_docs' },
               ]}
             />
+          </div>
 
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Select
-              label="Financial Accessibility & Cost Buffer"
+              label="Financial & Out-of-Pocket Strain"
               value={financialAccessibility}
               onChange={(e) => setFinancialAccessibility(e.target.value)}
               helperText="Indirect out-of-pocket travel and medication expenses"
@@ -332,8 +336,8 @@ export const PatientProfile: React.FC = () => {
         </div>
 
         {/* Section 3: Geographic Habitation & Coordinates */}
-        <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-card space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+        <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-6 shadow-card space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-2">
             <div>
               <h3 className="text-sm font-bold text-slate-900">3. Residence Location & Geolocation</h3>
               <p className="text-[11px] text-slate-500">Used for distance matrix and travel fatigue calculation</p>
@@ -342,9 +346,9 @@ export const PatientProfile: React.FC = () => {
               type="button"
               onClick={handleUseCurrentLocation}
               disabled={isLocLoading}
-              className="px-3 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-700 rounded-xl text-xs font-bold border border-teal-200 flex items-center gap-1.5 transition-colors"
+              className="px-3 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-700 rounded-xl text-xs font-bold border border-teal-200 flex items-center justify-center gap-1.5 transition-colors self-stretch sm:self-auto"
             >
-              <MapPin className="w-3.5 h-3.5" />
+              <MapPin className="w-3.5 h-3.5 shrink-0" />
               <span>{isLocLoading ? 'Detecting...' : 'Use My Live GPS Location'}</span>
             </button>
           </div>
@@ -370,7 +374,7 @@ export const PatientProfile: React.FC = () => {
             />
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 min-[360px]:grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
             <Input label="City / District" value={city} onChange={(e) => setCity(e.target.value)} required />
             <Input label="State" value={state} onChange={(e) => setState(e.target.value)} required />
             <Input label="Pincode" value={pincode} onChange={(e) => setPincode(e.target.value)} required />
@@ -400,6 +404,7 @@ export const PatientProfile: React.FC = () => {
             size="lg"
             isLoading={isSaving}
             icon={<Save className="w-4 h-4" />}
+            className="w-full sm:w-auto justify-center"
           >
             Save Profile & Recalculate Friction
           </Button>

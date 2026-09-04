@@ -223,7 +223,7 @@ export const TeleconsultationRoom: React.FC = () => {
                 Saved 100% Transit
               </span>
             </div>
-            <div className="grid grid-cols-3 gap-2 pt-1 text-[11px] text-emerald-800">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1 text-[11px] text-emerald-800">
               <div className="p-2 bg-white/80 rounded-lg flex items-center gap-1.5">
                 <Car className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                 <span><strong>Travel Saved:</strong> 65 km round trip</span>

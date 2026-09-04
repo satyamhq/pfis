@@ -131,10 +131,10 @@ export const PatientDashboard: React.FC = () => {
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
       {/* 1. Header Profile Greeting Banner */}
-      <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-card flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+      <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-4 sm:p-8 shadow-card flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-6">
         <div className="space-y-2">
-          <div className="flex flex-wrap items-center gap-3">
-            <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">
               {t('patient.welcome', 'Welcome')}, {user?.name}
             </h1>
             {patient?.patientCode && (
@@ -156,7 +156,7 @@ export const PatientDashboard: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+        <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 w-full lg:w-auto">
           <SimpleModeToggle />
           <Link to="/patient/profile">
             <Button variant="outline" size="sm">
@@ -172,7 +172,7 @@ export const PatientDashboard: React.FC = () => {
           <Activity className="w-4 h-4 text-teal-600" /> Quick Patient Actions
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {/* Card 1: Find Hospitals & Doctors */}
           <Link
             to="/patient/hospitals"
@@ -301,7 +301,7 @@ export const PatientDashboard: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left 2 Cols: Gauge & Friction Breakdown */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-card space-y-4">
+          <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-4 sm:p-6 shadow-card space-y-4">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div>
                 <h3 className="text-base font-bold text-slate-900">
@@ -356,7 +356,7 @@ export const PatientDashboard: React.FC = () => {
           </div>
 
           {/* Active Patient Requests Ledger */}
-          <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-card space-y-4">
+          <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-4 sm:p-6 shadow-card space-y-4">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2">
                 <ListOrdered className="w-4 h-4 text-teal-600" />
@@ -414,7 +414,7 @@ export const PatientDashboard: React.FC = () => {
         <div className="space-y-6">
           {/* Nearest Hospital Card with Doctors */}
           {nearestHospital && (
-            <div className="bg-white rounded-3xl p-6 shadow-xl shadow-slate-200/50 border border-slate-200/90 space-y-4">
+            <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xl shadow-slate-200/50 border border-slate-200/90 space-y-4">
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <span className="text-[11px] font-bold text-teal-700 uppercase tracking-wider flex items-center gap-1.5">
                   <Building2 className="w-4 h-4" /> {t('patient.nearestFacility', 'Nearest Verified Facility')}

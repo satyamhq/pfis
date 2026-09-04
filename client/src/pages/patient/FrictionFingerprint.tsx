@@ -82,12 +82,12 @@ export const FrictionFingerprint: React.FC = () => {
   return (
     <div className="space-y-8 max-w-6xl mx-auto">
       {/* Header Summary Card */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-card space-y-4">
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-8 shadow-card space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
-            <div className="flex items-center gap-2">
-              <h2 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-                <Sparkles className="w-6 h-6 text-brand-500" />
+            <div className="flex flex-wrap items-center gap-2">
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+                <Sparkles className="w-6 h-6 text-brand-500 shrink-0" />
                 Patient Friction Fingerprint™
               </h2>
               <StatusBadge status={frictionLevel} size="sm" />
@@ -98,7 +98,7 @@ export const FrictionFingerprint: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="text-right">
+            <div className="text-left sm:text-right">
               <span className="text-[10px] text-slate-400 font-bold uppercase block">Overall Accessibility</span>
               <span className="text-2xl font-black text-brand-700">
                 {overallScore} / 100
@@ -113,7 +113,7 @@ export const FrictionFingerprint: React.FC = () => {
           <p className="text-slate-600 leading-relaxed">{profile.explanation}</p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs pt-1">
+        <div className="grid grid-cols-1 min-[360px]:grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 text-xs pt-1">
           <div className="p-3 bg-teal-50/60 rounded-xl border border-teal-100">
             <span className="text-[10px] text-teal-700 font-bold uppercase block">Top Barrier</span>
             <p className="font-bold text-teal-950 truncate">{profile.topBarrier}</p>

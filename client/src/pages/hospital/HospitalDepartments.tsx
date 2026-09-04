@@ -199,11 +199,11 @@ export const HospitalDepartments: React.FC = () => {
   return (
     <div className="space-y-6 max-w-5xl mx-auto">
       {/* Header Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-card">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4 sm:p-6 rounded-2xl border border-slate-200/80 shadow-card">
         <div>
           <div className="flex items-center gap-2">
             <Layers className="w-6 h-6 text-brand-500" />
-            <h2 className="text-2xl font-black text-slate-900 tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
               Hospital Clinical Departments & Doctor Roster
             </h2>
           </div>
@@ -215,6 +215,7 @@ export const HospitalDepartments: React.FC = () => {
         <Button
           variant="primary"
           size="md"
+          className="w-full sm:w-auto"
           onClick={openAddModal}
           icon={<Plus className="w-4 h-4" />}
         >
@@ -361,8 +362,8 @@ export const HospitalDepartments: React.FC = () => {
 
       {/* MODAL 1: ADD OR EDIT DEPARTMENT & DOCTOR */}
       {isAddModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/20 backdrop-blur-xs p-4 overflow-y-auto">
-          <div className="bg-white rounded-3xl border border-slate-200 w-full max-w-xl max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 space-y-5 animate-fadeIn text-xs">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/20 backdrop-blur-xs p-3 sm:p-4 overflow-y-auto">
+          <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 w-full max-w-xl max-h-[92vh] overflow-y-auto shadow-2xl p-4 sm:p-8 space-y-5 animate-fadeIn text-xs">
             <div className="flex items-start justify-between border-b border-slate-100 pb-3">
               <div>
                 <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">

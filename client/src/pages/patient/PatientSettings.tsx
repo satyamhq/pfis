@@ -48,13 +48,13 @@ export const PatientSettings: React.FC = () => {
   return (
     <div className="space-y-6 max-w-4xl mx-auto">
       {/* Header */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50 border border-slate-200/90 relative overflow-hidden">
+      <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-xl shadow-slate-200/50 border border-slate-200/90 relative overflow-hidden">
         <div className="relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold mb-3 border border-teal-200">
-            <Globe className="w-3.5 h-3.5 text-teal-600" />
+            <Globe className="w-3.5 h-3.5 text-teal-600 shrink-0" />
             <span>{t('settings.languageSection', 'Language & Accessibility')}</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+          <h1 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight">
             {t('settings.title', 'Language & Accessibility Preferences')}
           </h1>
           <p className="text-slate-500 text-sm mt-1 max-w-xl">
@@ -68,7 +68,7 @@ export const PatientSettings: React.FC = () => {
 
       {saveSuccess && (
         <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-center gap-3 animate-in fade-in">
-          <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+          <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
           <span className="font-semibold">
             {t('settings.savedSuccess', 'Preferences saved successfully!')}
           </span>
@@ -76,9 +76,9 @@ export const PatientSettings: React.FC = () => {
       )}
 
       {/* Section 1: Language Selection */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-sm space-y-4">
         <div className="flex items-center gap-3 pb-3 border-b border-slate-100">
-          <div className="p-2 rounded-xl bg-teal-50 text-teal-600">
+          <div className="p-2 rounded-xl bg-teal-50 text-teal-600 shrink-0">
             <Globe className="w-5 h-5" />
           </div>
           <div>
@@ -95,7 +95,7 @@ export const PatientSettings: React.FC = () => {
           <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
             {t('settings.preferredLanguage', 'Preferred Language')} (11 Supported)
           </label>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5">
+          <div className="grid grid-cols-1 min-[360px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-2.5">
             {supportedLanguages.map((lang) => {
               const isSelected = currentLanguage.code === lang.code;
               return (
@@ -147,14 +147,14 @@ export const PatientSettings: React.FC = () => {
       </div>
 
       {/* Section 2: Simple Language Mode */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-sm space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-amber-50 text-amber-600">
+            <div className="p-2 rounded-xl bg-amber-50 text-amber-600 shrink-0">
               <Sparkles className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-slate-900">
+              <h2 className="text-base sm:text-lg font-bold text-slate-900">
                 {t('settings.simpleModeSection', '2. Low-Literacy & Simple Language Mode')}
               </h2>
               <p className="text-xs text-slate-500">
@@ -199,13 +199,13 @@ export const PatientSettings: React.FC = () => {
       </div>
 
       {/* Section 3: Voice & Audio Tools */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-sm space-y-4">
         <div className="flex items-center gap-3 pb-3 border-b border-slate-100">
-          <div className="p-2 rounded-xl bg-blue-50 text-blue-600">
+          <div className="p-2 rounded-xl bg-blue-50 text-blue-600 shrink-0">
             <Volume2 className="w-5 h-5" />
           </div>
           <div>
-            <h2 className="text-lg font-bold text-slate-900">
+            <h2 className="text-base sm:text-lg font-bold text-slate-900">
               {t('settings.speechSection', '3. Voice Input & Text-to-Speech (TTS)')}
             </h2>
             <p className="text-xs text-slate-500">
@@ -220,7 +220,7 @@ export const PatientSettings: React.FC = () => {
         <div className="grid sm:grid-cols-2 gap-4">
           <div className="flex items-center justify-between p-4 rounded-xl border border-slate-200 bg-slate-50">
             <div className="flex items-center gap-3">
-              <Mic className="w-5 h-5 text-teal-600" />
+              <Mic className="w-5 h-5 text-teal-600 shrink-0" />
               <div>
                 <div className="text-sm font-semibold text-slate-900">
                   {t('settings.enableVoice', 'Enable Microphone Voice Input')}
@@ -238,7 +238,7 @@ export const PatientSettings: React.FC = () => {
 
           <div className="flex items-center justify-between p-4 rounded-xl border border-slate-200 bg-slate-50">
             <div className="flex items-center gap-3">
-              <Volume2 className="w-5 h-5 text-blue-600" />
+              <Volume2 className="w-5 h-5 text-blue-600 shrink-0" />
               <div>
                 <div className="text-sm font-semibold text-slate-900">
                   {t('settings.enableTTS', 'Enable Text-to-Speech (Audio Read-Aloud)')}
@@ -270,7 +270,7 @@ export const PatientSettings: React.FC = () => {
 
       {/* Save Button */}
       <div className="flex justify-end pt-4">
-        <Button onClick={handleSave} className="flex items-center gap-2 px-6 py-3">
+        <Button onClick={handleSave} className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3">
           <Save className="w-4 h-4" />
           <span>{t('settings.savePreferences', 'Save Language & Accessibility Settings')}</span>
         </Button>

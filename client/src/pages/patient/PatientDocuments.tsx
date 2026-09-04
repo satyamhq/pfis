@@ -113,10 +113,10 @@ export const PatientDocuments: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <FolderLock className="w-6 h-6 text-brand-500" />
+          <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+            <FolderLock className="w-6 h-6 text-brand-500 shrink-0" />
             Secure Medical Document Vault
           </h2>
           <p className="text-xs text-slate-500">
@@ -132,6 +132,7 @@ export const PatientDocuments: React.FC = () => {
             setError(null);
           }}
           icon={<Upload className="w-4 h-4" />}
+          className="w-full sm:w-auto justify-center"
         >
           Upload Document
         </Button>

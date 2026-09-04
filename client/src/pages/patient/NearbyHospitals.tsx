@@ -216,7 +216,7 @@ export const NearbyHospitals: React.FC = () => {
           )}
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 border-t border-slate-100 text-xs">
+        <div className="grid grid-cols-1 min-[380px]:grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-2 border-t border-slate-100 text-xs">
           <Select
             label="Radius Distance"
             value={radiusKm}
@@ -560,31 +560,33 @@ export const NearbyHospitals: React.FC = () => {
                   </div>
 
                   {/* Actions Bar */}
-                  <div className="flex items-center gap-2 pt-3 border-t border-slate-100">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-3 border-t border-slate-100">
                     <Button
                       variant="primary"
                       size="sm"
-                      className="flex-1"
+                      className="w-full sm:flex-1"
                       onClick={() => navigate(`/patient/hospitals/${hosp._id || (hosp as any).id}`)}
                       icon={<ArrowRight className="w-4 h-4" />}
                     >
                       View All Doctors & Book Token
                     </Button>
 
-                    <a
-                      href={`https://www.google.com/maps/dir/?api=1${coords ? `&origin=${coords.latitude},${coords.longitude}` : ''}&destination=${hosp.latitude},${hosp.longitude}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-blue-200 bg-blue-50/80 text-blue-700 hover:bg-blue-100 text-xs font-bold transition-all shadow-sm"
-                      title="Open Turn-by-Turn GPS Navigation in Google Maps"
-                    >
-                      <Navigation className="w-3.5 h-3.5 text-blue-600 fill-blue-600/20 animate-pulse" />
-                      <span className="hidden sm:inline">Google Maps</span>
-                    </a>
+                    <div className="flex items-center gap-2">
+                      <a
+                        href={`https://www.google.com/maps/dir/?api=1${coords ? `&origin=${coords.latitude},${coords.longitude}` : ''}&destination=${hosp.latitude},${hosp.longitude}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl border border-blue-200 bg-blue-50/80 text-blue-700 hover:bg-blue-100 text-xs font-bold transition-all shadow-sm"
+                        title="Open Turn-by-Turn GPS Navigation in Google Maps"
+                      >
+                        <Navigation className="w-3.5 h-3.5 text-blue-600 fill-blue-600/20 animate-pulse" />
+                        <span>Google Maps</span>
+                      </a>
 
-                    <TTSButton
-                      text={`${hosp.name}, located in ${hosp.city}. Distance is ${hosp.distanceKm} kilometers. Available beds: ${hosp.availableBeds}. Available OPD token seats: ${availableSeats}.`}
-                    />
+                      <TTSButton
+                        text={`${hosp.name}, located in ${hosp.city}. Distance is ${hosp.distanceKm} kilometers. Available beds: ${hosp.availableBeds}. Available OPD token seats: ${availableSeats}.`}
+                      />
+                    </div>
                   </div>
                 </div>
               );

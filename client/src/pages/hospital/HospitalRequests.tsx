@@ -143,9 +143,9 @@ export const HospitalRequests: React.FC = () => {
                 </div>
               )}
 
-              <div className="flex justify-end pt-2 border-t border-slate-100">
-                <Link to={`/hospital/requests/${req._id}`}>
-                  <Button variant="primary" size="sm" icon={<ArrowRight className="w-4 h-4" />}>
+              <div className="flex flex-col sm:flex-row justify-end pt-2 border-t border-slate-100">
+                <Link to={`/hospital/requests/${req._id}`} className="w-full sm:w-auto">
+                  <Button variant="primary" size="sm" className="w-full sm:w-auto" icon={<ArrowRight className="w-4 h-4" />}>
                     Open & Review Request
                   </Button>
                 </Link>

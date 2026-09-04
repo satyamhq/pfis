@@ -34,12 +34,12 @@ export const CareLeakage: React.FC = () => {
   return (
     <div className="space-y-8 max-w-5xl mx-auto">
       {/* Header Banner */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-card space-y-4">
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-8 shadow-card space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
-            <div className="flex items-center gap-2">
-              <h2 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-                <GitFork className="w-6 h-6 text-brand-500" />
+            <div className="flex flex-wrap items-center gap-2">
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+                <GitFork className="w-6 h-6 text-brand-500 shrink-0" />
                 Care Leakage & Retention Funnel
               </h2>
               <span className="px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-700 text-xs font-bold border border-rose-200">
@@ -71,8 +71,8 @@ export const CareLeakage: React.FC = () => {
       </div>
 
       {/* 6-Milestone Visual Funnel Component */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-card space-y-6">
-        <div className="flex justify-between items-center border-b border-slate-100 pb-3">
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-8 shadow-card space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-100 pb-3">
           <h3 className="text-base font-bold text-slate-900">
             Cohort Progression: 1,000 Referred Patients
           </h3>

@@ -60,8 +60,8 @@ export const PopulationFrictionMap: React.FC = () => {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <MapPin className="w-6 h-6 text-brand-500" />
+          <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+            <MapPin className="w-6 h-6 text-brand-500 shrink-0" />
             Population Friction & Access Heatmap
           </h2>
           <p className="text-xs text-slate-500">
@@ -77,8 +77,8 @@ export const PopulationFrictionMap: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Map Container (Left 2 Cols) */}
-        <div className="lg:col-span-2 rounded-2xl overflow-hidden border border-slate-200 shadow-md relative min-h-[500px]">
-          <MapContainer center={center} zoom={9} className="w-full h-full min-h-[500px]">
+        <div className="lg:col-span-2 rounded-2xl overflow-hidden border border-slate-200 shadow-md relative min-h-[360px] sm:min-h-[500px]">
+          <MapContainer center={center} zoom={9} className="w-full h-full min-h-[360px] sm:min-h-[500px]">
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

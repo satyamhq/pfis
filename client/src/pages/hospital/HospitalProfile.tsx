@@ -97,8 +97,8 @@ export const HospitalProfile: React.FC = () => {
   return (
     <div className="space-y-6 max-w-4xl mx-auto">
       <div>
-        <h2 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-          <Building2 className="w-6 h-6 text-brand-500" />
+        <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+          <Building2 className="w-6 h-6 text-brand-500 shrink-0" />
           Hospital Facility Profile & Settings
         </h2>
         <p className="text-xs text-slate-500">
@@ -116,7 +116,7 @@ export const HospitalProfile: React.FC = () => {
       {error && <ErrorAlert message={error} onDismiss={() => setError(null)} />}
 
       <form onSubmit={handleSave} className="space-y-6">
-        <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-card space-y-4">
+        <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-6 shadow-card space-y-4">
           <h3 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-2">
             Facility Metadata & Contacts
           </h3>
@@ -179,7 +179,7 @@ export const HospitalProfile: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 min-[360px]:grid-cols-2 gap-4">
             <Input
               label="Total Bed Capacity"
               type="number"
@@ -200,7 +200,7 @@ export const HospitalProfile: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-card space-y-4">
+        <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-6 shadow-card space-y-4">
           <h3 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-2">
             Address & Geo-Spatial Location
           </h3>
@@ -213,7 +213,7 @@ export const HospitalProfile: React.FC = () => {
             required
           />
 
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <Input label="City" value={city} onChange={(e) => setCity(e.target.value)} required />
             <Input label="State" value={state} onChange={(e) => setState(e.target.value)} required />
             <Input label="Pincode" value={pincode} onChange={(e) => setPincode(e.target.value)} required />
@@ -221,7 +221,7 @@ export const HospitalProfile: React.FC = () => {
         </div>
 
         <div className="flex justify-end">
-          <Button type="submit" variant="primary" size="lg" isLoading={isSaving} icon={<Save className="w-4 h-4" />}>
+          <Button type="submit" variant="primary" size="lg" isLoading={isSaving} icon={<Save className="w-4 h-4" />} className="w-full sm:w-auto justify-center">
             Save Hospital Profile
           </Button>
         </div>

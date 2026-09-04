@@ -242,10 +242,10 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-3xl border border-slate-200/90 shadow-2xl p-6 sm:p-10 space-y-8 transition-all relative">
+    <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-2xl p-4 sm:p-8 lg:p-10 space-y-6 sm:space-y-8 transition-all relative">
       {/* Redirecting Overlay */}
       {redirectingMessage && (
-        <div className="absolute inset-0 z-40 bg-white/95 backdrop-blur-xs rounded-3xl flex flex-col items-center justify-center p-6 text-center space-y-4">
+        <div className="absolute inset-0 z-40 bg-white/95 backdrop-blur-xs rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center p-6 text-center space-y-4">
           <div className="w-16 h-16 rounded-full bg-teal-50 flex items-center justify-center">
             <Loader2 className="w-8 h-8 text-teal-600 animate-spin" />
           </div>
@@ -264,7 +264,7 @@ export const Login: React.FC = () => {
       <div className="flex flex-col sm:flex-row items-center justify-between gap-3 border-b border-slate-100 pb-4">
         <div className="flex items-center gap-2">
           <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-xs font-bold uppercase tracking-wider text-slate-600">
+          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-600 text-center sm:text-left">
             PFIS Universal Authentication Engine
           </span>
         </div>
@@ -276,11 +276,11 @@ export const Login: React.FC = () => {
 
       {/* Main Title & Subtitle */}
       <div className="text-center space-y-2">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-xs font-bold mb-1">
-          <ShieldCheck className="w-3.5 h-3.5 text-purple-600" />
+        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-[11px] sm:text-xs font-bold mb-1">
+          <ShieldCheck className="w-3.5 h-3.5 text-purple-600 shrink-0" />
           <span>PFIS Health Ministry & Administration Command Portal</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
           Admin Portal Sign In
         </h1>
         <p className="text-xs sm:text-sm text-slate-500 max-w-lg mx-auto">
@@ -350,7 +350,7 @@ export const Login: React.FC = () => {
 
       {/* Admin Specific Notice */}
       {activePortal === 'admin' && (
-        <div className="p-3.5 bg-purple-50 border border-purple-200 rounded-2xl flex items-center gap-3 text-xs">
+        <div className="p-3 sm:p-3.5 bg-purple-50 border border-purple-200 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center gap-2.5 sm:gap-3 text-xs">
           <ShieldCheck className="w-5 h-5 text-purple-600 flex-shrink-0" />
           <div className="flex-1">
             <span className="font-bold text-purple-900 block">
@@ -364,8 +364,8 @@ export const Login: React.FC = () => {
       )}
 
       {/* Feature Highlights of the Active Portal */}
-      <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
-        <div className="flex items-center justify-between text-xs font-semibold text-slate-700 mb-2">
+      <div className="p-3 sm:p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs font-semibold text-slate-700 mb-2">
           <span className="flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5 text-amber-500" />
             <span>Portal Capabilities for {currentPortalConfig.title}:</span>
@@ -383,15 +383,15 @@ export const Login: React.FC = () => {
       </div>
 
       {/* 1-Click Verified Demo Accounts Bar */}
-      <div className="p-4 bg-slate-100/70 rounded-2xl border border-slate-200 space-y-2.5">
-        <div className="flex items-center justify-between text-xs font-bold text-slate-700">
+      <div className="p-3 sm:p-4 bg-slate-100/70 rounded-2xl border border-slate-200 space-y-2.5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs font-bold text-slate-700">
           <span className="flex items-center gap-1.5">
             <KeyRound className="w-4 h-4 text-brand-600" />
             <span>1-Click Verified Database Credentials (Click to Sign In):</span>
           </span>
           <span className="text-[10px] text-slate-500 font-normal">Real MongoDB Accounts</span>
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2">
           <button
             type="button"
             onClick={() => handleDirectSignIn('satyam31sk@gmail.com', 'Admin@123', 'admin')}

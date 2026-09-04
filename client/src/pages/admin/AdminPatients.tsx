@@ -69,7 +69,7 @@ export const AdminPatients: React.FC = () => {
 
       <div className="bg-white rounded-2xl border border-slate-200/80 shadow-card overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
+          <table className="w-full min-w-[650px] text-left text-xs">
             <thead className="bg-slate-50 text-slate-500 font-bold uppercase tracking-wider text-[10px]">
               <tr>
                 <th className="p-3.5">Patient Code</th>

@@ -229,14 +229,14 @@ export const DigitalTwinSimulator: React.FC = () => {
   return (
     <div className="space-y-8 max-w-6xl mx-auto">
       {/* Header Banner */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50 border border-slate-200/90 space-y-4">
+      <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-xl shadow-slate-200/50 border border-slate-200/90 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold border border-teal-200 mb-2">
               <Sparkles className="w-3.5 h-3.5 text-teal-600" />
               <span>PFIS Core Engine: Friction Digital Twin</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">
               Patient Friction Digital Twin Simulator
             </h1>
             <p className="text-xs text-slate-500">
@@ -308,7 +308,7 @@ export const DigitalTwinSimulator: React.FC = () => {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 min-[380px]:grid-cols-2 gap-2">
                 <div>
                   <label className="font-semibold text-slate-700 block mb-1">Transport:</label>
                   <select
@@ -338,7 +338,7 @@ export const DigitalTwinSimulator: React.FC = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 min-[380px]:grid-cols-2 gap-2">
                 <div>
                   <label className="font-semibold text-slate-700 block mb-1">Family Support:</label>
                   <select
@@ -476,7 +476,7 @@ export const DigitalTwinSimulator: React.FC = () => {
         {/* Right Column (7 Cols): Live Gauge, Journey Timeline & Live Log */}
         <div className="lg:col-span-7 space-y-6">
           {/* Live Digital Twin Gauge & Simulation Controls */}
-          <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-card space-y-4">
+          <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-4 sm:p-6 shadow-card space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
               <div className="sm:col-span-1 flex justify-center">
                 <CompletionGauge
@@ -546,7 +546,7 @@ export const DigitalTwinSimulator: React.FC = () => {
           </div>
 
           {/* Virtual Patient Journey Timeline Stepper */}
-          <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-card space-y-4">
+          <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-4 sm:p-6 shadow-card space-y-4">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
                 <Activity className="w-4 h-4 text-teal-600" />

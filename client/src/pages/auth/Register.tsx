@@ -72,9 +72,9 @@ export const Register: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xl p-6 sm:p-8 space-y-6">
+    <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xl p-4 sm:p-8 space-y-5 sm:space-y-6">
       <div className="text-center space-y-1">
-        <h2 className="text-2xl font-black text-slate-900 tracking-tight">Create an Account</h2>
+        <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Create an Account</h2>
         <p className="text-xs text-slate-500">Join the Patient Friction Intelligence System</p>
       </div>
 
@@ -161,7 +161,7 @@ export const Register: React.FC = () => {
 
         {role === 'patient' && (
           <>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <Input
                 label="Age"
                 type="number"

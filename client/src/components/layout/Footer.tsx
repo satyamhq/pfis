@@ -22,7 +22,7 @@ export const Footer: React.FC = () => {
               socio-geographic barriers—from transit deficits to loss of daily subsistence wages—and empowers
               health administrators to simulate high-yield community interventions.
             </p>
-            <div className="flex items-center gap-4 text-xs text-slate-500 pt-2">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 text-xs text-slate-500 pt-2">
               <span className="flex items-center gap-1">
                 <ShieldCheck className="w-4 h-4 text-teal-600" />
                 Deterministic Explainability

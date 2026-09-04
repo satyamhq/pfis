@@ -113,11 +113,11 @@ export const HospitalRequestDetails: React.FC = () => {
       {error && <ErrorAlert message={error} onDismiss={() => setError(null)} />}
 
       {/* Patient Consented Information Summary */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-card space-y-6">
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-6 shadow-card space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <h2 className="text-2xl font-black text-slate-900 tracking-tight">
+            <div className="flex flex-wrap items-center gap-2">
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
                 Patient {patient?.patientCode || 'PAT-1048'}
               </h2>
               <StatusBadge status={request.status} size="sm" />
@@ -134,7 +134,7 @@ export const HospitalRequestDetails: React.FC = () => {
         </div>
 
         {/* Consented Demographic & Accessibility Matrix */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+        <div className="grid grid-cols-1 min-[360px]:grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 text-xs">
           <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-0.5">
             <span className="text-[10px] text-slate-400 font-bold uppercase">Age & Gender</span>
             <p className="font-bold text-slate-800">{patient?.age} yrs • {patient?.gender}</p>
@@ -208,7 +208,7 @@ export const HospitalRequestDetails: React.FC = () => {
       <RequestTimeline currentStatus={request.status} timeline={request.timeline} />
 
       {/* Hospital Action & Triage Transition Console */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-card space-y-4">
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-6 shadow-card space-y-4">
         <h3 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-2">
           Hospital Triage Decisions & Token Allocation
         </h3>
@@ -227,14 +227,15 @@ export const HospitalRequestDetails: React.FC = () => {
             />
           </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
+            <div className="flex flex-col min-[380px]:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
               <Button
                 variant="outline"
                 size="md"
                 onClick={() => handleUpdateStatus('UNDER_REVIEW')}
                 isLoading={isUpdating}
                 disabled={request.status === 'UNDER_REVIEW'}
+                className="w-full sm:w-auto justify-center"
               >
                 Mark Under Review
               </Button>
@@ -244,12 +245,13 @@ export const HospitalRequestDetails: React.FC = () => {
                 onClick={() => handleUpdateStatus('REJECTED')}
                 isLoading={isUpdating}
                 disabled={request.status === 'REJECTED'}
+                className="w-full sm:w-auto justify-center"
               >
                 Reject Request
               </Button>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col min-[380px]:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
               <Button
                 variant="primary"
                 size="md"
@@ -257,6 +259,7 @@ export const HospitalRequestDetails: React.FC = () => {
                 isLoading={isUpdating}
                 icon={<CheckCircle2 className="w-4 h-4" />}
                 disabled={request.status === 'ACCEPTED'}
+                className="w-full sm:w-auto justify-center"
               >
                 Accept Request & Allocate OPD Slot
               </Button>
@@ -267,6 +270,7 @@ export const HospitalRequestDetails: React.FC = () => {
                 onClick={() => handleUpdateStatus('COMPLETED')}
                 isLoading={isUpdating}
                 disabled={request.status === 'COMPLETED'}
+                className="w-full sm:w-auto justify-center"
               >
                 Mark Visit Completed
               </Button>

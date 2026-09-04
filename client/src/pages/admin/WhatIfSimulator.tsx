@@ -119,14 +119,14 @@ export const WhatIfSimulator: React.FC = () => {
   return (
     <div className="space-y-8 max-w-6xl mx-auto">
       {/* Header Banner */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50 border border-slate-200/90 space-y-4">
+      <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-xl shadow-slate-200/50 border border-slate-200/90 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold border border-teal-200 mb-2">
               <Cpu className="w-3.5 h-3.5 text-teal-600" />
               <span>Enterprise Live Scenario Simulator</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+            <h1 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight">
               What-If Intervention Simulator
             </h1>
             <p className="text-xs text-slate-500">
@@ -137,7 +137,7 @@ export const WhatIfSimulator: React.FC = () => {
           <Button
             variant="outline"
             size="sm"
-            className="self-start sm:self-auto border-slate-300 text-slate-700 hover:bg-slate-50"
+            className="w-full sm:w-auto self-stretch sm:self-auto justify-center border-slate-300 text-slate-700 hover:bg-slate-50"
             onClick={() => {
               setSelectedCodes([]);
               triggerSimulation([]);
@@ -159,7 +159,7 @@ export const WhatIfSimulator: React.FC = () => {
       </div>
 
       {/* Simulation Results Gauge & Metrics Ribbon */}
-      <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-card space-y-6">
+      <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-4 sm:p-8 shadow-card space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
           {/* Completion Gauge */}
           <div className="md:col-span-1 flex justify-center">
@@ -172,7 +172,7 @@ export const WhatIfSimulator: React.FC = () => {
           </div>
 
           {/* 3 Computed Simulation Results Cards */}
-          <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             <div className="p-4 bg-teal-50/70 rounded-2xl border border-teal-200 space-y-1">
               <span className="text-[10px] font-bold text-teal-800 uppercase tracking-wider block">
                 Estimated Improvement Gain
@@ -212,9 +212,9 @@ export const WhatIfSimulator: React.FC = () => {
 
       {/* 8 Interactive Intervention Selection Toggles */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-brand-500" />
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2">
+          <h3 className="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-brand-500 shrink-0" />
             Select Interventions to Simulate ({selectedCodes.length} Active)
           </h3>
           <span className="text-xs text-slate-500">Click any card to toggle on/off</span>

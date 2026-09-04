@@ -35,10 +35,10 @@ export const PatientRequests: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-            <ListOrdered className="w-6 h-6 text-brand-500" />
+          <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+            <ListOrdered className="w-6 h-6 text-brand-500 shrink-0" />
             My Hospital Intake Requests
           </h2>
           <p className="text-xs text-slate-500">
@@ -46,8 +46,8 @@ export const PatientRequests: React.FC = () => {
           </p>
         </div>
 
-        <Link to="/patient/hospitals">
-          <Button variant="primary" size="sm" icon={<Building2 className="w-4 h-4" />}>
+        <Link to="/patient/hospitals" className="w-full sm:w-auto">
+          <Button variant="primary" size="sm" icon={<Building2 className="w-4 h-4" />} className="w-full sm:w-auto justify-center">
             New Hospital Request
           </Button>
         </Link>
@@ -109,8 +109,8 @@ export const PatientRequests: React.FC = () => {
               )}
 
               <div className="flex justify-end pt-2 border-t border-slate-100">
-                <Link to={`/patient/requests/${req._id}`}>
-                  <Button variant="outline" size="sm" icon={<ArrowRight className="w-4 h-4" />}>
+                <Link to={`/patient/requests/${req._id}`} className="w-full sm:w-auto">
+                  <Button variant="outline" size="sm" icon={<ArrowRight className="w-4 h-4" />} className="w-full sm:w-auto justify-center">
                     View Live Timeline & Consented Data
                   </Button>
                 </Link>

@@ -357,7 +357,7 @@ export const Navbar: React.FC = () => {
 
                   {/* Notifications Dropdown */}
                   {isNotifOpen && (
-                    <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200/90 py-3 z-50 overflow-hidden">
+                    <div className="fixed inset-x-3 top-16 sm:absolute sm:inset-x-auto sm:right-0 sm:top-auto sm:mt-2 sm:w-96 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200/90 py-3 z-50 overflow-hidden">
                       <div className="px-4 pb-2.5 border-b border-slate-100 flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <Bell className="w-4 h-4 text-teal-600" />
@@ -476,16 +476,16 @@ export const Navbar: React.FC = () => {
                   </button>
                 </div>
               ) : (
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5 sm:gap-2">
                   <Link
                     to="/login?role=admin"
-                    className="text-xs font-bold text-slate-700 hover:text-teal-600 px-3 py-1.5 rounded-xl hover:bg-slate-100/80 transition-all"
+                    className="text-xs font-bold text-slate-700 hover:text-teal-600 px-2 sm:px-3 py-1.5 rounded-xl hover:bg-slate-100/80 transition-all whitespace-nowrap"
                   >
                     {t('nav.adminSignIn', 'Admin Sign In')}
                   </Link>
                   <Link
                     to="/register"
-                    className="text-xs font-bold bg-gradient-to-r from-teal-600 to-brand-600 hover:from-teal-500 hover:to-brand-500 text-white px-3.5 py-1.5 rounded-xl shadow-xs shadow-teal-500/20 transition-all"
+                    className="text-xs font-bold bg-gradient-to-r from-teal-600 to-brand-600 hover:from-teal-500 hover:to-brand-500 text-white px-2.5 sm:px-3.5 py-1.5 rounded-xl shadow-xs shadow-teal-500/20 transition-all whitespace-nowrap"
                   >
                     {t('nav.register', 'Register')}
                   </Link>

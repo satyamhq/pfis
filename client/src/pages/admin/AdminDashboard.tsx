@@ -71,13 +71,13 @@ export const AdminDashboard: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Header Banner */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50 border border-slate-200/90 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-xl shadow-slate-200/50 border border-slate-200/90 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6">
         <div className="space-y-2 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold border border-teal-200">
             <Shield className="w-3.5 h-3.5 text-teal-600" />
             <span>Population Health Intelligence & Operations</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">
             PFIS Administrative Control Suite
           </h1>
           <p className="text-xs text-slate-500 leading-relaxed">
@@ -86,14 +86,14 @@ export const AdminDashboard: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-2.5">
-          <Link to="/admin/simulator">
-            <Button variant="primary" size="sm" icon={<Cpu className="w-4 h-4" />}>
+        <div className="flex flex-col sm:flex-row flex-wrap gap-2.5 w-full md:w-auto">
+          <Link to="/admin/simulator" className="w-full sm:w-auto">
+            <Button variant="primary" size="sm" className="w-full sm:w-auto" icon={<Cpu className="w-4 h-4" />}>
               What-If Simulator
             </Button>
           </Link>
-          <Link to="/admin/audit-logs">
-            <Button variant="secondary" size="sm" icon={<Activity className="w-4 h-4" />}>
+          <Link to="/admin/audit-logs" className="w-full sm:w-auto">
+            <Button variant="secondary" size="sm" className="w-full sm:w-auto" icon={<Activity className="w-4 h-4" />}>
               Audit Trail
             </Button>
           </Link>
@@ -197,8 +197,8 @@ export const AdminDashboard: React.FC = () => {
         {recentLogs.length === 0 ? (
           <p className="text-xs text-slate-400 py-4 text-center">No login events recorded yet.</p>
         ) : (
-          <div className="divide-y divide-slate-100 overflow-x-auto">
-            <table className="w-full text-left text-xs">
+          <div className="divide-y divide-slate-100 overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+            <table className="w-full min-w-[580px] text-left text-xs">
               <thead>
                 <tr className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
                   <th className="pb-3 pr-4">User / Account</th>

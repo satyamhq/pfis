@@ -161,10 +161,10 @@ export const HospitalDetails: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Header Hospital Profile Card */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-card space-y-6">
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-8 shadow-card space-y-5 sm:space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-6">
           <div className="space-y-1.5">
-            <div className="flex items-center gap-2 flex-wrap">
+            <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
               <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-brand-50 text-brand-700 border border-brand-200 uppercase">
                 {hospital.type} Facility
               </span>
@@ -179,19 +179,19 @@ export const HospitalDetails: React.FC = () => {
                 100% Verified Profile Details
               </span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">
               {hospital.name}
             </h1>
             <p className="text-xs text-slate-500 flex items-center gap-1.5">
-              <MapPin className="w-3.5 h-3.5 text-brand-500" />
+              <MapPin className="w-3.5 h-3.5 text-brand-500 shrink-0" />
               <span>{hospital.address}, {hospital.city}, {hospital.state} - {hospital.pincode}</span>
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 text-xs">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 text-xs w-full sm:w-auto">
             <a
               href={`tel:${hospital.phone}`}
-              className="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center gap-1.5 transition-colors"
+              className="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center gap-1.5 transition-colors w-full sm:w-auto"
             >
               <Phone className="w-3.5 h-3.5" />
               <span>{hospital.phone}</span>
@@ -201,7 +201,7 @@ export const HospitalDetails: React.FC = () => {
               href={`https://www.google.com/maps/dir/?api=1&destination=${hospital.latitude},${hospital.longitude}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-2 rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-800 font-bold border border-teal-200 flex items-center gap-1.5 transition-colors"
+              className="px-3 py-2 rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-800 font-bold border border-teal-200 flex items-center justify-center gap-1.5 transition-colors w-full sm:w-auto"
             >
               <ExternalLink className="w-3.5 h-3.5" />
               <span>Turn-by-Turn Navigation</span>
@@ -210,7 +210,7 @@ export const HospitalDetails: React.FC = () => {
         </div>
 
         {/* Operational Indicators */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+        <div className="grid grid-cols-1 min-[380px]:grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 text-xs">
           <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 space-y-0.5">
             <span className="text-[10px] text-slate-400 font-semibold uppercase">Working Timings</span>
             <p className="font-bold text-slate-800 truncate">{hospital.workingHours}</p>
@@ -354,7 +354,7 @@ export const HospitalDetails: React.FC = () => {
       </div>
 
       {/* Interactive Patient Intake Request Form */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-card space-y-6">
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-8 shadow-card space-y-6">
         <div>
           <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
             <Send className="w-5 h-5 text-brand-500" /> Send Patient Intake Request
@@ -376,7 +376,7 @@ export const HospitalDetails: React.FC = () => {
               required
             />
 
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 min-[420px]:grid-cols-2 gap-2">
               <Input
                 label="Preferred Visit Date"
                 type="date"

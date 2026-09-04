@@ -25,16 +25,16 @@ export const FirstVisitLanguageModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/20 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="relative w-full max-w-xl rounded-2xl bg-white border border-slate-200/90 shadow-2xl p-6 sm:p-8">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/20 backdrop-blur-xs animate-in fade-in duration-200">
+      <div className="relative w-full max-w-xl max-h-[calc(100vh-2rem)] overflow-y-auto rounded-2xl bg-white border border-slate-200/90 shadow-2xl p-4 sm:p-8">
         <div className="text-center mb-6">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-teal-50 text-teal-600 mb-3 shadow-inner">
-            <Globe className="w-8 h-8 animate-spin-slow" />
+          <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-teal-50 text-teal-600 mb-3 shadow-inner">
+            <Globe className="w-7 h-7 sm:w-8 sm:h-8 animate-spin-slow" />
           </div>
-          <h2 className="text-2xl font-bold text-slate-900">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
             {t('modals.chooseLanguage', 'Choose Your Preferred Language')}
           </h2>
-          <p className="text-sm text-slate-600 mt-1">
+          <p className="text-xs sm:text-sm text-slate-600 mt-1">
             {t(
               'modals.chooseLanguageSubtitle',
               'Select the language you want to use across the PFIS healthcare platform'
@@ -43,7 +43,7 @@ export const FirstVisitLanguageModal: React.FC = () => {
         </div>
 
         {/* Language Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-72 overflow-y-auto pr-1 mb-6">
+        <div className="grid grid-cols-1 min-[360px]:grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5 max-h-72 overflow-y-auto pr-1 mb-6">
           {supportedLanguages.map((lang) => {
             const isSelected = selectedLang === lang.code;
             return (

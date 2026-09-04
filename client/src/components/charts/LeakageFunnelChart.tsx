@@ -25,19 +25,19 @@ export const LeakageFunnelChart: React.FC<{
 
         return (
           <div key={item.stageName} className="space-y-1.5">
-            <div className="flex items-center justify-between text-xs">
-              <div className="flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-teal-700 text-white text-[10px] font-bold flex items-center justify-center shadow-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-1">
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                <span className="w-5 h-5 rounded-full bg-teal-700 text-white text-[10px] font-bold flex items-center justify-center shadow-xs shrink-0">
                   {idx + 1}
                 </span>
                 <span className="font-bold text-slate-800">{item.stageName}</span>
                 {isHighest && (
                   <span className="px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 text-[10px] font-bold flex items-center gap-1 border border-rose-200">
-                    <AlertTriangle className="w-3 h-3" /> Max Leakage Stage
+                    <AlertTriangle className="w-3 h-3 shrink-0" /> Max Leakage Stage
                   </span>
                 )}
               </div>
-              <div className="text-right">
+              <div className="text-left sm:text-right pl-7 sm:pl-0">
                 <span className="font-extrabold text-slate-900 text-sm">{item.patientCount}</span>
                 <span className="text-slate-400 text-xs ml-1">({item.retentionPercentage}% retained)</span>
               </div>
@@ -65,12 +65,12 @@ export const LeakageFunnelChart: React.FC<{
 
             {/* Drop-off Note if not the first stage */}
             {item.dropOffCount > 0 && (
-              <div className="flex items-center justify-between text-[11px] text-slate-500 pl-7">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between text-[11px] text-slate-500 pl-7 gap-0.5 sm:gap-1">
                 <span className="text-rose-600 font-semibold flex items-center gap-0.5">
-                  <ArrowDown className="w-3 h-3 inline" /> Drop-off: {item.dropOffCount} patients (
+                  <ArrowDown className="w-3 h-3 inline shrink-0" /> Drop-off: {item.dropOffCount} patients (
                   {item.dropOffPercentage}%)
                 </span>
-                <span className="text-slate-500 italic truncate max-w-xs sm:max-w-md">
+                <span className="text-slate-500 italic">
                   Barrier: {item.primaryBarrierCausingDropOff}
                 </span>
               </div>

@@ -55,7 +55,7 @@ export const LandingPage: React.FC = () => {
             </div>
 
             {/* Hero Main Heading */}
-            <h1 className="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight leading-[1.15]">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.15]">
               {t('landing.heroTitle1', 'Healthcare may be available.')}{' '}
               <span className="bg-gradient-to-r from-brand-600 via-teal-600 to-teal-500 bg-clip-text text-transparent block mt-1">
                 {t('landing.heroTitle2', 'But is it actually accessible?')}
@@ -64,7 +64,7 @@ export const LandingPage: React.FC = () => {
 
             {/* Subheading with Audio Read */}
             <div className="flex flex-col items-center gap-2">
-              <p className="text-base sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-sm sm:text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
                 {t(
                   'landing.heroSubtitle',
                   'PFIS identifies the practical barriers—from transit deficits and documentation gaps to wage loss—that prevent patients from completing care, helping healthcare systems choose high-impact interventions.'
@@ -77,26 +77,26 @@ export const LandingPage: React.FC = () => {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center justify-center gap-3.5 pt-4">
-              <Link to="/patient/hospitals">
-                <Button variant="primary" size="lg" icon={<MapPin className="w-5 h-5" />}>
+            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 pt-4 w-full">
+              <Link to="/patient/hospitals" className="w-full sm:w-auto">
+                <Button variant="primary" size="lg" className="w-full sm:w-auto" icon={<MapPin className="w-5 h-5" />}>
                   {t('landing.findHospitals', 'Find Nearby Hospitals')}
                 </Button>
               </Link>
               {!isAuthenticated ? (
                 <>
-                  <Link to="/login?role=admin">
-                    <Button variant="primary" size="lg" icon={<Shield className="w-4 h-4" />}>
+                  <Link to="/login?role=admin" className="w-full sm:w-auto">
+                    <Button variant="primary" size="lg" className="w-full sm:w-auto" icon={<Shield className="w-4 h-4" />}>
                       Admin Sign In
                     </Button>
                   </Link>
-                  <Link to="/login?role=hospital">
-                    <Button variant="outline" size="lg" icon={<Building2 className="w-4 h-4" />}>
+                  <Link to="/login?role=hospital" className="w-full sm:w-auto">
+                    <Button variant="outline" size="lg" className="w-full sm:w-auto" icon={<Building2 className="w-4 h-4" />}>
                       {t('landing.hospitalPortal', 'Hospital Portal')}
                     </Button>
                   </Link>
-                  <Link to="/login?role=patient">
-                    <Button variant="ghost" size="lg">
+                  <Link to="/login?role=patient" className="w-full sm:w-auto">
+                    <Button variant="ghost" size="lg" className="w-full sm:w-auto">
                       {t('landing.patientLogin', 'Patient Portal')}
                     </Button>
                   </Link>
@@ -110,8 +110,9 @@ export const LandingPage: React.FC = () => {
                       ? '/hospital/dashboard'
                       : '/admin/dashboard'
                   }
+                  className="w-full sm:w-auto"
                 >
-                  <Button variant="secondary" size="lg" icon={<ArrowRight className="w-4 h-4" />}>
+                  <Button variant="secondary" size="lg" className="w-full sm:w-auto" icon={<ArrowRight className="w-4 h-4" />}>
                     {t('landing.goToDashboard', 'Go to Your Dashboard')}
                   </Button>
                 </Link>
@@ -399,7 +400,7 @@ export const LandingPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-9 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-9 gap-2 sm:gap-3">
           {[
             { step: '01', title: 'Medical Need', desc: 'Symptom recognized' },
             { step: '02', title: 'Hospital Search', desc: 'Facility discovery' },
@@ -413,7 +414,7 @@ export const LandingPage: React.FC = () => {
           ].map((item, idx) => (
             <div
               key={item.step}
-              className={`p-3.5 rounded-xl border text-center space-y-1.5 ${
+              className={`p-3 sm:p-3.5 rounded-xl border text-center space-y-1 sm:space-y-1.5 ${
                 idx === 2 || idx === 3
                   ? 'bg-rose-50/60 border-rose-200'
                   : idx === 0 || idx === 1
@@ -430,7 +431,7 @@ export const LandingPage: React.FC = () => {
       </section>
 
       {/* 5. WHAT-IF SIMULATOR & INTERVENTION OPTIMIZER SHOWCASE */}
-      <section className="bg-gradient-to-br from-teal-50/80 via-emerald-50/40 to-slate-50 text-slate-900 py-16 rounded-3xl max-w-7xl mx-auto px-6 sm:px-12 shadow-lg border border-teal-200/80 space-y-10">
+      <section className="bg-gradient-to-br from-teal-50/80 via-emerald-50/40 to-slate-50 text-slate-900 py-8 sm:py-16 rounded-2xl sm:rounded-3xl max-w-7xl mx-3 sm:mx-auto px-4 sm:px-12 shadow-lg border border-teal-200/80 space-y-8 sm:space-y-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100/80 text-teal-800 text-xs font-bold border border-teal-200">

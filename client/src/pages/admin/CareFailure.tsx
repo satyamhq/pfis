@@ -34,12 +34,12 @@ export const CareFailure: React.FC = () => {
   return (
     <div className="space-y-8 max-w-5xl mx-auto">
       {/* Header Overview */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-card space-y-4">
+      <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-8 shadow-card space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
-            <div className="flex items-center gap-2">
-              <h2 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-                <BarChart3 className="w-6 h-6 text-brand-500" />
+            <div className="flex flex-wrap items-center gap-2">
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+                <BarChart3 className="w-6 h-6 text-brand-500 shrink-0" />
                 Why Did Care Fail? Engine
               </h2>
               <span className="px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-700 text-xs font-bold border border-teal-200">
@@ -75,14 +75,14 @@ export const CareFailure: React.FC = () => {
                 key={i}
                 className="bg-white rounded-2xl border border-slate-200/80 p-4 shadow-card space-y-2 text-xs"
               >
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
                   <div className="flex items-center gap-2">
-                    <span className="w-6 h-6 rounded-full bg-slate-100 text-slate-800 font-extrabold text-[11px] flex items-center justify-center">
+                    <span className="w-6 h-6 rounded-full bg-slate-100 text-slate-800 font-extrabold text-[11px] flex items-center justify-center shrink-0">
                       {i + 1}
                     </span>
                     <h4 className="font-bold text-sm text-slate-900">{b.category}</h4>
                   </div>
-                  <span className="text-sm font-black text-teal-800 bg-teal-50 px-2.5 py-0.5 rounded-full border border-teal-200">
+                  <span className="text-xs sm:text-sm font-black text-teal-800 bg-teal-50 px-2.5 py-0.5 rounded-full border border-teal-200 self-start sm:self-auto">
                     {b.percentage}% ({b.caseCount} Patients)
                   </span>
                 </div>
