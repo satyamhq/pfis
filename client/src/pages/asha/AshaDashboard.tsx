@@ -18,6 +18,7 @@ import {
   Volume2,
 } from 'lucide-react';
 import { ashaService, AshaDashboardData } from '../../services/ashaService';
+import { PageClarityRibbon } from '../../components/common/PageClarityRibbon';
 
 export const AshaDashboard: React.FC = () => {
   const [data, setData] = useState<AshaDashboardData | null>(null);
@@ -105,6 +106,18 @@ export const AshaDashboard: React.FC = () => {
           </Link>
         </div>
       </div>
+
+      {/* Guidance Ribbon: What is this? Why is it useful? What should I do next? */}
+      <PageClarityRibbon
+        pageKey="asha_dashboard"
+        what="Village Health Care & Household Assistance Hub — manage your cluster visits and coordinate transport."
+        why="Shows which village families are missing hospital follow-ups due to bus costs, missing cards, or language barriers so you can step in."
+        next="Click 'Log Field Barrier' to report an obstacle, or 'Request Transit Support' to book a morning shuttle for a patient."
+        actionText="Log Field Barrier"
+        actionLink="/asha/log-barrier"
+        badge="ASHA Community"
+        role="asha"
+      />
 
       {/* Community Metrics Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">

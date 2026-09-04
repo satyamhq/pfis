@@ -202,7 +202,38 @@ Executes mathematical simulation modeling the population care-completion improve
 
 ---
 
-## 7. Administrative Intelligence Suite (Admin RBAC Protected)
+## 7. Role-Specific Intelligence APIs (RBAC Protected)
+
+### 7.1 Doctor & Clinical Suite (`role: "doctor"`)
+| Endpoint | Method | Description |
+| :--- | :---: | :--- |
+| `/api/doctor/dashboard` | `GET` | Doctor's daily queue, patient friction highlights, medical autonomy disclaimer |
+| `/api/doctor/patients` | `GET` | Filtered list of monitored OPD patients with transit distance and language flags |
+| `/api/doctor/patients/:id` | `GET` | Detailed patient friction context, non-clinical journey timeline, ASHA logs |
+
+### 7.2 ASHA Field Cadre Suite (`role: "asha"`)
+| Endpoint | Method | Description |
+| :--- | :---: | :--- |
+| `/api/asha/dashboard` | `GET` | Village household registry, urgent tasks, high-friction homes |
+| `/api/asha/patients` | `GET` | Cluster patient directory with transit and digital literacy status |
+| `/api/asha/log-barrier` | `POST` | 1-tap rapid barrier logging (transport, loss of daily wage, missing card) |
+
+### 7.3 Government Health Directorate Suite (`role: "government"`)
+| Endpoint | Method | Description |
+| :--- | :---: | :--- |
+| `/api/government/dashboard` | `GET` | District-wide friction score, 5-stage care journey leakage funnel, drop-off causes |
+| `/api/government/friction-map` | `GET` | Cluster-level geographic density of access barriers (DPDP 2023 compliant) |
+| `/api/government/interventions` | `GET` | Active district interventions (mobile clinics, transport vouchers, IVR tokens) |
+| `/api/government/interventions` | `POST` | Allocate new public health intervention budget and model recovery |
+
+### 7.4 Unified Onboarding
+| Endpoint | Method | Description |
+| :--- | :---: | :--- |
+| `/api/auth/complete-onboarding` | `POST` | Sets user operational role (`patient`, `doctor`, `asha`, `hospital`, `government`). Rejects self-selected `admin` with 403 Forbidden. |
+
+---
+
+## 8. Administrative Intelligence Suite (Admin RBAC Protected)
 
 *All routes below require `role: "admin"` and verified email membership in the `ADMIN_EMAILS` whitelist.*
 
@@ -215,3 +246,4 @@ Executes mathematical simulation modeling the population care-completion improve
 | `/api/admin/patients` | `GET` | District patient registry with accessibility tags |
 | `/api/admin/hospitals` | `GET` | Master hospital directory and capacity metrics |
 | `/api/admin/audit-logs` | `GET` | Immutable security and transaction audit trail |
+

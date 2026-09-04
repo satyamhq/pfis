@@ -34,63 +34,62 @@ export const Sidebar: React.FC = () => {
   const role = user.role;
 
   const patientLinks = [
-    { name: t('nav.dashboard', 'Dashboard'), path: '/patient/dashboard', icon: LayoutDashboard },
-    { name: 'Digital Twin Simulator', path: '/patient/digital-twin', icon: Sparkles },
-    { name: 'Live Teleconsultation', path: '/patient/teleconsult', icon: Layers },
-    { name: t('nav.hospitals', 'Find Nearby Hospitals'), path: '/patient/hospitals', icon: MapPin },
-    { name: t('nav.frictionProfile', 'Friction Profile'), path: '/patient/friction', icon: Sparkles },
-    { name: t('nav.accessibilityRisk', 'Accessibility Risk'), path: '/patient/risk', icon: ShieldAlert },
-    { name: t('nav.myRequests', 'My Hospital Requests'), path: '/patient/requests', icon: ListOrdered },
-    { name: t('nav.myDocuments', 'Document Vault'), path: '/patient/documents', icon: FolderLock },
+    { name: t('nav.dashboard', 'My Health Home'), path: '/patient/dashboard', icon: LayoutDashboard },
+    { name: t('nav.hospitals', 'Find Hospitals & Doctors'), path: '/patient/hospitals', icon: MapPin },
+    { name: 'Doctor Video Call', path: '/patient/teleconsult', icon: Layers },
+    { name: 'Trip Planner (Simulator)', path: '/patient/digital-twin', icon: Sparkles },
+    { name: t('nav.frictionProfile', 'Travel Ease Score'), path: '/patient/friction', icon: Sparkles },
+    { name: t('nav.accessibilityRisk', 'Journey Care Guide'), path: '/patient/risk', icon: ShieldAlert },
+    { name: t('nav.myRequests', 'My Appointments & Tokens'), path: '/patient/requests', icon: ListOrdered },
+    { name: t('nav.myDocuments', 'My Health Records'), path: '/patient/documents', icon: FolderLock },
     { name: t('auth.fullName', 'Profile & Location'), path: '/patient/profile', icon: User },
     { name: t('nav.settings', 'Settings & Language'), path: '/patient/settings', icon: Settings },
   ];
 
   const hospitalLinks = [
-    { name: t('nav.dashboard', 'Hospital Dashboard'), path: '/hospital/dashboard', icon: LayoutDashboard },
-    { name: t('nav.triageQueue', 'Patient Requests Queue'), path: '/hospital/requests', icon: ListOrdered },
-    { name: 'Teleconsultation Triage', path: '/hospital/teleconsult', icon: Layers },
-    { name: t('nav.opdManagement', 'Departments & OPD'), path: '/hospital/departments', icon: Layers },
-    { name: t('nav.hospitalProfile', 'Hospital Profile'), path: '/hospital/profile', icon: Building2 },
+    { name: t('nav.dashboard', 'Triage Desk Home'), path: '/hospital/dashboard', icon: LayoutDashboard },
+    { name: t('nav.triageQueue', 'Incoming Patient Queue'), path: '/hospital/requests', icon: ListOrdered },
+    { name: 'Video Consultation Triage', path: '/hospital/teleconsult', icon: Layers },
+    { name: t('nav.opdManagement', 'Doctors & OPD Schedules'), path: '/hospital/departments', icon: Layers },
+    { name: t('nav.hospitalProfile', 'Hospital Facility Info'), path: '/hospital/profile', icon: Building2 },
     { name: t('nav.settings', 'Settings & Language'), path: '/hospital/settings', icon: Settings },
   ];
 
   const doctorLinks = [
-    { name: 'Decision Support Dashboard', path: '/doctor/dashboard', icon: LayoutDashboard },
-    { name: 'Patient Friction Queue', path: '/doctor/patients', icon: Users },
-    { name: 'Teleconsultation Review', path: '/doctor/teleconsult', icon: Layers },
+    { name: 'Clinical Desk Home', path: '/doctor/dashboard', icon: LayoutDashboard },
+    { name: 'Patient Queue & Visit Barriers', path: '/doctor/patients', icon: Users },
+    { name: 'Video Consultations', path: '/doctor/teleconsult', icon: Layers },
     { name: 'Account Settings', path: '/doctor/settings', icon: Settings },
   ];
 
   const ashaLinks = [
-    { name: 'Grassroots Dashboard', path: '/asha/dashboard', icon: LayoutDashboard },
-    { name: 'Village Patient Registry', path: '/asha/patients', icon: Users },
-    { name: 'Log Field Barrier', path: '/asha/log-barrier', icon: Sparkles },
-    { name: 'Notifications & Alerts', path: '/asha/notifications', icon: Layers },
+    { name: 'ASHA Field Home', path: '/asha/dashboard', icon: LayoutDashboard },
+    { name: 'Village Families Registry', path: '/asha/patients', icon: Users },
+    { name: 'Log Doorstep Barrier', path: '/asha/log-barrier', icon: Sparkles },
+    { name: 'Community Alerts', path: '/asha/notifications', icon: Layers },
     { name: 'Account Settings', path: '/asha/settings', icon: Settings },
   ];
 
   const governmentLinks = [
     { name: 'District Health Overview', path: '/government/dashboard', icon: LayoutDashboard },
-    { name: 'Friction Heat-Map', path: '/government/friction-map', icon: MapPin },
-    { name: 'Macro Interventions', path: '/government/interventions', icon: Sliders },
+    { name: 'District Access Heat-Map', path: '/government/friction-map', icon: MapPin },
+    { name: 'Policy Interventions & ROI', path: '/government/interventions', icon: Sliders },
     { name: 'Care Leakage Analytics', path: '/government/leakage', icon: GitFork },
-    { name: 'Policy Simulator', path: '/government/simulator', icon: Cpu },
+    { name: 'Policy Impact Simulator', path: '/government/simulator', icon: Cpu },
     { name: 'Settings & Language', path: '/government/settings', icon: Settings },
   ];
 
   const adminLinks = [
-    { name: t('nav.dashboard', 'System Dashboard'), path: '/admin/dashboard', icon: LayoutDashboard },
-    { name: 'Friction Digital Twin', path: '/admin/digital-twin', icon: Sparkles },
-    { name: t('nav.whatIfSimulator', 'What-If Simulator'), path: '/admin/simulator', icon: Cpu },
-    { name: t('nav.budgetOptimizer', 'Budget Optimizer'), path: '/admin/interventions', icon: Sliders },
-    { name: t('nav.populationMap', 'Population Friction Map'), path: '/admin/friction-map', icon: MapPin },
-    { name: t('nav.careLeakage', 'Care Leakage Funnel'), path: '/admin/care-leakage', icon: GitFork },
-    { name: t('nav.whyCareFailed', 'Why Did Care Fail'), path: '/admin/care-failure', icon: BarChart3 },
-    { name: t('nav.patientRegistry', 'Patient Registry'), path: '/admin/patients', icon: Users },
-    { name: t('nav.hospitalRegistry', 'Hospital Registry'), path: '/admin/hospitals', icon: Building2 },
-    { name: t('nav.auditLogs', 'Audit & Compliance Logs'), path: '/admin/audit-logs', icon: History },
-    { name: t('nav.settings', 'Settings & Language'), path: '/admin/settings', icon: Settings },
+    { name: t('nav.dashboard', 'System Overview'), path: '/admin/dashboard', icon: LayoutDashboard },
+    { name: 'What-If Impact Simulator', path: '/admin/simulator', icon: Cpu },
+    { name: 'Intervention Budget Planner', path: '/admin/interventions', icon: Sliders },
+    { name: 'Population Access Map', path: '/admin/friction-map', icon: MapPin },
+    { name: 'Care Leakage Funnel', path: '/admin/care-leakage', icon: GitFork },
+    { name: 'Care Dropout Reasons', path: '/admin/care-failure', icon: BarChart3 },
+    { name: 'Patient Registry', path: '/admin/patients', icon: Users },
+    { name: 'Hospital Directory', path: '/admin/hospitals', icon: Building2 },
+    { name: 'Audit & Security Logs', path: '/admin/audit-logs', icon: History },
+    { name: 'System Settings', path: '/admin/settings', icon: Settings },
   ];
 
   let links = patientLinks;

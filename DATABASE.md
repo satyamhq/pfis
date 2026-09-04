@@ -50,7 +50,7 @@ Stores user authentication identities, hashed credentials, and system roles.
 | `email` | `VARCHAR(255)` | `UNIQUE`, `NOT NULL` | Lowercase normalized email |
 | `password_hash` | `VARCHAR(255)` | `NOT NULL` | Bcrypt password hash (10 rounds) |
 | `name` | `VARCHAR(255)` | `NOT NULL` | Full display name |
-| `role` | `VARCHAR(20)` | `NOT NULL` | Enum: `'patient'`, `'hospital'`, `'admin'` |
+| `role` | `VARCHAR(20)` | `NOT NULL` | Enum: `'patient'`, `'doctor'`, `'asha'`, `'hospital'`, `'government'`, `'admin'` |
 | `is_admin` | `BOOLEAN` | `DEFAULT FALSE` | Cryptographically verified admin flag |
 | `phone` | `VARCHAR(30)` | `NULLABLE` | Contact telephone number |
 | `google_id` | `VARCHAR(255)` | `NULLABLE` | Google OAuth2 subject ID |

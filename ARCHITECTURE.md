@@ -35,8 +35,11 @@ PFIS operates on the principle that clinical excellence is irrelevant if a patie
 flowchart TB
     subgraph ClientLayer ["Client Presentation Tier (React 18 + Vite + TypeScript)"]
         Landing["Public Landing & Accessibility Portal"]
-        PatientPortal["Patient Accessibility Dashboard"]
-        HospitalPortal["Hospital Triage & Intake Console"]
+        PatientPortal["Patient Accessibility & Trip Planner"]
+        DoctorPortal["Doctor Clinical Queue & Barrier Flags"]
+        AshaPortal["ASHA Village Registry & Transit Desk"]
+        HospitalPortal["Hospital Triage & Capacity Console"]
+        GovPortal["Government District Heatmap & Policies"]
         AdminSuite["Administrative Health Intelligence Suite"]
         
         subgraph ClientContexts ["Cross-Cutting State & Contexts"]
@@ -95,13 +98,16 @@ flowchart TB
 The client application is built with **React 18**, **TypeScript**, and **Vite** using utility-first styling with **Tailwind CSS**.
 
 ### 3.1 Portal Routing & Layout Hierarchy
-The application separates concerns across 5 distinct layout structures defined in `client/src/layouts/`:
+The application separates concerns across 8 distinct layout structures defined in `client/src/layouts/`:
 
 1. **`MainLayout`**: Public information pages, landing page, about, contact, and architecture overview with responsive navigation.
 2. **`AuthLayout`**: Secure login, registration, password recovery, and verified credential selector.
-3. **`PatientLayout`**: Patient-facing accessibility portal, personalized friction fingerprint, nearby verified hospitals, digital document vault, and teleconsultation navigation.
-4. **`HospitalLayout`**: Hospital reception, intake coordinator, and nodal officer triage console for managing incoming accessibility support requests and OPD token quotas.
-5. **`AdminLayout`**: Executive oversight dashboard, statewide district heatmaps, population leakage funnels, and interactive What-If budget simulators.
+3. **`PatientLayout`**: Patient-facing accessibility portal, personalized friction fingerprint, nearby verified hospitals, digital document vault, trip planner, and teleconsultation navigation.
+4. **`DoctorLayout`**: Clinical decision-support console, OPD patient queue with transit barrier indicators, and ASHA coordination desk.
+5. **`AshaLayout`**: Frontline community health portal, village household registry, 1-tap barrier logging, and doorstep transit dispatch.
+6. **`HospitalLayout`**: Hospital reception, intake coordinator, and triage console for managing incoming accessibility support requests and OPD token quotas.
+7. **`GovernmentLayout`**: Macro population health oversight, district care journey drop-off leakage funnels, and policy intervention simulators.
+8. **`AdminLayout`**: Master system administration, cryptographic RBAC verification, security audit logs, and global database telemetry.
 
 ### 3.2 State Management Contexts
 State is decoupled into focused React context providers:

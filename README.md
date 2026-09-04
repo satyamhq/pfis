@@ -51,16 +51,23 @@ PFIS provides an explainable mathematical engine that models non-clinical operat
 ## 🚀 Key Platform Capabilities
 
 ```
-┌───────────────────────────┬───────────────────────────┬───────────────────────────┐
-│     PATIENT PORTAL        │      HOSPITAL CONSOLE     │       ADMIN SUITE         │
-├───────────────────────────┼───────────────────────────┼───────────────────────────┤
-│ • 8-Dimension Friction    │ • Incoming Triage Inbox   │ • Statewide Heatmaps      │
-│ • Explainable Fingerprint │ • Consented Barrier Review│ • 5-Stage Leakage Funnel  │
-│ • Proximity Hospital Map  │ • Sahayak Escort Dispatch │ • Why Care Failed Engine  │
-│ • Windowed Token Booking  │ • Token Quota Management  │ • What-If Policy Sim      │
-│ • Digital Document Vault  │ • OPD Department Rosters  │ • Budget Knapsack Opt     │
-│ • Digital Twin Simulator  │ • Transit Coordination    │ • Audit Logs & Security   │
-└───────────────────────────┴───────────────────────────┴───────────────────────────┘
+┌──────────────────────────────┬──────────────────────────────┬──────────────────────────────┐
+│        PATIENT PORTAL        │       DOCTOR CLINICAL        │      ASHA FIELD CADRE        │
+├──────────────────────────────┼──────────────────────────────┼──────────────────────────────┤
+│ • Hospital Travel Ease Score │ • Daily OPD Patient Queue    │ • Village Household Registry │
+│ • 1-Click OPD Token Booking  │ • Non-Clinical Barrier Flags │ • 1-Tap Field Barrier Logger │
+│ • Doctor Video Teleconsult   │ • Dialect & Distance Alerts  │ • Doorstep Transit Dispatch  │
+│ • 7-Step Trip Planner (Twin) │ • ASHA Coordination Desk     │ • Health Card eKYC Support   │
+│ • Secure Health Record Vault │ • Complete Medical Autonomy  │ • PHC Telemetry Reporting    │
+├──────────────────────────────┼──────────────────────────────┼──────────────────────────────┤
+│     HOSPITAL OPERATIONS      │      GOVERNMENT OFFICIAL     │         ADMIN SUITE          │
+├──────────────────────────────┼──────────────────────────────┼──────────────────────────────┤
+│ • Live OPD Triage Queue      │ • District Drop-Off Tracking │ • Cryptographic RBAC Control │
+│ • Doctor & Quota Allocation  │ • Access Friction Heat-Maps  │ • Hospital Verification Desk │
+│ • Department Capacity Desk   │ • Policy Impact Simulator    │ • Immutable Security Audit   │
+│ • 24/7 Emergency Telemetry   │ • Mobile Van Allocation Tool │ • Population Telemetry Logs  │
+│ • Free Shuttle Coordination  │ • DPDP 2023 Privacy Standard │ • System Health Diagnostics  │
+└──────────────────────────────┴──────────────────────────────┴──────────────────────────────┘
 ```
 
 ---

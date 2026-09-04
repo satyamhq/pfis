@@ -17,6 +17,7 @@ import {
   Sliders,
 } from 'lucide-react';
 import { governmentService, GovernmentDashboardData } from '../../services/governmentService';
+import { PageClarityRibbon } from '../../components/common/PageClarityRibbon';
 
 export const GovernmentDashboard: React.FC = () => {
   const [data, setData] = useState<GovernmentDashboardData | null>(null);
@@ -121,6 +122,18 @@ export const GovernmentDashboard: React.FC = () => {
           </Link>
         </div>
       </div>
+
+      {/* Guidance Ribbon: What is this? Why is it useful? What should I do next? */}
+      <PageClarityRibbon
+        pageKey="government_dashboard"
+        what="District Health Access & Care Retention Portal — track where patients drop out of care across 5 stages."
+        why="Identifies diagnostic deserts, transit hurdles, and out-of-pocket costs at a district scale so you can fund mobile vans and targeted subsidies."
+        next="Click 'Policy Interventions' to simulate the impact of new bus shuttles or mobile diagnostic camps on district recovery."
+        actionText="Policy Interventions"
+        actionLink="/government/interventions"
+        badge="District Official"
+        role="government"
+      />
 
       {/* DPDP Compliance Notice */}
       <div className="p-4 bg-emerald-50/70 border border-emerald-200/70 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-emerald-950">

@@ -14,6 +14,7 @@ import { CompletionGauge } from '../../components/charts/CompletionGauge';
 import { LoadingSkeleton } from '../../components/common/LoadingSkeleton';
 import { TTSButton } from '../../components/common/TTSButton';
 import { SimpleModeToggle } from '../../components/common/SimpleModeToggle';
+import { PageClarityRibbon } from '../../components/common/PageClarityRibbon';
 import {
   Sparkles,
   ShieldAlert,
@@ -168,6 +169,18 @@ export const PatientDashboard: React.FC = () => {
         </div>
       </div>
 
+      {/* Guidance Ribbon: What is this? Why is it useful? What should I do next? */}
+      <PageClarityRibbon
+        pageKey="patient_dashboard"
+        what="Your Health Journey Hub — track your hospital travel ease, appointments, and support in one place."
+        why="Helps you choose the easiest hospital to reach, avoid hours of OPD queue waiting, and request free travel shuttles if needed."
+        next="Click 'Find Nearby' below to check doctor schedules and book your hospital visit token."
+        actionText="Find Hospitals & Doctors"
+        actionLink="/patient/hospitals"
+        badge="Patient Overview"
+        role="patient"
+      />
+
       {/* 2. Primary 1-Click Patient Healthcare Action Hub */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
@@ -209,9 +222,9 @@ export const PatientDashboard: React.FC = () => {
               <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/20 flex items-center justify-center text-white backdrop-blur-sm shadow-xs">
                 <Laptop className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-base leading-tight">Live Teleconsultation</h3>
+              <h3 className="font-bold text-base leading-tight">Doctor Video Call</h3>
               <p className="text-xs text-blue-100/90 leading-relaxed">
-                Connect instantly via video with duty doctors from home with live translation.
+                Connect instantly with on-duty doctors from home with automatic regional language translation.
               </p>
             </div>
             <div className="pt-2 flex items-center justify-between text-xs font-bold text-blue-100 group-hover:text-white relative z-10 border-t border-white/10">
@@ -220,7 +233,7 @@ export const PatientDashboard: React.FC = () => {
             </div>
           </Link>
 
-          {/* Card 3: Friction Digital Twin */}
+          {/* Card 3: Trip Planner (Simulator) */}
           <Link
             to="/patient/digital-twin"
             className="group relative overflow-hidden p-5 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-800 text-white shadow-md hover:shadow-xl hover:shadow-emerald-900/15 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] transition-all duration-200 flex flex-col justify-between space-y-4 border border-emerald-500/30"
@@ -230,13 +243,13 @@ export const PatientDashboard: React.FC = () => {
               <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/20 flex items-center justify-center text-white backdrop-blur-sm shadow-xs">
                 <Sparkles className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-base leading-tight">Friction Digital Twin</h3>
+              <h3 className="font-bold text-base leading-tight">Trip Planner (Simulator)</h3>
               <p className="text-xs text-emerald-100/90 leading-relaxed">
-                Simulate your 7-step travel journey and see how shuttles and ASHA escorts save time.
+                Plan your 7-step travel route and see how free shuttles or ASHA escorts save hours.
               </p>
             </div>
             <div className="pt-2 flex items-center justify-between text-xs font-bold text-emerald-100 group-hover:text-white relative z-10 border-t border-white/10">
-              <span>Simulate Journey</span>
+              <span>Plan My Trip</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
@@ -251,34 +264,34 @@ export const PatientDashboard: React.FC = () => {
               <div className="w-10 h-10 rounded-xl bg-white/20 border border-white/20 flex items-center justify-center text-white backdrop-blur-sm shadow-xs">
                 <FolderLock className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-base leading-tight">Document Vault</h3>
+              <h3 className="font-bold text-base leading-tight">My Health Records</h3>
               <p className="text-xs text-indigo-100/90 leading-relaxed">
-                Securely store your Ayushman Bharat card, prescription slips, and lab reports.
+                Keep your Ayushman Bharat card, doctor prescriptions, and lab reports ready on your phone.
               </p>
             </div>
             <div className="pt-2 flex items-center justify-between text-xs font-bold text-indigo-100 group-hover:text-white relative z-10 border-t border-white/10">
-              <span>View Documents</span>
+              <span>View Records</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
         </div>
       </div>
 
-      {/* 3. 4 Key Friction Metrics Cards */}
+      {/* 3. 4 Key Travel & Ease Metrics Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
-          title={t('patient.accessibilityScore', 'Healthcare Accessibility')}
+          title="Hospital Travel Ease"
           value={`${accessibilityScore} / 100`}
-          subtitle={t('patient.accessibilityScoreDesc', 'Non-clinical accessibility score')}
+          subtitle="Score based on travel distance, roads & wait time"
           icon={TrendingUp}
-          badge={accessibilityScore >= 70 ? t('common.optimal', 'Optimal') : accessibilityScore >= 50 ? t('common.moderate', 'Moderate') : t('common.high', 'Constrained')}
+          badge={accessibilityScore >= 70 ? 'Easy Access' : accessibilityScore >= 50 ? 'Moderate' : 'Difficult'}
           badgeType={accessibilityScore >= 70 ? 'success' : accessibilityScore >= 50 ? 'warning' : 'danger'}
         />
 
         <StatCard
-          title={t('patient.completionProb', 'Care Completion Prob.')}
+          title="Visit Success Chance"
           value={`${completionProbability}%`}
-          subtitle={t('patient.completionProbDesc', 'Estimated journey completion forecast')}
+          subtitle="Likelihood of completing your checkup on time"
           icon={Sparkles}
           iconColor="text-teal-600 bg-teal-50 border-teal-100"
           badge={`${completionProbability}%`}
@@ -286,9 +299,9 @@ export const PatientDashboard: React.FC = () => {
         />
 
         <StatCard
-          title={t('patient.accessibilityRisk', 'Accessibility Risk')}
-          value={riskCategory}
-          subtitle={t('patient.accessibilityRiskDesc', 'Estimated operational barrier risk')}
+          title="Travel Delay Risk"
+          value={riskCategory === 'CRITICAL' ? 'High Risk' : riskCategory === 'HIGH' ? 'Elevated' : 'Low Risk'}
+          subtitle="Risk of transit roadblocks or long queues"
           icon={ShieldAlert}
           iconColor={riskCategory === 'CRITICAL' ? 'text-rose-600 bg-rose-50 border-rose-100' : 'text-amber-600 bg-amber-50 border-amber-100'}
           badge={riskCategory}
@@ -296,35 +309,35 @@ export const PatientDashboard: React.FC = () => {
         />
 
         <StatCard
-          title={t('patient.primaryBarrier', 'Primary Barrier')}
+          title="Main Travel Challenge"
           value={topBarrier.split(' ')[0]}
           subtitle={topBarrier}
           icon={AlertTriangle}
           iconColor="text-orange-600 bg-orange-50 border-orange-100"
-          badge="High Barrier"
+          badge="Attention"
           badgeType="warning"
         />
       </div>
 
       {/* 4. Center 2-Column: Intelligence & Nearest Facility */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left 2 Cols: Gauge & Friction Breakdown */}
+        {/* Left 2 Cols: Gauge & Travel Ease Breakdown */}
         <div className="lg:col-span-2 space-y-6">
           <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 p-4 sm:p-6 shadow-card space-y-4">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div>
                 <h3 className="text-base font-bold text-slate-900">
-                  {t('patient.explainableIntelligence', 'Explainable Accessibility Intelligence')}
+                  How Easy Is Your Hospital Visit?
                 </h3>
                 <p className="text-xs text-slate-500">
-                  {t('patient.explainableDesc', 'How socio-geographic factors shape your estimated healthcare completion')}
+                  Clear breakdown of travel distance, transport, and waiting time
                 </p>
               </div>
               <div className="flex items-center gap-2">
                 <TTSButton text={dashboardExplanation} />
                 <Link to="/patient/friction">
                   <Button variant="ghost" size="sm" icon={<ArrowRight className="w-3.5 h-3.5" />}>
-                    {t('patient.radarBtn', 'Detailed Radar')}
+                    See Full Breakdown
                   </Button>
                 </Link>
               </div>
@@ -335,8 +348,8 @@ export const PatientDashboard: React.FC = () => {
                 <CompletionGauge
                   score={completionProbability}
                   size={160}
-                  label="Completion Forecast"
-                  sublabel="Operational index"
+                  label="Trip Success"
+                  sublabel="Ease score"
                 />
               </div>
 
@@ -348,7 +361,7 @@ export const PatientDashboard: React.FC = () => {
                 }`}>
                   <p className="font-bold text-xs flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                    {simpleLanguageMode ? 'सरल भाषा विश्लेषण (Simple Summary):' : 'Deterministic Operational Diagnosis:'}
+                    {simpleLanguageMode ? 'सरल भाषा विश्लेषण (Simple Summary):' : 'Your Travel Check Summary:'}
                   </p>
                   <p className="leading-relaxed">{dashboardExplanation}</p>
                 </div>
@@ -356,7 +369,7 @@ export const PatientDashboard: React.FC = () => {
                 <div className="flex items-center gap-2 pt-1">
                   <Link to="/patient/risk" className="flex-1">
                     <Button variant="outline" size="sm" className="w-full text-xs">
-                      {t('patient.bottleneckAnalysis', 'View Journey Bottleneck Analysis')}
+                      See Journey Bottlenecks & Fixes
                     </Button>
                   </Link>
                 </div>
@@ -370,7 +383,7 @@ export const PatientDashboard: React.FC = () => {
               <div className="flex items-center gap-2">
                 <ListOrdered className="w-4 h-4 text-teal-600" />
                 <h3 className="text-base font-bold text-slate-900">
-                  {t('patient.activeRequests', 'Active Hospital Requests')}
+                  My Appointments & Tokens
                 </h3>
               </div>
               <Link to="/patient/requests" className="text-xs font-semibold text-teal-600 hover:text-teal-700">

@@ -17,6 +17,7 @@ import {
   RefreshCw,
 } from 'lucide-react';
 import { doctorService, DoctorDashboardData } from '../../services/doctorService';
+import { PageClarityRibbon } from '../../components/common/PageClarityRibbon';
 
 export const DoctorDashboard: React.FC = () => {
   const [data, setData] = useState<DoctorDashboardData | null>(null);
@@ -151,6 +152,18 @@ export const DoctorDashboard: React.FC = () => {
           </Link>
         </div>
       </div>
+
+      {/* Guidance Ribbon: What is this? Why is it useful? What should I do next? */}
+      <PageClarityRibbon
+        pageKey="doctor_dashboard"
+        what="Clinical Patient Queue & Travel Barrier Alerts — see today's OPD schedule with non-clinical context."
+        why="Alerts you if a patient traveled 60+ km, has language barriers, or might miss lab follow-ups, so you can tailor your consultation and request ASHA follow-up."
+        next="Filter by 'High-Friction Risk' or click 'Review Context' on any patient below to check their travel hurdles."
+        actionText="View Full Queue"
+        actionLink="/doctor/patients"
+        badge="Doctor Station"
+        role="doctor"
+      />
 
       {/* Non-Clinical Clinical Decision-Support Notice */}
       <div className="p-4 bg-purple-50/70 border border-purple-200/70 rounded-2xl flex items-start gap-3 text-xs leading-relaxed">

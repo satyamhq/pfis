@@ -7,6 +7,7 @@ import { StatCard } from '../../components/common/StatCard';
 import { StatusBadge } from '../../components/common/StatusBadge';
 import { Button } from '../../components/common/Button';
 import { LoadingSkeleton } from '../../components/common/LoadingSkeleton';
+import { PageClarityRibbon } from '../../components/common/PageClarityRibbon';
 import {
   Building2,
   ListOrdered,
@@ -88,13 +89,25 @@ export const HospitalDashboard: React.FC = () => {
           </Link>
           <Link to="/hospital/departments" className="w-full sm:w-auto">
             <Button variant="outline" size="sm" icon={<Layers className="w-4 h-4" />} className="w-full sm:w-auto justify-center shadow-xs">
-              Manage OPD
+              Manage Departments
             </Button>
           </Link>
         </div>
       </div>
 
-      {/* 4 Metrics Cards */}
+      {/* Guidance Ribbon: What is this? Why is it useful? What should I do next? */}
+      <PageClarityRibbon
+        pageKey="hospital_dashboard"
+        what="Hospital Operations & Triage Hub — balance OPD capacity, review appointments, and allocate doctors."
+        why="Helps your facility anticipate daily patient volume, prioritize high-travel patients, and prevent clinic bottlenecks."
+        next="Click 'Review Patient Queue' to accept new patient bookings, or manage doctor quotas in 'Manage Departments'."
+        actionText="Review Patient Queue"
+        actionLink="/hospital/requests"
+        badge="Hospital Ops"
+        role="hospital"
+      />
+
+      {/* Triage Status Pipeline Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
           title="New Requests"

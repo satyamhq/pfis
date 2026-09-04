@@ -11,6 +11,7 @@ import { StatusBadge } from '../../components/common/StatusBadge';
 import { ConsentModal } from '../../components/patient/ConsentModal';
 import { LoadingSkeleton } from '../../components/common/LoadingSkeleton';
 import { ErrorAlert } from '../../components/common/ErrorAlert';
+import { PageClarityRibbon } from '../../components/common/PageClarityRibbon';
 import {
   Building2,
   MapPin,
@@ -158,8 +159,39 @@ export const HospitalDetails: React.FC = () => {
     );
   }
 
+  const commonSymptoms = [
+    { label: 'Fever / Cough / Cold', text: 'High fever and severe throat cough for 3 days.', deptKeyword: 'General' },
+    { label: 'Chest Pain / BP Check', text: 'Chest heaviness and routine blood pressure monitoring follow-up.', deptKeyword: 'Cardio' },
+    { label: 'Knee / Joint Pain', text: 'Severe knee pain and difficulty walking for 2 weeks.', deptKeyword: 'Ortho' },
+    { label: 'Child Checkup / Fever', text: 'Pediatric fever and appetite loss in toddler.', deptKeyword: 'Pediatric' },
+    { label: 'Eye Irritation / Blurry', text: 'Burning sensation in eyes and blurry distant vision.', deptKeyword: 'Ophthal' },
+    { label: 'Sugar / Diabetes Follow-up', text: 'Routine blood sugar monitoring and prescription refill.', deptKeyword: 'General' },
+  ];
+
+  const selectSymptom = (symptom: typeof commonSymptoms[0]) => {
+    setReasonForVisit(symptom.text);
+    const matchedDept = departments.find((d) =>
+      d.name.toLowerCase().includes(symptom.deptKeyword.toLowerCase())
+    );
+    if (matchedDept) setSelectedDept(matchedDept.name);
+  };
+
   return (
     <div className="space-y-8">
+      {/* Guidance Ribbon: What is this? Why is it useful? What should I do next? */}
+      <PageClarityRibbon
+        pageKey="hospital_details"
+        what="Hospital Profile & OPD Doctor Booking — view doctor timings, fees, and secure your visit token."
+        why="Shows live OPD token availability and doctor schedules so you never arrive at a full clinic, plus lets you request free ambulance or an escort."
+        next="Select your department below, pick a quick symptom, and click 'Confirm & Book OPD Token'."
+        actionText="Skip to Booking Form"
+        onAction={() => {
+          document.getElementById('booking-form')?.scrollIntoView({ behavior: 'smooth' });
+        }}
+        badge="Hospital Details"
+        role="patient"
+      />
+
       {/* Header Hospital Profile Card */}
       <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-8 shadow-card space-y-5 sm:space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-6">
@@ -354,13 +386,13 @@ export const HospitalDetails: React.FC = () => {
       </div>
 
       {/* Interactive Patient Intake Request Form */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-8 shadow-card space-y-6">
+      <div id="booking-form" className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-8 shadow-card space-y-6">
         <div>
           <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <Send className="w-5 h-5 text-brand-500" /> Send Patient Intake Request
+            <Send className="w-5 h-5 text-teal-600" /> Book OPD Appointment & Token
           </h3>
           <p className="text-xs text-slate-500">
-            Transmit non-clinical context and clinical symptoms with full verified consent
+            Reserve your doctor consultation token in advance — free or subsidized under Ayushman Bharat
           </p>
         </div>
 
@@ -399,12 +431,32 @@ export const HospitalDetails: React.FC = () => {
             </div>
           </div>
 
-          <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1">
-              Reason for Visit & Primary Symptoms
-            </label>
+          <div className="space-y-2">
+            <div className="flex flex-wrap items-center justify-between gap-1">
+              <label className="block text-xs font-semibold text-slate-700">
+                Reason for Visit & Primary Symptoms
+              </label>
+              <span className="text-[11px] text-slate-400">
+                Tap a chip below to auto-fill
+              </span>
+            </div>
+
+            {/* Quick Symptom Chips */}
+            <div className="flex flex-wrap gap-1.5 pb-1">
+              {commonSymptoms.map((sym, sIdx) => (
+                <button
+                  key={sIdx}
+                  type="button"
+                  onClick={() => selectSymptom(sym)}
+                  className="text-xs px-2.5 py-1 rounded-lg bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 transition-all font-medium text-left"
+                >
+                  + {sym.label}
+                </button>
+              ))}
+            </div>
+
             <textarea
-              className="w-full rounded-lg border border-slate-300 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
+              className="w-full rounded-lg border border-slate-300 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500"
               rows={3}
               placeholder="e.g. Chronic chest tightness upon exertion for 3 weeks, previously diagnosed with hypertension."
               value={reasonForVisit}

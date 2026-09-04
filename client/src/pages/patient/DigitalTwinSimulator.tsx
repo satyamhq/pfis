@@ -5,6 +5,7 @@ import { patientService } from '../../services/patientService';
 import { Button } from '../../components/common/Button';
 import { CompletionGauge } from '../../components/charts/CompletionGauge';
 import { TTSButton } from '../../components/common/TTSButton';
+import { PageClarityRibbon } from '../../components/common/PageClarityRibbon';
 import {
   Activity,
   Sparkles,
@@ -226,27 +227,86 @@ export const DigitalTwinSimulator: React.FC = () => {
     setSimulationLog([]);
   };
 
+  const applyPreset = (type: 'remote_village' | 'supported_care' | 'urban_town') => {
+    handleResetSimulation();
+    if (type === 'remote_village') {
+      setDistanceKm(70);
+      setTransportAccess('none');
+      setDigitalLiteracy('none');
+      setFamilySupport('none');
+      setWageCommitment('inflexible_daily_wage');
+      setDocReadiness('incomplete');
+      setHasTransportShuttle(false);
+      setHasSatelliteDiagnostics(false);
+      setHasAshaEscort(false);
+      setHasTeleconsultation(false);
+      setHasMedicineDelivery(false);
+      setHasVoiceIVR(false);
+      setHasOfflineDesk(false);
+    } else if (type === 'supported_care') {
+      setDistanceKm(65);
+      setTransportAccess('low');
+      setDigitalLiteracy('basic');
+      setFamilySupport('moderate');
+      setWageCommitment('inflexible_daily_wage');
+      setDocReadiness('partial');
+      setHasTransportShuttle(true);
+      setHasSatelliteDiagnostics(true);
+      setHasAshaEscort(true);
+      setHasTeleconsultation(true);
+      setHasMedicineDelivery(true);
+      setHasVoiceIVR(true);
+      setHasOfflineDesk(true);
+    } else {
+      setDistanceKm(15);
+      setTransportAccess('high');
+      setDigitalLiteracy('moderate');
+      setFamilySupport('high');
+      setWageCommitment('flexible');
+      setDocReadiness('complete');
+      setHasTransportShuttle(false);
+      setHasSatelliteDiagnostics(false);
+      setHasAshaEscort(false);
+      setHasTeleconsultation(false);
+      setHasMedicineDelivery(false);
+      setHasVoiceIVR(false);
+      setHasOfflineDesk(false);
+    }
+  };
+
   return (
     <div className="space-y-8 max-w-6xl mx-auto">
+      {/* Guidance Ribbon: What is this? Why is it useful? What should I do next? */}
+      <PageClarityRibbon
+        pageKey="patient_simulator"
+        what="Virtual Hospital Trip Planner — test your travel route and see how free shuttles or ASHA helpers make your visit faster."
+        why="Shows exactly where hospital trips usually get delayed or cost too much, and demonstrates how village shuttles and phone tokens fix those delays."
+        next="Click 'Start Trip Simulation' below to see the 7-step journey in action, or flip the intervention switches to test instant improvements."
+        actionText={isRunning ? 'Simulation Running...' : 'Start Trip Simulation'}
+        onAction={isRunning ? undefined : handleStartSimulation}
+        badge="Trip Planner"
+        role="patient"
+      />
+
       {/* Header Banner */}
       <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-xl shadow-slate-200/50 border border-slate-200/90 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold border border-teal-200 mb-2">
               <Sparkles className="w-3.5 h-3.5 text-teal-600" />
-              <span>PFIS Core Engine: Friction Digital Twin</span>
+              <span>Interactive Trip Planner</span>
             </div>
             <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight">
-              Patient Friction Digital Twin Simulator
+              Hospital Trip Planner & Journey Simulator
             </h1>
             <p className="text-xs text-slate-500">
-              Simulate a real-world virtual patient journey through healthcare barriers, testing practical interventions in real time
+              See how travel distance, bus schedules, and waiting lines affect your visit — and test helpful solutions in real time
             </p>
           </div>
 
           <div className="flex items-center gap-2">
             <TTSButton
-              text={`Patient Friction Digital Twin Simulator. Current estimated care completion probability is ${completionProb} percent.`}
+              text={`Hospital Trip Planner. Current estimated trip success chance is ${completionProb} percent.`}
             />
             <Button
               variant="outline"
@@ -260,12 +320,38 @@ export const DigitalTwinSimulator: React.FC = () => {
           </div>
         </div>
 
+        {/* 1-Click Quick Presets */}
+        <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
+          <span className="text-slate-500 font-bold text-[11px] uppercase tracking-wider">Quick Presets:</span>
+          <button
+            type="button"
+            onClick={() => applyPreset('remote_village')}
+            className="px-3 py-1 rounded-full bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200 font-semibold transition-all shadow-xs"
+          >
+            Remote Village (No Bus)
+          </button>
+          <button
+            type="button"
+            onClick={() => applyPreset('supported_care')}
+            className="px-3 py-1 rounded-full bg-teal-50 text-teal-700 hover:bg-teal-100 border border-teal-200 font-semibold transition-all shadow-xs"
+          >
+            With Free Bus & ASHA (Supported)
+          </button>
+          <button
+            type="button"
+            onClick={() => applyPreset('urban_town')}
+            className="px-3 py-1 rounded-full bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 font-semibold transition-all shadow-xs"
+          >
+            Near Town (Easy Access)
+          </button>
+        </div>
+
         {/* Safety Disclaimer Banner */}
         <div className="p-3 bg-teal-50/80 border border-teal-200/80 rounded-xl text-xs text-slate-700 flex items-center gap-2.5">
           <ShieldAlert className="w-4 h-4 text-teal-600 flex-shrink-0" />
           <span>
-            <strong className="text-teal-800">Non-Clinical Digital Twin:</strong> Models socio-geographic,
-            transit, and operational bottlenecks. Does NOT model disease pathophysiology or medical outcomes.
+            <strong className="text-teal-800">Journey & Travel Simulator:</strong> Models travel distance,
+            buses, and hospital waiting queues. Does NOT provide medical diagnosis or replace doctors.
           </span>
         </div>
       </div>

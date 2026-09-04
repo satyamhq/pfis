@@ -74,77 +74,77 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
   const roleOptions: RoleOption[] = [
     {
       id: 'patient',
-      title: 'Citizen / Patient',
-      tagline: 'Access personal care navigation & non-clinical barrier assistance',
-      badge: 'Public Citizen',
-      badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300',
+      title: 'Patient & Citizen',
+      tagline: 'Book OPD tokens, find doctors, and get travel help',
+      badge: 'Public Care',
+      badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
       accentBorder: 'border-emerald-500 ring-emerald-500/20 bg-emerald-50/40',
       icon: <User className="w-6 h-6 text-emerald-600" />,
-      description: 'Explore your personal friction fingerprint, locate accessible healthcare facilities, and request prioritized OPD tokens.',
+      description: 'Find verified nearby hospitals, book doctor tokens from home, and request free community travel shuttles.',
       highlights: [
-        'Personal Non-Clinical Friction Score & Breakdown',
-        'Hospital Locator with Distance, Bus & Terrain Estimates',
-        'OPD Token & Barrier Accommodation Requests',
+        '1-Click OPD Token Booking',
+        'Nearby Hospitals & Doctor Schedules',
+        'Free Bus & Travel Assistance',
       ],
     },
     {
       id: 'doctor',
-      title: 'Doctor / Medical Officer',
-      tagline: 'Review pre-consult operational friction & non-clinical context',
-      badge: 'Clinical Support',
-      badgeColor: 'bg-teal-100 text-teal-800 border-teal-300',
-      accentBorder: 'border-teal-500 ring-teal-500/20 bg-teal-50/40',
-      icon: <Stethoscope className="w-6 h-6 text-teal-600" />,
-      description: 'Gain visibility into patient socio-economic and transport barriers without altering clinical diagnostic autonomy.',
+      title: 'Doctor & Clinician',
+      tagline: 'View daily patient queue and travel barrier alerts',
+      badge: 'Clinical Care',
+      badgeColor: 'bg-purple-50 text-purple-700 border-purple-200',
+      accentBorder: 'border-purple-500 ring-purple-500/20 bg-purple-50/40',
+      icon: <Stethoscope className="w-6 h-6 text-purple-600" />,
+      description: 'See today\'s assigned patients with actionable alerts on travel distance, language, and missed follow-up risks.',
       highlights: [
-        'Pre-Consultation Friction Intelligence Summaries',
-        'Non-Clinical Follow-Up Risk Predictor',
-        'Preservation of Complete Clinical Autonomy',
+        'Daily Patient Queue & OPD Roster',
+        'Non-Clinical Barrier Highlights',
+        '1-Click ASHA Follow-up Coordination',
       ],
     },
     {
       id: 'asha',
-      title: 'ASHA Worker / Field Cadre',
-      tagline: 'Grassroots community health tracking & transit assistance',
-      badge: 'Grassroots Operations',
-      badgeColor: 'bg-amber-100 text-amber-800 border-amber-300',
-      accentBorder: 'border-amber-500 ring-amber-500/20 bg-amber-50/40',
-      icon: <HeartHandshake className="w-6 h-6 text-amber-600" />,
-      description: 'Log village-level healthcare access barriers, coordinate patient journeys, and initiate transit voucher requests.',
+      title: 'ASHA Field Worker',
+      tagline: 'Help village families and coordinate transport',
+      badge: 'Community Frontline',
+      badgeColor: 'bg-rose-50 text-rose-700 border-rose-200',
+      accentBorder: 'border-rose-500 ring-rose-500/20 bg-rose-50/40',
+      icon: <HeartHandshake className="w-6 h-6 text-rose-600" />,
+      description: 'Support local households, log access barriers, and arrange morning bus shuttles or hospital escorts.',
       highlights: [
-        'Rapid Village Barrier Entry (Transport, Wage, Digital)',
-        'Assisted Appointment & Transit Logistics Logging',
-        'Primary Health Center (PHC) & Sub-Center Telemetry',
-      ],
-    },
-    {
-      id: 'government',
-      title: 'Government Health Official',
-      tagline: 'Macro population health monitoring & policy simulation',
-      badge: 'Policy & Governance',
-      badgeColor: 'bg-blue-100 text-blue-800 border-blue-300',
-      accentBorder: 'border-blue-500 ring-blue-500/20 bg-blue-50/40',
-      icon: <Landmark className="w-6 h-6 text-blue-600" />,
-      description: 'Analyze anonymized, privacy-preserving regional friction heatmaps and plan targeted healthcare interventions.',
-      highlights: [
-        'District & State Friction Leakage Analytics',
-        'Strict DPDP Act Privacy Preservation (De-identified)',
-        'Intervention Allocation & Impact Simulators',
+        'Village Household Registry',
+        '1-Tap Barrier Logger',
+        'Doorstep Transit & Escort Dispatch',
       ],
     },
     {
       id: 'hospital',
-      title: 'Hospital / Facility Admin',
-      tagline: 'Institutional OPD triage & capacity coordination',
-      badge: 'Institutional Operations',
-      badgeColor: 'bg-purple-100 text-purple-800 border-purple-300',
-      accentBorder: 'border-purple-500 ring-purple-500/20 bg-purple-50/40',
-      icon: <Building2 className="w-6 h-6 text-purple-600" />,
-      description: 'Triage incoming patients based on non-clinical risk, manage department capacities, and prevent care dropouts.',
+      title: 'Hospital Facility',
+      tagline: 'Manage doctor rosters, token seats, and intake queue',
+      badge: 'Hospital Ops',
+      badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
+      accentBorder: 'border-blue-500 ring-blue-500/20 bg-blue-50/40',
+      icon: <Building2 className="w-6 h-6 text-blue-600" />,
+      description: 'Triage patient requests, configure duty doctors and departments, and balance daily OPD token quotas.',
       highlights: [
-        'Real-time Intake Triage Queue & High-Risk Flags',
-        'Departmental Token Capacity & Wait-time Balancing',
-        'Facility-Level Barrier Mitigation Planning',
+        'Live Triage Queue & Review',
+        'Doctor & Department Capacity',
+        '24/7 Emergency & Bed Status',
+      ],
+    },
+    {
+      id: 'government',
+      title: 'Health Official',
+      tagline: 'Monitor district health access and plan interventions',
+      badge: 'District Health',
+      badgeColor: 'bg-teal-50 text-teal-700 border-teal-200',
+      accentBorder: 'border-teal-500 ring-teal-500/20 bg-teal-50/40',
+      icon: <Landmark className="w-6 h-6 text-teal-600" />,
+      description: 'Review district drop-offs across rural areas, track diagnostic deserts, and plan targeted mobile vans.',
+      highlights: [
+        'District Access Heat-Maps',
+        '5-Stage Care Drop-Off Tracking',
+        'Intervention Policy Simulators',
       ],
     },
   ];
@@ -258,10 +258,10 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
               </div>
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-teal-400">
-                  New Account Initialization
+                  Quick Account Setup
                 </span>
                 <h2 className="text-xl sm:text-2xl font-black text-white">
-                  Welcome to PFIS. Tell us how you will use PFIS.
+                  Welcome to PFIS! How will you use this platform?
                 </h2>
               </div>
             </div>
@@ -279,7 +279,7 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
             )}
           </div>
           <p className="text-xs sm:text-sm text-slate-300 mt-3 max-w-2xl leading-relaxed">
-            Select your primary operational role below. PFIS will configure tailored decision-support tools, telemetry views, and non-clinical assistance specifically for your workflows.
+            Choose how you'll use PFIS below. We'll customize your dashboard with the exact tools you need.
           </p>
         </div>
 
@@ -289,7 +289,7 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
             <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 flex items-start gap-3 text-rose-700 text-xs">
               <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
               <div className="flex-1">
-                <p className="font-bold">Onboarding Notice</p>
+                <p className="font-bold">Notice</p>
                 <p className="mt-0.5">{error}</p>
               </div>
             </div>
@@ -299,10 +299,10 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
-                Select Your Operational Role <span className="text-rose-500">*</span>
+                Select Your Account Type <span className="text-rose-500">*</span>
               </label>
               <span className="text-[11px] text-slate-400">
-                Choose 1 of 5 public operational roles
+                Click 1 option to continue
               </span>
             </div>
 
